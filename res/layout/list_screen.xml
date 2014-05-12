@@ -6,7 +6,7 @@
     android:baselineAligned="false"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/lnNavigation"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -16,9 +16,9 @@
         android:gravity="center"
         android:orientation="vertical" >
 
-        <!-- <include layout="@layout/navigation_search" /> -->
+        <include layout="@layout/navigation_search" android:visibility="gone" />
         <include layout="@layout/navigation_title_text" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
+            android:visibility="gone"
             android:padding="5dp"
             android:weightSum="5" >
 

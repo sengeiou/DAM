@@ -173,7 +173,7 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 	private RelativeLayout rlLocationField;
 	private int storeType;
 	private Service service;
-	private LinearLayout lnNavigation;
+	private RelativeLayout lnNavigation;
 	private LinearLayout lnPageContent;
 	private ExpandableListView expandbleStoreView;
 	protected boolean isExpandableSearch = false;
@@ -248,7 +248,7 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 		setContentView(R.layout.list_screen);//
 
 		lnPageContent = (LinearLayout) findViewById(R.id.page_content);
-		lnNavigation = (LinearLayout) findViewById(R.id.lnNavigation);
+		lnNavigation = (RelativeLayout) findViewById(R.id.lnNavigation);
 		whyqListView = (ListView) findViewById(R.id.lvWhyqList);
 		lnCutlery = (LinearLayout) findViewById(R.id.lnCutleryTab);
 		lnWine = (LinearLayout) findViewById(R.id.lnWineTab);
@@ -285,6 +285,7 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 		tvNumberResult = (TextView) findViewById(R.id.tvNumberResult);
 		tvTextSearch = (TextView) findViewById(R.id.tvTextSearch);
 
+		((TextView)findViewById(R.id.tvHeaderTitle)).setText("DEAL A MEAL");
 		context = ListActivity.this;
 		whyqListView.setOnItemClickListener(onStoreItemListener);
 		etTextSearch
