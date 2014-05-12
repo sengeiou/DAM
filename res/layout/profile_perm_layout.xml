@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TableLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:stretchColumns="0">
+    <TableRow >
+	<TextView
+    		android:id="@+id/boardName"
+            android:layout_width="wrap_content"
+            android:layout_height="0dip"
+            android:gravity="right"
+            android:paddingRight="5dp"
+            android:layout_weight="1"
+         	android:textStyle="bold"
+            android:text=""
+            android:textColor="#5c5c5c" />
+    </TableRow>
+    
+    <TableRow android:paddingBottom="10dip">
+            <ImageView
+            android:id="@+id/permImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dip" 
+            android:src="@drawable/icon"
+            android:layout_gravity="center" />
+              
+    </TableRow>
+    
+    <TableRow >
+
+           <TextView
+                android:layout_width="fill_parent"
+                android:id="@+id/permDescription"
+                android:layout_span="2"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Perm Description"
+                android:textColor="#000000"/>
+    </TableRow>
+    <TableRow android:paddingBottom="10dp">
+
+           <TextView
+                android:layout_width="fill_parent"
+                android:id="@+id/permInfo"
+                android:layout_span="2"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="via username onto category" />
+    </TableRow>
+    <TableRow >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+         <Button
+                    android:id="@+id/btReperm"
+                    android:layout_width="75dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/button_bg"
+                    android:text="@string/bt_reperm"
+                    android:textColor="#FFFFFF" 
+                    android:layout_marginLeft="10dp"/>
+        <Button
+                    android:id="@+id/btLike"
+                    android:layout_width="75dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/button_bg"
+                    android:text="@string/bt_like"
+                    android:textColor="#FFFFFF" 
+                    android:layout_marginLeft="10dp"/>
+         <Button
+                    android:id="@+id/btComment"
+                    android:layout_width="75dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/button_bg"
+                    android:text="@string/bt_comment"
+                    android:textColor="#FFFFFF" 
+                    android:layout_marginLeft="10dp"/>
+          <ImageView
+              android:contentDescription="The location of perm (for Google map show)"
+            android:id="@+id/btLocation"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginRight="5dip" 
+            android:src="@drawable/location_icon" />
+         </LinearLayout>
+    </TableRow>
+    <TableRow>
+
+           <TextView
+                android:layout_width="fill_parent"
+                android:id="@+id/permStatus"
+                android:layout_span="2"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="permLikeCount - Repin: permRepinCount - Comment: permCommentCount" />
+    </TableRow>
+    <TableRow >
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/comments"
+            android:orientation="vertical">
+            
+            
+            
+        </LinearLayout>
+    </TableRow>
+    <TableRow>
+
+            <!-- Horizonal split line -->
+
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:orientation="vertical"
+                android:padding="5dp" >
+
+                <View
+                    android:id="@+id/item_separator"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#000000" />
+            </LinearLayout>
+        </TableRow>
+</TableLayout>

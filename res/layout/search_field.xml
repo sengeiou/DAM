@@ -1,0 +1,18 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/searchField"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp" >
+
+    <EditText
+        android:id="@+id/tvSearch"
+        style="@style/text_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textfield_searchview_holo_dark"
+        android:drawableLeft="@drawable/icon_search"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:hint="@string/hint_search" />
+
+</FrameLayout>

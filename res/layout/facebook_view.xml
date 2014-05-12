@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:paddingLeft="5dip"
+        android:paddingRight="5dip" >
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="3dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:onClick="onCancelClicked"
+            android:text="Cancel" >
+        </Button>
+
+        <ImageView
+            android:id="@+id/image_button_logo"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/facebook_usename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:maxWidth="150dp"
+            android:shadowColor="#333333"
+            android:shadowDx="2.0"
+            android:shadowDy="2.0"
+            android:shadowRadius="1.0"
+            android:text="Share facebook"
+            android:textColor="#ffffff"
+            android:textSize="15dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/facebook_numchar_old"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:shadowColor="#333333"
+            android:shadowDx="2.0"
+            android:shadowDy="2.0"
+            android:shadowRadius="2.0"
+            android:text="140"
+            android:textColor="#ffffff"
+            android:textSize="15dip"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/facebook_message"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:gravity="top|left"
+        android:hint="Your Status"
+        android:maxLength="1000"
+        android:text="" >
+    </EditText>
+
+    <RelativeLayout
+        android:id="@+id/LinearLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@android:color/transparent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingBottom="100dp" >
+
+        <TextView
+            android:id="@+id/tvlbCharacter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number of characters left: "
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/facebook_numchar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-2dp"
+            android:layout_toRightOf="@+id/tvlbCharacter"
+            android:text="1000"
+            android:textColor="@android:color/black"
+            android:textSize="15dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvlbaccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvlbCharacter"
+            android:text="Logged in as: "
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvUserLoggedin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/facebook_numchar"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tvlbaccount"
+            android:text=""
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/twitter_buttonCancel"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:visibility="gone" >
+        </Button>
+
+        <Button
+            android:id="@+id/facebook_buttonSend"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tvUserLoggedin"
+            android:layout_toRightOf="@+id/facebook_numchar"
+            android:text="Send" />
+
+    </RelativeLayout>
+
+</LinearLayout>

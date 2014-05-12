@@ -1,0 +1,4 @@
+
+    <resources>
+        <dimen name="avatar_size">75dp</dimen>
+    </resources>

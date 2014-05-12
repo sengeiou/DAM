@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    android:paddingBottom="3dp"
+    android:paddingTop="5dp"
+    android:stretchColumns="0" >
+
+    <TableRow>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_marginTop="0dip"
+            android:paddingLeft="7dp"
+            android:textColor="#000000" >
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="@dimen/avatar_size"
+                android:layout_marginLeft="@dimen/avatar_size_plus_padding"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/authorName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_size_auther_name"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/avatar_size"
+                android:layout_alignParentRight="true"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/boardName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical"
+                    android:paddingRight="20dp"
+                    android:text=""
+                    android:textColor="#7378db"
+                    android:textSize="@dimen/text_size_board_name"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/authorAvatar"
+                android:layout_width="@dimen/avatar_size"
+                android:layout_height="@dimen/avatar_size"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="fitCenter" />
+
+        </RelativeLayout>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/permImageParent"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="5dp"
+        android:padding="0dp"
+        android:paddingBottom="10dip"
+        android:layout_marginTop="5dp" >
+
+        <ImageView
+            android:id="@+id/permImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="#dddadd"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/permDesc"
+            android:layout_width="fill_parent"
+            android:layout_span="2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Perm Description"
+            android:textColor="#4c566c"
+            android:textSize="@dimen/text_size_perm_description" />
+    </TableRow>
+
+    <TableRow android:paddingBottom="10dp" >
+
+        <TextView
+            android:id="@+id/permInfo"
+            android:layout_width="fill_parent"
+            android:layout_span="2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="via username onto category"
+            android:textSize="@dimen/text_size_location" />
+    </TableRow>
+
+    <TableRow android:paddingBottom="10dp" android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp" >
+
+            <TextView
+                android:id="@+id/permVoiceInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Voice record Broxn, New York"
+                android:textSize="@dimen/text_size_location" 
+                android:layout_gravity="center_vertical"/>
+
+            <ImageView
+                android:id="@+id/btnVoice"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dip"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"/>
+
+            <ImageView
+                android:id="@+id/btnLocationnotused"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dip"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+    </TableRow>
+
+    <TableRow android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/btnRepem"
+                android:layout_width="75dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/button_style"
+                android:text="@string/bt_reperm"
+                android:textColor="#5e5d5d"
+                android:textSize="@dimen/text_size_like_button" />
+
+            <Button
+                android:id="@+id/btnLike"
+                android:layout_width="75dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/button_style"
+                android:text="@string/bt_like"
+                android:textColor="#5e5d5d"
+                android:textSize="@dimen/text_size_like_button" />
+
+            <Button
+                android:id="@+id/btnComment"
+                android:layout_width="75dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/button_style"
+                android:text="@string/bt_comment"
+                android:textColor="#5e5d5d"
+                android:textSize="@dimen/text_size_like_button" />
+
+            <ImageView
+                android:id="@+id/btnLocation"
+                android:layout_width="15dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/location_icon" />
+
+        </LinearLayout>
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/permStat"
+            android:layout_width="fill_parent"
+            android:layout_span="2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="@dimen/text_size_perm_stat" />
+    </TableRow>
+
+    <TableRow>
+
+        <LinearLayout
+            android:id="@+id/commentInput"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </TableRow>
+
+ 
+    <TableRow>
+
+        <LinearLayout
+            android:id="@+id/comments"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </TableRow>
+<!--    <TableRow>
+
+        <VideoView
+            android:id="@+id/permVideo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:gravity="center_horizontal" />
+    </TableRow>
+
+    <TableRow>
+
+        <LinearLayout
+            android:id="@+id/buttons"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btnPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Play" />
+
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Stop" />
+        </LinearLayout>
+    </TableRow>
+ -->
+   <TableRow>
+
+        <!-- Horizonal split line -->
+
+        <LinearLayout
+           
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:paddingTop="0dp" >
+
+            <View
+                android:id="@+id/item_separator"
+                android:layout_width="fill_parent"
+                android:layout_height="1.7dp"
+                android:background="@android:color/darker_gray" />
+        </LinearLayout>
+    </TableRow>
+
+</TableLayout>

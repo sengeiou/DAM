@@ -1,0 +1,65 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal" >
+	    
+	    <ImageButton
+		    android:id="@+id/buffer1"
+		    android:layout_width="0dp"
+			android:layout_height="fill_parent"
+			android:layout_weight="2"
+			android:visibility="invisible"/>
+	    
+	    <ImageButton
+		    android:id="@+id/previous"
+		    android:layout_width="0dp"
+			android:layout_height="fill_parent"
+			android:padding="15dp"
+			android:layout_weight="1.5"
+			android:background="@drawable/prev_button"/>
+	    <ImageButton
+		    android:id="@+id/buffer2"
+		    android:layout_width="0dp"
+			android:layout_height="fill_parent"
+			android:layout_weight="3"
+			android:visibility="invisible"/>
+	    <!-- <ImageButton
+		    android:id="@+id/buffer1"
+		    android:layout_width="0dp"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:visibility="invisible"/>
+			                
+	   <ImageButton
+		    android:id="@+id/buffer2"
+		    android:layout_width="0dp"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:visibility="invisible"/> -->
+	   
+	   <ImageButton
+		    android:id="@+id/next"
+		    android:layout_width="0dp"
+		    android:layout_height="fill_parent"
+		    android:layout_weight="1.5"
+		    android:padding="15dp"
+		    android:background="@drawable/next_button"/>
+	   <ImageButton
+		    android:id="@+id/buffer3"
+		    android:layout_width="0dp"
+			android:layout_height="fill_parent"
+			android:layout_weight="2"
+			android:visibility="invisible"/>
+	</LinearLayout>
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="15dp"
+	    android:orientation="horizontal" >
+	</LinearLayout>
+</LinearLayout>

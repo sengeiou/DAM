@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/titlebar"
+    android:layout_width="match_parent"
+    android:layout_height="50dip"
+    android:layout_marginBottom="0dip"
+    android:angle="90"
+    android:background="@drawable/bg_header"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/permpingTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="PERMPING"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/text_size_header"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btAccount"
+        android:layout_width="@dimen/button_header_size"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:background="@android:color/transparent"
+        android:text="@string/account"
+        android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/imageBeforRefeshbtnNew2"
+        android:layout_width="2dp"
+        android:layout_height="50dip"
+        android:layout_toRightOf="@+id/btAccount"
+        android:background="@drawable/bg_line" />
+
+    <ProgressBar
+        android:id="@+id/progressBarProfile"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="7dp"
+        android:visibility="visible" />
+
+</RelativeLayout>

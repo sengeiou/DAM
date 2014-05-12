@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:orientation="vertical" >
+
+        <include layout="@layout/navigation_title_include_avatar" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9.2"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:id="@+id/tvShareIntro"
+            style="@style/normal_grey_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:text="@string/comment_intro"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/rlShareWhyq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="4dp" >
+
+            <ToggleButton
+                android:id="@+id/tglShareWhyq"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@+id/tglShareWhyq"
+                android:text="@string/share_with_whyq" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="4dp" >
+
+            <ToggleButton
+                android:id="@+id/tglShareFB"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@+id/tglShareFB"
+                android:text="@string/share_with_FB" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlTags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onTag"
+            android:orientation="horizontal"
+            android:padding="4dp" >
+
+            <ImageButton
+                android:id="@+id/imgTagfriend"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:src="@drawable/icon_tag" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@+id/imgTagfriend"
+                android:text="@string/tag_friend" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="4dp" >
+
+            <EditText
+                android:id="@+id/etMessage"
+                style="@style/normail_black_text"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/btnSend"
+                android:hint="@string/hint_comment"
+                android:paddingRight="63dp" />
+
+            <ImageButton
+                android:id="@+id/btnCaptureImage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/btnSend"
+                android:background="@drawable/btn_register_avatar"
+                android:onClick="onCaptureImage"
+                android:padding="3dp"
+                android:scaleType="fitXY" />
+
+            <Button
+                android:id="@+id/btnSend"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:onClick="onSend"
+                android:padding="3dp"
+                android:text="Send" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#bd668f"
+    android:minWidth="350dip"
+    android:orientation="vertical"
+    android:padding="10dip" >
+
+    <EditText
+        android:id="@+id/commentEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="150dip"
+        android:ems="10"
+        android:gravity="top"
+        android:inputType="textMultiLine" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnOK"
+        android:layout_width="100dip"
+        android:layout_height="0dip"
+        android:layout_marginTop="7dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:text="@string/ok"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>

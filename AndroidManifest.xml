@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.whyq"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <!-- Setup for Google map -->
+    <permission
+        android:name="com.example.krlayout_maps.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.krlayout_maps.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.example.krlayout_maps.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <!-- My Location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- Maps API needs OpenGL ES 2.0. -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+    <!-- End of setup for google map -->
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- <uses-feature android:name="android.hardware.screen.portrait" /> -->
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
+    <!-- Push notiication -->
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- End push notification -->
+
+    <application
+        android:name="whyq.WhyqApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+
+        <!-- Push notification -->
+        <service android:name="com.parse.PushService" />
+
+        <receiver android:name="com.parse.ParseBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <!-- End push notification -->
+
+
+        <!-- Google maps -->
+        <!-- Debug key store -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyA6Uvh8dCH5toBfRWtceEPu1XPqfmaDtJ0" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <!-- End of Google maps -->
+        <activity
+            android:name="whyq.WhyqMain"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="whyq.activity.FavouriteActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="whyq.activity.WhyqSearchByNameActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="whyq.utils.facebook.LoginUsingCustomFragmentActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="whyq.activity.WhyqTagFriendsDialog"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="whyq.activity.WhyqShareActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="whyq.service.pushnotification.PushNotificationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="whyq.utils.share.FacebookPostActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="whyq.activity.WhyqForgotPasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="whyq.activity.ListActivityGroup"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="whyq.utils.location.LocationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="whyq.utils.location.LocationActivityNew"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="whyq.activity.StoreDetailAdsctivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="whyq.activity.WhyqLogout"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Translucent" />
+        <activity
+            android:name="whyq.activity.WhyqProfileEditAccountActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Translucent" />
+        <activity
+            android:name="whyq.activity.WhyqOrderMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Translucent" />
+        <activity
+            android:name="whyq.activity.WhyQHomeDeliveryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Translucent" />
+        <activity
+            android:name="whyq.activity.WhyQDineInActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Translucent"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="whyq.activity.WhyQTakeAwayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Translucent"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="whyq.activity.WhyQHotelRoomDelivery"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Translucent"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="whyq.activity.WhyqProfileNotifyPersionalActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Translucent" />
+        <activity
+            android:name="whyq.activity.ChangeLocationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="whyq.activity.MapsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="whyq.activity.InvitationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="whyq.activity.WhyqProfileChildBasic"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="whyq.activity.WhyqProfileChildDotsMean"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="whyq.activity.WhyqProflleFAQActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="whyq.activity.ListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="com.permpings.activity.intent.action.SEND_LOG" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="whyq.activity.ListVipStoreActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="com.permpings.activity.intent.action.SEND_LOG" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="whyq.activity.BoardListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="whyq.activity.FavouritesActivityGroup"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="whyq.activity.ImageActivityGroup"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
+        <activity
+            android:name="whyq.activity.ImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="whyq.activity.WhyQCommentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="whyq.activity.WhyQBillScreen"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="whyq.paypal.LoginPaypalActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="whyq.activity.NewWhyqActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/toggle_style" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="newperm"
+                    android:scheme="perm" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="whyq.activity.FriendActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="whyq.activity.FriendActivityGroup"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="whyq.activity.ListDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="whyq.activity.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="whyq.activity.ProfileActivityGroup"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".utils.twitters.TwitterActivity" >
+        </activity>
+        <activity
+            android:name="whyq.activity.JoinWhyqActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="adjustUnspecified" >
+        </activity>
+        <activity
+            android:name="whyq.activity.LoginWhyqActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="adjustUnspecified" >
+        </activity>
+        <activity
+            android:name="whyq.activity.LoginHome"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="whyq.activity.CreateBoardActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="whyq.activity.AccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="whyq.activity.AudioPlayerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name="whyq.activity.BoardDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="whyq.activity.RecorderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="whyq.activity.WhyqFindMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="whyq.activity.WhyQNotificationActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="whyq.activity.RewhyqActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="whyq.activity.PrepareRequestTokenActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="twitter"
+                    android:scheme="perm" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="whyq.activity.GoogleMapActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="whyq.activity.FacebookActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="whyq.map.MapsActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="whyq.view.ImageDetail"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateVisible" >
+        </activity>
+        <activity
+            android:name="whyq.activity.SimpleActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustPan|stateVisible" >
+        </activity>
+        <activity
+            android:name="whyq.activity.WhyqFriendsTwitterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="whyq.activity.WhyqFriendsFacebookActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.share.twitter.TwitterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="whyq.activity.WhyqUserProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="whyq.activity.WhyqCheckedBillActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="whyq.activity.ProfileWhyQActivty"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="whyq.activity.WhyqFriendsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="whyq.activity.WhyqHistoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="whyq.activity.WhyqImageDisplayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="whyq.activity.CommentActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    </application>
+
+</manifest>

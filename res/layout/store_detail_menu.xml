@@ -1,0 +1,11 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_launcher"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    android:visibility="invisible"
+    android:id="@+id/lnMenuContent"
+    android:weightSum="10" >
+
+</LinearLayout>

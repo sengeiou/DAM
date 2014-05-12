@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:stretchColumns="1"
+        android:paddingTop="0dp"
+        android:paddingLeft="3dip"
+        android:paddingRight="3dip">
+    <TableRow >
+		<LinearLayout android:paddingLeft="5dp"
+		    android:orientation="horizontal"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:paddingTop="5dp">
+			<ImageView
+            android:id="@+id/commentAvatar"
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
+            android:paddingTop="0dp"
+            />
+        </LinearLayout>
+        <TableLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="0">
+            <TableRow>
+        		<TextView
+                android:id="@+id/commentAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="3dp"
+            	android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:text=""
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_auther_name"
+                android:paddingTop="1dp" />        
+            </TableRow>
+            <TableRow>
+           		<TextView
+                android:layout_width="fill_parent"
+                android:id="@+id/commentContent"
+                android:paddingLeft="3dp"
+                android:paddingRight="5dp"
+                android:layout_span="2"
+                android:paddingTop="0dp"
+                android:textSize="@dimen/text_size_comment"
+                android:textColor="#9e9e9e"
+                />     
+            </TableRow>
+        </TableLayout>
+	</TableRow>
+	<TableRow android:layout_marginTop="0dp">
+    	<View
+        	
+	        android:layout_span="2"
+	        android:id="@+id/separator"
+	        android:layout_width="fill_parent"
+	        android:layout_height="1.7dp"
+	        />
+	</TableRow>
+
+</TableLayout>

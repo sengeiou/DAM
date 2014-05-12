@@ -1,0 +1,104 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    android:weightSum="10" >
+
+    <RelativeLayout
+        android:id="@+id/rlSearchField"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/rlSearchtool"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_margin="5dp" >
+
+        <EditText
+            android:id="@+id/etTextSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/btnCancel"
+            android:background="@drawable/bg_input"
+            android:gravity="center_vertical"
+            android:hint="@string/hint_search"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:paddingLeft="35dp"
+            android:singleLine="true"
+            android:textColor="@color/black" >
+        </EditText>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/icon_search" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+          
+            android:background="@drawable/btn_cancel"
+            android:onClick="onCancelClicked"
+            android:textColor="@color/profifle_blue"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlSearchtool"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_weight="1.5" >
+
+        <RelativeLayout
+            android:id="@+id/rlFilter"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_weight="1.5"
+            android:orientation="horizontal" >
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/header_divider" />
+
+            <ImageView
+                android:id="@+id/btnFilters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/icon_filter"
+                android:onClick="onFilterClicked" />
+
+            <ImageView
+                android:id="@+id/imgArrowDown"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/popup_arrow"
+                android:visibility="invisible" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/prgBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible" />
+
+</RelativeLayout>

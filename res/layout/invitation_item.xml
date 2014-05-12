@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bgListView"
+    android:orientation="vertical"
+    android:weightSum="10" >
+
+    <ImageView
+        android:id="@+id/imgAvatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/tvName"
+        style="@style/normail_black_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/imgWhyq"
+        android:layout_toRightOf="@+id/imgAvatar"
+        android:ellipsize="end"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/btn_cancel"
+        android:layout_marginRight="5dp"
+        android:onClick="onDeleteClicked" />
+
+    <Button
+        android:id="@+id/btnAccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/btnDelete"
+        android:background="@drawable/btn_accept"
+        android:onClick="onAcceptClicked" />
+
+    <ImageView
+        android:id="@+id/imgTypeAccount"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/btnAccept" />
+
+</RelativeLayout>

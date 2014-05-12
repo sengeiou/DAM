@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp"
+    android:stretchColumns="0" 
+    android:paddingBottom="20dp">
+    
+    <TableRow android:gravity="center" android:paddingBottom="20dp" android:paddingLeft="10dp" android:paddingRight="10dp" >                   
+        <Button
+        android:id="@+id/bt_login_with_facebook"        
+        android:text="@string/bt_facebook"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:layout_weight="1"
+        android:background="@drawable/button_bg" />
+
+        <Button
+        android:id="@+id/bt_login_with_twitter"        
+        android:text="@string/bt_twitter"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+         android:layout_weight="1"
+        android:textSize="14sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_bg" />
+    </TableRow>
+	<TableRow android:gravity="center" android:paddingBottom="20dp">
+	    <Button
+        android:id="@+id/bt_join_permping"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:textSize="14sp"
+        android:text="@string/bt_join_permping"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_bg" 
+        />
+    
+		    
+	</TableRow>
+    
+    
+      
+</TableLayout>

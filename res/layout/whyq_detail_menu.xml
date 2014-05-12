@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lnMenuContent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="0dp"
+    android:visibility="invisible" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="right"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btnViewBill"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:onClick="onViewBillClicked"
+            android:text="View Bill"
+            android:textColor="@color/profifle_blue" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/btnViewBill"
+            android:gravity="right"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btnTotalLabel"
+                style="@style/small_grey_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:text="Total:" />
+
+            <Button
+                android:id="@+id/btnTotalValue$"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="$"
+                android:textColor="@color/profifle_blue" />
+
+            <Button
+                android:id="@+id/btnTotalValue"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="0.0"
+                android:textColor="@color/profifle_blue" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ExpandableListView
+        android:id="@+id/lvMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:divider="@drawable/divider_store"
+        android:dividerHeight="1dp"
+        android:groupIndicator="@drawable/play_group_item"
+        android:listSelector="@drawable/play_expand_seletor"
+        android:scrollbars="vertical" />
+
+</LinearLayout>

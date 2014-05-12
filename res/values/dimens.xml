@@ -1,0 +1,29 @@
+<resources>
+
+    <dimen name="avatar_size">50dp</dimen>
+    <dimen name="avatar_size_plus_padding">65dp</dimen>
+    <dimen name="button_join_width">100dp</dimen>
+    <dimen name="button_join_height">50dp</dimen>
+    <dimen name="button_header_size">60dp</dimen>
+    <dimen name="text_size_list_header">22dp</dimen>
+    <dimen name="text_size_auther_name">17dp</dimen>
+    <dimen name="text_size_board_name">17dp</dimen>
+    <dimen name="text_size_perm_stat">15dp</dimen>
+    <dimen name="text_size_comment">15dp</dimen>
+    <dimen name="text_size_perm_description">17dp</dimen>
+    <dimen name="text_size_like_button">17dp</dimen>
+    <dimen name="text_size_location">15dp</dimen>
+    <dimen name="text_size_header">16dp</dimen>
+    <dimen name="base_padding">5dp</dimen>
+    <dimen name="normal_padding">16dp</dimen>
+    <dimen name="base_font">16sp</dimen>
+    <dimen name="font_title">18sp</dimen>
+    <dimen name="base_size">48dip</dimen>
+    
+    <dimen name="font_large">20sp</dimen>
+    <dimen name="font_medium">18sp</dimen>
+    <dimen name="font_small">16sp</dimen>
+    <dimen name="font_super_small">14sp</dimen>
+    <dimen name="tab_height">74dp</dimen>
+
+</resources>

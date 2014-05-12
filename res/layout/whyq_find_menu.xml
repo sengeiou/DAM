@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_normal"
+    android:orientation="vertical"
+    android:weightSum="10" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8" >
+
+        <include layout="@layout/navigate_text_2" >
+        </include>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9.2"
+        android:background="@color/bg_normal"
+        android:orientation="vertical"
+        android:padding="15dp" >
+
+        <LinearLayout
+            android:id="@+id/lnFindFromFb"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/base_button"
+            android:gravity="center_vertical"
+            android:onClick="findFromFaccebookClicked"
+            android:padding="4dp" >
+
+            <RelativeLayout
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/icon_facebook" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:text="@string/find_friend_from_facebook"
+                android:textColor="@color/find_menu_color_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnFindFromFW"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/lnFindFromFb"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/base_button"
+            android:gravity="center_vertical"
+            android:onClick="findFromTwitterClicked"
+            android:padding="4dp" >
+
+            <RelativeLayout
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/icon_twitter" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:text="@string/find_friends_from_twitter"
+                android:textColor="@color/find_menu_color_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/lnFindFromFW"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/base_button"
+            android:gravity="center_vertical"
+            android:onClick="searchByNameClicked"
+            android:orientation="horizontal"
+            android:padding="4dp" >
+
+            <RelativeLayout
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/icon_search" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:text="@string/search_by_name"
+                android:textColor="@color/find_menu_color_text" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/icon_add_friend" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/titlebar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="0dip"
+    android:angle="90"
+    android:background="@drawable/bg_ationbar"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rlBackField"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:onClick="onBack" >
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="12dp"
+            android:background="@drawable/icon_back"
+            android:onClick="onBack" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/rlBackField"
+        android:background="@drawable/header_divider" />
+
+    <ImageView
+        android:id="@+id/imgHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/rlBackField" />
+
+    <TextView
+        android:id="@+id/tvHeaderTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="3dp"
+        android:layout_toLeftOf="@+id/btn_done"
+        android:layout_toRightOf="@+id/imgHeader"
+        android:gravity="center_vertical"
+        android:text="Login"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/text_size_header"
+        android:textStyle="normal" />
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/btn_done"
+        android:background="@drawable/header_divider" />
+
+    <Button
+        android:id="@+id/btn_done"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:text=""
+        android:textColor="@color/white" />
+
+    <ProgressBar
+        android:id="@+id/prgBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:visibility="invisible" />
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/loginPerm"
+        android:background="@drawable/header_divider" />
+
+</RelativeLayout>

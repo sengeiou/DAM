@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/bgListView"
+    android:orientation="horizontal"
+    android:padding="7dp"
+    android:alpha="0.7" >
+
+    <LinearLayout
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="null" />
+        
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="2.5dp"
+            android:text="null" />
+        
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            android:paddingTop="2.5dp"
+            android:paddingBottom="2.5dp"
+            android:text="null" />
+        
+        <TextView
+            android:id="@+id/fax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            android:paddingTop="2.5dp"
+            android:paddingBottom="2.5dp"
+            android:text="null" />
+        
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            android:paddingTop="2.5dp"
+            android:paddingBottom="7.5dp"
+            android:text="null" />
+        
+        <Button
+            android:id="@+id/btnDirection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@android:color/white"
+            android:text="get direction" />
+    </LinearLayout>
+
+</LinearLayout>

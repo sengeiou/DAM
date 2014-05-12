@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="62dp"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/categoryRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/base_padding"
+        android:paddingLeft="@dimen/base_padding"
+        android:paddingRight="@dimen/base_padding"
+        android:paddingTop="8dp" >
+
+        <include
+            android:id="@+id/check_bill"
+            layout="@layout/category_item1" 
+            android:background="@drawable/btn_blue_place"/>
+
+        <include
+            android:id="@+id/history"
+            layout="@layout/category_item1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/categoryRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/categoryRow1"
+        android:paddingBottom="8dp"
+        android:paddingLeft="@dimen/base_padding"
+        android:paddingRight="@dimen/base_padding"
+        android:paddingTop="@dimen/base_padding" >
+
+        <include
+            android:id="@+id/saving"
+            layout="@layout/category_item1" />
+
+        <include
+            android:id="@+id/comment"
+            layout="@layout/category_item1" />
+    </LinearLayout>
+
+    <com.devsmart.android.ui.HorizontalListView
+        android:id="@+id/gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/categoryRow2"
+        android:background="@drawable/bg_border"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
+
+    <TextView
+        android:id="@+id/textRecentActivities"
+        style="@style/text_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gallery"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/icon_clock_gray"
+        android:drawablePadding="@dimen/base_padding"
+        android:text="@string/recent_activities"
+        android:textColor="@android:color/secondary_text_dark_nodisable" />
+
+    <whyq.view.ExtendedListView
+        xmlns:whyq="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/textRecentActivities"
+        android:cacheColorHint="@null"
+        android:choiceMode="singleChoice"
+        android:divider="@null"
+        android:background="@color/white"
+        whyq:scrollBarPanel="@layout/profile_clock"
+        whyq:scrollBarPanelInAnimation="@anim/in_animation"
+        whyq:scrollBarPanelOutAnimation="@anim/out_animation" />
+
+</RelativeLayout>

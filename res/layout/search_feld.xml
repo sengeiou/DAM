@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="8.5"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <EditText
+        android:id="@+id/etTextSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textfield_searchview_holo_dark"
+        android:gravity="center_vertical"
+        android:hint="@string/hint_search"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:textSize="14sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="25dp"
+        android:paddingTop="5dp"
+        android:singleLine="true" >
+    </EditText>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/icon_search" />
+
+</RelativeLayout>

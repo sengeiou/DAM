@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/radioGroupContainer"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/title"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:weightSum="3" >
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/rdoAbout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_radio_bg_lef"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="@string/About"
+                android:textColor="@color/btn_radio_color" />
+
+            <RadioButton
+                android:id="@+id/rdoMenu"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_radio_bg_middle"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="@string/Menu"
+                android:textColor="@color/btn_radio_color" />
+
+            <RadioButton
+                android:id="@+id/rdoPromotion"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_radio_bg_right"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="@string/Promotion"
+                android:textColor="@color/btn_radio_color" />
+        </RadioGroup>
+    </LinearLayout>
+
+</LinearLayout>

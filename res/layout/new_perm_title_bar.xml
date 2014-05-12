@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:angle="90"
+    android:background="@drawable/bg_header"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/permpingTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="PERMPING"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/text_size_header"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/buttonCANCEL"
+        android:layout_width="@dimen/button_header_size"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:text="Back"
+        android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/imageBeforRefeshbtnNew"
+        android:layout_width="2dp"
+        android:layout_height="50dip"
+        android:layout_toRightOf="@+id/buttonCANCEL"
+        android:background="@drawable/bg_line" />
+
+    <Button
+        android:id="@+id/buttonOK"
+        android:layout_width="@dimen/button_header_size"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:text="@string/ok"
+        android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/imageBeforRefeshbtnNew"
+        android:layout_width="2dp"
+        android:layout_height="50dip"
+        android:layout_toLeftOf="@+id/buttonOK"
+        android:background="@drawable/bg_line" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_centerVertical="true"
+        android:visibility="invisible" />
+
+</RelativeLayout>

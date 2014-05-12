@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_launcher"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    android:weightSum="10" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         >
+
+        <include layout="@layout/navigationbar_order_menu">
+        </include>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:weightSum="3" >
+
+        <LinearLayout
+            android:id="@+id/btnMenuGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp" >
+
+            <Button
+                android:id="@+id/btnHomeDelivery"
+                style="@style/small_grey_text"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/btn_delivery"
+                android:padding="0dp"
+                android:text="Home delivery" />
+
+            <Button
+                android:id="@+id/btnHomeTakeAway"
+                style="@style/small_grey_text"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/btn_delivery"
+                android:padding="0dp"
+                android:text="Take away" />
+
+            <Button
+                android:id="@+id/btnHotelRoomDelivery"
+                style="@style/small_grey_text"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/btn_delivery"
+                android:padding="0dp"
+                android:text="Hotel room delivery" />
+
+            <Button
+                android:id="@+id/btnDineIn"
+                style="@style/small_grey_text"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/btn_delivery"
+                android:padding="0dp"
+                android:text="Dine in" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@+id/btnCancel"
+            android:background="@color/normal_delivery_color" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            style="@style/normail_text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/transparent"
+            android:text="Cancel"
+            android:textColor="@color/profifle_blue" />
+    </RelativeLayout>
+
+</LinearLayout>

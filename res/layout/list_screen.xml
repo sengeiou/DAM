@@ -1,0 +1,192 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/page_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="62dp"
+    android:baselineAligned="false"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/lnNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.9"
+        android:background="@drawable/bg_ationbar"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <!-- <include layout="@layout/navigation_search" /> -->
+        <include layout="@layout/navigation_title_text" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9.1" >
+
+        <LinearLayout
+            android:id="@+id/lnMenubar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:weightSum="5" >
+
+            <include
+                android:id="@+id/menuBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                layout="@layout/tarbar_4bar" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlLocationField"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/lnMenubar"
+            android:background="@color/white"
+            android:onClick="changeLocationClicked"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/tvNearTitle"
+                style="@style/normail_blue_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:text="Near:" />
+
+            <TextView
+                android:id="@+id/tvNearLocation"
+                style="@style/normail_black_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/tvNearTitle"
+                android:text="Current location" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/icon_arrow" />
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/lvWhyqList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rlLocationField"
+            android:layout_weight="8.2"
+            android:background="@color/bgListView"
+            android:divider="@drawable/divider_store"
+            android:dividerHeight="3dp"
+            android:listSelector="@drawable/play_expand_seletor" >
+        </ListView>
+
+        <LinearLayout
+            android:id="@+id/lnFilterView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_black"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:visibility="invisible" >
+
+            <RelativeLayout
+                android:id="@+id/rlViewAll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="toggle"
+                android:orientation="horizontal"
+                android:padding="0dp" >
+
+                <ImageView
+                    android:id="@+id/imgCbAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_filter_check" />
+
+                <TextView
+                    android:id="@+id/cktViewAll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/imgCbAll"
+                    android:paddingLeft="5dp"
+                    android:text="View All"
+                    android:textColor="#805504" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlFavourite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="toggle"
+                android:orientation="horizontal"
+                android:padding="0dp" >
+
+                <ImageView
+                    android:id="@+id/imgCbFavourite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_filter_check"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/cktViewFavourite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/imgCbFavourite"
+                    android:checkMark="@drawable/icon_cat_coffee"
+                    android:paddingLeft="5dp"
+                    android:text="View Favourite" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlVisited"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="toggle"
+                android:orientation="horizontal"
+                android:padding="0dp" >
+
+                <ImageView
+                    android:id="@+id/imgCbVisited"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_filter_check"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/cktViewVisited"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/imgCbVisited"
+                    android:checkMark="@drawable/icon_cat_coffee"
+                    android:paddingLeft="5dp"
+                    android:text="View Visited" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rlLocationField"
+            layout="@layout/expandable_store_view"
+            android:background="@color/transparent" />
+    </RelativeLayout>
+
+</LinearLayout>

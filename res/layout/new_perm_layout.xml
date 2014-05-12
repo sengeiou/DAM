@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="fill_parent"
+        layout="@layout/new_perm_title_bar" />
+
+    <LinearLayout
+        android:id="@+id/categoryItemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/explorer_item_bg_first"
+        android:padding="5dp" >
+
+        <EditText
+            android:id="@+id/permDesc"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:ems="10"
+            android:hint="@string/new_description" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/categoryItemLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="-3dp"
+        android:background="@drawable/explorer_item_bg_end"
+        android:padding="5dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_board"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/rightArrow"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:scaleType="fitEnd"
+                    android:src="@drawable/right_arrow" />
+
+                <Spinner
+                    android:id="@+id/boardSpinnerNewPerm"
+                    android:layout_width="260dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:paddingRight="50dp"
+                    android:layout_marginTop="-5dp"
+                    android:prompt="@string/board_prompt" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <!--     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/categoryItemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="-3dp"
+        android:background="@drawable/explorer_item_bg_end"
+        android:padding="5dp" >
+
+        <TextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_place"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right" >
+
+            <ToggleButton
+                android:id="@+id/location"
+                android:layout_width="75dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="3dp"
+                android:gravity="center_vertical|right"
+                android:scaleType="fitEnd"
+                android:textOff=""
+                android:textOn="" />
+        </LinearLayout>
+    </LinearLayout> -->
+<!--     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="-3dp"
+        android:background="@drawable/explorer_item_bg" >
+
+        <TextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/voice_recording"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000" />
+
+        <ToggleButton
+            android:id="@+id/voice"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="120dip"
+            android:layout_weight="1"
+            android:scaleType="fitEnd"
+            android:textOff=""
+            android:textOn="" />
+    </LinearLayout>
+ -->
+    <LinearLayout
+        android:id="@+id/categoryItemLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="-3dp"
+        android:background="@drawable/explorer_item_bg"
+        android:padding="5dp"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/record_audio"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right" >
+
+            <ToggleButton
+                android:id="@+id/btnRecordAudio"
+                android:layout_width="75dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="3dp"
+                android:gravity="center_vertical|right"
+                android:scaleType="fitEnd"
+                android:textOff=""
+                android:textOn="" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Share on "
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000" 
+        android:textSize="22sp"/>
+
+    <LinearLayout
+        android:id="@+id/categoryItemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/explorer_item_bg_first"
+        android:padding="5dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_facebook"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right" >
+
+            <ToggleButton
+                android:id="@+id/share_facebookr"
+                android:layout_width="75dp"
+                android:layout_height="30dp"
+                android:gravity="center_vertical|right"
+                android:scaleType="fitEnd"
+                android:textOff=""
+                android:textOn="" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/categoryItemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="-3dp"
+        android:background="@drawable/explorer_item_bg"
+        android:padding="5dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_twitter"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right" >
+
+            <ToggleButton
+                android:id="@+id/share_twitter"
+                android:layout_width="75dp"
+                android:layout_height="30dp"
+                android:gravity="center_vertical|right"
+                android:scaleType="fitEnd"
+                android:textOff=""
+                android:textOn="" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/categoryItemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="-3dp"
+        android:background="@drawable/explorer_item_bg_end"
+        android:padding="5dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_kakao_talk"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right" >
+
+            <ToggleButton
+                android:id="@+id/share_kakao"
+                android:layout_width="75dp"
+                android:layout_height="30dp"
+                android:gravity="center_vertical|right"
+                android:scaleType="fitEnd"
+                android:textOff=""
+                android:textOn="" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

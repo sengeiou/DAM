@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingBottom="@dimen/base_padding"
+    android:paddingTop="@dimen/base_padding" >
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:maxLines="2"
+        android:textColor="#808080"
+        android:textIsSelectable="true"
+        android:textSize="@dimen/font_small" />
+
+    <Button
+        android:id="@+id/friendAll"
+        style="@style/listview_button"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:background="@drawable/btn_base"
+        android:gravity="center"
+        android:text="@string/friend_all" />
+
+</LinearLayout>

@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/page_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="0dp"
+    android:baselineAligned="false"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/lnNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.9"
+        android:background="@drawable/bg_ationbar"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <include layout="@layout/navigation_back_done" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9.1" >
+
+        <ListView
+            android:id="@+id/lvWhyqList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bgListView"
+            android:divider="@drawable/divider_store"
+            android:dividerHeight="3dp"
+            android:listSelector="@drawable/play_expand_seletor" >
+        </ListView>
+    </RelativeLayout>
+
+</LinearLayout>

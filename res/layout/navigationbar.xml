@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navigationBar"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginBottom="0dip"
+    android:angle="90"
+    android:background="@drawable/bg_ationbar"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <FrameLayout
+        android:id="@+id/buttonBackContainer"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+       
+        android:paddingLeft="@dimen/base_padding"
+        android:paddingRight="@dimen/base_padding" >
+
+        <ImageView
+            android:id="@+id/buttonBack"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center"
+            android:onClick="onBackClicked"
+            android:src="@drawable/icon_back" />
+    </FrameLayout>
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/header_divider" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/base_padding"
+        android:paddingRight="@dimen/base_padding" >
+
+        <FrameLayout
+            android:id="@+id/titleContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <whyq.view.SearchField
+            android:id="@+id/searchFieldHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/extraContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" >
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/header_divider" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/base_padding"
+            android:paddingRight="@dimen/base_padding" >
+
+            <FrameLayout
+                android:id="@+id/buttonExtra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:visibility="invisible" />
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

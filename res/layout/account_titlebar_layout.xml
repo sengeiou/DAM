@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:angle="90"
+    android:background="@drawable/bg_header"
+    android:orientation="vertical" >
+
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TableRow>
+
+ 			<!--
+ 			    <Button
+                android:id="@+id/btBack"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/title_button_bg"
+                android:text="Back"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="30dp"
+                android:textColor="#FFFFFF"
+                android:textSize="18px" /> 
+ 			 -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="10dip"
+                android:text="PERMPING"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/text_size_header"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/fakeSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="20dp"
+                android:textColor="#FFFFFF" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

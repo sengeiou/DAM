@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="@drawable/default_background"
+	android:layout_marginBottom="59dp">
+
+    <include
+        android:layout_width="fill_parent"
+        layout="@layout/title_bar" />
+	<TextView
+		android:id="@+id/selectedDayMonthYear"
+		android:layout_gravity="left"
+		android:paddingLeft="10dip"
+		android:paddingBottom="10dip"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:background="@android:color/white"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:typeface="normal"
+		android:text="My Daily"
+		android:textStyle="bold"
+		android:textColor="@android:color/black">
+	</TextView>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="50dip"
+		android:background="@drawable/blue_bg_with_text"
+		android:paddingBottom="10dp"
+		android:paddingTop="10dp"
+		android:gravity="center">
+
+		<ImageView
+			android:id="@+id/prevMonth"
+			android:src="@drawable/cal_left_arrow_on"
+			android:layout_width="30dip"
+			android:layout_height="30dip"
+			android:layout_marginLeft="30dip"
+			android:scaleType="fitXY">
+		</ImageView>
+		<Button
+			android:id="@+id/currentMonth"
+			android:layout_weight="0.6"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:typeface="normal"
+			android:textStyle="bold"
+			android:textColor="#2f3946"
+			android:background="@android:color/transparent">
+		</Button>
+		<ImageView
+			android:id="@+id/nextMonth"
+			android:src="@drawable/cal_right_arrow_on"
+			android:layout_width="30dip"
+			android:layout_height="30dip"
+			android:layout_marginRight="30dip"
+			android:scaleType="fitXY">
+		</ImageView>
+	</LinearLayout>
+
+	<GridView
+		android:id="@+id/calendar"
+		android:numColumns="7"
+		android:paddingTop="0dp"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:background="#d5d4d8"
+		>
+	</GridView>
+
+</LinearLayout>

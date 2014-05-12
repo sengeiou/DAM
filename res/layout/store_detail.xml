@@ -1,0 +1,289 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    android:weightSum="10" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.9"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/navigate_back_done_includeavatar" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9.1" >
+
+        <RelativeLayout
+            android:id="@+id/rlPhotoList"
+            android:layout_width="match_parent"
+            android:layout_height="180dp" >
+
+            <whyq.view.CustomViewPager
+                android:id="@+id/vpStorephoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                layout="@layout/bottom_image" />
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_below="@+id/rlPhotoList"
+            layout="@layout/tab_3bar_radio" >
+        </include>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/lnComment"
+            android:layout_below="@+id/tabs" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <whyq.view.ScrollviewCustom
+                        android:id="@+id/svContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white" >
+
+                        <LinearLayout
+                            android:id="@+id/lnContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical" >
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" >
+
+                                <LinearLayout
+                                    android:id="@+id/lnAboutContent"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:weightSum="9" >
+
+                                        <RelativeLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1" >
+
+                                            <ImageView
+                                                android:id="@+id/imgClockIcon"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerInParent="true"
+                                                android:background="@drawable/icon_clock_orange" />
+                                        </RelativeLayout>
+
+                                        <TextView
+                                            android:id="@+id/tvOpeningTimeTitle"
+                                            style="@style/small_back_text"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="3"
+                                            android:gravity="center_vertical"
+                                            android:text="Opening time:" />
+
+                                        <TextView
+                                            android:id="@+id/tvOpeningTime"
+                                            style="@style/small_grey_text"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="5"
+                                            android:gravity="center"
+                                            android:paddingLeft="5dp"
+                                            android:text=""
+                                            android:textStyle="normal" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="0dp"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:weightSum="9" >
+
+                                        <RelativeLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1" >
+
+                                            <ImageView
+                                                android:id="@+id/imgTelephoneIcon"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="match_parent"
+                                                android:layout_centerInParent="true"
+                                                android:background="@drawable/icon_call_orange" />
+                                        </RelativeLayout>
+
+                                        <TextView
+                                            android:id="@+id/tvTelephoneTitle"
+                                            style="@style/small_back_text"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="3"
+                                            android:gravity="center_vertical"
+                                            android:text="Telephone:" />
+
+                                        <TextView
+                                            android:id="@+id/tvTelephone"
+                                            style="@style/small_grey_text"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="5"
+                                            android:gravity="center"
+                                            android:paddingLeft="5dp"
+                                            android:text=""
+                                            android:textStyle="normal" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@drawable/divider" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="60dp"
+                                        android:background="@color/white"
+                                        android:paddingLeft="20dp"
+                                        android:paddingRight="20dp" >
+
+                                        <ScrollView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent" >
+
+                                            <TextView
+                                                android:id="@+id/tvStoreDes"
+                                                style="@style/small_grey_text"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="60dp"
+                                                android:text="" />
+                                        </ScrollView>
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@drawable/divider" />
+
+                                    <include
+                                        android:layout_width="match_parent"
+                                        android:layout_height="20dp"
+                                        layout="@layout/command_item" >
+                                    </include>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="3dp"
+                                        android:background="@drawable/divider" />
+
+                                    <include
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="5dp"
+                                        layout="@layout/whyq_visited" >
+                                    </include>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@drawable/divider" />
+
+                                    <include
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="5dp"
+                                        layout="@layout/search_feld" >
+                                    </include>
+                                </LinearLayout>
+
+                                <include layout="@layout/store_detail_promotion" />
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </whyq.view.ScrollviewCustom>
+                </RelativeLayout>
+
+                <ListView
+                    android:id="@+id/lvFindResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/bgListView"
+                    android:divider="@drawable/divider_store"
+                    android:dividerHeight="1dp" >
+                </ListView>
+            </LinearLayout>
+        </ScrollView>
+
+        <include
+            android:layout_below="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/whyq_detail_menu" />
+
+        <LinearLayout
+            android:id="@+id/lnComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bg_normal"
+            android:gravity="center"
+            android:padding="5dp" >
+
+            <EditText
+                android:id="@+id/etComment"
+                style="@style/myEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:hint="Enter your comment"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:visibility="gone" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

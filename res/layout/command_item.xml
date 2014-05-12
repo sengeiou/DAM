@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="gotoCommentScreen"
+    android:orientation="horizontal"
+    android:weightSum="10" >
+
+    <ImageView
+        android:id="@+id/imgCommandIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/icon_wrote"
+        android:paddingLeft="10dp" />
+
+    <View
+        android:id="@+id/delivery"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/imgCommandIcon"
+        android:background="@color/normal_delivery_color" />
+
+    <TextView
+        android:id="@+id/tvCommendReview"
+        style="@style/small_grey_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/delivery"
+        android:paddingLeft="10dp"
+        android:text="No comment yet. Be the first?" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/tvFromUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/tvCommendReview"
+        android:paddingLeft="10dp"
+        android:text="From users"
+        android:visibility="gone" />
+
+</RelativeLayout>

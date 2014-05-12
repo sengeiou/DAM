@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_tab_normal"
+    android:baselineAligned="false"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="0dp"
+    android:weightSum="5" >
+
+    <ImageButton
+        android:id="@+id/lnCutleryTab"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/bg_tab_active"
+        android:gravity="center"
+        android:onClick="onCutleryTabCliked"
+        android:orientation="vertical"
+        android:padding="0dp"
+        android:src="@drawable/icon_cat_cutlery" >
+    </ImageButton>
+
+    <ImageButton
+        android:id="@+id/lnWineTab"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/bg_tab_normal"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:onClick="onWineTabCliked"
+        android:orientation="vertical"
+        android:padding="0dp"
+        android:src="@drawable/icon_cat_wine" >
+    </ImageButton>
+
+    <ImageButton
+        android:id="@+id/lnCoffeTab"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/bg_tab_normal"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:onClick="onCoffeTabClicked"
+        android:orientation="vertical"
+        android:padding="0dp"
+        android:src="@drawable/icon_cat_coffee" >
+    </ImageButton>
+
+</LinearLayout>

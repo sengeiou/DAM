@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginBottom="59dp"
+    android:stretchColumns="0" >
+
+    <include
+        android:layout_width="fill_parent"
+        layout="@layout/profile_tittlebar_layout" />
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TableLayout
+           
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:stretchColumns="1" >
+
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/authorAvatar"
+                	android:layout_width="@dimen/avatar_size"
+                	android:layout_height="@dimen/avatar_size"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="-5dip"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="The avatar of user" />
+
+                <RelativeLayout
+                    >
+
+                    <TextView
+                        android:id="@+id/authorName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="@android:color/black"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/friends"
+                        android:layout_below="@+id/authorName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/followings"
+                        android:layout_below="@+id/authorName"
+                        android:layout_toRightOf="@+id/friends"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:textSize="15dp" />
+                </RelativeLayout>
+                <RelativeLayout android:gravity="center_vertical" >
+                    <Button 
+                        android:layout_marginRight="15dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:text="@string/follow"
+                        android:src="@drawable/button_bg_new"
+                        android:id="@+id/btnFollow"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+            </TableRow>
+        </TableLayout>
+    </TableRow>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp" >
+
+        <View
+            android:id="@+id/item_separator"
+            android:layout_width="fill_parent"
+            android:layout_height="1.7dip"
+            android:background="#000000" />
+    </LinearLayout>
+
+    <TableRow>
+
+        <ListView
+            android:id="@+id/userBoards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:cacheColorHint="#00000000"
+            android:divider="@android:color/transparent" />
+    </TableRow>
+
+</TableLayout>

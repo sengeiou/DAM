@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="62dp"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    android:weightSum="10" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.9"
+        android:background="@drawable/ic_launcher"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <include layout="@layout/navigation_basic" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:background="@color/grey"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <include layout="@layout/navigation_search" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8.2" >
+
+        <TextView
+            android:id="@+id/tvNotifyNoResult"
+            style="@style/normail_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/list_bg"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:visibility="gone"
+            android:text="No data" />
+
+        <ListView
+            android:id="@+id/lvWhyqList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tvNotifyNoResult"
+            android:background="@color/bgListView"
+            android:divider="@drawable/divider_store"
+            android:dividerHeight="3dp" >
+        </ListView>
+    </RelativeLayout>
+
+</LinearLayout>

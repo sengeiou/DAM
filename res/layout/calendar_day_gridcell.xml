@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="wrap_content"
+    android:layout_height="48dip"
+    android:layout_margin="0dip"
+    android:background="@drawable/calendar_button_selector"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="0dip"
+    android:paddingTop="0dip" >
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/layout12"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:baselineAligned="false"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/layout121"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/calendar_day_gridcell"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#3e4c5d"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:paddingLeft="2dp" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout122"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" 
+                android:paddingTop="1dp"
+                android:paddingRight="1dp"
+                android:paddingBottom="-2.5dp">
+
+                <com.custom.WebImageView
+                    android:id="@+id/thumbnail1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:visibility="invisible"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/layout21"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" 
+                android:paddingBottom="1dp"
+                android:paddingLeft="1dp"
+                android:paddingRight="1dp"
+                android:paddingTop="2dp">
+
+                <com.custom.WebImageView
+                    android:id="@+id/thumbnail2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout15"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" 
+                android:paddingBottom="1dp"
+                android:paddingLeft="1dp"
+                android:paddingRight="1dp"
+                android:paddingTop="2dp">
+
+                <com.custom.WebImageView
+                    android:id="@+id/thumbnail3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:visibility="invisible" >
+                </com.custom.WebImageView>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/num_events_per_day"
+        style="@style/calendar_event_style"
+        android:layout_width="10dip"
+        android:layout_height="10dip"
+        android:layout_gravity="right" >
+    </TextView>
+
+</RelativeLayout>

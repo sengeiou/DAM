@@ -1,0 +1,7 @@
+xhdpi
+
+large: 36
+medium: 28
+small: 24
+
+normal text: #5c5c5c
