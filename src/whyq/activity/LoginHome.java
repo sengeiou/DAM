@@ -32,6 +32,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.Session;
@@ -61,6 +62,8 @@ public class LoginHome extends FragmentActivity implements IServiceListener,
 	private boolean pendingRequest;
 	public static Context context;
 	private Session session;
+	private RelativeLayout rlFBLogin;
+	private RelativeLayout rlTWLogin;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -77,17 +80,20 @@ public class LoginHome extends FragmentActivity implements IServiceListener,
 				.getDefaultSharedPreferences(getApplicationContext());
 		facebookLogin = (Button) findViewById(R.id.btnFbLogin);
 		twitterLogin = (Button) findViewById(R.id.btnLoginTw);
+		rlFBLogin = (RelativeLayout)findViewById(R.id.rl_login_fb);
+		rlTWLogin = (RelativeLayout)findViewById(R.id.rl_login_tw);
 		// login = (Button) findViewById(R.id.loginPerm);
 		progressBar = (ProgressBar) findViewById(R.id.progressBar);
 		facebookConnector = new FacebookConnector(Constants.FACEBOOK_APP_ID,
 				this, getApplicationContext(), new String[] { Constants.EMAIL,
 						Constants.PUBLISH_STREAM });
 		// Login with Facebook button
-		facebookLogin.setOnClickListener(new View.OnClickListener() {
+		rlFBLogin.setOnClickListener(new View.OnClickListener() {
 
 			
 
 			public void onClick(final View v) {
+				Log.d("facebookLogin.setOnClickListener", "facebookLogin.setOnClickListener");
 				if(Util.checkInternetConnection()){
 
 					// TODO Auto-generated method stub
@@ -123,9 +129,10 @@ public class LoginHome extends FragmentActivity implements IServiceListener,
 		});
 
 		// Twitter Login button
-		twitterLogin.setOnClickListener(new View.OnClickListener() {
+		rlTWLogin.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
+				Log.d("twitterLogin.setOnClickListener", "twitterLogin.setOnClickListener");
 				if(Util.checkInternetConnection()){
 
 					isTwitter = true;

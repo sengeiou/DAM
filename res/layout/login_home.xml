@@ -60,6 +60,7 @@
         </Button>
 
         <RelativeLayout
+            android:id="@+id/rl_login_fb"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="10dp"
@@ -89,6 +90,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rl_login_tw"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="10dp"
