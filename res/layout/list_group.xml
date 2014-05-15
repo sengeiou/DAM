@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:paddingBottom="0dp"
-    android:paddingLeft="15dp"
+    android:paddingLeft="5dp"
     android:paddingRight="15dp"
     android:paddingTop="0dp" >
 
@@ -32,6 +32,6 @@
         android:paddingTop="10dp"
         android:scrollbars="none"
         android:singleLine="true"
-        android:textColor="@android:color/darker_gray" />
+        android:textColor="#999725" />
 
 </RelativeLayout>

@@ -43,6 +43,7 @@ import whyq.view.ScreenGestureController;
 import whyq.view.ScrollviewCustom;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -1416,5 +1417,11 @@ public class ListDetailActivity extends FragmentActivity implements
 			}
 		}
 		return result;
+	}
+	
+	public void onCallClicked(View v){
+		   String url = "tel:"+store.getPhoneStore();
+		   Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse(url));
+		   startActivity(intent);
 	}
 }

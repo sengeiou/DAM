@@ -27,7 +27,7 @@ public class Constants {
 	public static final String	OAUTH_CALLBACK_HOST		= "twitter";
 	public static final String	OAUTH_CALLBACK_URL		=  "perm://twitter";
 	public static final String APP = "android";
-	public static final String APP_NAME = "whyq";
+	public static final String APP_NAME = "com.appo.innscor";
 	/**
 	 * Facebook app configuration
 	 */

@@ -9,26 +9,30 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:gravity="right"
+        android:padding="10dp"
         android:orientation="horizontal" >
 
         <Button
+            android:layout_centerVertical="true"
             android:id="@+id/btnViewBill"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:onClick="onViewBillClicked"
-            android:text="View Bill"
+            android:text=""
+            android:background="@drawable/btn_viewbill"
             android:textColor="@color/profifle_blue" />
 
         <LinearLayout
+            android:layout_centerVertical="true"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/btnViewBill"
-            android:gravity="right"
+            android:gravity="right|center_vertical"
             android:orientation="horizontal" >
 
             <Button
