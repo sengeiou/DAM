@@ -168,7 +168,7 @@ public class CommentActivity extends ImageWorkerActivity {
 			} else {
 				if(isLoadMore){
 					List<Comment> newData = mAdapter.getItems();
-					if(data !=null){
+					if(data !=null && data.getData() !=null){
 						newData.addAll((List<Comment>) data.getData());
 						mAdapter.setItems(newData);
 					}
