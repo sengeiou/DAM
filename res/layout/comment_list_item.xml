@@ -28,7 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base_padding"
-            android:textColor="#1FA6D2"
+            android:textColor="@color/text_red"
             android:layout_weight="1" />
 
         <TextView

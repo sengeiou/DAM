@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_marginBottom="0dip"
     android:angle="90"
-    android:background="@drawable/bg_ationbar"
+    android:background="@drawable/bg_header"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -28,7 +28,7 @@
         android:layout_width="2dp"
         android:layout_height="match_parent"
         android:layout_toRightOf="@+id/rlBackField"
-        android:background="@drawable/header_divider" />
+        android:background="@drawable/bg_header" />
 
     <ImageView
         android:id="@+id/imgHeader"

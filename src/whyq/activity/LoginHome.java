@@ -276,7 +276,7 @@ public class LoginHome extends FragmentActivity implements IServiceListener,
 				ListActivity.isLogin = true;
 				ListActivity.loginType = 1;
 				isLoginFb = true;
-				Log.d("LoginHome by Facebook", "result: ");
+				Log.d("LoginHome by Facebook", "result: "+user.getToken());
 				WhyqApplication.Instance().setToken(user);
 				XMLParser.storeUserAccount(WhyqApplication.Instance().getApplicationContext(),
 				 user);

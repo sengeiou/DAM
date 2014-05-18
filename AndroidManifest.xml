@@ -59,7 +59,7 @@
     <application
         android:name="whyq.WhyqApplication"
         android:allowBackup="true"
-        android:icon="@drawable/icon"
+        android:icon="@drawable/logo_whyq"
         android:label="@string/app_name" >
 
         <!-- Push notification -->

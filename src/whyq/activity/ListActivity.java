@@ -539,6 +539,7 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 			// TODO Auto-generated method stub
 			WhyqListController whyqListController = new WhyqListController();
 			HashMap<String, String> postParams = new HashMap<String, String>();
+//			postParams.put("vip_package", "3");
 			ArrayList<Store> permList = null;
 			try {
 				Log.d("LoadPermList", "lat " + latgitude);

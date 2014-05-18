@@ -376,7 +376,7 @@ public class ListDetailActivity extends FragmentActivity implements
 			tvOpeningTime.setText(store.getStartTime() + " - "
 					+ store.getEndTime());
 			tvTelephone.setText("" + store.getPhoneStore());
-			tvStoreDes.setText("" + store.getIntroStore());
+			tvStoreDes.setText(" " + store.getIntroStore());
 			tvHeaderTitle.setText("" + store.getNameStore());
 			if (store.getDistance() != null) {
 				if (!store.getDistance().equals(""))
@@ -398,8 +398,6 @@ public class ListDetailActivity extends FragmentActivity implements
 			// UrlImageViewHelper.setUrlDrawable(imgView, store.getPhotos());
 			if (!store.getCountFavaouriteMember().equals("0")) {
 				tvCommendRever.setText(store.getCountComment() + " comments");
-				tvCommendRever.setTextColor(getResources().getColor(
-						R.color.profifle_blue));
 				tvFromUsr.setVisibility(View.VISIBLE);
 			} else {
 				tvFromUsr.setVisibility(View.VISIBLE);

@@ -30,7 +30,8 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/delivery"
         android:paddingLeft="10dp"
-        android:text="No comment yet. Be the first?" >
+        android:text="No comment yet. Be the first?"
+        android:textColor="@color/text_red" >
     </TextView>
 
     <TextView

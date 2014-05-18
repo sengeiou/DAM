@@ -32,6 +32,6 @@
         android:paddingTop="10dp"
         android:scrollbars="none"
         android:singleLine="true"
-        android:textColor="#999725" />
+        android:textColor="@color/text_red" />
 
 </RelativeLayout>

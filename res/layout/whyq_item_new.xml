@@ -62,7 +62,7 @@
                         android:orientation="vertical"
                         android:singleLine="true"
                         android:text="De nhat suon nuong"
-                        android:textColor="#999725"
+                        android:textColor="@color/text_red"
                         android:textStyle="bold" >
                     </TextView>
 

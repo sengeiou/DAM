@@ -193,10 +193,12 @@
                                             android:layout_height="match_parent" >
 
                                             <TextView
+                                                android:drawableLeft="@drawable/icon_quote"
                                                 android:id="@+id/tvStoreDes"
                                                 style="@style/small_grey_text"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="60dp"
+                                                android:gravity="top|left"
                                                 android:text="" />
                                         </ScrollView>
                                     </LinearLayout>

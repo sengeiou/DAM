@@ -4,7 +4,7 @@
     android:layout_height="50dip"
     android:layout_marginBottom="0dip"
     android:angle="90"
-    android:background="@drawable/bg_header"
+    android:background="@drawable/bg_ationbar"
     android:orientation="vertical" >
 
     <TextView
