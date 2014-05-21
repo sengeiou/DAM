@@ -46,7 +46,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.devsmart.android.ui.HorizontalListView;
-import com.whyq.R;
+import com.dam.R;
 
 public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 		OnPositionChangedListener {

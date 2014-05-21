@@ -27,7 +27,7 @@ import com.facebook.Session;
 import com.facebook.Session.StatusCallback;
 import com.facebook.SessionState;
 import com.share.twitter.TwitterActivity;
-import com.whyq.R;
+import com.dam.R;
 
 public class WhyqFindMenuActivity extends FragmentActivity implements
 		IServiceListener, IFacebookLister {

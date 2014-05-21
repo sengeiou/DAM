@@ -14,7 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class WhyqProfileNotifyPersionalActivity extends Activity implements IServiceListener {
 	private CheckBox cbxReceiveNotification;

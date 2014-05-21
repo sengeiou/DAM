@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class WhyQCommentActivity extends Activity implements IServiceListener {
 

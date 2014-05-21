@@ -31,7 +31,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.gso.gpstracker.GPSTracker;
-import com.whyq.R;
+import com.dam.R;
 
 /**
  * This the app's main Activity. It provides buttons for requesting the various features of the

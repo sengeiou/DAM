@@ -23,7 +23,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
-import com.whyq.R;
+import com.dam.R;
 
 import android.content.IntentSender;
 import android.location.Address;

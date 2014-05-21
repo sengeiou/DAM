@@ -58,7 +58,7 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class ListVipStoreActivity extends FragmentActivity implements OnClickListener,
 		OnFocusChangeListener, IServiceListener, OnScrollListener {

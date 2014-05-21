@@ -50,7 +50,7 @@ import android.widget.ToggleButton;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.Session.StatusCallback;
-import com.whyq.R;
+import com.dam.R;
 
 public class WhyqShareActivity extends FragmentActivity implements
 		IServiceListener, FragmentDialogListener {

@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class PushNotificationActivity extends Activity {
 

@@ -15,7 +15,7 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class ExtendedListView extends ListView implements OnScrollListener {
 

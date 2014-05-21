@@ -48,8 +48,8 @@ import com.facebook.FacebookOperationCanceledException;
 import com.facebook.Session;
 import com.facebook.widget.WebDialog;
 import com.facebook.widget.WebDialog.OnCompleteListener;
-import com.whyq.BuildConfig;
-import com.whyq.R;
+import com.dam.BuildConfig;
+import com.dam.R;
 
 public class WhyqFriendsFacebookActivity extends ImageWorkerActivity implements
 		IFacebookLister {

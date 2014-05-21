@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class SearchField extends FrameLayout {
 

@@ -59,7 +59,7 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.whyq.R;
+import com.dam.R;
 
 public class MapFragment extends Fragment implements
 		OnMarkerClickListener, OnInfoWindowClickListener, OnMarkerDragListener {

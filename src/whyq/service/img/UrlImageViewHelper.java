@@ -22,7 +22,7 @@ import org.apache.http.params.HttpParams;
 import whyq.WhyqApplication;
 import whyq.utils.Util;
 
-import com.whyq.R;
+import com.dam.R;
 
 import android.app.Activity;
 import android.content.Context;

@@ -23,7 +23,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class LoginUsingCustomFragmentActivity extends FragmentActivity {
 

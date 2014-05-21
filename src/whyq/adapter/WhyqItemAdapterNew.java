@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.whyq.R;
+import com.dam.R;
 
 
 public class WhyqItemAdapterNew extends BaseAdapter {

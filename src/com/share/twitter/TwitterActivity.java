@@ -24,7 +24,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-import com.whyq.R;
+import com.dam.R;
 
 
 public class TwitterActivity extends Activity {

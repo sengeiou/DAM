@@ -25,7 +25,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class WhyQDineInActivity extends FragmentActivity implements OnClickListener, IServiceListener{
 	private String storeId;

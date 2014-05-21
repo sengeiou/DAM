@@ -21,7 +21,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class WhyqProflleFAQActivity extends Activity implements IServiceListener{
 	public static final String HOW_WHYQ_WORK = "How does WHY Q work?";

@@ -23,7 +23,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class ConnectTwitter extends Activity {
 

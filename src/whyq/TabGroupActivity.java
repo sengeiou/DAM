@@ -15,7 +15,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 
-import com.whyq.R;
+import com.dam.R;
 public class TabGroupActivity extends ActivityGroup {
 
 	// Keep this in a static variable to make it accessible for all the nesten

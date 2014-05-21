@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.custom.WebImageView;
-import com.whyq.R;
+import com.dam.R;
 
 public class ImageDetail extends Activity {
 	private String url;

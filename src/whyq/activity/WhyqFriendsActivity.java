@@ -32,7 +32,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.whyq.R;
+import com.dam.R;
 
 import dialog.AlertFindFriendDialog;
 import dialog.AlertFindFriendDialog.OnDialogButtonClickListener;

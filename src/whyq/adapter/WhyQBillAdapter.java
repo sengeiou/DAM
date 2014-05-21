@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class WhyQBillAdapter extends ArrayAdapter<Bill> {
 

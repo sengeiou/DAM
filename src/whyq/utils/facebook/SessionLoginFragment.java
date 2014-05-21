@@ -33,7 +33,7 @@ import com.facebook.LoggingBehavior;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.Settings;
-import com.whyq.R;
+import com.dam.R;
 
 public class SessionLoginFragment extends DialogFragment {
 	private static final String URL_PREFIX_FRIENDS = "https://graph.facebook.com/me/friends?access_token=";

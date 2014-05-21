@@ -37,7 +37,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class WhyqListActivity extends FragmentActivity implements Login_delegate, OnClickListener{
 

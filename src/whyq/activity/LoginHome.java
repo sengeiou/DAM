@@ -39,7 +39,7 @@ import com.facebook.Session;
 import com.facebook.Session.StatusCallback;
 import com.facebook.SessionState;
 import com.share.twitter.TwitterActivity;
-import com.whyq.R;
+import com.dam.R;
 
 /**
  * @author Linh Nguyen This activity supports to authenticate the user by

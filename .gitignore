@@ -1,3 +1,8 @@
 /bin
+/gen
 libs/google-play-services_lib/bin
 libs/google-play-services_lib/gen
+libs/facebook/bin
+libs/facebook/gen
+libs/GPSTracker/bin
+libs/GPSTracker/gen

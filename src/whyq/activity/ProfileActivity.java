@@ -59,7 +59,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class ProfileActivity extends Activity implements Get_Board_delegate{
 	

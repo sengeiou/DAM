@@ -19,7 +19,7 @@ package whyq.utils.location;
 import android.content.Context;
 import android.location.Location;
 
-import com.whyq.R;
+import com.dam.R;
 
 /**
  * Defines app-wide constants and utilities

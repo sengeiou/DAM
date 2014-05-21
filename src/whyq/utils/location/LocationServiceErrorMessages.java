@@ -20,7 +20,7 @@ import android.content.Context;
 import android.content.res.Resources;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.whyq.R;
+import com.dam.R;
 
 /**
  * Map error codes to error messages.

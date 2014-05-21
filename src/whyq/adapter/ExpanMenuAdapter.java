@@ -35,7 +35,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.custom.WebImageView;
-import com.whyq.R;
+import com.dam.R;
 
 public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnClickListener {
 

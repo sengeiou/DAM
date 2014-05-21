@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.whyq.R;
+import com.dam.R;
 
 /**
  * This widget display an analogic clock with two hands for hours and minutes.

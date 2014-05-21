@@ -23,7 +23,7 @@ import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class PayPalUI extends DialogFragment implements IServiceListener{
 	private static final String TAG = "DialogFragment";

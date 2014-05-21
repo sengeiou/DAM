@@ -14,7 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class FriendAdapter extends BaseAdapter {
 

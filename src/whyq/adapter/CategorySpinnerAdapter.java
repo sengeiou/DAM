@@ -14,7 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
-import com.whyq.R;
+import com.dam.R;
 
 /**
  * @author Linh Nguyen

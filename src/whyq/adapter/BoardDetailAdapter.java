@@ -30,7 +30,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.whyq.R;
+import com.dam.R;
 
 /**
  * @author Linh Nguyen

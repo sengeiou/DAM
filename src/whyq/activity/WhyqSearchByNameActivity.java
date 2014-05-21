@@ -29,7 +29,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.whyq.R;
+import com.dam.R;
 
 import dialog.AlertFindFriendDialog;
 import dialog.AlertFindFriendDialog.OnDialogButtonClickListener;

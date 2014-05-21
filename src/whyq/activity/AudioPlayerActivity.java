@@ -13,7 +13,7 @@ import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.SeekBar;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class AudioPlayerActivity extends Activity implements OnClickListener, OnTouchListener, OnCompletionListener, OnBufferingUpdateListener{
     private Button btn_play,

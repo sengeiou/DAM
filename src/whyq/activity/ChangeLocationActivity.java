@@ -49,7 +49,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.whyq.R;
+import com.dam.R;
 
 /**
  * Class description: TODO

@@ -1,6 +1,6 @@
 package whyq.activity;
 
-import com.whyq.R;
+import com.dam.R;
 
 import android.app.Activity;
 import android.os.Bundle;

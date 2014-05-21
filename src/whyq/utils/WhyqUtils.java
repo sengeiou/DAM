@@ -12,7 +12,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
-import com.whyq.R;
+import com.dam.R;
 
 import twitter4j.http.AccessToken;
 import whyq.WhyqApplication;

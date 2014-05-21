@@ -23,7 +23,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class ImageActivity extends Activity {
 	private int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1224;

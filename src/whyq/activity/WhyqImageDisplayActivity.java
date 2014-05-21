@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class WhyqImageDisplayActivity extends Activity {
 

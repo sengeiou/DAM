@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class NavigationActivity extends FragmentActivity implements
 		QueryCallback {

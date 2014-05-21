@@ -84,7 +84,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.facebook.Session;
-import com.whyq.R;
+import com.dam.R;
 
 public class Util {
 	public static final int TIME_OUT = 30000;

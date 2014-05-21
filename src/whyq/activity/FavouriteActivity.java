@@ -8,7 +8,7 @@ import java.util.Map;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
-import com.whyq.R;
+import com.dam.R;
 
 import whyq.WhyqApplication;
 import whyq.WhyqMain;

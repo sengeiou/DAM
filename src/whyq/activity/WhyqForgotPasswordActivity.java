@@ -26,7 +26,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.whyq.R;
+import com.dam.R;
 
 /**
  * @author Linh Nguyen This activity supports to authenticate the user by

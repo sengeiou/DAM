@@ -28,7 +28,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class WhyQTakeAwayActivity extends Activity implements OnClickListener,
 		IServiceListener, IDialogListener {

@@ -14,7 +14,7 @@ import whyq.WhyqApplication;
 import whyq.adapter.WhyqAdapter;
 import whyq.map.Utils;
 
-import com.whyq.R;
+import com.dam.R;
 
 import android.app.Activity;
 import android.content.Context;

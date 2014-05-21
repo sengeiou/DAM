@@ -24,7 +24,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.whyq.R;
+import com.dam.R;
 
 public class TwitterActivity extends Activity {
 	// Define constain
