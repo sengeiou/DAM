@@ -3,7 +3,7 @@
  */
 package whyq.activity;
 
-import twitter4j.http.AccessToken;
+import twitter4j.auth.AccessToken;
 import whyq.WhyqApplication;
 import whyq.WhyqMain;
 import whyq.interfaces.IFacebookLister;

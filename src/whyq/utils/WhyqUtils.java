@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import com.dam.R;
 
-import twitter4j.http.AccessToken;
+import twitter4j.auth.AccessToken;
 import whyq.WhyqApplication;
 import whyq.activity.ListActivity;
 import whyq.activity.NewWhyqActivity;

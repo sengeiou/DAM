@@ -1,5 +1,5 @@
 /bin
-/gen
+gen/
 libs/google-play-services_lib/bin
 libs/google-play-services_lib/gen
 libs/facebook/bin

@@ -512,7 +512,7 @@ public class Service implements Runnable {
 				urlString = _includeHost ? API.hostURL + _actionURI
 						: _actionURI;
 			HttpRequestBase request = null;
-
+			Log.d("Service", "url: " + urlString + " " + _isGet);
 			if (_isGet) {
 				request = new HttpGet();
 				if (_params != null) {

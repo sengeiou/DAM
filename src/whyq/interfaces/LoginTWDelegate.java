@@ -1,6 +1,6 @@
 package whyq.interfaces;
 
-import twitter4j.http.AccessToken;
+import twitter4j.auth.AccessToken;
 
 public interface LoginTWDelegate {
 

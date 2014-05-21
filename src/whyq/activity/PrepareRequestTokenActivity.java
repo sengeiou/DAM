@@ -5,7 +5,7 @@ import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthProvider;
-import twitter4j.http.AccessToken;
+import twitter4j.auth.AccessToken;
 import whyq.interfaces.LoginTWDelegate;
 import whyq.utils.Constants;
 import whyq.utils.WhyqUtils;

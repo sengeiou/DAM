@@ -8,7 +8,7 @@ import oauth.signpost.exception.OAuthExpectationFailedException;
 import oauth.signpost.exception.OAuthMessageSignerException;
 import oauth.signpost.exception.OAuthNotAuthorizedException;
 import twitter4j.Twitter;
-import twitter4j.http.AccessToken;
+import twitter4j.auth.AccessToken;
 import whyq.utils.Constants;
 import whyq.utils.SharedPreferencesManager;
 import android.app.Activity;

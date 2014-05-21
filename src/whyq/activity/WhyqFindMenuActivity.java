@@ -1,6 +1,6 @@
 package whyq.activity;
 
-import twitter4j.http.AccessToken;
+import twitter4j.auth.AccessToken;
 import whyq.WhyqApplication;
 import whyq.interfaces.IFacebookLister;
 import whyq.interfaces.IServiceListener;

@@ -2,7 +2,7 @@ package whyq.utils;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
-import twitter4j.http.AccessToken;
+import twitter4j.auth.AccessToken;
 import whyq.utils.facebook.sdk.Facebook;
 import android.content.Context;
 import android.content.SharedPreferences;

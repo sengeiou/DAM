@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import twitter4j.util.ImageUpload.ImgLyOAuthUploader;
 import whyq.activity.InvitationActivity;
 import whyq.model.User;
 import whyq.service.img.UrlImageViewHelper;
