@@ -105,7 +105,6 @@
     <string name="filter_view_all">View All</string>
     <string name="filter_friend_comment">Friend\'s Comment</string>
     <string name="saving">Saving</string>
-
     
     <string name="title_activity_main">PayPal Access</string>
     <string name="title_activity_login">Login</string>
@@ -119,8 +118,9 @@
 	<string name="login_openid">OpenID</string>
 	
 	<string name="dots_mean">The coloured dots indicate the progression of your order</string>
-    
-	
+    <string name="favorite_stores">Favorite Stores</string>
+	<string name="favorite_foods">Favorite foods</string>
+	<string name="comment">Comment</string>
 	
 	    <!-- Messages Location -->
     <string name="connected">Client connected</string>
