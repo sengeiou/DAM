@@ -16,8 +16,8 @@ public class Constants {
 	//public static final String CONSUMER_SECRET= "erVQyuoDUu3cwOG48cgUm5V14puqN3JbjSP4v4NE";
 	
 	public static final boolean isSaxbox = true;
-	public static final String CONSUMER_KEY = "mpaQ9GA3ICVbnZTZH2FEdg";//"mpaQ9GA3ICVbnZTZH2FEdg";
-	public static final String CONSUMER_SECRET= "BH37EUqAHc1vAnxvdS2X4fJsxxuZRCJlT6VtT4avQNI";//"BH37EUqAHc1vAnxvdS2X4fJsxxuZRCJlT6VtT4avQNI";
+	public static final String CONSUMER_KEY = "AVJ1774zRcPIL3L8yzlDJQ";//"mpaQ9GA3ICVbnZTZH2FEdg";
+	public static final String CONSUMER_SECRET= "o5J6Rv3UWMjx1BWdiT8VrZ1zUwt57AJnAAp0MKONc";//"BH37EUqAHc1vAnxvdS2X4fJsxxuZRCJlT6VtT4avQNI";
 	
 	public static final String REQUEST_URL = "https://api.twitter.com/oauth/request_token";
 	public static final String ACCESS_URL = "https://api.twitter.com/oauth/access_token";
@@ -31,7 +31,7 @@ public class Constants {
 	/**
 	 * Facebook app configuration
 	 */
-	public static final String FACEBOOK_APP_ID = "429233960446986";
+	public static final String FACEBOOK_APP_ID = "166995593484260";
 	public static final String EMAIL = "email";
 	public static final String PUBLISH_STREAM = "publish_stream";
 	
