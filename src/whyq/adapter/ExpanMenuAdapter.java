@@ -9,7 +9,6 @@ import whyq.WhyqApplication;
 import whyq.activity.ListDetailActivity;
 import whyq.model.Bill;
 import whyq.model.ExtraItem;
-import whyq.model.ExtraItemSet;
 import whyq.model.GroupMenu;
 import whyq.model.Menu;
 import whyq.model.OptionItem;
@@ -21,7 +20,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewDebug.FlagToString;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
@@ -241,10 +239,11 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 			/***
 			 * Bind option data to item
 			 */
+			boolean isHaveMenu = false;
 			
 			if (item.getOptionItemList() != null && item.getOptionItemList().size() > 0) {
 				List<OptionItem> list = item.getOptionItemList();
-
+				
 				for (int i = 0; i < list.size(); i++) {
 					OptionItem itemDetail = list.get(i);
 					if (i == 0) {
@@ -286,8 +285,12 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 					}
 
 				}
-
+				setViewVisibility(view.findViewById(R.id.divery_1), true);
+				isHaveMenu = true;
+				setViewVisibility(view.findViewById(R.id.ln_option), true);
 			} else {
+				setViewVisibility(view.findViewById(R.id.divery_1), false);
+				setViewVisibility(view.findViewById(R.id.ln_option), false);
 			}
 
 			if (item.getSizeItemList() != null && item.getSizeItemList().size() > 0) {
@@ -333,8 +336,10 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 						
 					}
 				}
+				isHaveMenu = true;
+				setViewVisibility(view.findViewById(R.id.ln_size), true);
 			} else {
-				// setViewVisibility(lnSize, false);
+				setViewVisibility(view.findViewById(R.id.ln_size), false);
 			}
 
 			/**
@@ -384,8 +389,17 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 						
 					}
 				}
+				isHaveMenu = true;
+				setViewVisibility(view.findViewById(R.id.ln_extra), true);
+				setViewVisibility(view.findViewById(R.id.divery_2), true);
 			} else {
+				setViewVisibility(view.findViewById(R.id.ln_extra), false);
+				setViewVisibility(view.findViewById(R.id.divery_2), false);
 			}
+			
+			setViewVisibility(view.findViewById(R.id.ln_done_select_extra), isHaveMenu);
+			setViewVisibility(view.findViewById(R.id.rl_extra), isHaveMenu);
+			
 			WhyqApplication.Instance().getImageLoader().DisplayImage(item.getImageThumb(), viewHolder.imgThumb);
 			
 //			if(ListDetailActivity.billList!=null && ListDetailActivity.billList.containsKey(item.getId())){
@@ -476,6 +490,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 								}
 								ListDetailActivity.billList.remove(item.getId());
 								ListDetailActivity.billList.put(item.getId(), result);
+								notifyDataSetChanged();
+								((ListDetailActivity)mContext).updateTotal();
 							}
 						});
 						
@@ -781,6 +797,10 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		bill.setSizeList(sizelistBill);
 		bill.setOptionList(optionListBill);
 		bill.setExtraList(extraListBill);
+		if(ListDetailActivity.promotion!=null){
+			bill.setDiscount(ListDetailActivity.promotion.getValuePromotion()!=null?ListDetailActivity.promotion.getValuePromotion():""+0);
+		}
+		
 		billList.add(bill);
 		
 		ListDetailActivity.billList.put(menu.getId(), billList);

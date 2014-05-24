@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_extra"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_vertical"
@@ -53,23 +54,16 @@
             android:singleLine="true"
             android:visibility="gone" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/et_product_note"
             android:orientation="vertical" >
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginBottom="2dp"
-                android:layout_marginTop="2dp"
-                android:background="@color/grey" />
-
             <LinearLayout
                 android:id="@+id/ln_size"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="horizontal" >
 
@@ -166,8 +160,10 @@
             </LinearLayout>
 
             <View
+                android:id="@+id/divery_1"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_below="@+id/ln_size"
                 android:layout_marginBottom="2dp"
                 android:layout_marginTop="2dp"
                 android:background="@color/grey" />
@@ -175,7 +171,8 @@
             <LinearLayout
                 android:id="@+id/ln_option"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divery_1"
                 android:layout_weight="1"
                 android:orientation="horizontal" >
 
@@ -271,8 +268,10 @@
             </LinearLayout>
 
             <View
+                android:id="@+id/divery_2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_below="@+id/ln_option"
                 android:layout_marginBottom="2dp"
                 android:layout_marginTop="2dp"
                 android:background="@color/grey" />
@@ -280,7 +279,8 @@
             <LinearLayout
                 android:id="@+id/ln_extra"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divery_2"
                 android:layout_weight="1"
                 android:orientation="horizontal" >
 
@@ -374,7 +374,7 @@
                         android:visibility="invisible" />
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
 </RelativeLayout>
