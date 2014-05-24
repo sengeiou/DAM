@@ -104,7 +104,7 @@ public class WhyqCheckedBillActivity extends ImageWorkerActivity {
 
 		setLoading(true);
 		final String userId = getIntent().getExtras().getString(ARG_USER_ID);
-		getService().getOrder(getEncryptedToken(), userId);
+		getService().getOrder(WhyqApplication.getRSAToken(), userId);
 	}
 
 	private List<BillItem> mBillItems;

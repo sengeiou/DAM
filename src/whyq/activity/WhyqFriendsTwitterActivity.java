@@ -169,7 +169,7 @@ public class WhyqFriendsTwitterActivity extends ImageWorkerActivity {
 		String oauth_token = mTwitterAccess.getToken();
 		String oauth_token_secret = mTwitterAccess.getTokenSecret();
 		if(oauth_token!=null && oauth_token_secret!=null){
-			service.searchFriends(SearchFriendCriteria.twitter, getEncryptedToken(), queryString, null, oauth_token, oauth_token_secret);
+			service.searchFriends(SearchFriendCriteria.twitter, WhyqApplication.getRSAToken(), queryString, null, oauth_token, oauth_token_secret);
 		}
 	}
 	private void getFriends() {
@@ -180,7 +180,7 @@ public class WhyqFriendsTwitterActivity extends ImageWorkerActivity {
 			String oauth_token_secret = mTwitterAccess.getTokenSecret();
 			if(oauth_token!=null && oauth_token_secret!=null){
 				mListview.setAdapter(mFriendsTwitterAdapter);
-				service.searchFriends(SearchFriendCriteria.twitter, getEncryptedToken(), "", null, oauth_token, oauth_token_secret);
+				service.searchFriends(SearchFriendCriteria.twitter, WhyqApplication.getRSAToken(), "", null, oauth_token, oauth_token_secret);
 			}
 //		}
 	}
@@ -193,7 +193,7 @@ public class WhyqFriendsTwitterActivity extends ImageWorkerActivity {
 		}
 		String oauth_token = mTwitterAccess.getToken();
 		String oauth_token_secret = mTwitterAccess.getTokenSecret();
-		service.inviteFriendsTwitter(getEncryptedToken(), oauth_token, oauth_token_secret, userIds.toString());
+		service.inviteFriendsTwitter(WhyqApplication.getRSAToken(), oauth_token, oauth_token_secret, userIds.toString());
 	}
 	void removeInviteFriend(FriendTwitter friend) {
 		INVITED_LIST.remove(friend.getId());

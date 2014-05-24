@@ -281,7 +281,7 @@ public class WhyqFriendsFacebookActivity extends ImageWorkerActivity implements
 		setLoading(true);
 		if (mAccessToken != null && mAccessToken.length() > 0) {
 			service.searchFriends(SearchFriendCriteria.facebook,
-					getEncryptedToken(), queryString, mAccessToken, null, null);
+					WhyqApplication.getRSAToken(), queryString, mAccessToken, null, null);
 		}
 	}
 
@@ -291,7 +291,7 @@ public class WhyqFriendsFacebookActivity extends ImageWorkerActivity implements
 		if (isFacebook) {
 			if (mAccessToken != null && mAccessToken.length() > 0) {
 				mListview.setAdapter(mFriendFacebookAdapter);
-				service.getFriendsFacebook(getEncryptedToken(), mAccessToken);
+				service.getFriendsFacebook(WhyqApplication.getRSAToken(), mAccessToken);
 			}
 		} else {
 
@@ -338,7 +338,7 @@ public class WhyqFriendsFacebookActivity extends ImageWorkerActivity implements
 		for (String id : INVITED_LIST.keySet()) {
 			userIds.append(id + ",");
 		}
-		service.inviteFriendsFacebook(getEncryptedToken(), userIds.toString(),
+		service.inviteFriendsFacebook(WhyqApplication.getRSAToken(), userIds.toString(),
 				accessToken);
 	}
 

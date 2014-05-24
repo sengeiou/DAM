@@ -208,10 +208,10 @@ public class WhyqSearchByNameActivity extends ImageWorkerActivity implements
 		Service service = getService();
 		setLoading(true);
 		if(!isSearchByName){
-			service.searchFriends(SearchFriendCriteria.whyq, getEncryptedToken(),
+			service.searchFriends(SearchFriendCriteria.whyq, WhyqApplication.getRSAToken(),
 					queryString, null, null, null);
 		}else{
-			service.searchOnlyFriend(SearchFriendCriteria.whyq, getEncryptedToken(),
+			service.searchOnlyFriend(SearchFriendCriteria.whyq, WhyqApplication.getRSAToken(),
 					queryString, null, null, null);
 		}
 
@@ -222,12 +222,12 @@ public class WhyqSearchByNameActivity extends ImageWorkerActivity implements
 		if(isFriend){
 			Service service = getService();
 			setLoading(true);
-			service.getFriends(getEncryptedToken(),
+			service.getFriends(WhyqApplication.getRSAToken(),
 					XMLParser.getValue(this, friendId));
 		}else{
 			Service service = getService();
 			setLoading(true);
-			service.getFriends(getEncryptedToken(),
+			service.getFriends(WhyqApplication.getRSAToken(),
 					XMLParser.getValue(this, XMLParser.STORE_USER_ID));
 		}
 	}

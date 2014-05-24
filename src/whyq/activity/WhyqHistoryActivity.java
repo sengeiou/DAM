@@ -76,7 +76,7 @@ public class WhyqHistoryActivity extends ImageWorkerActivity {
 
 		setLoading(true);
 		String userId = getIntent().getStringExtra(ARG_USER_ID);
-		getService().getHistories(getEncryptedToken(), userId);
+		getService().getHistories(WhyqApplication.getRSAToken(), userId);
 	}
 	
 	public void onBackClicked(View v){
