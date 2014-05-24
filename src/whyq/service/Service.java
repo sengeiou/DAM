@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.TimeZone;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.http.Header;
@@ -125,6 +126,8 @@ public class Service implements Runnable {
 		params.put("only_friend", onlyFriend ? "1" : "");
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("/m/member/comment", params, true, false);
 	}
 
@@ -220,6 +223,8 @@ public class Service implements Runnable {
 		params.put("user_id", userId);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("/m/member/recent/activity", params, true, false);
 	}
 
@@ -244,6 +249,8 @@ public class Service implements Runnable {
 		}
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("/m/member/comment/post", params, true, false);
 	}
 
@@ -621,6 +628,8 @@ public class Service implements Runnable {
 		params.put("access_token", accessToken);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("/m/login/fb", params, true, false);
 	}
 
@@ -633,6 +642,8 @@ public class Service implements Runnable {
 		params.put("oauth_token_secret", oauthTokenSecret);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("/m/login/tw", params, true, false);
 	}
 
@@ -733,6 +744,8 @@ public class Service implements Runnable {
 		params.put("store_id", id);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("/m/business/show", params, true, false);
 	}
 
@@ -750,6 +763,8 @@ public class Service implements Runnable {
 		params.put("store_id", store_id);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("/m/business/member/check_bill", params, true, false);
 	}
 
@@ -761,6 +776,8 @@ public class Service implements Runnable {
 		params.put("store_id", store_id);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		if (text != null) {
 			params.put("key", text);
 			request("/m/business/member/check_bill/search", params, true, false);
@@ -787,6 +804,8 @@ public class Service implements Runnable {
 		params.put("user_id", userId);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("/m/member/order", params, true, false);
 	}
 
@@ -798,6 +817,8 @@ public class Service implements Runnable {
 		params.put("store_id", storeId);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("/m/business/show", params, true, false);
 
 	}
@@ -815,6 +836,8 @@ public class Service implements Runnable {
 		params.put("user_id", userId);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("/m/member/profile/photo", params, true, false);
 	}
 
@@ -825,6 +848,8 @@ public class Service implements Runnable {
 		params.put("text-search", string);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("getlocation", params, true, false);
 	}
 
@@ -835,6 +860,8 @@ public class Service implements Runnable {
 		params.put("user_id", userId);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("/m/member/profile", params, true, false);
 	}
 
@@ -845,6 +872,8 @@ public class Service implements Runnable {
 		params.put("email", string);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("/m/forget_password", params, true, false);
 	}
 
@@ -898,6 +927,8 @@ public class Service implements Runnable {
 		params.put("token", WhyqApplication.Instance().getRSAToken());
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		params.put("is_receive_notification", isReceiveNotify);
 		params.put("is_show_friend", isReceiveNotify);
 		request("/m/member/setting/edit", params, true, false);
@@ -932,6 +963,8 @@ public class Service implements Runnable {
 		params.put("key", key);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		params.put("search", criteria.toString());
 		request("/m/member/search/friend", params, true, false);
 	}
@@ -970,6 +1003,8 @@ public class Service implements Runnable {
 		params.put("bill_id", billId);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("/m/member/order/show", params, true, false);
 	}
 
@@ -989,6 +1024,8 @@ public class Service implements Runnable {
 		params.put("message", message);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
 		request("/m/member/order/show", params, true, false);
 	}
 

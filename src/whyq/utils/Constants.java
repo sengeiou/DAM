@@ -28,6 +28,7 @@ public class Constants {
 	public static final String	OAUTH_CALLBACK_URL		=  "perm://twitter";
 	public static final String APP = "android";
 	public static final String APP_NAME = "com.appo.innscor";
+	public static final String APP_VERSION = "1.1";
 	/**
 	 * Facebook app configuration
 	 */

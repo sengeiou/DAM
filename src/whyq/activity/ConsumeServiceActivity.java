@@ -26,31 +26,4 @@ public class ConsumeServiceActivity extends NavigationActivity implements IServi
 	protected Service getService() {
 		return new Service(this);
 	}
-	
-	protected String getEncryptedToken() {
-		try {
-			String token = XMLParser.getToken(WhyqApplication.Instance()
-					.getApplicationContext());
-			if(token!=null)
-				token = Util.encryptToken(token);
-			else 
-				return null;
-			Log.d("token",""+ token);
-			return token;
-		} catch (InvalidKeyException e) {
-			e.printStackTrace();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} catch (NoSuchPaddingException e) {
-			e.printStackTrace();
-		} catch (IllegalBlockSizeException e) {
-			e.printStackTrace();
-		} catch (BadPaddingException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
-
 }

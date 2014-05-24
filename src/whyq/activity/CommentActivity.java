@@ -128,7 +128,7 @@ public class CommentActivity extends ImageWorkerActivity {
 		setLoading(true);
 		if(!isLoadMore)
 			page = 1;
-		getService().getComments(getEncryptedToken(), mIsShowFilter?mStoreId:mUserId, page , 20,
+		getService().getComments(WhyqApplication.getRSAToken(), mIsShowFilter?mStoreId:mUserId, page , 20,
 				onlyFriend, mIsShowFilter);
 	}
 
