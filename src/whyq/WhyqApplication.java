@@ -83,9 +83,12 @@ public class WhyqApplication extends Application {
 	public static String getRSAToken(){
 		
 		try {
-			RSA rsa = new RSA();
-			String token = rsa.RSAEncrypt(XMLParser.getToken(Instance().getApplicationContext()));
-			return token;
+//			DAM token
+			return XMLParser.getToken(Instance().getApplicationContext());
+//			WHYQ token
+//			RSA rsa = new RSA();
+//			String token = rsa.RSAEncrypt(XMLParser.getToken(Instance().getApplicationContext()));
+//			return token;
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
