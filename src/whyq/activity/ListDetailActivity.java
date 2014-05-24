@@ -716,6 +716,9 @@ public class ListDetailActivity extends FragmentActivity implements
 				for (int i = 0; i < mGroupCollection.size(); i++) {
 					lvMenu.expandGroup(i);
 				}
+				findViewById(R.id.tv_no_data).setVisibility(View.GONE);
+			}else{
+				findViewById(R.id.tv_no_data).setVisibility(View.VISIBLE);
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

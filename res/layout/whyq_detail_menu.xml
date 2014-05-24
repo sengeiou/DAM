@@ -11,24 +11,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
-        android:padding="10dp"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:padding="10dp" >
 
         <Button
-            android:layout_centerVertical="true"
             android:id="@+id/btnViewBill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_viewbill"
             android:onClick="onViewBillClicked"
             android:text=""
-            android:background="@drawable/btn_viewbill"
             android:textColor="@color/profifle_blue" />
 
         <LinearLayout
-            android:layout_centerVertical="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_gravity="right"
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/btnViewBill"
@@ -41,8 +41,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@color/transparent"
-                android:textColor="@color/text_red"
-                android:text="Total:" />
+                android:text="Total:"
+                android:textColor="@color/text_red" />
 
             <Button
                 android:id="@+id/btnTotalValue$"
@@ -66,15 +66,29 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <ExpandableListView
-        android:id="@+id/lvMenu"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:divider="@drawable/divider_store"
-        android:dividerHeight="1dp"
-        android:groupIndicator="@drawable/play_group_item"
-        android:listSelector="@drawable/play_expand_seletor"
-        android:scrollbars="vertical" />
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tv_no_data"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No data"
+            android:textStyle="bold"
+            android:textColor="@color/blue" />
+
+        <ExpandableListView
+            android:id="@+id/lvMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:divider="@drawable/divider_store"
+            android:dividerHeight="1dp"
+            android:groupIndicator="@drawable/play_group_item"
+            android:listSelector="@drawable/play_expand_seletor"
+            android:scrollbars="vertical" />
+    </RelativeLayout>
 
 </LinearLayout>
