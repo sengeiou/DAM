@@ -1,32 +1,23 @@
 package whyq.activity;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import whyq.WhyqApplication;
 import whyq.adapter.WhyQBillAdapter;
-import whyq.controller.WhyqListController;
 import whyq.interfaces.IServiceListener;
 import whyq.model.Bill;
 import whyq.model.BillPushNotification;
 import whyq.model.ResponseData;
-import whyq.model.Store;
-import whyq.service.DataParser;
 import whyq.service.Service;
 import whyq.service.ServiceAction;
 import whyq.service.ServiceResponse;
 import whyq.service.paypal.PayPalUI;
 import whyq.utils.Util;
-import whyq.view.Whyq;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -34,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dam.R;
+
 
 public class WhyQBillScreen extends FragmentActivity implements IServiceListener{
 	
@@ -115,8 +107,15 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 		
 		try {
 			tvTotal.setText("$"+Util.round(totalValue, 2));
-			if(valueDiscount!=0)
-				tvDiscount.setText("%"+ Util.round(valueDiscount, 2));
+			if(valueDiscount!=0){
+//				tvDiscount.setText("%"+ Util.round(valueDiscount, 2));
+				if(ListDetailActivity.promotion !=null && ListDetailActivity.promotion.getValuePromotion() !=null && !ListDetailActivity.promotion.getValuePromotion().equals("")){
+					tvDiscount.setText("%"+ListDetailActivity.promotion.getValuePromotion());
+				}else{
+					tvDiscount.setText("%0");
+				}
+				
+			}
 			if(valueDiscount!=0)
 				totalafterDiscount = (float)(totalValue*(100-valueDiscount)/100);
 			else
@@ -135,16 +134,21 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 			try {
 				float unit = item.getUnit()!=null?Float.parseFloat(item.getUnit()):0;
 				float price = item.getPrice()!=null?Float.parseFloat(item.getPrice()):0;
-				float discount = item.getDiscount()!=null?Float.parseFloat(item.getDiscount()):0;
+//				float discount = item.getDiscount()!=null?Float.parseFloat(item.getDiscount()):0;
 				totalValue += price*unit;
-				valueDiscount = 0;
-				valueDiscount = discount*price*unit;
-				totalafterDiscount=totalValue - valueDiscount;
+//				valueDiscount = 0;
+//				valueDiscount = discount*price*unit;
+//				totalafterDiscount=totalValue - valueDiscount;
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
 		}
+		if(ListDetailActivity.promotion !=null && ListDetailActivity.promotion.getValuePromotion() !=null && !ListDetailActivity.promotion.getValuePromotion().equals("")){
+			valueDiscount = Float.parseFloat(ListDetailActivity.promotion.getValuePromotion());	
+			totalafterDiscount=totalValue - valueDiscount;
+		}
+
 		
 	}
 	private void bindDatatoListview() {
