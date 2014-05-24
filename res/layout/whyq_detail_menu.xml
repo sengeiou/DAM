@@ -76,8 +76,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="No data"
+            android:visibility="gone"
             android:textStyle="bold"
-            android:textColor="@color/blue" />
+            android:textColor="@color/text_normal" />
 
         <ExpandableListView
             android:id="@+id/lvMenu"
