@@ -12,14 +12,12 @@ import whyq.service.ServiceResponse;
 import whyq.utils.Util;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
-import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AutoCompleteTextView;
@@ -31,6 +29,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.dam.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -38,7 +37,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.dam.R;
 
 public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 		IServiceListener, OnClickListener {
@@ -61,6 +59,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 	private int currentMinutes;
 	private int currentHours;
 	private String address;
+	protected String mPhoneNumber;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -189,7 +188,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 	
 	public boolean checkInputData() {
 		if (cbASAP.isChecked()) {
-
+			
 			Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
 
 			String otherAddress = atAddress.getText().toString();//etOtherAddress.getText().toString();
@@ -209,7 +208,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 				return false;
 			} else {
 				showDialog();
-				new asyncExeOrderSend().execute();
+				showRememberInfoDialog();
 
 			}
 			return true;
@@ -245,19 +244,52 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 				return false;
 			} else {
 				showDialog();
-				new asyncExeOrderSend().execute();
+				showRememberInfoDialog();
 				return true;
 			}
 		}
 
 	}
 
+	@SuppressWarnings("deprecation")
+	public void showRememberInfoDialog(){
+		android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(
+				context);
+		builder.setTitle(context.getString(R.string.app_name_title));
+		builder.setMessage("Do you want save your phone number?");
+		final android.app.AlertDialog alertError = builder.create();
+		alertError.setButton("Yes", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+				mPhoneNumber = etPhoneNumber.getText().toString();
+				alertError.dismiss();
+				new asyncExeOrderSend().execute();
+			}
+		});
+		alertError.setButton2("No", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				mPhoneNumber = null;
+				alertError.dismiss();
+				new asyncExeOrderSend().execute();
+			}
+		});
+		alertError.show();
+	}
+	
 	class asyncExeOrderSend extends
 			AsyncTask<HashMap<String, String>, Void, HashMap<String, String>> {
 		public asyncExeOrderSend() {
 			// TODO Auto-generated constructor stub
 		}
 
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			
+		}
 		@Override
 		protected void onPostExecute(HashMap<String, String> location) {
 			// TODO Auto-generated method stub
@@ -285,6 +317,8 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 			params.put("phone_deliver", etPhoneNumber.getText().toString());
 			params.put("note", note);
 			params.put("token", WhyqApplication.Instance().getRSAToken());
+			params.put("remember_info", mPhoneNumber==null?"0":"1");
+			
 			servivice.orderSend(params);
 		}
 
@@ -321,14 +355,17 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 			if (data != null) {
 				if (data.getStatus().equals("200")) {
 					Util.showDialog(context, data.getMessage());
-					WhyqOrderMenuActivity.sOrderMenuActivity.dismiss();
-					WhyQBillScreen.sBillActivity.finish();
+//					WhyqOrderMenuActivity.sOrderMenuActivity.dismiss();
+//					WhyQBillScreen.sBillActivity.finish();
 				} else if (data.getStatus().equals("401")) {
 					Util.loginAgain(context, data.getMessage());
 				} else {
 					Util.showDialog(context, data.getMessage());
 				}
 			}
+			finish();
+		}else if(result.getAction() == ServiceAction.ActionOrderSend){
+			finish();
 		}
 	}
 
