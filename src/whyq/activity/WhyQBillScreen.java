@@ -120,7 +120,7 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 				totalafterDiscount = (float)(totalValue*(100-valueDiscount)/100);
 			else
 				totalafterDiscount = totalValue;
-			tvTotalAfterDiscount.setText("$"+Util.round(totalafterDiscount, 2));
+			tvDiscount.setText(ListDetailActivity.promotion.getValuePromotion()+"%");
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
