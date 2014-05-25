@@ -169,6 +169,7 @@
                         android:text="Or" />
 
                     <CheckBox
+                        android:checked="true"
                         android:id="@+id/cbASAP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
