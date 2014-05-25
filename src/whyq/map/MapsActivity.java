@@ -467,22 +467,18 @@ public class MapsActivity extends FragmentActivity implements
 	private void bindStoreInfo(final Store store) {
 		// TODO Auto-generated method stub
 		Store item = store;
-		LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View rowView = inflater.inflate(R.layout.whyq_item_new, null);
-		LayoutParams PARAMS = (LinearLayout.LayoutParams)rowView.getLayoutParams();
 		ViewHolder viewHolder = new ViewHolder();
 		viewHolder.id = item.getStoreId();
-		viewHolder.imgThumb = (ImageView) rowView.findViewById(R.id.imgThumbnal2);
-		viewHolder.tvItemName = (TextView) rowView.findViewById(R.id.tvItemName);
-		viewHolder.tvItemAddress = (TextView)rowView.findViewById(R.id.tvItemAddress);
-		viewHolder.tvNumberFavourite = (TextView)rowView.findViewById(R.id.tvNumberFavourite);
-		viewHolder.tvVisited = (TextView)rowView.findViewById(R.id.tvVisited);
-		viewHolder.tvDiscoutNumber = (TextView)rowView.findViewById(R.id.tvNumberDiscount);
-		viewHolder.btnDistance = (Button)rowView.findViewById(R.id.btnDistance);
-		viewHolder.imgFavouriteThumb = (ImageView)rowView.findViewById(R.id.imgFavourite);
-		viewHolder.prgFavourite = (ProgressBar)rowView.findViewById(R.id.prgFavourite);
-		viewHolder.rlDiscount = (RelativeLayout)rowView.findViewById(R.id.rlDiscount);
+		viewHolder.imgThumb = (ImageView) findViewById(R.id.imgThumbnal2);
+		viewHolder.tvItemName = (TextView)findViewById(R.id.tvItemName);
+		viewHolder.tvItemAddress = (TextView)findViewById(R.id.tvItemAddress);
+		viewHolder.tvNumberFavourite = (TextView)findViewById(R.id.tvNumberFavourite);
+		viewHolder.tvVisited = (TextView)findViewById(R.id.tvVisited);
+		viewHolder.tvDiscoutNumber = (TextView)findViewById(R.id.tvNumberDiscount);
+		viewHolder.btnDistance = (Button)findViewById(R.id.btnDistance);
+		viewHolder.imgFavouriteThumb = (ImageView)findViewById(R.id.imgFavourite);
+		viewHolder.prgFavourite = (ProgressBar)findViewById(R.id.prgFavourite);
+		viewHolder.rlDiscount = (RelativeLayout)findViewById(R.id.rlDiscount);
 		viewHolder.tvItemName.setText(item.getNameStore().toUpperCase());
 		viewHolder.tvItemAddress.setText(item.getAddress());
 		viewHolder.tvNumberFavourite.setText(""+item.getCountFavaouriteMember());
@@ -497,7 +493,7 @@ public class MapsActivity extends FragmentActivity implements
 		
 		if(!item.getDistance().equals(""))
 			viewHolder.btnDistance.setText((int)Float.parseFloat(item.getDistance())+" km");
-		viewHolder.imgFriendThumb = (ImageView)rowView.findViewById(R.id.imgFriendThumb);
+		viewHolder.imgFriendThumb = (ImageView)findViewById(R.id.imgFriendThumb);
 		
 		UserCheckBill userCheckBill = item.getUserCheckBill();
 		if(userCheckBill !=null){
@@ -542,26 +538,10 @@ public class MapsActivity extends FragmentActivity implements
 		});
 //		UrlImageViewHelper.setUrlDrawable(viewHolder.imgThumb, item.getLogo());
 		WhyqApplication.Instance().getImageLoader().DisplayImage(item.getLogo(),viewHolder.imgThumb);
-		rowView.setTag(viewHolder);
-		rowView.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Log.d("fdsfsfsdfs","fdsfsdfsf");
-				Intent intent = new Intent(context, ListDetailActivity.class);
-				intent.putExtra("store_id", ListActivity.storeId);
-				intent.putExtra("id", store.getStoreId());
-				context.startActivity(intent);
-			}
-		});
-		if (store != null) {
-			
 
-		}
+
 		viewHolder.imgFavouriteThumb.setTag(item);
 		viewHolder.btnDistance.setTag(item);
-		rowView.setEnabled(true);
 	}
 
 	public void onDoneClicked(View v){

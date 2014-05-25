@@ -980,6 +980,7 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 
 		Intent intent = new Intent(ListActivity.this, MapsActivity.class);
 		intent.putExtra(MapsActivity.TAG_BUNDLEBRANCH, bundle);
+		intent.putExtra("store", item);
 		startActivity(intent);
 
 	}
