@@ -75,7 +75,7 @@ public class WhyqMain extends TabActivity implements IServiceListener {
 			Intent explorerIntent = new Intent(this,
 					FavouriteActivity.class);
 			explorer.setContent(explorerIntent);
-			tabHost.addTab(explorer);
+//			tabHost.addTab(explorer);
 
 
 			TabSpec mydiary = tabHost.newTabSpec("Friends");
@@ -84,7 +84,7 @@ public class WhyqMain extends TabActivity implements IServiceListener {
 			Intent mydiaryIntent = new Intent(this,
 					WhyqFriendsActivity.class);
 			mydiary.setContent(mydiaryIntent);
-			tabHost.addTab(mydiary);
+//			tabHost.addTab(mydiary);
 
 			TabSpec profile = tabHost.newTabSpec("Profile");
 			profile.setIndicator("Profile",
@@ -145,29 +145,29 @@ public class WhyqMain extends TabActivity implements IServiceListener {
 						}
 					});
 
-			tabHost.getTabWidget().getChildAt(2)
-					.setOnTouchListener(new View.OnTouchListener() {
-
-						@Override
-						public boolean onTouch(View v, MotionEvent event) {
-							// do whatever you need
-//							FriendActivityGroup.group.clearHistory();
-							return false;
-
-						}
-					});
-			// Set the event for Profile tab
-			tabHost.getTabWidget().getChildAt(3)
-					.setOnTouchListener(new View.OnTouchListener() {
-
-						@Override
-						public boolean onTouch(View v, MotionEvent event) {
-							// do whatever you need
-//							ProfileActivityGroup.group.clearHistory();
-							return false;
-
-						}
-					});
+//			tabHost.getTabWidget().getChildAt(2)
+//					.setOnTouchListener(new View.OnTouchListener() {
+//
+//						@Override
+//						public boolean onTouch(View v, MotionEvent event) {
+//							// do whatever you need
+////							FriendActivityGroup.group.clearHistory();
+//							return false;
+//
+//						}
+//					});
+//			// Set the event for Profile tab
+//			tabHost.getTabWidget().getChildAt(3)
+//					.setOnTouchListener(new View.OnTouchListener() {
+//
+//						@Override
+//						public boolean onTouch(View v, MotionEvent event) {
+//							// do whatever you need
+////							ProfileActivityGroup.group.clearHistory();
+//							return false;
+//
+//						}
+//					});
 
 			try {
 				LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -199,12 +199,12 @@ public class WhyqMain extends TabActivity implements IServiceListener {
 //	}
 	
 	public static void hideTabBar(){
-		for(int i =0; i < 4;i++){
+		for(int i =0; i < 2;i++){
 			tabHost.getTabWidget().getChildAt(i).setVisibility(View.GONE);
 		}
 	}
 	public static void showTabBar(){
-		for(int i =0; i < 4;i++){
+		for(int i =0; i < 2;i++){
 			tabHost.getTabWidget().getChildAt(i).setVisibility(View.VISIBLE);
 		}
 	}
