@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
-                android:text="Is this your current location is the place you want to be deliver?" >
+                android:text="Please order from your current address. Type in your address here:" >
             </TextView>
 
             <EditText
@@ -108,7 +108,7 @@
                     android:paddingBottom="10dp"
                     android:paddingTop="10dp"
                     android:singleLine="true"
-                    android:text="What time do you want to be delivered" >
+                    android:text="WWhat time would you like your delivery?" >
                 </TextView>
             </LinearLayout>
 
