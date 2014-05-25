@@ -57,8 +57,8 @@ public class WhyqMain extends TabActivity implements IServiceListener {
 			context = WhyqMain.this;
 			tabHost.getTabWidget().setBackgroundColor(getResources().getColor(R.color.black));
 			// Tab for followers
-			TabSpec followers = tabHost.newTabSpec("List");
-			followers.setIndicator("List",
+			TabSpec followers = tabHost.newTabSpec("Store");
+			followers.setIndicator("Store",
 					getResources().getDrawable(R.drawable.footer_icon1));
 //			Intent followersIntent = new Intent(this, ListActivityGroup.class);
 			Intent followersIntent = new Intent(this, ListActivity.class);
