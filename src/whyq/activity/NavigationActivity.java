@@ -157,6 +157,12 @@ public class NavigationActivity extends FragmentActivity implements
 		WhyqApplication.initScreenSize(displaymetrics.widthPixels,
 				displaymetrics.heightPixels);
 	}
+	
+	protected void setExtraView(View view, boolean removeDivider) {
+		if(removeDivider)
+			findViewById(R.id.divider_extra).setVisibility(View.INVISIBLE);
+		setExtraView(view);
+	}
 
 	protected void setExtraView(View view) {
 		FrameLayout extraContainer = (FrameLayout) findViewById(R.id.buttonExtra);

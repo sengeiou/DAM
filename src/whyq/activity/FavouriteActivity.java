@@ -593,11 +593,11 @@ public class FavouriteActivity extends FragmentActivity implements Login_delegat
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
-	    if ((keyCode == KeyEvent.KEYCODE_BACK))
-	    {
-	        WhyqMain.back();
-	        return true;
-	    }
+//	    if ((keyCode == KeyEvent.KEYCODE_BACK))
+//	    {
+//	        WhyqMain.back();
+//	        return true;
+//	    }
 	    return super.onKeyDown(keyCode, event);
 	}
 	public void onDistanceClicked(View v){

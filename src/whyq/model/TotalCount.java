@@ -8,6 +8,7 @@ public class TotalCount {
 	private int total_comment;
 	private int total_friend;
 	private int total_favourite;
+	private int total_favourite_foods;
 	private int total_check_bill;
 	private int total_place_check_bill;
 	
@@ -46,6 +47,12 @@ public class TotalCount {
 	}
 	public void setTotal_favourite(int total_favourite) {
 		this.total_favourite = total_favourite;
+	}
+	public int getTotal_favourite_foods() {
+		return total_favourite_foods;
+	}
+	public void setTotal_favourite_foods(int total_favourite_foods) {
+		this.total_favourite_foods = total_favourite_foods;
 	}
 	public int getTotal_check_bill() {
 		return total_check_bill;

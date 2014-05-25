@@ -14,7 +14,6 @@ import javax.crypto.NoSuchPaddingException;
 import com.dam.R;
 
 import whyq.WhyqApplication;
-import whyq.activity.CommentActivity;
 import whyq.activity.WhyqShareActivity;
 import whyq.interfaces.IServiceListener;
 import whyq.model.Comment;
@@ -121,6 +120,17 @@ public class CommentDialog extends Dialog implements IServiceListener {
 				}
 			}
 		});
+		
+		findViewById(R.id.btnCommentHere).setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getContext(), WhyqShareActivity.class);
+				i.putExtra("store_id", mIsShowFilter ? id : "");
+				i.putExtra("is_comment", true);
+				getContext().startActivity(i);
+			}
+		});
 	}
 
 	@SuppressWarnings("unchecked")
@@ -162,34 +172,8 @@ public class CommentDialog extends Dialog implements IServiceListener {
 		setLoading(true);
 		if (!isLoadMore)
 			page = 1;
-		new Service(this).getComments(getEncryptedToken(), id, page, 20,
+		new Service(this).getComments(WhyqApplication.getRSAToken(), id, page, 20,
 				onlyFriend, mIsShowFilter);
-	}
-
-	private String getEncryptedToken() {
-		try {
-			String token = XMLParser.getToken(WhyqApplication.Instance()
-					.getApplicationContext());
-			if (token != null)
-				token = Util.encryptToken(token);
-			else
-				return null;
-			Log.d("token", "" + token);
-			return token;
-		} catch (InvalidKeyException e) {
-			e.printStackTrace();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} catch (NoSuchPaddingException e) {
-			e.printStackTrace();
-		} catch (IllegalBlockSizeException e) {
-			e.printStackTrace();
-		} catch (BadPaddingException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		return "";
 	}
 
 	protected void setLoading(boolean show) {
@@ -208,7 +192,7 @@ public class CommentDialog extends Dialog implements IServiceListener {
 		public CommentAdapter(Context context) {
 			this.mContext = context;
 			this.mItems = new ArrayList<Comment>();
-			this.mImageLoader = WhyqApplication.Instance().getImageLoader();
+			this.mImageLoader = new ImageLoader(context);
 		}
 
 		public void setItems(List<Comment> items) {
@@ -325,13 +309,6 @@ public class CommentDialog extends Dialog implements IServiceListener {
 			}
 		}
 
-	}
-
-	public void onCommentHereClicked(View v) {
-		Intent i = new Intent(getContext(), WhyqShareActivity.class);
-		i.putExtra("store_id", mIsShowFilter ? id : "");
-		i.putExtra("is_comment", true);
-		getContext().startActivity(i);
 	}
 
 }
