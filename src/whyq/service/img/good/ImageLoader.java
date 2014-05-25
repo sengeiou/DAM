@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Handler;
 import android.widget.ImageView;
 
 public class ImageLoader {
@@ -29,6 +30,8 @@ public class ImageLoader {
 	private HashMap<String, Bitmap> cache = new HashMap<String, Bitmap>();
 
 	private File cacheDir;
+	
+	Handler handler = new Handler();
 
 	public ImageLoader(Context context) {
 		// Make the background thead low priority. This way it will not affect
@@ -188,9 +191,7 @@ public class ImageLoader {
 									.equals(photoToLoad.url)) {
 								BitmapDisplayer bd = new BitmapDisplayer(bmp,
 										photoToLoad.imageView);
-								Activity a = (Activity) photoToLoad.imageView
-										.getContext();
-								a.runOnUiThread(bd);
+								handler.post(bd);
 							}
 						}
 					}

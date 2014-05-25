@@ -67,7 +67,7 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 		ACTIVITY_MAP.put("comment_like", "liked a comment of");
 	}
 
-	private static int AVATAR_SIZE =0;
+	private static int AVATAR_SIZE = 0;
 	private ActivitiesAdapter mActivitiesAdapter;
 	private PhotoAdapter mPhotoAdapter;
 	protected String mUserId;
@@ -84,10 +84,10 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 		setContentView(R.layout.activity_profile);
 
 		Intent i = getIntent();
-		
+
 		clockHeight = (int) (getResources().getDisplayMetrics().density * 32);
-        tvHeader = (TextView)findViewById(R.id.tvHeaderTitle);
-        tvHeader.setText("Profile");
+		tvHeader = (TextView) findViewById(R.id.tvHeaderTitle);
+		tvHeader.setText("Profile");
 		ExtendedListView lv = (ExtendedListView) findViewById(R.id.listview);
 		lv.setOnPositionChangedListener(this);
 		mActivitiesAdapter = new ActivitiesAdapter(this);
@@ -105,55 +105,56 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				Photo photo = (Photo) mPhotoAdapter.getItem(arg2);
-				Intent i = new Intent(WhyqUserProfileActivity.this, WhyqImageDisplayActivity.class);
-				i.putExtra(WhyqImageDisplayActivity.ARG_IMAGE_URL, photo.getImage());
+				Intent i = new Intent(WhyqUserProfileActivity.this,
+						WhyqImageDisplayActivity.class);
+				i.putExtra(WhyqImageDisplayActivity.ARG_IMAGE_URL,
+						photo.getImage());
 				startActivity(i);
-			}	
+			}
 		});
 
 		mUserId = i.getStringExtra(ARG_USER_ID);
 		if (mUserId == null) {
-			mUserId = XMLParser.getUserId(WhyqApplication.Instance().getApplicationContext());
+			mUserId = XMLParser.getUserId(WhyqApplication.Instance()
+					.getApplicationContext());
 			showTab(true);
 		} else {
 			showTab(false);
 		}
 
 		isFriendProfile = getIntent().getBooleanExtra("is_friend", false);
-		
+
 		ImageView setting = new ImageView(this);
-		
-		if(isFriendProfile){
-			isFriended = getIntent().getBooleanExtra("is_friended",false);
-			if(isFriended){
-				setting.setImageResource(R.drawable.icon_friended);	
+
+		if (isFriendProfile) {
+			isFriended = getIntent().getBooleanExtra("is_friended", false);
+			if (isFriended) {
+				setting.setImageResource(R.drawable.icon_friended);
 				setting.setClickable(false);
 				setting.setFocusable(false);
-			}else{
+			} else {
 				setting.setImageResource(R.drawable.icon_friend_invite);
 			}
-			
+
 			setting.setTag(true);
 			setBackButtonFieldShowing(true);
-		}else{
-			setting.setImageResource(R.drawable.icon_setting);
+		} else {
+			setting.setImageResource(R.drawable.header_icon_setting);
 			setting.setTag(false);
 			setBackButtonFieldShowing(false);
 		}
-		
-		
-		setExtraView(setting);
-//
-//		hideExtraButton();
-//
-//		setLoading(true);
-//		getService().getUserActivities(getEncryptedToken(), mUserId);
-//		getService().getPhotos(getEncryptedToken(), mUserId);
-//		getService().getProfiles(getEncryptedToken(), mUserId);
+
+		setExtraView(setting, true);
+		//
+		// hideExtraButton();
+		//
+		// setLoading(true);
+		// getService().getUserActivities(getEncryptedToken(), mUserId);
+		// getService().getPhotos(getEncryptedToken(), mUserId);
+		// getService().getProfiles(getEncryptedToken(), mUserId);
 
 	}
-	
-	
+
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
@@ -162,32 +163,38 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 		hideExtraButton();
 
 		setLoading(true);
-		getService().getUserActivities(WhyqApplication.Instance().getRSAToken(), mUserId);
-		getService().getPhotos(WhyqApplication.Instance().getRSAToken(), mUserId);
-		getService().getProfiles(WhyqApplication.Instance().getRSAToken(), mUserId);
+		getService().getUserActivities(
+				WhyqApplication.Instance().getRSAToken(), mUserId);
+		getService().getPhotos(WhyqApplication.Instance().getRSAToken(),
+				mUserId);
+		getService().getProfiles(WhyqApplication.Instance().getRSAToken(),
+				mUserId);
 
 	}
-	
-	public void exeInviteFriend(){
-		
-		if(!isFriended){
+
+	public void exeInviteFriend() {
+
+		if (!isFriended) {
 			setLoading(true);
-			Service service  = new Service(WhyqUserProfileActivity.this);
-			service.inviteFriendsWhyq(WhyqApplication.Instance().getRSAToken(), mUserId);
+			Service service = new Service(WhyqUserProfileActivity.this);
+			service.inviteFriendsWhyq(WhyqApplication.Instance().getRSAToken(),
+					mUserId);
 		}
 	}
+
 	private void bindData(UserProfile user) {
 
-		if(user!=null){
+		if (user != null) {
 
-			String userName = user.getFirst_name()+" "+user.getLast_name();
+			String userName = user.getFirst_name() + " " + user.getLast_name();
 			if (userName != null) {
 				setTitle(userName);
 			}
 			String avatar = user.getAvatar();
 			if (avatar != null) {
 				DisplayMetrics displaymetrics = new DisplayMetrics();
-				getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+				getWindowManager().getDefaultDisplay().getMetrics(
+						displaymetrics);
 				WhyqApplication.initScreenSize(displaymetrics.widthPixels,
 						displaymetrics.heightPixels);
 				ImageView imageView = (ImageView) findViewById(R.id.avatar);
@@ -199,7 +206,6 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 				mImageWorker.downloadImage(avatar, imageView);
 			}
 			initCategory(user);
-		
 
 		}
 	}
@@ -216,10 +222,10 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 				.findViewById(R.id.textDate);
 		tvDate.getLayoutParams().height = clockHeight / 2;
 		Util.adjustTextSizeByTextHeight(tvDate, clockHeight / 3);
-		
+
 		final whyq.view.AnalogClock analogClock = (whyq.view.AnalogClock) scrollBarPanel
 				.findViewById(R.id.clock);
-		
+
 		ActivityItem item = (ActivityItem) mActivitiesAdapter.getItem(position);
 		if (item != null) {
 			Date date = getDate(item.getUpdatedate());
@@ -234,13 +240,14 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 	@Override
 	protected void onExtraButtonPressed(View v) {
 		super.onExtraButtonPressed(v);
-		
-		if(isFriendProfile){
+
+		if (isFriendProfile) {
 			exeInviteFriend();
-		}else{
-			startActivity(new Intent(WhyqUserProfileActivity.this, ProfileWhyQActivty.class));		
+		} else {
+			startActivity(new Intent(WhyqUserProfileActivity.this,
+					ProfileWhyQActivty.class));
 		}
-		
+
 	}
 
 	private String converServerTimeToDate(String serverTime) {
@@ -282,6 +289,7 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 
 	int count = 0;
 	private UserProfile userProfile;
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onCompleted(Service service, ServiceResponse result) {
@@ -291,23 +299,26 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 			setLoading(false);
 			count = 0;
 		}
-		
+
 		showExtraButton();
 		if (result == null)
 			return;
 		DataParser parser = new DataParser();
-		
+
 		if (result.getAction() == ServiceAction.ActionGetUserActivities) {
-			ResponseData data = (ResponseData) parser.parseActivities(String.valueOf(result.getData()));
-			
+			ResponseData data = (ResponseData) parser.parseActivities(String
+					.valueOf(result.getData()));
+
 			if (data.getStatus().equals("401")) {
 				Util.loginAgain(this, data.getMessage());
 				return;
 			} else {
-				mActivitiesAdapter.setItems((List<ActivityItem>) data.getData());
+				mActivitiesAdapter
+						.setItems((List<ActivityItem>) data.getData());
 			}
 		} else if (result.getAction() == ServiceAction.ActionGetPhotos) {
-			ResponseData data = (ResponseData) parser.parsePhotos(String.valueOf(result.getData()));
+			ResponseData data = (ResponseData) parser.parsePhotos(String
+					.valueOf(result.getData()));
 			List<Photo> photos = (List<Photo>) data.getData();
 			if (photos == null || photos.size() == 0) {
 				return;
@@ -315,18 +326,21 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 			mPhotos.setVisibility(View.VISIBLE);
 			mPhotoAdapter.setItems(photos);
 		} else if (result.getAction() == ServiceAction.ActionGetProfiles) {
-			userProfile = DataParser.parseUerProfiles(String.valueOf(result.getData()));
+			userProfile = DataParser.parseUerProfiles(String.valueOf(result
+					.getData()));
 			bindData(userProfile);
-		} else if (result.isSuccess() && (result.getAction() == ServiceAction.ActionInviteFriendsWhyQ)) {
+		} else if (result.isSuccess()
+				&& (result.getAction() == ServiceAction.ActionInviteFriendsWhyQ)) {
 			setLoading(false);
-			ResponseData data = (ResponseData)result.getData();
-			if(data.getStatus().equals("200")){
-				Toast.makeText(WhyqUserProfileActivity.this, "Invited", Toast.LENGTH_LONG).show();
-			}else if(data.getStatus().equals("401")){
+			ResponseData data = (ResponseData) result.getData();
+			if (data.getStatus().equals("200")) {
+				Toast.makeText(WhyqUserProfileActivity.this, "Invited",
+						Toast.LENGTH_LONG).show();
+			} else if (data.getStatus().equals("401")) {
 				Util.loginAgain(getParent(), data.getMessage());
-			}else if(data.getStatus().equals("204")){
-				
-			}else{
+			} else if (data.getStatus().equals("204")) {
+
+			} else {
 				Util.showDialog(WhyqUserProfileActivity.this, data.getMessage());
 			}
 		}
@@ -337,33 +351,47 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 		if (total == null) {
 			return;
 		}
-		final int totalCheckBill = total.getTotal_place_check_bill();
-		bindCategory(R.id.check_bill, R.drawable.btn_blue_place,
-				totalCheckBill + " places", "checked bills",
-				new OnClickListener() {
+		// final int totalCheckBill = total.getTotal_place_check_bill();
+		// bindCategory(R.id.check_bill, R.drawable.btn_blue_place,
+		// totalCheckBill + " places", "checked bills",
+		// new OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View v) {
+		// Intent i = new Intent(WhyqUserProfileActivity.this,
+		// WhyqCheckedBillActivity.class);
+		// i.putExtra(WhyqCheckedBillActivity.ARG_USER_ID, mUserId);
+		// startActivity(i);
+		// }
+		// });
+		final int totalFavourite = total.getTotal_favourite();
+		bindCategory(R.id.favourite_stores, R.drawable.btn_profile_fav_store,
+				"" + totalFavourite, "Favourite stores", new OnClickListener() {
 
 					@Override
 					public void onClick(View v) {
 						Intent i = new Intent(WhyqUserProfileActivity.this,
-								WhyqCheckedBillActivity.class);
-						i.putExtra(WhyqCheckedBillActivity.ARG_USER_ID, mUserId);
+								FavouriteActivity.class);
 						startActivity(i);
 					}
 				});
 		final int totalHistory = total.getTotal_check_bill();
-		bindCategory(R.id.history, R.drawable.btn_blue_history, isFriendProfile==true?""+total.getTotal_friend():totalHistory + "",
-				isFriendProfile==true?"Friends":"History", new OnClickListener() {
+		bindCategory(R.id.history, R.drawable.btn_profile_history,
+				isFriendProfile == true ? "" + total.getTotal_friend()
+						: totalHistory + "",
+				isFriendProfile == true ? "Friends" : "History",
+				new OnClickListener() {
 
 					@Override
 					public void onClick(View v) {
-						
-						if(isFriendProfile){
+
+						if (isFriendProfile) {
 							Intent i = new Intent(WhyqUserProfileActivity.this,
 									WhyqFriendsActivity.class);
 							i.putExtra("is_friend", true);
 							i.putExtra("friend_id", userProfile.getId());
 							startActivity(i);
-						}else{
+						} else {
 							Intent i = new Intent(WhyqUserProfileActivity.this,
 									WhyqHistoryActivity.class);
 							i.putExtra(WhyqHistoryActivity.ARG_USER_ID, mUserId);
@@ -372,28 +400,32 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 					}
 				});
 
-		final String totalSaving = total.getTotal_saving_money();
-		bindCategory(R.id.saving, R.drawable.btn_blue_saving, "$" + totalSaving,
-				"Saving", new OnClickListener() {
+		final int totalFavFood = total.getTotal_favourite_foods();
+		bindCategory(R.id.favourite_foods, R.drawable.btn_profile_fav_food, ""
+				+ totalFavFood, "Favourtie foods", new OnClickListener() {
 
-					@Override
-					public void onClick(View v) {
-						Intent i = new Intent(WhyqUserProfileActivity.this,
-								WhyqCheckedBillActivity.class);
-						i.putExtra(WhyqCheckedBillActivity.ARG_USER_ID, mUserId);
-						i.putExtra(WhyqCheckedBillActivity.ARG_MODE, WhyqCheckedBillActivity.SAVING);
-						startActivity(i);
-					}
-				});
+			@Override
+			public void onClick(View v) {
+				// Intent i = new Intent(WhyqUserProfileActivity.this,
+				// WhyqCheckedBillActivity.class);
+				// i.putExtra(WhyqCheckedBillActivity.ARG_USER_ID, mUserId);
+				// i.putExtra(WhyqCheckedBillActivity.ARG_MODE,
+				// WhyqCheckedBillActivity.SAVING);
+				// startActivity(i);
+				Toast.makeText(getApplicationContext(), "In construction",
+						Toast.LENGTH_SHORT).show();
+			}
+		});
 
 		final int totalComment = total.getTotal_comment();
-		bindCategory(R.id.comment, R.drawable.btn_blue_tips,
-				totalComment + "", "Comments",
-				new OnClickListener() {
+		bindCategory(R.id.comment, R.drawable.btn_profile_comments,
+				totalComment + "", "Comments", new OnClickListener() {
 
 					@Override
 					public void onClick(View v) {
-						Intent intent = new Intent(WhyqUserProfileActivity.this, CommentActivity.class);
+						Intent intent = new Intent(
+								WhyqUserProfileActivity.this,
+								CommentActivity.class);
 						intent.putExtra("is_show_filter", false);
 						intent.putExtra("user_id", mUserId);
 						startActivity(intent);
@@ -480,10 +512,11 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 			} else {
 				holder.activity.setText(SpannableUtils.stylistText(message,
 						key, 0xff808080));
-				
+
 			}
-			if(item.getActivity_type().toUpperCase().equals("COMMENT")){
-				holder.activity.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_status_comment, 0, 0, 0);
+			if (item.getActivity_type().toUpperCase().equals("COMMENT")) {
+				holder.activity.setCompoundDrawablesWithIntrinsicBounds(
+						R.drawable.icon_status_comment, 0, 0, 0);
 			}
 			return convertView;
 		}
@@ -556,7 +589,7 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 			final Photo item = mItems.get(position);
 
 			ViewHolder holder = getViewHolder(convertView);
-//			mImageWorker.downloadImage(item.getImage(), holder.photo);
+			// mImageWorker.downloadImage(item.getImage(), holder.photo);
 			mImageLoader.DisplayImage(item.getImage(), holder.photo);
 
 			return convertView;
@@ -582,7 +615,8 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 		}
 
 	}
-	public void onBackClicked(View v){
+
+	public void onBackClicked(View v) {
 		finish();
 	}
 }

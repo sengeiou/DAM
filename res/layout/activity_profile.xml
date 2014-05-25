@@ -16,7 +16,7 @@
         android:paddingTop="8dp" >
 
         <include
-            android:id="@+id/check_bill"
+            android:id="@+id/favourite_stores"
             layout="@layout/category_item1" 
             android:background="@drawable/btn_blue_place"/>
 
@@ -36,7 +36,7 @@
         android:paddingTop="@dimen/base_padding" >
 
         <include
-            android:id="@+id/saving"
+            android:id="@+id/favourite_foods"
             layout="@layout/category_item1" />
 
         <include

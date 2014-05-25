@@ -46,6 +46,7 @@ public class UserProfileHandler extends BaseHandler {
 	private static final String TAG_TOTAL_COMMENT = "total_comment";
 	private static final String TAG_TOTAL_FRIEND = "total_friend";
 	private static final String TAG_TOTAL_FAVOURITE = "total_favourite";
+	private static final String TAG_TOTAL_FAVOURITE_FOOD = "total_favourite_food";
 	private static final String TAG_TOTAL_CHECK_BILL = "total_check_bill";
 	private static final String TAG_TOTAL_PLACE_CHECK_BILL = "total_place_check_bill";
 
@@ -74,6 +75,8 @@ public class UserProfileHandler extends BaseHandler {
 				totalCount.setTotal_place_check_bill(getInt());
 			} else if (localName.equals(TAG_TOTAL_SAVING_MONEY)) {
 				totalCount.setTotal_saving_money(getString());
+			} else if (localName.equals(TAG_TOTAL_FAVOURITE_FOOD)) {
+				totalCount.setTotal_favourite_foods(getInt());
 			}
 		}
 		
