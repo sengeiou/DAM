@@ -188,7 +188,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 	
 	public boolean checkInputData() {
 		if (cbASAP.isChecked()) {
-
+			
 			Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
 
 			String otherAddress = atAddress.getText().toString();//etOtherAddress.getText().toString();
@@ -208,7 +208,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 				return false;
 			} else {
 				showDialog();
-				new asyncExeOrderSend().execute();
+				showRememberInfoDialog();
 
 			}
 			return true;
@@ -244,13 +244,14 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 				return false;
 			} else {
 				showDialog();
-				new asyncExeOrderSend().execute();
+				showRememberInfoDialog();
 				return true;
 			}
 		}
 
 	}
 
+	@SuppressWarnings("deprecation")
 	public void showRememberInfoDialog(){
 		android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(
 				context);
@@ -263,6 +264,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 
 				mPhoneNumber = etPhoneNumber.getText().toString();
 				alertError.dismiss();
+				new asyncExeOrderSend().execute();
 			}
 		});
 		alertError.setButton2("No", new DialogInterface.OnClickListener() {
@@ -270,6 +272,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 			public void onClick(DialogInterface dialog, int which) {
 				mPhoneNumber = null;
 				alertError.dismiss();
+				new asyncExeOrderSend().execute();
 			}
 		});
 		alertError.show();
@@ -281,6 +284,12 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 			// TODO Auto-generated constructor stub
 		}
 
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			
+		}
 		@Override
 		protected void onPostExecute(HashMap<String, String> location) {
 			// TODO Auto-generated method stub
@@ -354,6 +363,9 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 					Util.showDialog(context, data.getMessage());
 				}
 			}
+			finish();
+		}else if(result.getAction() == ServiceAction.ActionOrderSend){
+			finish();
 		}
 	}
 
