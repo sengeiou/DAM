@@ -5,12 +5,12 @@
     android:layout_margin="@dimen/base_padding"
     android:layout_weight="1"
     android:orientation="horizontal"
-    android:weightSum="4" >
+    android:weightSum="3" >
 
-    <View
+    <!-- <View
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_weight="1" />
+        android:layout_weight="1" /> -->
 
     <LinearLayout
         android:layout_width="0dp"

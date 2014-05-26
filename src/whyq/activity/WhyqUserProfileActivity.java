@@ -406,14 +406,12 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 
 			@Override
 			public void onClick(View v) {
-				// Intent i = new Intent(WhyqUserProfileActivity.this,
-				// WhyqCheckedBillActivity.class);
-				// i.putExtra(WhyqCheckedBillActivity.ARG_USER_ID, mUserId);
-				// i.putExtra(WhyqCheckedBillActivity.ARG_MODE,
-				// WhyqCheckedBillActivity.SAVING);
-				// startActivity(i);
-				Toast.makeText(getApplicationContext(), "In construction",
-						Toast.LENGTH_SHORT).show();
+				Intent i = new Intent(WhyqUserProfileActivity.this,
+						FavouriteFoodActivity.class);
+				startActivity(i);
+				// new Service().getFavouriteFoods(1);
+				// Toast.makeText(getApplicationContext(), "In construction",
+				// Toast.LENGTH_SHORT).show();
 			}
 		});
 

@@ -319,6 +319,12 @@
             android:windowSoftInputMode="adjustUnspecified" >
         </activity>
         <activity
+            android:name="whyq.activity.FavouriteFoodActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="adjustUnspecified" >
+        </activity>
+        <activity
             android:name="whyq.activity.LoginHome"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"

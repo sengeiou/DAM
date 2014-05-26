@@ -450,6 +450,12 @@ public class Service implements Runnable {
 		case ActionPostFBAdd:
 			resObj = parser.parserPostOpenGraphResult(result);
 			break;
+		case ActionGetFavouriteFoods:
+//			resObj = parser.parserPostOpenGraphResult(result);
+			break;
+		case ActionPostFavouriteFoods:
+//			resObj = parser.parserPostOpenGraphResult(result);
+			break;
 		default:
 			resObj = result;
 			Logger.appendLog(result);
@@ -821,6 +827,32 @@ public class Service implements Runnable {
 		params.put("time_zone", TimeZone.getDefault());
 		request("/m/business/show", params, true, false);
 
+	}
+	
+	public void getFavouriteFoods(int page) {
+		// TODO Auto-generated method stub
+		_action = ServiceAction.ActionGetFavouriteFoods;
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("page", page);
+		params.put("token", WhyqApplication.Instance().getRSAToken());
+		params.put("app", Constants.APP);
+		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
+		request("/m/member/product/like", params, true, false);
+	}
+	
+	public void postLikeFavouriteFoods(String id) {
+		// TODO Auto-generated method stub
+		_action = ServiceAction.ActionPostFavouriteFoods;
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("product_id", id);
+		params.put("token", WhyqApplication.Instance().getRSAToken());
+		params.put("app", Constants.APP);
+		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
+		request("/m/product/like", params, true, false);
 	}
 
 	public void orderDelivery(String storeId, String otherAddress,

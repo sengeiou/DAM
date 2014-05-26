@@ -15,6 +15,7 @@ import android.graphics.Typeface;
 import android.location.Location;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 
 
 /**
@@ -84,6 +85,7 @@ public class WhyqApplication extends Application {
 		
 		try {
 //			DAM token
+			Log.d("token", XMLParser.getToken(Instance().getApplicationContext()));
 			return XMLParser.getToken(Instance().getApplicationContext());
 //			WHYQ token
 //			RSA rsa = new RSA();

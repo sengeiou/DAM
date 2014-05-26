@@ -13,6 +13,7 @@ import whyq.model.GroupMenu;
 import whyq.model.Menu;
 import whyq.model.OptionItem;
 import whyq.model.SizeItem;
+import whyq.service.Service;
 import whyq.utils.Util;
 import android.content.Context;
 import android.text.Html;
@@ -31,6 +32,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.custom.WebImageView;
 import com.dam.R;
@@ -158,6 +160,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 				viewHolder.btnRemove = (Button) view.findViewById(R.id.btnRemove);
 				viewHolder.lnPreview = (LinearLayout) view.findViewById(R.id.ln_preview_extra_selected);
 				viewHolder.rlExtraView = (RelativeLayout) view.findViewById(R.id.rl_extra_view);
+				viewHolder.tvFavouriteCount = (TextView) view.findViewById(R.id.tv_favourite_food_count);
+				viewHolder.imgFavourite = (ImageView) view.findViewById(R.id.imgFavouriteFood);
 
 				viewHolder.tvItem1NameSize = (TextView) view.findViewById(R.id.tv_item1_name_size);
 				viewHolder.tvItem1PriceSize = (TextView) view.findViewById(R.id.tv_item1_price_size);
@@ -412,6 +416,12 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 			viewHolder.tvCount.setText(""+item.getUnitForBill());
 			viewHolder.storeId = item.getStoreId();
 			viewHolder.menuId = item.getId();
+			viewHolder.imgFavourite.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					new Service().postLikeFavouriteFoods(item.getId());
+				}
+			});
 			
 			viewList.put(item.getId(), view);
 			viewHolder.btnRemove.setTag(item);
@@ -1015,8 +1025,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 	}
 
 	public static class ViewHolderMitemInfo {
-		public TextView tvType, tvPrice, tvCount;
-		public ImageView imgThumb;
+		public TextView tvType, tvPrice, tvCount, tvFavouriteCount;
+		public ImageView imgThumb, imgFavourite;
 		public String storeId;
 		public Button btnAdd;
 		public Button btnRemove;
