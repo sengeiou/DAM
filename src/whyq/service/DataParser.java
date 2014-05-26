@@ -43,6 +43,7 @@ import whyq.model.OptionItem;
 import whyq.model.OrderCheckData;
 import whyq.model.OrderSendResult;
 import whyq.model.Photo;
+import whyq.model.Product;
 import whyq.model.ProductTypeInfo;
 import whyq.model.Promotion;
 import whyq.model.ResponseData;
@@ -453,6 +454,66 @@ public class DataParser {
 		SAXParser parser = factory.newSAXParser();
 		XMLReader xmlReader = parser.getXMLReader();
 		return xmlReader;
+	}
+	
+	public Object parseFavouriteFood(String input) {
+		try {
+			ArrayList<Product> productList = new ArrayList<Product>();
+			Document doc = XMLfromString(input);
+			ResponseData data = new ResponseData();
+			String statusResponse = doc.getElementsByTagName("Status").item(0)
+					.getFirstChild().getNodeValue();
+			if (statusResponse.equals("200")) {
+				NodeList nodeList = doc.getElementsByTagName("obj");
+				
+				for (int i = 0; i < nodeList.getLength(); i++) {
+					try {
+						Element permElement = (Element) nodeList.item(i);
+						Product mProduct = new Product();
+						mProduct.id = getValue(permElement, "id");
+						mProduct.storeId = getValue(permElement, "store_id");
+						mProduct.name = getValue(permElement, "name_product");
+						mProduct.value = getValue(permElement, "value");
+						mProduct.valuePromotion = getValue(permElement, "value_promotion");
+						mProduct.description = getValue(permElement, "description");
+						mProduct.imgProduct = getValue(permElement, "image_product");
+						mProduct.imgThumb = getValue(permElement, "image_thumb");
+						mProduct.status = getValue(permElement, "status");
+						mProduct.productTypeId = getValue(permElement, "type_product_id");
+						mProduct.createDate = getValue(permElement, "createdate");
+						mProduct.updateDate = getValue(permElement, "updatedate");
+						mProduct.sort = getValue(permElement, "sort");
+						mProduct.likeCount = getValue(permElement, "count_like");
+						mProduct.isLike = getValue(permElement, "is_like").equals("1") ? true : false;
+						
+						NodeList groupItemInfo = (NodeList) permElement
+								.getElementsByTagName("group_item_info");
+						mProduct.groupItemId = getValue(((Element)groupItemInfo.item(0)), "id");
+						mProduct.groupItemName = getValue(((Element)groupItemInfo.item(0)), "group_name");
+						
+						
+						productList.add(mProduct);
+					} catch (Exception e){
+					}
+				}
+				final String mes = doc.getElementsByTagName("Message").item(0)
+						.getFirstChild().getNodeValue();
+				data.setStatus(statusResponse);
+				data.setData(productList);
+				data.setMessage(mes);
+				return data;
+			} else {
+				final String mes = doc.getElementsByTagName("Message").item(0)
+						.getFirstChild().getNodeValue();
+				data.setStatus(statusResponse);
+				data.setData(productList);
+				data.setMessage(mes);
+				return data;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return input;
 	}
 
 	public Object parseBusinessList(String result) {
@@ -2092,4 +2153,6 @@ public class DataParser {
 		}
 		return true;
 	}
+	
+
 }
