@@ -627,7 +627,11 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			permListMain = permList;
+			if(permList!=null){
+				permListMain = permList;
+			}else{
+				
+			}
 			/**
 			 * MSA
 			 */
@@ -1008,7 +1012,7 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 					if (isLoadMore) {
 						permListMain.addAll((ArrayList<Store>) data.getData());
 					} else {
-						permListMain = (ArrayList<Store>) data.getData();
+//						permListMain = (ArrayList<Store>) data.getData();
 					}
 
 					exeBindSearchExpandableStoreData(permListMain);
@@ -1021,7 +1025,7 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 						}
 						permListMain.addAll((ArrayList<Store>) data.getData());
 					} else {
-						permListMain = (ArrayList<Store>) data.getData();
+//						permListMain = (ArrayList<Store>) data.getData();
 					}
 					loadPerms();
 
@@ -1035,7 +1039,7 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 				Util.loginAgain(getParent(), data.getMessage());
 			} else if (data.getStatus().equals("204")) {
 				if (isExpandableSearch) {
-					permListMain = (ArrayList<Store>) data.getData();
+//					permListMain = (ArrayList<Store>) data.getData();
 					exeBindSearchExpandableStoreData(permListMain);
 					isExpandableSearch = false;
 				}
@@ -1091,7 +1095,7 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 
 	private void updateFavoriteWitId(String id, boolean b) {
 		// TODO Auto-generated method stub
-		int size = whyqListView.getChildCount();
+		int size = permListMain.size();
 		int value;
 		Store item2;
 		ViewHolder holder;

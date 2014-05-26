@@ -397,8 +397,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 				setViewVisibility(view.findViewById(R.id.divery_2), false);
 			}
 			
-			setViewVisibility(view.findViewById(R.id.ln_done_select_extra), isHaveMenu);
-			setViewVisibility(view.findViewById(R.id.rl_extra), isHaveMenu);
+//			setViewVisibility(view.findViewById(R.id.ln_done_select_extra), isHaveMenu);
+//			setViewVisibility(view.findViewById(R.id.rl_extra), isHaveMenu);
 			
 			WhyqApplication.Instance().getImageLoader().DisplayImage(item.getImageThumb(), viewHolder.imgThumb);
 			
@@ -428,6 +428,9 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 				float price = ((ListDetailActivity) mContext).getTotalSize(item.getSizeItemList())
 						+ ((ListDetailActivity) mContext).getTotalOption(item.getOptionItemList())
 						+ ((ListDetailActivity) mContext).getTotalExtra(item.getExtraItemList());
+				if(price <= 0){
+					price = Float.parseFloat(item.getValue());
+				}
 				viewHolder.tvPrice.setText("$" + price);
 			}
 			
