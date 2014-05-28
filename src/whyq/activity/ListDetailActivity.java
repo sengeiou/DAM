@@ -1370,12 +1370,25 @@ public class ListDetailActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 		float total = 0;
 		for (String key : billList.keySet()) {
-			List<Bill> list = billList.get(key);
-			for (Bill bill : list) {
-				float sizeValue = getTotalSize(bill.getSizeList());
-				float optionValue = getTotalOption(bill.getOptionList());
-				float extraValue = getTotalExtra(bill.getExtraList());
-				total+= Integer.parseInt(bill.getUnit())*(sizeValue + optionValue + extraValue);
+			try {
+
+				List<Bill> list = billList.get(key);
+				for (Bill bill : list) {
+					float sizeValue = getTotalSize(bill.getSizeList());
+					float price = 0;
+					if(sizeValue == 0){
+						price = Float.parseFloat(bill.getPrice());
+						price =Integer.parseInt(bill.getUnit())*price;
+					}
+					float optionValue = getTotalOption(bill.getOptionList());
+					float extraValue = getTotalExtra(bill.getExtraList());
+					
+					total+= price + Integer.parseInt(bill.getUnit())*(sizeValue + optionValue + extraValue);
+				}
+			
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
 			}
 		}
 		btnTotalValue.setText("" + round(total, 2));

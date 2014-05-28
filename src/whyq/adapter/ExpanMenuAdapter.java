@@ -455,11 +455,13 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 				float optinValue = 0;
 				float extraValue = 0;
 				for(final Bill bill: billList){
-
+					final View preview = LayoutInflater.from(mContext).inflate(R.layout.item_extra_preview, viewGroup,false);
+					ImageButton btnDeleteMenu = (ImageButton)preview.findViewById(R.id.imgbtn_delete_item);
+					viewHolder.lnPreview.addView(preview);
 					if(bill.getSizeList() !=null && bill.getSizeList().size() > 0){
-						final View preview = LayoutInflater.from(mContext).inflate(R.layout.item_extra_preview, viewGroup,false);
-						ImageButton btnDeleteMenu = (ImageButton)preview.findViewById(R.id.imgbtn_delete_item);
-						viewHolder.lnPreview.addView(preview);
+//						final View preview = LayoutInflater.from(mContext).inflate(R.layout.item_extra_preview, viewGroup,false);
+//						ImageButton btnDeleteMenu = (ImageButton)preview.findViewById(R.id.imgbtn_delete_item);
+//						viewHolder.lnPreview.addView(preview);
 						
 						if(bill.getSizeList() !=null && bill.getSizeList().size() > 0){
 							viewHolder.lnPreview.setVisibility(View.VISIBLE);
@@ -478,38 +480,37 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 							((TextView) preview.findViewById(R.id.tv_extra)).setText("Extra: $"+extraItem.getValue());
 							sizeValue += Float.parseFloat(extraItem.getValue());
 						}
-						btnDeleteMenu.setOnClickListener(new View.OnClickListener() {
-							
-							@Override
-							public void onClick(View v) {
-								// TODO Auto-generated method stub
-								viewHolder.lnPreview.removeView(preview);
-								deleteBill(bill);
-							}
-
-							private void deleteBill(Bill bill) {
-								// TODO Auto-generated method stub
-								deleteBill(item, bill, billList);
-							}
-
-							private void deleteBill(Menu item, Bill bill, List<Bill> billList) {
-								// TODO Auto-generated method stub
-								List<Bill> result = billList;
-								for(int i=0; i < billList.size(); i++){
-									Bill bill2 =  billList.get(i);
-									if(bill2== bill){
-										result.remove(bill2);
-									}
-								}
-								ListDetailActivity.billList.remove(item.getId());
-								ListDetailActivity.billList.put(item.getId(), result);
-								notifyDataSetChanged();
-								((ListDetailActivity)mContext).updateTotal();
-							}
-						});
 						
 					}
-					
+					btnDeleteMenu.setOnClickListener(new View.OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							// TODO Auto-generated method stub
+							viewHolder.lnPreview.removeView(preview);
+							deleteBill(bill);
+						}
+
+						private void deleteBill(Bill bill) {
+							// TODO Auto-generated method stub
+							deleteBill(item, bill, billList);
+						}
+
+						private void deleteBill(Menu item, Bill bill, List<Bill> billList) {
+							// TODO Auto-generated method stub
+							List<Bill> result = billList;
+							for(int i=0; i < billList.size(); i++){
+								Bill bill2 =  billList.get(i);
+								if(bill2== bill){
+									result.remove(bill2);
+								}
+							}
+							ListDetailActivity.billList.remove(item.getId());
+							ListDetailActivity.billList.put(item.getId(), result);
+							notifyDataSetChanged();
+							((ListDetailActivity)mContext).updateTotal();
+						}
+					});
 				}
 			}
 			
@@ -787,9 +788,10 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		bill.setId(menu.getId());
 		bill.setProductName(menu.getNameProduct());
 		bill.setProductId(menu.getStoreId());
-		float price = ((ListDetailActivity) mContext).getTotalSize(menu.getSizeItemList())
-				+ ((ListDetailActivity) mContext).getTotalOption(menu.getOptionItemList())
-				+ ((ListDetailActivity) mContext).getTotalExtra(menu.getExtraItemList());
+//		float price = ((ListDetailActivity) mContext).getTotalSize(menu.getSizeItemList())
+//				+ ((ListDetailActivity) mContext).getTotalOption(menu.getOptionItemList())
+//				+ ((ListDetailActivity) mContext).getTotalExtra(menu.getExtraItemList());
+		float price = Float.parseFloat(menu.getValue());
 		bill.setPrice(""+price);
 		bill.setUnit(""+menu.getUnitForBill());
 		for(SizeItem item: sizelist){
