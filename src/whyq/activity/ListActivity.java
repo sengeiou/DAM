@@ -627,10 +627,9 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			if(permList!=null){
+//			if(permList!=null)
+			{
 				permListMain = permList;
-			}else{
-				
 			}
 			/**
 			 * MSA
