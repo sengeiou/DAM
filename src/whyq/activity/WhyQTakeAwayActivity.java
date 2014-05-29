@@ -322,8 +322,8 @@ public class WhyQTakeAwayActivity extends Activity implements OnClickListener,
 	public void onClose(int type, Object data) {
 		// TODO Auto-generated method stub
 		finish();
-		WhyqOrderMenuActivity.sOrderMenuActivity.dismiss();
-		WhyQBillScreen.sBillActivity.finish();
+//		WhyqOrderMenuActivity.sOrderMenuActivity.dismiss();
+//		WhyQBillScreen.sBillActivity.finish();
 	}
 
 }
