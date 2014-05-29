@@ -401,8 +401,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 				setViewVisibility(view.findViewById(R.id.divery_2), false);
 			}
 			
-//			setViewVisibility(view.findViewById(R.id.ln_done_select_extra), isHaveMenu);
-//			setViewVisibility(view.findViewById(R.id.rl_extra), isHaveMenu);
+			setViewVisibility(view.findViewById(R.id.ln_done_select_extra), isHaveMenu);
+			setViewVisibility(view.findViewById(R.id.rl_extra), isHaveMenu);
 			
 			WhyqApplication.Instance().getImageLoader().DisplayImage(item.getImageThumb(), viewHolder.imgThumb);
 			
@@ -455,13 +455,13 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 				float optinValue = 0;
 				float extraValue = 0;
 				for(final Bill bill: billList){
-					final View preview = LayoutInflater.from(mContext).inflate(R.layout.item_extra_preview, viewGroup,false);
-					ImageButton btnDeleteMenu = (ImageButton)preview.findViewById(R.id.imgbtn_delete_item);
-					viewHolder.lnPreview.addView(preview);
+//					final View preview = LayoutInflater.from(mContext).inflate(R.layout.item_extra_preview, viewGroup,false);
+//					ImageButton btnDeleteMenu = (ImageButton)preview.findViewById(R.id.imgbtn_delete_item);
+//					viewHolder.lnPreview.addView(preview);
 					if(bill.getSizeList() !=null && bill.getSizeList().size() > 0){
-//						final View preview = LayoutInflater.from(mContext).inflate(R.layout.item_extra_preview, viewGroup,false);
-//						ImageButton btnDeleteMenu = (ImageButton)preview.findViewById(R.id.imgbtn_delete_item);
-//						viewHolder.lnPreview.addView(preview);
+						final View preview = LayoutInflater.from(mContext).inflate(R.layout.item_extra_preview, viewGroup,false);
+						ImageButton btnDeleteMenu = (ImageButton)preview.findViewById(R.id.imgbtn_delete_item);
+						viewHolder.lnPreview.addView(preview);
 						
 						if(bill.getSizeList() !=null && bill.getSizeList().size() > 0){
 							viewHolder.lnPreview.setVisibility(View.VISIBLE);
@@ -481,36 +481,37 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 							sizeValue += Float.parseFloat(extraItem.getValue());
 						}
 						
-					}
-					btnDeleteMenu.setOnClickListener(new View.OnClickListener() {
-						
-						@Override
-						public void onClick(View v) {
-							// TODO Auto-generated method stub
-							viewHolder.lnPreview.removeView(preview);
-							deleteBill(bill);
-						}
-
-						private void deleteBill(Bill bill) {
-							// TODO Auto-generated method stub
-							deleteBill(item, bill, billList);
-						}
-
-						private void deleteBill(Menu item, Bill bill, List<Bill> billList) {
-							// TODO Auto-generated method stub
-							List<Bill> result = billList;
-							for(int i=0; i < billList.size(); i++){
-								Bill bill2 =  billList.get(i);
-								if(bill2== bill){
-									result.remove(bill2);
-								}
+						btnDeleteMenu.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								viewHolder.lnPreview.removeView(preview);
+								deleteBill(bill);
 							}
-							ListDetailActivity.billList.remove(item.getId());
-							ListDetailActivity.billList.put(item.getId(), result);
-							notifyDataSetChanged();
-							((ListDetailActivity)mContext).updateTotal();
-						}
-					});
+
+							private void deleteBill(Bill bill) {
+								// TODO Auto-generated method stub
+								deleteBill(item, bill, billList);
+							}
+
+							private void deleteBill(Menu item, Bill bill, List<Bill> billList) {
+								// TODO Auto-generated method stub
+								List<Bill> result = billList;
+								for(int i=0; i < billList.size(); i++){
+									Bill bill2 =  billList.get(i);
+									if(bill2== bill){
+										result.remove(bill2);
+									}
+								}
+								ListDetailActivity.billList.remove(item.getId());
+								ListDetailActivity.billList.put(item.getId(), result);
+								notifyDataSetChanged();
+								((ListDetailActivity)mContext).updateTotal();
+							}
+						});
+					}
+		
 				}
 			}
 			
@@ -711,6 +712,11 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		if (item != null) {
 			item.setUnitForBill(item.getUnitForBill()+1);
 			changeItem(item);
+			if(item.getExtraItemList().size() > 0 || item.getOptionItemList().size() >0 || item.getSizeItemList().size() > 0){
+
+			}else{
+				exeAddItemToList(item);
+			}
 //			Bill bill = new Bill();
 //			bill.setId(item.getId());
 //			bill.setPrice(item.getValue());
@@ -771,6 +777,11 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		// TODO Auto-generated method stub
 
 		Menu menu = (Menu)v.getTag();
+		exeAddItemToList(menu);
+	}
+
+	private void exeAddItemToList(Menu menu) {
+		// TODO Auto-generated method stub
 		List<SizeItem> sizelist = menu.getSizeItemList();
 		List<OptionItem> optionList = menu.getOptionItemList();
 		List<ExtraItem> extraList = menu.getExtraItemList();
@@ -821,7 +832,7 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		ListDetailActivity.billList.put(menu.getId(), billList);
 		notifyDataSetChanged();
 		((ListDetailActivity)mContext).updateTotal();
-	
+
 	}
 
 	private void onRemoveMenuSelectClicked(View v) {
