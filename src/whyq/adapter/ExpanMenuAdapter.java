@@ -419,6 +419,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 			viewHolder.imgFavourite.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
+					
+					viewHolder.imgFavourite.setImageResource(R.drawable.icon_fav_enable);;
 					new Service().postLikeFavouriteFoods(item.getId());
 				}
 			});
