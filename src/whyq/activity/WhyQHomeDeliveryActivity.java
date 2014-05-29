@@ -217,7 +217,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 
 			}
 			
-			exeSetSchedulePush();
+			exeCheckTimeInput();
 			
 			return true;
 		} else {
@@ -371,15 +371,14 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 					Util.showDialog(context, data.getMessage());
 				}
 			}
-			exeSetSchedulePush();
-			WhyqApplication.Instance().pushNotification(WhyqApplication.Instance().getApplicationContext(), scheduleDeliery, "Ready to get delivery", "your delivery action will be 15 minutes next");
+			WhyqApplication.Instance().pushNotification(WhyqApplication.Instance().getApplicationContext(), scheduleDeliery, "Ready to get your product?", "your delivery action will be 15 minutes next");
 			finish();
 		}else if(result.getAction() == ServiceAction.ActionOrderSend){
 			finish();
 		}
 	}
 
-	private boolean exeSetSchedulePush() {
+	private boolean exeCheckTimeInput() {
 		// TODO Auto-generated method stub
 		Time today = new Time(Time.getCurrentTimezone());
 		today.setToNow();
