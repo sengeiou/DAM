@@ -393,7 +393,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 			calMinutes = currentMinutes - minutesNow;
 			scheduleDeliery = calHour*60*60*1000 + calMinutes*60 * 1000;
 		}else{
-			Toast.makeText(context, "Time set now correct", Toast.LENGTH_LONG).show();
+			Toast.makeText(context, "Time incorrect", Toast.LENGTH_LONG).show();
 			return false;
 		}
 		
