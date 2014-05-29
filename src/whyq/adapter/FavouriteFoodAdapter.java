@@ -74,6 +74,7 @@ public class FavouriteFoodAdapter extends BaseExpandableListAdapter {
 		//
 		// } else {
 		TextView tvGroupName = new TextView(parent.getContext());
+		tvGroupName.setPadding(10, 0, 0, 0);
 		tvGroupName.setTextColor(parent.getContext().getResources()
 				.getColor(R.color.red));
 		tvGroupName.setTextSize(21);

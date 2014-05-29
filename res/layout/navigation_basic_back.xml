@@ -39,7 +39,7 @@
         android:text="Dine in"
         android:textColor="#FFFFFF"
         android:textSize="@dimen/text_size_header"
-        android:textStyle="normal" />
+        android:textStyle="bold" />
 
     <ProgressBar
         android:id="@+id/prgBar"
