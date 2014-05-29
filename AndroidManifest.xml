@@ -445,6 +445,11 @@
             android:name="whyq.activity.CommentActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <receiver android:name="whyq.service.pushnotification.AlarmReceiver" >
+        </receiver>
+        <service
+            android:name="whyq.service.pushnotification.NotificationService"
+            android:enabled="true" />
     </application>
 
 </manifest>

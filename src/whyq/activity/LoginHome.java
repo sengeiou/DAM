@@ -3,6 +3,8 @@
  */
 package whyq.activity;
 
+import java.util.Calendar;
+
 import twitter4j.auth.AccessToken;
 import whyq.WhyqApplication;
 import whyq.WhyqMain;

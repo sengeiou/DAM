@@ -5,10 +5,15 @@ package whyq;
 
 import whyq.model.User;
 import whyq.service.img.good.ImageLoader;
+import whyq.service.pushnotification.AlarmReceiver;
 import whyq.utils.RSA;
 import whyq.utils.Util;
 import whyq.utils.XMLParser;
+import android.app.AlarmManager;
 import android.app.Application;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Typeface;
@@ -16,12 +21,11 @@ import android.location.Location;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
-
+import android.widget.Toast;
 
 /**
- * @author Linh Nguyen
- * This class is to store the global information (data objects, variable)
- * during the Permping application is running
+ * @author Linh Nguyen This class is to store the global information (data
+ *         objects, variable) during the Permping application is running
  */
 public class WhyqApplication extends Application {
 	/**
@@ -44,26 +48,29 @@ public class WhyqApplication extends Application {
 	private Location currentLocation;
 
 	/**
-	 * The current login type 
+	 * The current login type
 	 */
 	private String loginType;
 
 	public static WhyqApplication _instance;
-	
+
 	public WhyqApplication() {
 		super();
 		_instance = this;
 
 	}
-	
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		sTypefaceRegular = Typeface.createFromAsset(getAssets(), "Roboto-Regular.ttf");
-		sTypefaceBold = Typeface.createFromAsset(getAssets(), "Roboto-Bold.ttf");
-		sTypefaceItalic = Typeface.createFromAsset(getAssets(), "Roboto-Italic.ttf");
+		sTypefaceRegular = Typeface.createFromAsset(getAssets(),
+				"Roboto-Regular.ttf");
+		sTypefaceBold = Typeface
+				.createFromAsset(getAssets(), "Roboto-Bold.ttf");
+		sTypefaceItalic = Typeface.createFromAsset(getAssets(),
+				"Roboto-Italic.ttf");
 	}
-	
+
 	public static void initScreenSize(int width, int height) {
 		if (sScreenWidth == 0) {
 			sScreenHeight = height;
@@ -75,73 +82,80 @@ public class WhyqApplication extends Application {
 	public static WhyqApplication Instance() {
 		return _instance;
 	}
-	public float getDensity(){
+
+	public float getDensity() {
 		return getApplicationContext().getResources().getDisplayMetrics().density;
 	}
+
 	/*
 	 * Current screen info
 	 */
-	public static String getRSAToken(){
-		
+	public static String getRSAToken() {
+
 		try {
-//			DAM token
-			Log.d("token", XMLParser.getToken(Instance().getApplicationContext()));
+			// DAM token
+			Log.d("token",
+					XMLParser.getToken(Instance().getApplicationContext()));
 			return XMLParser.getToken(Instance().getApplicationContext());
-//			WHYQ token
-//			RSA rsa = new RSA();
-//			String token = rsa.RSAEncrypt(XMLParser.getToken(Instance().getApplicationContext()));
-//			return token;
+			// WHYQ token
+			// RSA rsa = new RSA();
+			// String token =
+			// rsa.RSAEncrypt(XMLParser.getToken(Instance().getApplicationContext()));
+			// return token;
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			return null;
 		}
 	}
-//	public String getToken() {
-//		SharedPreferences pref = PreferenceManager
-//				.getDefaultSharedPreferences(getApplicationContext());
-//		long lastSaved = pref.getLong("token_save_at", 0);
-//		int expireTime = pref.getInt(TOKEN_EXPIRED_TIME, 3600);
-//		if ((System.currentTimeMillis() - lastSaved) / 1000 < expireTime) {
-//			return pref.getString(ACCESS_TOKEN, null);
-//		} else {
-//			Editor editor = pref.edit();
-//			editor.remove(ACCESS_TOKEN);
-//			editor.remove(TOKEN_EXPIRED_TIME);
-//			editor.remove("token_save_at");
-//			editor.commit();
-//			return null;
-//		}
-//	}
-	public void setToken(User user){
+
+	// public String getToken() {
+	// SharedPreferences pref = PreferenceManager
+	// .getDefaultSharedPreferences(getApplicationContext());
+	// long lastSaved = pref.getLong("token_save_at", 0);
+	// int expireTime = pref.getInt(TOKEN_EXPIRED_TIME, 3600);
+	// if ((System.currentTimeMillis() - lastSaved) / 1000 < expireTime) {
+	// return pref.getString(ACCESS_TOKEN, null);
+	// } else {
+	// Editor editor = pref.edit();
+	// editor.remove(ACCESS_TOKEN);
+	// editor.remove(TOKEN_EXPIRED_TIME);
+	// editor.remove("token_save_at");
+	// editor.commit();
+	// return null;
+	// }
+	// }
+	public void setToken(User user) {
 		XMLParser.storeUserAccount(getApplicationContext(), user);
 	}
-	
-	public void clearToken(){
+
+	public void clearToken() {
 		XMLParser.clearToken(getApplicationContext());
 	}
+
 	private DisplayMetrics metrics;
 	private ImageLoader imageLoader;
-	
-	public void setDisplayMetrics( DisplayMetrics metrics ){
+
+	public void setDisplayMetrics(DisplayMetrics metrics) {
 		this.metrics = metrics;
 	}
-	
-	public DisplayMetrics getDisplayMetrics(){
+
+	public DisplayMetrics getDisplayMetrics() {
 		return this.metrics;
 	}
-	
+
 	/**
 	 * @return the user
 	 */
 	public User getUser() {
-		//return new User("121");
+		// return new User("121");
 		return user;
-		
+
 	}
 
 	/**
-	 * @param user the user to set
+	 * @param user
+	 *            the user to set
 	 */
 	public void setUser(User user) {
 		this.user = user;
@@ -155,11 +169,13 @@ public class WhyqApplication extends Application {
 	}
 
 	/**
-	 * @param loginType the loginType to set
+	 * @param loginType
+	 *            the loginType to set
 	 */
 	public void setLoginType(String loginType) {
 		this.loginType = loginType;
 	}
+
 	public String getDeviceID() {
 		// TelephonyManager tManager = (TelephonyManager)
 		// this.getSystemService(Context.TELEPHONY_SERVICE);
@@ -167,18 +183,15 @@ public class WhyqApplication extends Application {
 			DEVICE_ID = Util.generateDeviceId();
 		return DEVICE_ID;
 	}
+
 	/*
-	
-	private static Context context;
-	public void onCreate(){
-		PermpingApplication.context = getApplicationContext();
-	}
-	
-	public static Context getAppContext(){
-		return PermpingApplication.context;
-	}
-	
-	*/
+	 * 
+	 * private static Context context; public void onCreate(){
+	 * PermpingApplication.context = getApplicationContext(); }
+	 * 
+	 * public static Context getAppContext(){ return
+	 * PermpingApplication.context; }
+	 */
 
 	public void savePassword(String string) {
 		// TODO Auto-generated method stub
@@ -189,7 +202,8 @@ public class WhyqApplication extends Application {
 		editor.putString("password", string);
 		editor.commit();
 	}
-	public String getPassword(){
+
+	public String getPassword() {
 		SharedPreferences pref = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
 		return pref.getString("password", null);
@@ -197,23 +211,45 @@ public class WhyqApplication extends Application {
 
 	public Location getCurrentLocation() {
 		// TODO Auto-generated method stub
-		if(currentLocation!=null){
-			
-		}else{
-			
+		if (currentLocation != null) {
+
+		} else {
+
 		}
 		return currentLocation;
 	}
+
 	public void setCurrentLocation(Location location) {
 		// TODO Auto-generated method stub
-		
+
 		this.currentLocation = location;
 	}
-	
-	public ImageLoader getImageLoader(){
-		if(imageLoader == null)
+
+	public ImageLoader getImageLoader() {
+		if (imageLoader == null)
 			imageLoader = new ImageLoader(getApplicationContext());
 		return imageLoader;
 	}
-	
+
+	public static void pushNotification(Context ctx, long time, String title,
+			String message) {
+		Intent intentAlarm = new Intent(ctx, AlarmReceiver.class);
+		intentAlarm.putExtra("title", title);
+		intentAlarm.putExtra("message", "message");
+
+		if (time <= System.currentTimeMillis())
+			time = time + 60 * 1000;
+		else if (time - 15 * 60 * 1000 >= System.currentTimeMillis())
+			// notify before 15'
+			time = time - 15 * 60 * 1000;
+
+		// create the object
+		AlarmManager alarmManager = (AlarmManager) ctx
+				.getSystemService(ALARM_SERVICE);
+		// set the alarm for particular time
+		alarmManager.set(AlarmManager.RTC_WAKEUP, time, PendingIntent
+				.getBroadcast(ctx, 1, intentAlarm,
+						PendingIntent.FLAG_UPDATE_CURRENT));
+	}
+
 }
