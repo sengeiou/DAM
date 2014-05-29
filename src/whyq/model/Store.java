@@ -14,6 +14,7 @@ public class Store implements Serializable{
 	private String status;
 	private String radius;
 	private String freeChargeOutRadiusDelieverPerKm;
+	private String freeChargeOutRadiusDelieverPerOrder;
 	private String createdate;
 	private String updatedate;
 	private String cateid;
@@ -638,5 +639,12 @@ public class Store implements Serializable{
 	}
 	public void setMerchantNumber(String merchantNumber) {
 		this.merchantNumber = merchantNumber;
+	}
+	public String getFreeChargeOutRadiusDelieverPerOrder() {
+		return freeChargeOutRadiusDelieverPerOrder;
+	}
+	public void setFreeChargeOutRadiusDelieverPerOrder(
+			String freeChargeOutRadiusDelieverPerOrder) {
+		this.freeChargeOutRadiusDelieverPerOrder = freeChargeOutRadiusDelieverPerOrder;
 	}
 }

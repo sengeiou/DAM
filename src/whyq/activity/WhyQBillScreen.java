@@ -42,6 +42,7 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 	private Bundle bundle;
 	private boolean isOrdered;
 	private String billId;
+	private TextView tvDelivery;
 	public static int LOGIN_REQUEST = 1;
 	
 	public static WhyQBillScreen sBillActivity;
@@ -88,6 +89,7 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 				exeGetBillDetail(billId);
 		}
 		tvTotal = (TextView)findViewById(R.id.tvTotal);
+		tvDelivery = (TextView)findViewById(R.id.tvDeliveryFee);
 		tvDiscount = (TextView)findViewById(R.id.tvDiscount);
 		tvTotalAfterDiscount = (TextView)findViewById(R.id.tvTotalafterDiscount);
 		
@@ -106,6 +108,11 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 		// TODO Auto-generated method stub
 		
 		try {
+
+			if(ListDetailActivity.deliveryFee >= 0){
+				tvDelivery.setText("$"+Util.round(ListDetailActivity.deliveryFee, 2));
+				totalValue += ListDetailActivity.deliveryFee;
+			}
 			tvTotal.setText("$"+Util.round(totalValue, 2));
 			if(valueDiscount!=0){
 //				tvDiscount.setText("%"+ Util.round(valueDiscount, 2));
@@ -116,11 +123,12 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 				}
 				
 			}
-			if(valueDiscount!=0)
+			if(valueDiscount!=0 && totalValue > 15)
 				totalafterDiscount = (float)(totalValue*(100-valueDiscount)/100);
 			else
 				totalafterDiscount = totalValue;
 			tvDiscount.setText(ListDetailActivity.promotion.getValuePromotion()+"%");
+			tvTotalAfterDiscount.setText("$"+Util.round(totalafterDiscount, 2));
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

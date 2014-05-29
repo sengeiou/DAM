@@ -544,6 +544,9 @@ public class DataParser {
 						String feeChargeOutRadiesDeliverPerKm = getValue(
 								permElement,
 								"fee_charge_out_radius_allow_deliver");
+						String feeChargeOutRadiesDeliverPerOrder = getValue(
+								permElement,
+								"feeChargeOutRadiesDeliverPerOrder");
 						String createdate = getValue(permElement, "createdate");
 						String updatedate = getValue(permElement, "updatedate");
 						String cateId = getValue(permElement, "cate_id");
@@ -674,6 +677,7 @@ public class DataParser {
 						item.setRadius(radius);
 						item.setIsFavourite(isFavourite);
 						item.setFreeChargeOutRadiusDelieverPerKm(feeChargeOutRadiesDeliverPerKm);
+						item.setFreeChargeOutRadiusDelieverPerOrder(feeChargeOutRadiesDeliverPerKm);
 						item.setCreatedate(createdate);
 						item.setUpdatedate(updatedate);
 						item.setCateid(cateId);
@@ -755,6 +759,8 @@ public class DataParser {
 							"radius_allow_deliver");
 					String feeChargeOutRadiesDeliverPerKm = getValue(
 							permElement, "fee_charge_out_radius_deliver_per_km");
+					String feeChargeOutRadiesDeliverPerOrder = getValue(
+							permElement, "fee_charge_for_delivery_sub_product_for_every_order");
 					String createdate = getValue(permElement, "createdate");
 					String updatedate = getValue(permElement, "updatedate");
 					String cateId = getValue(permElement, "cate_id");
@@ -796,6 +802,7 @@ public class DataParser {
 					item.setStatus(status);
 					item.setRadius(radius);
 					item.setFreeChargeOutRadiusDelieverPerKm(feeChargeOutRadiesDeliverPerKm);
+					item.setFreeChargeOutRadiusDelieverPerOrder(feeChargeOutRadiesDeliverPerOrder);
 					item.setCreatedate(createdate);
 					item.setUpdatedate(updatedate);
 					item.setCateid(cateId);
