@@ -1,7 +1,9 @@
 package whyq.activity;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +44,7 @@ import whyq.view.ScreenGestureController;
 import whyq.view.ScrollviewCustom;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ParseException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -667,6 +670,7 @@ public class ListDetailActivity extends FragmentActivity implements
 		return fList;
 	}
 
+	@SuppressWarnings("deprecation")
 	private void bindPromotionData() {
 		// TODO Auto-generated method stub
 		try {
@@ -677,14 +681,33 @@ public class ListDetailActivity extends FragmentActivity implements
 					tvNumberDiscount.setText(promotion.getValuePromotion() + ""
 							+ promotion.getTypeValue());
 					tvDes.setText(promotion.getDescriptionPromotion());
-					tvDate.setText(promotion.getStartDate() + " - "
-							+ promotion.getEndDate());
+					String startDate = formatDate(promotion.getStartDate());
+					String endDate = formatDate(promotion.getEndDate());
+					tvDate.setText(startDate + " - "
+							+ endDate);
 				}
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+	}
+	
+	public String formatDate(String date) {
+		Log.d("formatDate","date: "+date);
+		SimpleDateFormat input = new SimpleDateFormat(
+				"yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat output = new SimpleDateFormat("dd/MMM");
+
+		try {
+			String dateOut = output.format(input.parse(date));
+			return dateOut;
+		} catch (java.text.ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // parse input
+
+		return null;
 	}
 
 	private void bindMenuData() {
