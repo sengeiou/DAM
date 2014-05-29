@@ -32,7 +32,7 @@ public class NotificationService extends Service {
 		String title = intent.getExtras().getString("title");
 		String message = intent.getExtras().getString("message");
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
-				this).setSmallIcon(R.drawable.ic_launcher)
+				this).setSmallIcon(R.drawable.logo_whyq)
 				.setContentTitle(title).setContentText(message)
 				.setAutoCancel(true);
 
