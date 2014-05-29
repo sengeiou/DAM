@@ -1094,6 +1094,7 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 
 	private void updateFavoriteWitId(String id, boolean b) {
 		// TODO Auto-generated method stub
+		permListMain = permListAdapter.getData();
 		int size = permListMain.size();
 		int value;
 		Store item2;

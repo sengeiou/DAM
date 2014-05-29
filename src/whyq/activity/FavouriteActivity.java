@@ -647,7 +647,8 @@ public class FavouriteActivity extends FragmentActivity implements Login_delegat
 
 	private void updateFavoriteWitId(String id, boolean b) {
 		// TODO Auto-generated method stub
-		int size = whyqListView.getChildCount();
+		permListMain = permListAdapter.getData();
+		int size = permListMain.size();
 		int value;
 		Store item2;
 		ViewHolder holder;

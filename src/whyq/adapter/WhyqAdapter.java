@@ -871,5 +871,10 @@ public class WhyqAdapter extends ArrayAdapter<Store> implements OnClickListener 
 		WhyqMain.showLogin();
 	}
 
+	public ArrayList<Store> getData() {
+		// TODO Auto-generated method stub
+		return items;
+	}
+
 }
 
