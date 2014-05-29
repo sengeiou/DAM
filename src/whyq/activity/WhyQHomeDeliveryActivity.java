@@ -212,12 +212,14 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 				etPhoneNumber.requestFocus();
 				return false;
 			} else {
-				showDialog();
-				showRememberInfoDialog();
+				if(exeCheckTimeInput()){
+					showDialog();
+					showRememberInfoDialog();
+				}
 
 			}
 			
-			return exeCheckTimeInput();
+			return true;
 			
 		} else {
 			Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
@@ -250,8 +252,11 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 				etMinutes.requestFocus();
 				return false;
 			} else {
-				showDialog();
-				showRememberInfoDialog();
+				if(exeCheckTimeInput()){
+					showDialog();
+					showRememberInfoDialog();
+				}
+
 				return true;
 			}
 		}
