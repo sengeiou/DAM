@@ -165,10 +165,10 @@
                         android:weightSum="4" >
 
                         <TextView
+                            android:gravity="right|center_vertical"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
                             android:text="Subtotal:" />
 
                         <TextView
@@ -180,8 +180,34 @@
                             android:paddingRight="10dp"
                             android:text="$0.0" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:orientation="horizontal"
+                        android:weightSum="4" >
+
+                        <TextView
+                            android:gravity="right|center_vertical"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:text="Delivery fee:" />
+
+                        <TextView
+                            android:id="@+id/tvDeliveryFee"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|right"
+                            android:paddingRight="10dp"
+                            android:text="$0.0" />
+                    </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginTop="3dp"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -189,10 +215,10 @@
                         android:weightSum="4" >
 
                         <TextView
+                            android:gravity="right|center_vertical"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
                             android:text="Discount:" />
 
                         <TextView
