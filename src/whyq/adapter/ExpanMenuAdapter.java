@@ -715,7 +715,7 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 			if(item.getExtraItemList().size() > 0 || item.getOptionItemList().size() >0 || item.getSizeItemList().size() > 0){
 
 			}else{
-				exeAddItemToList(item);
+				exeAddItemToList(item, true);
 			}
 //			Bill bill = new Bill();
 //			bill.setId(item.getId());
@@ -754,7 +754,16 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 			}else{
 				item.setUnitForBill(0);
 			}
-			
+			if(item.getExtraItemList().size() > 0 || item.getOptionItemList().size() >0 || item.getSizeItemList().size() > 0){
+				
+			}else{
+				changeItem(item);
+				if(item.getExtraItemList().size() > 0 || item.getOptionItemList().size() >0 || item.getSizeItemList().size() > 0){
+
+				}else{
+					exeAddItemToList(item, true);
+				}
+			}
 //			if (ListDetailActivity.billList.containsKey(item.getId())) {
 //				List<Bill> list = ListDetailActivity.billList.get(item.getId());
 //				if(list !=null && list.size() > 0){
@@ -767,20 +776,40 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 //			} else {
 //				ListDetailActivity.billList.remove(item.getId());	
 //			}
-			
+			((ListDetailActivity)mContext).updateTotal();
 			notifyDataSetChanged();
 		}
 
 	}
 
+//	public void exeRemoveBill(Menu item){
+//		List<Bill> billList = ListDetailActivity.billList.get(item.getId());
+//		try {
+//			List<Bill> result = billList ;
+//			for(int i=0; i < billList.size(); i++){
+//				Bill bill2 =  billList.get(i);
+//				if(bill2== bill){
+//					result.remove(bill2);
+//				}
+//			}
+//			ListDetailActivity.billList.remove(item.getId());
+//			ListDetailActivity.billList.put(item.getId(), result);
+//			notifyDataSetChanged();
+//			((ListDetailActivity)mContext).updateTotal();
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//		}
+//	}
+	
 	private void onDoneSelectedClicked(View v) {
 		// TODO Auto-generated method stub
 
 		Menu menu = (Menu)v.getTag();
-		exeAddItemToList(menu);
+		exeAddItemToList(menu, false);
 	}
 
-	private void exeAddItemToList(Menu menu) {
+	private void exeAddItemToList(Menu menu, boolean isUpdate) {
 		// TODO Auto-generated method stub
 		List<SizeItem> sizelist = menu.getSizeItemList();
 		List<OptionItem> optionList = menu.getOptionItemList();
@@ -793,6 +822,10 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		List<Bill> billList = ListDetailActivity.billList.get(menu.getId());
 		if(billList ==null){
 			billList = new ArrayList<Bill>();
+		}else{
+			if(isUpdate){
+				billList.clear();
+			}
 		}
 		
 		Bill bill = new Bill();
