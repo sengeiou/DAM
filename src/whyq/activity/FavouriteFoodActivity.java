@@ -130,4 +130,8 @@ public class FavouriteFoodActivity extends FragmentActivity implements
 			}
 		}
 	}
+	
+	public void onBack(View v){
+		finish();
+	}
 }

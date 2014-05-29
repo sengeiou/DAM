@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/titlebar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="0dip"
+    android:angle="90"
+    android:background="@drawable/bg_ationbar"
+    android:orientation="vertical" >
+   <RelativeLayout
+        android:id="@+id/rlBack"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:onClick="onBack"
+        android:padding="12dp" >
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/icon_back"
+            android:onClick="onBack" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/rlBack"
+        android:background="@drawable/header_divider" />
+    
+    
+    <TextView
+        android:id="@+id/tvHeaderTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="17dp"
+        android:layout_toRightOf="@+id/rlBack"
+        android:gravity="center_vertical"
+        android:text="Dine in"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/text_size_header"
+        android:textStyle="normal" />
+
+    <ProgressBar
+        android:id="@+id/prgBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="7dp"
+        android:visibility="invisible" />
+
+</RelativeLayout>

@@ -837,4 +837,8 @@ public class FavouriteActivity extends FragmentActivity implements Login_delegat
 		if(isLoadMore)
 			isLoadMore = false;
 	}
+	
+	public void onBack(View v){
+		finish();
+	}
 }
