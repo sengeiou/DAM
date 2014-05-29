@@ -133,19 +133,22 @@
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:onClick="onCallClicked"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="5dp"
                                         android:layout_marginTop="0dp"
                                         android:gravity="center_vertical"
                                         android:orientation="horizontal"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp"
+                                        android:onClick="onCallClicked"
+                                        android:background="@drawable/btn_call"
                                         android:weightSum="9" >
 
                                         <RelativeLayout
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
-                                            android:layout_weight="1" >
+                                            android:layout_weight="0" >
 
                                             <ImageView
                                                 android:id="@+id/imgTelephoneIcon"
@@ -159,6 +162,7 @@
                                             android:id="@+id/tvTelephoneTitle"
                                             style="@style/small_back_text"
                                             android:layout_width="0dp"
+                                            android:layout_marginLeft="5dp"
                                             android:layout_height="match_parent"
                                             android:layout_weight="3"
                                             android:gravity="center_vertical"
@@ -176,6 +180,51 @@
                                             android:textStyle="normal" />
                                     </LinearLayout>
 
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="0dp"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp"
+                                        android:weightSum="9" >
+
+                                        <RelativeLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0.9" >
+
+                                            <ImageView
+                                                android:id="@+id/imgMerchanrIcon"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="match_parent"
+                                                android:layout_centerInParent="true"
+                                               />
+                                        </RelativeLayout>
+
+                                        <TextView
+                                            android:id="@+id/tvMerchantNumberTitle"
+                                            style="@style/small_back_text"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="4"
+                                            android:gravity="center_vertical"
+                                            android:text="Merchant number:" />
+
+                                        <TextView
+                                            android:id="@+id/tvMerchantNumber"
+                                            style="@style/small_grey_text"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="5"
+                                            android:gravity="center"
+                                            android:paddingLeft="5dp"
+                                            android:text=""
+                                            android:textStyle="normal" />
+                                    </LinearLayout>
+                                    
                                     <View
                                         android:layout_width="match_parent"
                                         android:layout_height="1dp"
@@ -193,12 +242,10 @@
                                             android:layout_height="match_parent" >
 
                                             <TextView
-                                                android:drawableLeft="@drawable/icon_quote"
                                                 android:id="@+id/tvStoreDes"
                                                 style="@style/small_grey_text"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="60dp"
-                                                android:gravity="top|left"
                                                 android:text="" />
                                         </ScrollView>
                                     </LinearLayout>

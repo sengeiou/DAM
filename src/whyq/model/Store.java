@@ -21,6 +21,7 @@ public class Store implements Serializable{
 	private String nameStore;
 	private String introStore;
 	private String phoneStore;
+	private String merchantNumber;
 	private String logo;
 	private String style;
 	private String startTime;
@@ -631,5 +632,11 @@ public class Store implements Serializable{
 	 */
 	public void setUserCheckBill(UserCheckBill userCheckBill) {
 		this.userCheckBill = userCheckBill;
+	}
+	public String getMerchantNumber() {
+		return merchantNumber;
+	}
+	public void setMerchantNumber(String merchantNumber) {
+		this.merchantNumber = merchantNumber;
 	}
 }

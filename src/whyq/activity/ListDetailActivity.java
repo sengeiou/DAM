@@ -42,6 +42,7 @@ import whyq.view.ScreenGestureController;
 import whyq.view.ScrollviewCustom;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -86,6 +87,7 @@ public class ListDetailActivity extends FragmentActivity implements
 	private TextView tvOpeningTime;
 	private ImageButton imgFavourtieIcon;
 	private TextView tvTelephone;
+	private TextView tvMerchantNumber;
 	private TextView tvStoreDes;
 	private TextView tvCommendRever;
 	private ImageView imgUserAvatar;
@@ -151,6 +153,7 @@ public class ListDetailActivity extends FragmentActivity implements
 		imgFavourtieIcon = (ImageButton) findViewById(R.id.imgFavouriteIcon);
 		tvOpeningTime = (TextView) findViewById(R.id.tvOpeningTime);
 		tvTelephone = (TextView) findViewById(R.id.tvTelephone);
+		tvMerchantNumber = (TextView) findViewById(R.id.tvMerchantNumber);
 		tvStoreDes = (TextView) findViewById(R.id.tvStoreDes);
 		tvCommendRever = (TextView) findViewById(R.id.tvCommendReview);
 		imgFrienAvatar = (ImageView) findViewById(R.id.imgAvatar);
@@ -380,6 +383,7 @@ public class ListDetailActivity extends FragmentActivity implements
 			tvOpeningTime.setText(store.getStartTime() + " - "
 					+ store.getEndTime());
 			tvTelephone.setText("" + store.getPhoneStore());
+			tvMerchantNumber.setText(""+store.getMerchantNumber());
 			tvStoreDes.setText("" + store.getIntroStore());
 			tvHeaderTitle.setText("" + store.getNameStore());
 			if (store.getDistance() != null) {
@@ -1446,5 +1450,11 @@ public class ListDetailActivity extends FragmentActivity implements
 			}
 		}
 		return result;
+	}
+	
+	public void onCallClicked(View v){
+		Intent callIntent = new Intent(Intent.ACTION_CALL);
+		callIntent.setData(Uri.parse("tel:"+store.getPhoneStore()));
+		startActivity(callIntent);
 	}
 }

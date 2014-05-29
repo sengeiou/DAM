@@ -9,6 +9,7 @@ public class StoreInfo implements Serializable{
 	private String nameSore;
 	private String introStore;
 	private String phoneStore;
+	private String merchantNumber;
 	private String logo;
 	private String style;
 	private String startTime;
@@ -267,5 +268,11 @@ public class StoreInfo implements Serializable{
 	 */
 	public void setValueConditionDeliver(String string) {
 		this.valueConditionDeliver = string;
+	}
+	public String getMerchantNumber() {
+		return merchantNumber;
+	}
+	public void setMerchantNumber(String merchantNumber) {
+		this.merchantNumber = merchantNumber;
 	}
 }

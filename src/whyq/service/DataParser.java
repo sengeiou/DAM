@@ -551,6 +551,7 @@ public class DataParser {
 						String nameStore = getValue(permElement, "name_store");
 						String introStore = getValue(permElement, "intro_store");
 						String phoneStore = getValue(permElement, "phone_store");
+						String merchant_number = getValue(permElement, "merchant_number");
 						String logi = getValue(permElement, "logo");
 						;
 						String style = getValue(permElement, "style");
@@ -680,6 +681,7 @@ public class DataParser {
 						item.setNameStore(nameStore);
 						item.setIntroStore(introStore);
 						item.setPhoneStore(phoneStore);
+						item.setMerchantNumber(merchant_number);
 						item.setLogo(logi);
 						item.setStyle(style);
 						item.setStartTime(startTime);
@@ -760,6 +762,7 @@ public class DataParser {
 					String nameStore = getValue(permElement, "name_store");
 					String introStore = getValue(permElement, "intro_store");
 					String phoneStore = getValue(permElement, "phone_store");
+					String merchant_number = getValue(permElement, "merchant_number");
 					String logo = getValue(permElement, "logo");
 					String style = getValue(permElement, "style");
 					;
@@ -800,6 +803,7 @@ public class DataParser {
 					item.setNameStore(nameStore);
 					item.setIntroStore(introStore);
 					item.setPhoneStore(phoneStore);
+					item.setMerchantNumber(merchant_number);
 					item.setLogo(logo);
 					item.setStyle(style);
 					item.setStartTime(startTime);
@@ -1076,6 +1080,10 @@ public class DataParser {
 													.setPhoneStore(getValue(
 															infoElement,
 															"phone_store"));
+											storeInfo
+													.setMerchantNumber(getValue(
+															infoElement,
+															"merchant_number"));
 											storeInfo.setLogo(getValue(
 													infoElement, "logo"));
 											storeInfo.setStyle(getValue(
