@@ -24,7 +24,7 @@ import android.widget.TextView;
 import com.dam.R;
 
 public class WhyqProflleFAQActivity extends Activity implements IServiceListener{
-	public static final String HOW_WHYQ_WORK = "How does WHY Q work?";
+	public static final String HOW_WHYQ_WORK = "How does DEAL A MEAL work?";
 	public static final String WHAT_DOTS_MEAN = "What do the coloured dots mean?";
 	public static final String WHY_AM_NOT_FINISH = "Why am I not able to finish paying for my order?";
 	public static final String HOW_AUTHORISIZE = "How does Authorise and Capture work";
