@@ -217,9 +217,8 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 
 			}
 			
-			exeCheckTimeInput();
+			return exeCheckTimeInput();
 			
-			return true;
 		} else {
 			Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
 
