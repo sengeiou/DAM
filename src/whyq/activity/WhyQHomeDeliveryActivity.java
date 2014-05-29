@@ -16,6 +16,7 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.format.Time;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -28,6 +29,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.dam.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -60,6 +62,9 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 	private int currentHours;
 	private String address;
 	protected String mPhoneNumber;
+	private int calMinutes;
+	private int calHour;
+	private int scheduleDeliery;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -211,6 +216,9 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 				showRememberInfoDialog();
 
 			}
+			
+			exeSetSchedulePush();
+			
 			return true;
 		} else {
 			Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
@@ -363,10 +371,31 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 					Util.showDialog(context, data.getMessage());
 				}
 			}
+			exeSetSchedulePush();
+			WhyqApplication.Instance().pushNotification(WhyqApplication.Instance().getApplicationContext(), scheduleDeliery, "Ready to get delivery", "your delivery action will be 15 minutes next");
 			finish();
 		}else if(result.getAction() == ServiceAction.ActionOrderSend){
 			finish();
 		}
+	}
+
+	private boolean exeSetSchedulePush() {
+		// TODO Auto-generated method stub
+		Time today = new Time(Time.getCurrentTimezone());
+		today.setToNow();
+		int hourNow = today.hour;
+		int minutesNow = today.hour;
+		if((currentHours > hourNow) || (currentHours == calHour ) && (calMinutes < currentMinutes)){
+			calHour = currentHours - hourNow;
+			calMinutes = currentMinutes - minutesNow;
+			scheduleDeliery = calHour*60*60*1000 + calMinutes*60 * 1000;
+		}else{
+			Toast.makeText(context, "Time set now correct", Toast.LENGTH_LONG).show();
+			return false;
+		}
+		
+		return true;
+		
 	}
 
 	private void showDialog() {
