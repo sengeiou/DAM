@@ -5,13 +5,13 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:padding="8dp" >
-
+<!-- ?android:attr/listPreferredItemHeight -->
     <LinearLayout
         android:id="@+id/infor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:minHeight="?android:attr/listPreferredItemHeight"
+        android:minHeight="0dp"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/base_padding"
         android:paddingTop="@dimen/base_padding" >
