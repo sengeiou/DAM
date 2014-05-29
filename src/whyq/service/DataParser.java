@@ -677,7 +677,7 @@ public class DataParser {
 						item.setRadius(radius);
 						item.setIsFavourite(isFavourite);
 						item.setFreeChargeOutRadiusDelieverPerKm(feeChargeOutRadiesDeliverPerKm);
-						item.setFreeChargeOutRadiusDelieverPerOrder(feeChargeOutRadiesDeliverPerKm);
+						item.setFreeChargeOutRadiusDelieverPerOrder(feeChargeOutRadiesDeliverPerOrder);
 						item.setCreatedate(createdate);
 						item.setUpdatedate(updatedate);
 						item.setCateid(cateId);
