@@ -708,9 +708,9 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		// TODO Auto-generated method stub
 //		((ListDetailActivity)mContext).onAddClicked(v);
 
-		Log.d("onAddClicked", "id =" + v.getId());
+		
 		Menu item = (Menu) v.getTag();
-	
+		Log.d("onAddClicked", "id =" + v.getId()+ " unit "+item.getUnitForBill());
 		if (item != null) {
 			item.setUnitForBill(item.getUnitForBill()+1);
 			changeItem(item);
@@ -840,31 +840,35 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		float price = Float.parseFloat(menu.getValue());
 		bill.setPrice(""+price);
 		bill.setUnit(""+menu.getUnitForBill());
-		for(SizeItem item: sizelist){
-			if(item.isSelected()){
-				sizelistBill.add(item);
+		
+		if(menu.getUnitForBill() > 0){
+			for(SizeItem item: sizelist){
+				if(item.isSelected()){
+					sizelistBill.add(item);
+				}
 			}
-		}
-		for(OptionItem item: optionList){
-			if(item.isSelected()){
-				optionListBill.add(item);
+			for(OptionItem item: optionList){
+				if(item.isSelected()){
+					optionListBill.add(item);
+				}
 			}
-		}
-		for(ExtraItem item: extraList){
-			if(item.isSelected()){
-				extraListBill.add(item);
+			for(ExtraItem item: extraList){
+				if(item.isSelected()){
+					extraListBill.add(item);
+				}
 			}
-		}
-		bill.setSizeList(sizelistBill);
-		bill.setOptionList(optionListBill);
-		bill.setExtraList(extraListBill);
-		if(ListDetailActivity.promotion!=null){
-			bill.setDiscount(ListDetailActivity.promotion.getValuePromotion()!=null?ListDetailActivity.promotion.getValuePromotion():""+0);
+			bill.setSizeList(sizelistBill);
+			bill.setOptionList(optionListBill);
+			bill.setExtraList(extraListBill);
+			if(ListDetailActivity.promotion!=null){
+				bill.setDiscount(ListDetailActivity.promotion.getValuePromotion()!=null?ListDetailActivity.promotion.getValuePromotion():""+0);
+			}
+			
+			billList.add(bill);
+			
+			ListDetailActivity.billList.put(menu.getId(), billList);
 		}
 		
-		billList.add(bill);
-		
-		ListDetailActivity.billList.put(menu.getId(), billList);
 		notifyDataSetChanged();
 		((ListDetailActivity)mContext).updateTotal();
 
