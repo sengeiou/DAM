@@ -142,6 +142,9 @@ public class ListDetailActivity extends FragmentActivity implements
 		context = ListDetailActivity.this;
 		id = getIntent().getStringExtra("id");
 		Log.d("ListDetailActivity", "id " + id);
+		
+		promotion = null;
+		
 		billList = new HashMap<String, List<Bill>>();
 		service = new Service(this);
 		bundle = new Bundle();

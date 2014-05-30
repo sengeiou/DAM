@@ -123,11 +123,13 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 				}
 				
 			}
-			if(valueDiscount!=0 && totalValue > 15)
+			if(valueDiscount!=0 && totalValue > 15){
 				totalafterDiscount = (float)(totalValue*(100-valueDiscount)/100);
-			else
+			}else{
 				totalafterDiscount = totalValue;
-			tvDiscount.setText(ListDetailActivity.promotion.getValuePromotion()+"%");
+				ListDetailActivity.promotion = null;
+			}
+			tvDiscount.setText(ListDetailActivity.promotion!=null? ListDetailActivity.promotion.getValuePromotion()+"%": "0.0%");
 			tvTotalAfterDiscount.setText("$"+Util.round(totalafterDiscount, 2));
 		} catch (Exception e) {
 			// TODO: handle exception
