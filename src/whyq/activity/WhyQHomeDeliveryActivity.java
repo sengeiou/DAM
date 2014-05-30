@@ -64,7 +64,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 	protected String mPhoneNumber;
 	private int calMinutes;
 	private int calHour;
-	private int scheduleDeliery;
+	private long scheduleDeliery;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -212,7 +212,10 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 				etPhoneNumber.requestFocus();
 				return false;
 			} else {
-				if(exeCheckTimeInput()){
+				
+//				ASAP no need to check time
+//				if(exeCheckTimeInput())
+				{
 					showDialog();
 					showRememberInfoDialog();
 				}
@@ -375,7 +378,9 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 					Util.showDialog(context, data.getMessage());
 				}
 			}
-			WhyqApplication.Instance().pushNotification(WhyqApplication.Instance().getApplicationContext(), scheduleDeliery, "Ready to get your product?", "your delivery action will be 15 minutes next");
+			if(scheduleDeliery > 0){
+				WhyqApplication.Instance().pushNotification(WhyqApplication.Instance().getApplicationContext(), scheduleDeliery, "Ready to get your product?", "your delivery action will be 15 minutes next");	
+			}
 			finish();
 		}else if(result.getAction() == ServiceAction.ActionOrderSend){
 			finish();
@@ -391,7 +396,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 		if((currentHours > hourNow) || (currentHours == calHour ) && (calMinutes < currentMinutes)){
 			calHour = currentHours - hourNow;
 			calMinutes = currentMinutes - minutesNow;
-			scheduleDeliery = calHour*60*60*1000 + calMinutes*60 * 1000;
+			scheduleDeliery = System.currentTimeMillis() + calHour*60*60*1000 + calMinutes*60 * 1000;
 		}else{
 			Toast.makeText(context, "Time incorrect", Toast.LENGTH_LONG).show();
 			return false;

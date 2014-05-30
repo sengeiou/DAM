@@ -237,7 +237,7 @@ public class WhyqApplication extends Application {
 		intentAlarm.putExtra("title", title);
 		intentAlarm.putExtra("message", "message");
 
-		if (time <= System.currentTimeMillis())
+		if (time <= System.currentTimeMillis() + 15 * 60 * 1000)
 			time = time + 60 * 1000;
 		else if (time - 15 * 60 * 1000 >= System.currentTimeMillis())
 			// notify before 15'
