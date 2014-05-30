@@ -426,6 +426,10 @@ public class Service implements Runnable {
 		case ActionPostFavorite:
 			resObj = parser.parseLFavouriteResult(result);
 			break;
+			
+		case ActionOrderEcoCash:
+			resObj = parser.parseOrderEcoCash(result);
+			break;
 		case ActionRemoveFavorite:
 			resObj = parser.parseLFavouriteResult(result);
 			break;
@@ -1061,6 +1065,22 @@ public class Service implements Runnable {
 		request("/m/member/order/show", params, true, false);
 	}
 
+	public void ecoCash(String billId, String usingEcocash) {
+		// TODO Auto-generated method stub
+		_action = ServiceAction.ActionOrderEcoCash;
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("token", WhyqApplication.Instance().getRSAToken());
+		params.put("bill_id", billId);
+		params.put("using_cash", usingEcocash);
+		params.put("hotel_charge_code", "");
+		params.put("app", Constants.APP);
+		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
+		request("/m/member/order/update", params, true, false);
+	}
+	
+	
 	public void getPaypalURI(String token, String billId) {
 		// TODO Auto-generat ed method stub
 		_action = ServiceAction.ActionGetPaypalURI;
