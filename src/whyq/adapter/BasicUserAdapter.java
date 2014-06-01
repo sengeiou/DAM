@@ -11,6 +11,7 @@ import whyq.activity.ListDetailActivity;
 import whyq.model.User;
 import whyq.utils.UrlImageViewHelper;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,8 @@ public class BasicUserAdapter extends BaseAdapter {
 			viewHolder.imgFriendThumb = (ImageView) view.findViewById(R.id.imgFriend);
 			viewHolder.tvName = (TextView)view.findViewById(R.id.tvFriendCount);
 //			UrlImageViewHelper.setUrlDrawable(viewHolder.imgThumb, item.getUrlAvatar());
+			
+			Log.d("BasicUserAdapter", "getUrlAvatar : "+item.getUrlAvatar());
 			WhyqApplication.Instance().getImageLoader().DisplayImage(item.getUrlAvatar(), viewHolder.imgThumb);
 			
 			viewHolder.tvName.setText(item.getFirstName()+" "+item.getLastName());

@@ -861,6 +861,8 @@ public class DataParser {
 								"gender")));
 						WhyqImage image = new WhyqImage(getValue(element,
 								"avatar"));
+						user.setUrlAvatar(getValue(element,
+								"avatar"));
 						user.setAvatar(image);
 						user.setAddress(getValue(element, "address"));
 						userList.add(user);
@@ -1217,6 +1219,7 @@ public class DataParser {
 							}
 						} catch (Exception e) {
 							// TODO: handle exception
+							e.printStackTrace();
 						}
 					}
 					item.setPromotionList(promotionList);
@@ -1602,6 +1605,8 @@ public class DataParser {
 						user.setGender(Integer.parseInt(getValue(element,
 								"gender")));
 						WhyqImage image = new WhyqImage(getValue(element,
+								"avatar"));
+						user.setUrlAvatar(getValue(element,
 								"avatar"));
 						user.setAvatar(image);
 						user.setAddress(getValue(element, "city"));
