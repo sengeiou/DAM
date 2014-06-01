@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">DAM</string>
-    <string name="app_name_title">DAM</string>
+    <string name="app_name_title">DEAL A DELIVERY</string>
     <string name="app_name_inkakao"> 펌핑 이미지 SNS </string>
     <string name="bt_join">회원 등록</string>
     <string name="bt_login">로그인</string>
