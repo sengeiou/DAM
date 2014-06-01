@@ -254,10 +254,12 @@ public class CommentActivity extends ImageWorkerActivity {
 //						holder.avatar);
 				mImageLoader.DisplayImage(item.getUser().getUrlAvatar(), holder.avatar);
 				Photo photo = item.getPhotos();
-				if (photo != null) {
+				if (photo != null && photo.getThumb() != null) {
 //					mImageWorker.downloadImage(item.getPhotos().getThumb(),
 //							holder.thumb);
 					mImageLoader.DisplayImage(item.getPhotos().getThumb(), holder.thumb);
+				}else{
+					holder.thumb.setVisibility(View.GONE);
 				}
 				if (item.getUser().getLike() > 0) {
 					holder.favorite.setImageResource(R.drawable.icon_fav_enable);
