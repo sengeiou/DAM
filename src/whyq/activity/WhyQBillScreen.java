@@ -15,6 +15,7 @@ import whyq.service.ServiceAction;
 import whyq.service.ServiceResponse;
 import whyq.service.paypal.PayPalUI;
 import whyq.utils.Util;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -206,12 +207,12 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 		if(isOrdered){
 			if(billId!=null){
 
-				PayPalUI paypalUI = new PayPalUI();
-				Bundle bundle = new Bundle();
-				bundle.putString("bill_id", billId);
-				paypalUI.setArguments(bundle);
-				getSupportFragmentManager().beginTransaction().add(paypalUI, "").commit();
-				
+//				PayPalUI paypalUI = new PayPalUI();
+//				Bundle bundle = new Bundle();
+//				bundle.putString("bill_id", billId);
+//				paypalUI.setArguments(bundle);
+//				getSupportFragmentManager().beginTransaction().add(paypalUI, "").commit();
+				showPaymentDialog(billId);
 			
 			}
 		}else{
@@ -220,6 +221,40 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
+	private void showPaymentDialog(final String billId) {
+		// TODO Auto-generated method stub
+
+		final Service service = new Service(WhyQBillScreen.this);
+		android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(
+				WhyQBillScreen.this);
+		builder.setTitle(WhyQBillScreen.this.getString(R.string.app_name_title));
+		builder.setMessage("How would you like to pay?");
+		final android.app.AlertDialog alertError = builder.create();
+		alertError.setButton("EcoCash", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+				service.ecoCash(billId, "12345");
+				alertError.dismiss();
+			}
+		});
+		alertError.setButton2("Cash", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				service.ecoCash(billId, "1");
+				alertError.dismiss();
+			}
+		});
+		alertError.setButton2("No", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				alertError.dismiss();
+			}
+		});
+		alertError.show();
+	
+	}
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == LOGIN_REQUEST && resultCode == RESULT_OK) {
@@ -252,7 +287,13 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 			}else if(data.getStatus().equals("204")){
 			}else{
 			}
-		} 
+		} else if(!result.isSuccess()&& result.getAction() == ServiceAction.ActionGetBillDetail){
+			Toast.makeText(WhyQBillScreen.this, "Can not get data for now.", Toast.LENGTH_LONG).show();
+		}else if(result.isSuccess()&& result.getAction() == ServiceAction.ActionOrderEcoCash){
+			Toast.makeText(WhyQBillScreen.this, "Payment is successful!", Toast.LENGTH_LONG).show();
+		}else if(!result.isSuccess()&& result.getAction() == ServiceAction.ActionOrderEcoCash){
+			Toast.makeText(WhyQBillScreen.this, "Payment is failed.", Toast.LENGTH_LONG).show();
+		}
 	}
 	private ArrayList<Bill> filterBillWithName(ArrayList<Bill> listBill2) {
 		// TODO Auto-generated method stub
