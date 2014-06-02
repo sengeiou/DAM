@@ -246,12 +246,7 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 				alertError.dismiss();
 			}
 		});
-		alertError.setButton2("No", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				alertError.dismiss();
-			}
-		});
+
 		alertError.show();
 	
 	}
