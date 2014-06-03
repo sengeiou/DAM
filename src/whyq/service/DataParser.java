@@ -904,6 +904,8 @@ public class DataParser {
 										menu.setId(getValue(element, "id"));
 										menu.setStoreId(getValue(element,
 												"store_id"));
+										menu.setGroupId(getValue(menuElement, "id"));
+										menu.setGroupName(getValue(menuElement, "group_name"));
 										menu.setNameProduct(getValue(element,
 												"name_product"));
 										menu.setValue(getValue(element, "value"));

@@ -848,7 +848,7 @@ public class ListDetailActivity extends FragmentActivity implements
 		int storiesLength = storyList.size();
 		for (int j = 0; j < storiesLength; j++) {
 			Menu story = storyList.get(j);
-			if (story.getTypeProductId().equals(id)) {
+			if (story.getGroupId().equals(id)) {//getTypeProductId
 				storiesList.add(story);
 			}
 		}
@@ -873,18 +873,21 @@ public class ListDetailActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 		for (Menu menu : storyList) {
 			try {
-				ArrayList<ProductTypeInfo> productTypeInfoList = menu
-						.getProductTypeInfoList();
-				for (ProductTypeInfo productTypeInfo : productTypeInfoList) {
-					try {
-						if (productTypeInfo.getId().equals(id)) {
-							return productTypeInfo.getNameProductType();
-						}
-
-					} catch (Exception e) {
-						// TODO: handle exception
-						e.printStackTrace();
-					}
+//				ArrayList<ProductTypeInfo> productTypeInfoList = menu
+//						.getProductTypeInfoList();
+//				for (ProductTypeInfo productTypeInfo : productTypeInfoList) {
+//					try {
+//						if (productTypeInfo.getId().equals(id)) {
+//							return productTypeInfo.getNameProductType();
+//						}
+//
+//					} catch (Exception e) {
+//						// TODO: handle exception
+//						e.printStackTrace();
+//					}
+//				}
+				if(menu.getGroupId().equals(id)){
+					return menu.getGroupName();
 				}
 
 			} catch (Exception e) {
@@ -901,8 +904,8 @@ public class ListDetailActivity extends FragmentActivity implements
 		int length = menuList.size();
 		for (int i = 0; i < length; i++) {
 			Menu menu = menuList.get(i);
-			if (!listId.contains(menu.getTypeProductId())) {
-				listId.add(menu.getTypeProductId());
+			if (!listId.contains(menu.getGroupId())) {//getTypeProductId
+				listId.add(menu.getGroupId());//getTypeProductId
 			}
 		}
 		return listId;

@@ -7,6 +7,8 @@ import java.util.List;
 public class Menu implements Serializable{
 	String id;
 	String storeId;
+	private String groupName;
+	private String groupId;
 	private String nameProduct;
 	private ArrayList<ProductTypeInfo> productTypeInfoList;
 	private List<SizeItem> sizeItemList;
@@ -168,6 +170,18 @@ public class Menu implements Serializable{
 	 */
 	public void setUnitForBill(int unitForBill) {
 		this.unitForBill = unitForBill;
+	}
+	public String getGroupName() {
+		return groupName;
+	}
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
+	public String getGroupId() {
+		return groupId;
+	}
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
 	}
 	String typeProductId;
 	String createDate;
