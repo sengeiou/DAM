@@ -34,6 +34,7 @@ import whyq.handler.UserProfileHandler;
 import whyq.model.Bill;
 import whyq.model.BillItem;
 import whyq.model.BillPushNotification;
+import whyq.model.DeliveryFee;
 import whyq.model.Distance;
 import whyq.model.ExtraItem;
 import whyq.model.Faq;
@@ -1602,8 +1603,10 @@ public class DataParser {
 						user.setUpdateDate(getValue(element, "updatedate"));
 						user.setFirstName(getValue(element, "first_name"));
 						user.setLastName(getValue(element, "last_name"));
-						user.setGender(Integer.parseInt(getValue(element,
+						if(!getValue(element,
+								"gender").equals("")){user.setGender(Integer.parseInt(getValue(element,
 								"gender")));
+						}
 						WhyqImage image = new WhyqImage(getValue(element,
 								"avatar"));
 						user.setUrlAvatar(getValue(element,
@@ -2190,6 +2193,66 @@ public class DataParser {
 			e.printStackTrace();
 			return null;
 		}
+	
+	}
+
+	public Object parseLGetDeliveryFeeList(String result) {
+
+		// TODO Auto-generated method stub
+		try {
+			ResponseData data = new ResponseData();
+			Document doc = XMLfromString(result);
+			List<DeliveryFee> list = new ArrayList<DeliveryFee>();
+			String statusResponse = doc.getElementsByTagName("Status").item(0)
+					.getFirstChild().getNodeValue();
+			if (statusResponse.equals("200")) {
+				XMLReader xmlReader = initializeReader();
+				UserHandler userHandler = new UserHandler();
+				// assign the handler
+				xmlReader.setContentHandler(userHandler);
+				xmlReader.parse(new InputSource(new StringReader(result)));
+				final String mes = doc.getElementsByTagName("Message").item(0)
+						.getFirstChild().getNodeValue();
+				data.setStatus(statusResponse);
+				// data.setData(userHandler.getUser());
+				data.setMessage(mes);
+
+				String from = "0", to =  "0", fee = "0";
+				NodeList objNodeList = doc.getElementsByTagName("obj");
+				int sizeObj = objNodeList.getLength();
+				for (int ii = 0; ii < sizeObj; ii++) {
+					Element element1 = (Element) objNodeList.item(ii);
+
+					from = getValue(element1, "distance_from");
+					to = getValue(element1, "distance_to");
+					fee = getValue(element1, "fee");
+					
+					DeliveryFee item = new DeliveryFee();
+					item.setTo(Integer.parseInt(to));
+					item.setFrom(Integer.parseInt(from));
+					item.setFee(Integer.parseInt(fee));
+					
+					list.add(item);
+
+				}
+				data.setData(list);
+				return data;
+			} else {
+				final String mes = doc.getElementsByTagName("Message").item(0)
+						.getFirstChild().getNodeValue();
+				data.setStatus(statusResponse);
+				data.setData(null);
+				data.setMessage(mes);
+				return data;
+
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+
 	
 	}
 	

@@ -19,6 +19,7 @@ import whyq.adapter.WhyqMenuAdapter;
 import whyq.interfaces.IServiceListener;
 import whyq.map.MapsActivity;
 import whyq.model.Bill;
+import whyq.model.DeliveryFee;
 import whyq.model.ExtraItem;
 import whyq.model.ExtraItemSet;
 import whyq.model.GroupMenu;
@@ -44,6 +45,7 @@ import whyq.view.ScreenGestureController;
 import whyq.view.ScrollviewCustom;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.net.ParseException;
 import android.net.Uri;
 import android.os.Bundle;
@@ -51,6 +53,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.FloatMath;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -262,6 +265,7 @@ public class ListDetailActivity extends FragmentActivity implements
 	public static Promotion promotion;
 	public static float deliveryFee;
 	private ExpanMenuAdapter mExpanMenuAdapter;
+	public static List<DeliveryFee> deliveryFeeLis;
 	public static String commentContent;
 
 	public void onDoneClicked(View v) {
@@ -505,12 +509,6 @@ public class ListDetailActivity extends FragmentActivity implements
 				if (data.getStatus().equals("200")) {
 					store = (Store) data.getData();
 					if (store != null) {
-						try {
-							deliveryFee = Float.parseFloat(store.getFreeChargeOutRadiusDelieverPerOrder());//Float.parseFloat(store.getFreeChargeOutRadiusDelieverPerKm())*							
-						} catch (Exception e) {
-							// TODO: handle exception
-							e.printStackTrace();
-						}
 
 						storeType = Integer.valueOf(store.getCateid());
 						showHeaderImage();
@@ -573,6 +571,13 @@ public class ListDetailActivity extends FragmentActivity implements
 				if (userList != null) {
 					if (userList.size() > 0) {
 						loadCheckFriend(userList);
+						try {
+							getDeliveryFeeList();
+//							deliveryFee = Float.parseFloat(store.getFreeChargeOutRadiusDelieverPerOrder());//Float.parseFloat(store.getFreeChargeOutRadiusDelieverPerKm())*							
+						} catch (Exception e) {
+							// TODO: handle exception
+							e.printStackTrace();
+						}
 					}
 				}
 			} else if (data.getStatus().equals("401")) {
@@ -581,10 +586,74 @@ public class ListDetailActivity extends FragmentActivity implements
 				// Util.showDialog(context, data.getMessage());
 			}
 
-		}
+		}else if (result.getAction() == ServiceAction.ActionGetDeliveryFeeList
+				&& result.isSuccess()) {
+			ResponseData data = (ResponseData) result.getData();
+			if (data != null) {
+				if (data.getStatus().equals("200")) {
+					deliveryFeeLis = (List<DeliveryFee>) data.getData(); 
+					calculateDeliveryFee();
+
+				} else if (data.getStatus().equals("401")) {
+					Util.loginAgain(context, data.getMessage());
+				} else {
+					Util.showDialog(context, data.getMessage());
+				}
+			}
+		}else if (result.getAction() == ServiceAction.ActionGetDeliveryFeeList
+				&& !result.isSuccess()) {
+			Log.d(""+result.getAction(),"fail");
+		} 
 
 	}
 
+	private void calculateDeliveryFee() {
+		// TODO Auto-generated method stub
+		try {
+			double distance = gps2m(Float.parseFloat(ListActivity.latgitude), Float.parseFloat(ListActivity.longitude), Float.parseFloat(store.getLatitude()), Float.parseFloat(store.getLongitude()));
+			for(DeliveryFee item: deliveryFeeLis){
+				if(distance >= item.getFrom() && distance <= item.getTo()){
+					deliveryFee = item.getFee();
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	private double gps2m(float lat_a, float lng_a, float lat_b, float lng_b) {
+		try {
+
+		    float pk = (float) (180/3.14169);
+
+		    float a1 = lat_a / pk;
+		    float a2 = lng_a / pk;
+		    float b1 = lat_b / pk;
+		    float b2 = lng_b / pk;
+
+		    float t1 = FloatMath.cos(a1)*FloatMath.cos(a2)*FloatMath.cos(b1)*FloatMath.cos(b2);
+		    float t2 = FloatMath.cos(a1)*FloatMath.sin(a2)*FloatMath.cos(b1)*FloatMath.sin(b2);
+		    float t3 = FloatMath.sin(a1)*FloatMath.sin(b1);
+		    double tt = Math.acos(t1 + t2 + t3);
+
+		    return 6366000*tt;
+		
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	private void getDeliveryFeeList() {
+		// TODO Auto-generated method stub
+		showDialog();
+		service.getDeliveryFeeList();
+	}
+	
 	private void updateFavoriteWitId(String id, boolean b) {
 		// TODO Auto-generated method stub
 		int value;

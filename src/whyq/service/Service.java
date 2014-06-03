@@ -99,7 +99,18 @@ public class Service implements Runnable {
 		params.put("app_name", Constants.APP_NAME);
 		request("/m/member/favourite/business", params, true, false);
 	}
+	
+	public void getDeliveryFeeList() {
+		// TODO Auto-generated method stub
+		_action = ServiceAction.ActionGetDeliveryFeeList;
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("token", WhyqApplication.Instance().getRSAToken());
+		params.put("app", Constants.APP);
+		params.put("app_name", Constants.APP_NAME);
+		request("/m/innscor/delivery", params, true, false);
+	}
 
+	
 	public void removeFavorite(String storeId) {
 		// TODO Auto-generated method stub
 		_action = ServiceAction.ActionRemoveFavorite;
@@ -423,8 +434,8 @@ public class Service implements Runnable {
 		case ActionGetLocation:
 			resObj = parser.parseLCationResult(result);
 			break;
-		case ActionPostFavorite:
-			resObj = parser.parseLFavouriteResult(result);
+		case ActionGetDeliveryFeeList:
+			resObj = parser.parseLGetDeliveryFeeList(result);
 			break;
 			
 		case ActionOrderEcoCash:

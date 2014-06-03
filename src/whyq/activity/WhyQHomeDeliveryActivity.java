@@ -1,10 +1,12 @@
 package whyq.activity;
 
 import java.util.HashMap;
+import java.util.List;
 
 import whyq.WhyqApplication;
 import whyq.adapter.PlacesAutoCompleteAdapter;
 import whyq.interfaces.IServiceListener;
+import whyq.model.DeliveryFee;
 import whyq.model.ResponseData;
 import whyq.service.Service;
 import whyq.service.ServiceAction;
@@ -17,6 +19,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -65,6 +68,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 	private int calMinutes;
 	private int calHour;
 	private long scheduleDeliery;
+	private List<DeliveryFee> deliveryFeeLis;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +116,15 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 		etMinutes.setOnClickListener(this);
 		if(address!=null)
 			atAddress.setText(address);
+		
+//		getDeliveryFeeList();
 	}
+
+//	private void getDeliveryFeeList() {
+//		// TODO Auto-generated method stub
+//		setProgressBarVisibility(true);
+//		servivice.getDeliveryFeeList();
+//	}
 
 	protected void endAbleTimeField() {
 		// TODO Auto-generated method stub
@@ -319,6 +331,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 				longitude = ListActivity.longitude;
 				latgitude = ListActivity.latgitude;
 			}
+		
 			HashMap<String, String> params = new HashMap<String, String>();
 			params.put("store_id", storeId);
 			params.put("deliver_type", "2");
@@ -367,7 +380,23 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 	public void onCompleted(Service service, ServiceResponse result) {
 		// TODO Auto-generated method stub
 		hideDialog();
-		if (result.getAction() == ServiceAction.ActionOrderSend
+		if (result.getAction() == ServiceAction.ActionGetDeliveryFeeList
+				&& result.isSuccess()) {
+			ResponseData data = (ResponseData) result.getData();
+			if (data != null) {
+				if (data.getStatus().equals("200")) {
+					deliveryFeeLis = (List<DeliveryFee>) data.getData(); 
+
+				} else if (data.getStatus().equals("401")) {
+					Util.loginAgain(context, data.getMessage());
+				} else {
+					Util.showDialog(context, data.getMessage());
+				}
+			}
+		}else if (result.getAction() == ServiceAction.ActionGetDeliveryFeeList
+				&& !result.isSuccess()) {
+			Log.d(""+result.getAction(),"fail");
+		} else if (result.getAction() == ServiceAction.ActionOrderSend
 				&& result.isSuccess()) {
 			ResponseData data = (ResponseData) result.getData();
 			if (data != null) {

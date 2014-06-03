@@ -15,5 +15,5 @@ public enum ServiceAction {
     ActionPostComment, ActionGetLocation,ActionPostFavorite, ActionRemoveFavorite,ActionForgotPassword,
     ActionSearchFriendsFacebook, ActionInviteFriendsFacebook, ActionGetComment, ActionCheckedBills, ActionGetBills, ActionGetHistories, ActionGetPhotos, ActionGetOrder, ActionGetProfiles, ActionSearchOnlyFriend, ActionGetInvitations, ActionGetInvitationsNotification, ActionDeleteFriend, ActionOrderSend, ActionGetBillDetail, ActionGetDistance, ActionCheckbill,
     ActionInviteFriendsTwitter, ActionInviteFriendsWhyQ, ActionGetPaypalURI, ActionPushNotification, ActionRegisterDeviceToPushServer, ActionAcceptInvitation, ActionDeclineInvitation, ActionUnFriend, ActionOrderCheck, ActionPostFBComment, ActionPostFBCheckBill, ActionPostFBCheckDiscountBill, ActionPostFBAdd,
-    ActionGetFavouriteFoods, ActionPostFavouriteFoods, ActionOrderEcoCash
+    ActionGetFavouriteFoods, ActionPostFavouriteFoods, ActionOrderEcoCash, ActionGetDeliveryFeeList
 }
