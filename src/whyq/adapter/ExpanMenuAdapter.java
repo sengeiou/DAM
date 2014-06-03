@@ -834,10 +834,12 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		bill.setId(menu.getId());
 		bill.setProductName(menu.getNameProduct());
 		bill.setProductId(menu.getId());
-//		float price = ((ListDetailActivity) mContext).getTotalSize(menu.getSizeItemList())
-//				+ ((ListDetailActivity) mContext).getTotalOption(menu.getOptionItemList())
-//				+ ((ListDetailActivity) mContext).getTotalExtra(menu.getExtraItemList());
-		float price = Float.parseFloat(menu.getValue());
+		float price = ((ListDetailActivity) mContext).getTotalSize(menu.getSizeItemList())
+				+ ((ListDetailActivity) mContext).getTotalOption(menu.getOptionItemList())
+				+ ((ListDetailActivity) mContext).getTotalExtra(menu.getExtraItemList());
+		if(price <= 0){
+			price = Float.parseFloat(menu.getValue());
+		}
 		bill.setPrice(""+price);
 		bill.setUnit(""+menu.getUnitForBill());
 		
