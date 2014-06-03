@@ -256,11 +256,12 @@ public class CommentDialog extends Dialog implements IServiceListener {
 				mImageLoader.DisplayImage(item.getUser().getUrlAvatar(),
 						holder.avatar);
 				Photo photo = item.getPhotos();
-				if (photo != null) {
-					// mImageWorker.downloadImage(item.getPhotos().getThumb(),
-					// holder.thumb);
-					mImageLoader.DisplayImage(item.getPhotos().getThumb(),
-							holder.thumb);
+				if (photo != null && photo.getThumb() != null) {
+//					mImageWorker.downloadImage(item.getPhotos().getThumb(),
+//							holder.thumb);
+					mImageLoader.DisplayImage(item.getPhotos().getThumb(), holder.thumb);
+				}else{
+					holder.thumb.setVisibility(View.GONE);
 				}
 				if (item.getUser().getLike() > 0) {
 					holder.favorite
