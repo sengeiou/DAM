@@ -1105,9 +1105,7 @@ public class DataParser {
 													if (!getValue(inElement,
 															"createdate")
 															.equals("")) {
-														if (y == 0) {
-															item2.setSelected(true);
-														}
+												
 														sizeItemList.add(item2);
 													}
 
@@ -1122,6 +1120,10 @@ public class DataParser {
 																"name_product")
 														+ "sizeItemList "
 														+ sizeItemList);
+										if (sizeItemList.size() > 0) {
+											sizeItemList.get(0).setSelected(
+													true);
+										}
 										menu.setSizeItemList(sizeItemList);
 
 										NodeList storeInfoNodes = permElement
