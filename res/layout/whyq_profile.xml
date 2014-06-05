@@ -110,7 +110,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:text="DEAL A MEAL"
+                android:text="DEAL A DELIVERY"
                 android:textColor="@color/red" />
 
             <View
@@ -129,7 +129,7 @@
                 android:gravity="left"
                 android:onClick="onRateClicked"
                 android:padding="15dp"
-                android:text="DEAL A MEAL v2.0. Rate it!" />
+                android:text="DEAL A DELIVERY v2.0. Rate it!" />
 
             <View
                 android:layout_width="match_parent"

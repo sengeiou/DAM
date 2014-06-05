@@ -285,7 +285,7 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 		tvNumberResult = (TextView) findViewById(R.id.tvNumberResult);
 		tvTextSearch = (TextView) findViewById(R.id.tvTextSearch);
 
-		((TextView)findViewById(R.id.tvHeaderTitle)).setText("DEAL A MEAL");
+		((TextView)findViewById(R.id.tvHeaderTitle)).setText("DEAL A DELIVERY");
 		context = ListActivity.this;
 		whyqListView.setOnItemClickListener(onStoreItemListener);
 		etTextSearch
