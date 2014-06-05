@@ -245,7 +245,8 @@
                                                 android:id="@+id/tvStoreDes"
                                                 style="@style/small_grey_text"
                                                 android:layout_width="match_parent"
-                                                android:layout_height="60dp"
+                                                android:layout_height="wrap_content"
+                                                android:ellipsize="end"
                                                 android:text="" />
                                         </ScrollView>
                                     </LinearLayout>
