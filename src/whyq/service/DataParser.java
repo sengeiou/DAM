@@ -636,6 +636,7 @@ public class DataParser {
 								}
 							} catch (Exception e) {
 								// TODO: handle exception
+								e.printStackTrace();
 							}
 						}
 						item.setPromotionList(promotionList);
@@ -1063,9 +1064,12 @@ public class DataParser {
 													}
 													sizeItemList.add(item2);
 												}
+												
 											}
 	
 										}
+										Log.d("test detail", ""+getValue(element,
+												"name_product")+ "sizeItemList "+sizeItemList);
 										menu.setSizeItemList(sizeItemList);
 										
 										NodeList storeInfoNodes = permElement
@@ -1169,6 +1173,7 @@ public class DataParser {
 
 						} catch (Exception e) {
 							// TODO: handle exception
+							e.printStackTrace();
 						}
 					}
 					item.setMenuList(menuList);
@@ -1267,6 +1272,7 @@ public class DataParser {
 
 						} catch (Exception e) {
 							// TODO: handle exception
+							e.printStackTrace();
 						}
 					}
 					item.setPhotos(photos);
