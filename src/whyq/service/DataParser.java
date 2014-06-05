@@ -89,34 +89,39 @@ public class DataParser {
 			String statusResponse = doc.getElementsByTagName("Status").item(0)
 					.getFirstChild().getNodeValue();
 			if (statusResponse.equals("200")) {
-			/*	XMLReader xmlReader = initializeReader();
-				UserHandler userHandler = new UserHandler();
-				// assign the handler
-				xmlReader.setContentHandler(userHandler);
-				xmlReader.parse(new InputSource(new StringReader(inputString)));
-				*/
+				/*
+				 * XMLReader xmlReader = initializeReader(); UserHandler
+				 * userHandler = new UserHandler(); // assign the handler
+				 * xmlReader.setContentHandler(userHandler); xmlReader.parse(new
+				 * InputSource(new StringReader(inputString)));
+				 */
 				final String mes = doc.getElementsByTagName("Message").item(0)
 						.getFirstChild().getNodeValue();
 				data.setStatus(statusResponse);
-//				data.setData(userHandler.getUser());
-				
+				// data.setData(userHandler.getUser());
+
 				User user = new User();
 				NodeList nodeList = doc.getElementsByTagName("obj");
 				for (int i = 0; i < nodeList.getLength(); i++) {
 					try {
 						Element element = (Element) nodeList.item(i);
-						
+
 						user.setToken(getValue(element, "token"));
 						user.setId(getValue(element, "id"));
 						user.setEmail(getValue(element, "email"));
 						user.setRoleId(getValue(element, "role_id"));
-						user.setAcive(getValue(element, "is_active").equals("1"));
-						user.setTotalMoney(getValue(element, "total_saving_money"));
-						user.setTotalSavingMoney(getValue(element, "total_saving_money"));
+						user.setAcive(getValue(element, "is_active")
+								.equals("1"));
+						user.setTotalMoney(getValue(element,
+								"total_saving_money"));
+						user.setTotalSavingMoney(getValue(element,
+								"total_saving_money"));
 						user.setTotalComment(getValue(element, "total_comment"));
 						user.setTotalFriend(getValue(element, "total_friend"));
-						user.setTotalFavourite(getValue(element, "total_favourite"));
-						user.setTotalCheckBill(getValue(element, "total_check_bill"));
+						user.setTotalFavourite(getValue(element,
+								"total_favourite"));
+						user.setTotalCheckBill(getValue(element,
+								"total_check_bill"));
 						user.setTwitterId(getValue(element, "twitter_id"));
 						user.setFacebookId(getValue(element, "facebook_id"));
 						user.setStatus(getValue(element, "status"));
@@ -124,9 +129,10 @@ public class DataParser {
 						user.setUpdateDate(getValue(element, "updatedate"));
 						user.setFirstName(getValue(element, "first_name"));
 						user.setLastName(getValue(element, "last_name"));
-						if(!getValue(element, "gender").equals(""))
-							user.setGender(Integer.parseInt(getValue(element, "gender")));
-//						user.seta(getValue(element, "avatar"));
+						if (!getValue(element, "gender").equals(""))
+							user.setGender(Integer.parseInt(getValue(element,
+									"gender")));
+						// user.seta(getValue(element, "avatar"));
 						user.setCity(getValue(element, "city"));
 						user.setAddress(getValue(element, "address"));
 						user.setPhoneNumber(getValue(element, "phone_number"));
@@ -137,11 +143,9 @@ public class DataParser {
 						// TODO: handle exception
 						e.printStackTrace();
 					}
-					
+
 				}
-						
-	
-				
+
 				data.setData(user);
 				data.setMessage(mes);
 				return data;
@@ -259,10 +263,10 @@ public class DataParser {
 
 			Document doc = XMLfromString(inputString);
 			ResponseData data = new ResponseData();
-			String statusResponse ="";
-			if(doc!=null)
-				doc.getElementsByTagName("Status").item(0)
-					.getFirstChild().getNodeValue();
+			String statusResponse = "";
+			if (doc != null)
+				doc.getElementsByTagName("Status").item(0).getFirstChild()
+						.getNodeValue();
 			if (statusResponse.equals("200")) {
 				XMLReader xmlReader = initializeReader();
 				PhotoHandler handler = new PhotoHandler();
@@ -456,7 +460,7 @@ public class DataParser {
 		XMLReader xmlReader = parser.getXMLReader();
 		return xmlReader;
 	}
-	
+
 	public Object parseFavouriteFood(String input) {
 		try {
 			ArrayList<Product> productList = new ArrayList<Product>();
@@ -466,7 +470,7 @@ public class DataParser {
 					.getFirstChild().getNodeValue();
 			if (statusResponse.equals("200")) {
 				NodeList nodeList = doc.getElementsByTagName("obj");
-				
+
 				for (int i = 0; i < nodeList.getLength(); i++) {
 					try {
 						Element permElement = (Element) nodeList.item(i);
@@ -475,26 +479,34 @@ public class DataParser {
 						mProduct.storeId = getValue(permElement, "store_id");
 						mProduct.name = getValue(permElement, "name_product");
 						mProduct.value = getValue(permElement, "value");
-						mProduct.valuePromotion = getValue(permElement, "value_promotion");
-						mProduct.description = getValue(permElement, "description");
-						mProduct.imgProduct = getValue(permElement, "image_product");
+						mProduct.valuePromotion = getValue(permElement,
+								"value_promotion");
+						mProduct.description = getValue(permElement,
+								"description");
+						mProduct.imgProduct = getValue(permElement,
+								"image_product");
 						mProduct.imgThumb = getValue(permElement, "image_thumb");
 						mProduct.status = getValue(permElement, "status");
-						mProduct.productTypeId = getValue(permElement, "type_product_id");
-						mProduct.createDate = getValue(permElement, "createdate");
-						mProduct.updateDate = getValue(permElement, "updatedate");
+						mProduct.productTypeId = getValue(permElement,
+								"type_product_id");
+						mProduct.createDate = getValue(permElement,
+								"createdate");
+						mProduct.updateDate = getValue(permElement,
+								"updatedate");
 						mProduct.sort = getValue(permElement, "sort");
 						mProduct.likeCount = getValue(permElement, "count_like");
-						mProduct.isLike = getValue(permElement, "is_like").equals("1") ? true : false;
-						
+						mProduct.isLike = getValue(permElement, "is_like")
+								.equals("1") ? true : false;
+
 						NodeList groupItemInfo = (NodeList) permElement
 								.getElementsByTagName("group_item_info");
-						mProduct.groupItemId = getValue(((Element)groupItemInfo.item(0)), "id");
-						mProduct.groupItemName = getValue(((Element)groupItemInfo.item(0)), "group_name");
-						
-						
+						mProduct.groupItemId = getValue(
+								((Element) groupItemInfo.item(0)), "id");
+						mProduct.groupItemName = getValue(
+								((Element) groupItemInfo.item(0)), "group_name");
+
 						productList.add(mProduct);
-					} catch (Exception e){
+					} catch (Exception e) {
 					}
 				}
 				final String mes = doc.getElementsByTagName("Message").item(0)
@@ -555,7 +567,8 @@ public class DataParser {
 						String nameStore = getValue(permElement, "name_store");
 						String introStore = getValue(permElement, "intro_store");
 						String phoneStore = getValue(permElement, "phone_store");
-						String merchant_number = getValue(permElement, "merchant_number");
+						String merchant_number = getValue(permElement,
+								"merchant_number");
 						String logi = getValue(permElement, "logo");
 						;
 						String style = getValue(permElement, "style");
@@ -762,7 +775,8 @@ public class DataParser {
 					String feeChargeOutRadiesDeliverPerKm = getValue(
 							permElement, "fee_charge_out_radius_deliver_per_km");
 					String feeChargeOutRadiesDeliverPerOrder = getValue(
-							permElement, "fee_charge_for_delivery_sub_product_for_every_order");
+							permElement,
+							"fee_charge_for_delivery_sub_product_for_every_order");
 					String createdate = getValue(permElement, "createdate");
 					String updatedate = getValue(permElement, "updatedate");
 					String cateId = getValue(permElement, "cate_id");
@@ -770,7 +784,8 @@ public class DataParser {
 					String nameStore = getValue(permElement, "name_store");
 					String introStore = getValue(permElement, "intro_store");
 					String phoneStore = getValue(permElement, "phone_store");
-					String merchant_number = getValue(permElement, "merchant_number");
+					String merchant_number = getValue(permElement,
+							"merchant_number");
 					String logo = getValue(permElement, "logo");
 					String style = getValue(permElement, "style");
 					;
@@ -863,8 +878,7 @@ public class DataParser {
 								"gender")));
 						WhyqImage image = new WhyqImage(getValue(element,
 								"avatar"));
-						user.setUrlAvatar(getValue(element,
-								"avatar"));
+						user.setUrlAvatar(getValue(element, "avatar"));
 						user.setAvatar(image);
 						user.setAddress(getValue(element, "address"));
 						userList.add(user);
@@ -905,8 +919,10 @@ public class DataParser {
 										menu.setId(getValue(element, "id"));
 										menu.setStoreId(getValue(element,
 												"store_id"));
-										menu.setGroupId(getValue(menuElement, "id"));
-										menu.setGroupName(getValue(menuElement, "group_name"));
+										menu.setGroupId(getValue(menuElement,
+												"id"));
+										menu.setGroupName(getValue(menuElement,
+												"group_name"));
 										menu.setNameProduct(getValue(element,
 												"name_product"));
 										menu.setValue(getValue(element, "value"));
@@ -953,125 +969,161 @@ public class DataParser {
 										int lengthOption = optionItem
 												.getLength();
 										List<OptionItem> optionItemList = new ArrayList<OptionItem>();
-										for (int y = 0; y < lengthOption; y++) {
-											Element inElement = (Element) optionItem
-													.item(y);
-											if(!getValue(inElement, "id").equals("")){
-												OptionItem item2 = new OptionItem();
-												item2.setId(getValue(inElement,
-														"id"));
-												item2.setProductId(getValue(inElement,
-														"product_id"));
-												item2.setName(getValue(inElement,
-														"name"));
-												item2.setSkue(getValue(inElement,
-														"sku"));
-												item2.setValue(getValue(inElement,
-														"value"));
-												item2.setStatus(getValue(inElement,
-														"status"));
-												item2.setType(getValue(inElement,
-														"type"));
-												item2.setNote(getValue(inElement,
-														"note"));
-												item2.setSort(getValue(inElement,
-														"sort"));
-												item2.setCreatedata(getValue(inElement,
-														"createdate"));
-												if(!getValue(inElement,
-														"value").equals("")){
-													optionItemList.add(item2);
+										for (int yy = 0; yy < lengthOption; yy++) {
+											Element in0Element = (Element) optionItem
+													.item(yy);
+											NodeList childMenu = in0Element
+													.getChildNodes();
+											for (int y = 0; y < childMenu
+													.getLength(); y++) {
+												Element inElement = (Element) childMenu
+														.item(y);
+
+												if (!getValue(inElement, "id")
+														.equals("")) {
+													OptionItem item2 = new OptionItem();
+													item2.setId(getValue(
+															inElement, "id"));
+													item2.setProductId(getValue(
+															inElement,
+															"product_id"));
+													item2.setName(getValue(
+															inElement, "name"));
+													item2.setSkue(getValue(
+															inElement, "sku"));
+													item2.setValue(getValue(
+															inElement, "value"));
+													item2.setStatus(getValue(
+															inElement, "status"));
+													item2.setType(getValue(
+															inElement, "type"));
+													item2.setNote(getValue(
+															inElement, "note"));
+													item2.setSort(getValue(
+															inElement, "sort"));
+													item2.setCreatedata(getValue(
+															inElement,
+															"createdate"));
+													if (!getValue(inElement,
+															"value").equals("")) {
+														optionItemList
+																.add(item2);
+													}
+												}
+											}
+										}
+										menu.setOptionItemList(optionItemList);
+
+										NodeList extraItem = elementList
+												.getElementsByTagName("extra_item");
+										int lengthExtra = extraItem.getLength();
+										List<ExtraItem> extraItemList = new ArrayList<ExtraItem>();
+										for (int yy = 0; yy < lengthExtra; yy++) {
+											Element in0Element = (Element) extraItem
+													.item(yy);
+											NodeList childMenu = in0Element
+													.getChildNodes();
+											for (int y = 0; y < childMenu
+													.getLength(); y++) {
+												Element inElement = (Element) childMenu
+														.item(y);
+												if (!getValue(inElement, "id")
+														.equals("")) {
+													ExtraItem item2 = new ExtraItem();
+													item2.setId(getValue(
+															inElement, "id"));
+													item2.setProductId(getValue(
+															inElement,
+															"product_id"));
+													item2.setName(getValue(
+															inElement, "name"));
+													item2.setSkue(getValue(
+															inElement, "sku"));
+													item2.setValue(getValue(
+															inElement, "value"));
+													item2.setStatus(getValue(
+															inElement, "status"));
+													item2.setType(getValue(
+															inElement, "type"));
+													item2.setNote(getValue(
+															inElement, "note"));
+													item2.setSort(getValue(
+															inElement, "sort"));
+													item2.setCreatedata(getValue(
+															inElement,
+															"createdate"));
+													if (!getValue(inElement,
+															"value").equals("")) {
+														extraItemList
+																.add(item2);
+													}
 												}
 											}
 
 										}
-										menu.setOptionItemList(optionItemList);
-										
-										NodeList extraItem = elementList
-												.getElementsByTagName("extra_item");
-										int lengthExtra = extraItem
-												.getLength();
-										List<ExtraItem> extraItemList = new ArrayList<ExtraItem>();
-										for (int y = 0; y < lengthExtra; y++) {
-											Element inElement = (Element) extraItem
-													.item(y);
-											if(!getValue(inElement, "id").equals("")){
-												ExtraItem item2 = new ExtraItem();
-												item2.setId(getValue(inElement,
-														"id"));
-												item2.setProductId(getValue(inElement,
-														"product_id"));
-												item2.setName(getValue(inElement,
-														"name"));
-												item2.setSkue(getValue(inElement,
-														"sku"));
-												item2.setValue(getValue(inElement,
-														"value"));
-												item2.setStatus(getValue(inElement,
-														"status"));
-												item2.setType(getValue(inElement,
-														"type"));
-												item2.setNote(getValue(inElement,
-														"note"));
-												item2.setSort(getValue(inElement,
-														"sort"));
-												item2.setCreatedata(getValue(inElement,
-														"createdate"));
-												if(!getValue(inElement,
-														"value").equals("")){
-													extraItemList.add(item2);
-												}
-											}
-	
-										}
 										menu.setExtraItemList(extraItemList);
-										
-										NodeList sizeItem = elementList
+
+										NodeList sizeItem = element
 												.getElementsByTagName("size_item");
-										int lengthSize = sizeItem
-												.getLength();
+										int lengthSize = sizeItem.getLength();
 										List<SizeItem> sizeItemList = new ArrayList<SizeItem>();
-										for (int y = 0; y < lengthSize; y++) {
-											Element inElement = (Element) sizeItem
-													.item(y);
-											if(!getValue(inElement, "id").equals("")){
-												
-												SizeItem item2 = new SizeItem();
-												item2.setId(getValue(inElement,
-														"id"));
-												item2.setProductId(getValue(inElement,
-														"product_id"));
-												item2.setName(getValue(inElement,
-														"name"));
-												item2.setSkue(getValue(inElement,
-														"sku"));
-												item2.setValue(getValue(inElement,
-														"value"));
-												item2.setStatus(getValue(inElement,
-														"status"));
-												item2.setType(getValue(inElement,
-														"type"));
-												item2.setNote(getValue(inElement,
-														"note"));
-												item2.setSort(getValue(inElement,
-														"sort"));
-												item2.setCreatedata(getValue(inElement,
-														"createdate"));
-												if(!getValue(inElement,
-														"createdate").equals("")){
-													if(y==0){
-														item2.setSelected(true);
+										for (int yy = 0; yy < lengthSize; yy++) {
+											Element in0Element = (Element) sizeItem
+													.item(yy);
+											NodeList childMenu = in0Element
+													.getChildNodes();
+											for (int y = 0; y < childMenu
+													.getLength(); y++) {
+												Element inElement = (Element) childMenu
+														.item(y);
+												if (!getValue(inElement, "id")
+														.equals("")) {
+
+													SizeItem item2 = new SizeItem();
+													item2.setId(getValue(
+															inElement, "id"));
+													item2.setProductId(getValue(
+															inElement,
+															"product_id"));
+													item2.setName(getValue(
+															inElement, "name"));
+													item2.setSkue(getValue(
+															inElement, "sku"));
+													item2.setValue(getValue(
+															inElement, "value"));
+													item2.setStatus(getValue(
+															inElement, "status"));
+													item2.setType(getValue(
+															inElement, "type"));
+													item2.setNote(getValue(
+															inElement, "note"));
+													item2.setSort(getValue(
+															inElement, "sort"));
+													item2.setCreatedata(getValue(
+															inElement,
+															"createdate"));
+													if (!getValue(inElement,
+															"createdate")
+															.equals("")) {
+														if (y == 0) {
+															item2.setSelected(true);
+														}
+														sizeItemList.add(item2);
 													}
-													sizeItemList.add(item2);
+
 												}
-												
+
 											}
-	
+
 										}
-										Log.d("test detail", ""+getValue(element,
-												"name_product")+ "sizeItemList "+sizeItemList);
+										Log.d("test detail",
+												""
+														+ getValue(element,
+																"name_product")
+														+ "sizeItemList "
+														+ sizeItemList);
 										menu.setSizeItemList(sizeItemList);
-										
+
 										NodeList storeInfoNodes = permElement
 												.getElementsByTagName("store_info");
 										int storeInfoLength = productTypeInfoNodes
@@ -1166,6 +1218,7 @@ public class DataParser {
 
 										}
 										menuList.add(menu);
+
 									}
 
 								}
@@ -1194,8 +1247,8 @@ public class DataParser {
 										"location_id"));
 								promotion.setTypePromotionId(getValue(element,
 										"type_promotion_id"));
-								 promotion.setTitlePromotion(getValue(element,
-								 "title_promotion"));
+								promotion.setTitlePromotion(getValue(element,
+										"title_promotion"));
 								promotion.setValuePromotion(getValue(element,
 										"value_promotion"));
 								promotion.setTmpData(getValue(element,
@@ -1611,14 +1664,13 @@ public class DataParser {
 						user.setUpdateDate(getValue(element, "updatedate"));
 						user.setFirstName(getValue(element, "first_name"));
 						user.setLastName(getValue(element, "last_name"));
-						if(!getValue(element,
-								"gender").equals("")){user.setGender(Integer.parseInt(getValue(element,
-								"gender")));
+						if (!getValue(element, "gender").equals("")) {
+							user.setGender(Integer.parseInt(getValue(element,
+									"gender")));
 						}
 						WhyqImage image = new WhyqImage(getValue(element,
 								"avatar"));
-						user.setUrlAvatar(getValue(element,
-								"avatar"));
+						user.setUrlAvatar(getValue(element, "avatar"));
 						user.setAvatar(image);
 						user.setAddress(getValue(element, "city"));
 						user.setCity(getValue(element, "address"));
@@ -2201,7 +2253,7 @@ public class DataParser {
 			e.printStackTrace();
 			return null;
 		}
-	
+
 	}
 
 	public Object parseLGetDeliveryFeeList(String result) {
@@ -2225,7 +2277,7 @@ public class DataParser {
 				// data.setData(userHandler.getUser());
 				data.setMessage(mes);
 
-				String from = "0", to =  "0", fee = "0";
+				String from = "0", to = "0", fee = "0";
 				NodeList objNodeList = doc.getElementsByTagName("obj");
 				int sizeObj = objNodeList.getLength();
 				for (int ii = 0; ii < sizeObj; ii++) {
@@ -2234,12 +2286,12 @@ public class DataParser {
 					from = getValue(element1, "distance_from");
 					to = getValue(element1, "distance_to");
 					fee = getValue(element1, "fee");
-					
+
 					DeliveryFee item = new DeliveryFee();
 					item.setTo(Integer.parseInt(to));
 					item.setFrom(Integer.parseInt(from));
 					item.setFee(Integer.parseInt(fee));
-					
+
 					list.add(item);
 
 				}
@@ -2261,8 +2313,6 @@ public class DataParser {
 			return null;
 		}
 
-	
 	}
-	
 
 }
