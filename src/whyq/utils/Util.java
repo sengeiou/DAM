@@ -609,7 +609,7 @@ public class Util {
 		// TODO Auto-generated method stub
 		try {
 			PackageInfo info = context.getPackageManager().getPackageInfo(
-					"com.whyq", PackageManager.GET_SIGNATURES);
+					"com.dam", PackageManager.GET_SIGNATURES);
 			for (Signature signature : info.signatures) {
 				MessageDigest md = MessageDigest.getInstance("SHA");
 				md.update(signature.toByteArray());
