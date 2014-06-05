@@ -412,7 +412,7 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 //			}
 			viewHolder.tvType.setText(Html.fromHtml(item.getNameProduct()));
 		
-			viewHolder.tvPrice.setText("$" + Html.fromHtml(item.getValue()));
+			viewHolder.tvPrice.setText("$" + Html.fromHtml(""+Util.round(Float.parseFloat(item.getValue()), 1)));
 			viewHolder.tvCount.setText(""+item.getUnitForBill());
 			viewHolder.storeId = item.getStoreId();
 			viewHolder.menuId = item.getId();
