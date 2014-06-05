@@ -895,22 +895,27 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		// TODO Auto-generated method stub
 		Log.d("onClick", "onSizeClicked" + i);
 		SizeItem item = (SizeItem)v0.getTag();
-		Menu menu = getMenuItemById(item.getProductId());
-		if(menu!=null){
-			List<SizeItem> list = menu.getSizeItemList();
-			if(list!=null && list.size() > 0){
-				for(SizeItem sItem: list){
-					if(item== sItem){
-						item.setSelected(!item.isSelected());				
-					}else{
-						item.setSelected(item.isSelected());
+		if(!item.isSelected()){
+			Menu menu = getMenuItemById(item.getProductId());
+			if(menu!=null){
+				List<SizeItem> list = menu.getSizeItemList();
+				if(list!=null && list.size() > 0){
+					boolean isSelected = item.isSelected();
+					for(int i2=0; i2 < list.size(); i2++){
+						SizeItem sItem = list.get(i2);
+						Log.d("onSizeClicked", "id" + sItem.getId() + " and item id "+item.getId()+"is selected "+isSelected);
+						if(item.getId().equals(sItem.getId())){
+							sItem.setSelected(!isSelected);				
+						}else{
+							sItem.setSelected(isSelected);
+						}
 					}
 				}
 			}
+			
+			updateSizeItem(item);
+			notifyDataSetChanged();
 		}
-		
-		updateSizeItem(item);
-		notifyDataSetChanged();
 	}
 
 	private void onOptionClicked(int i, View v0) {
