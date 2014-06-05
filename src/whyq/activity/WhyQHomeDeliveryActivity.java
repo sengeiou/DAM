@@ -85,7 +85,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 		etMinutes = (Button) findViewById(R.id.etMinutes);
 		cbASAP = (CheckBox) findViewById(R.id.cbASAP);
 		atAddress = (AutoCompleteTextView)findViewById(R.id.atAddress);
-		atAddress.setAdapter(new PlacesAutoCompleteAdapter(context, R.layout.place_item_2));
+//		atAddress.setAdapter(new PlacesAutoCompleteAdapter(context, R.layout.place_item_2));
 		progressBar = (ProgressBar) findViewById(R.id.prgBar);
 		
 		currentHours = 0;
