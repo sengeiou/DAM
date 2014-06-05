@@ -116,6 +116,7 @@ public class Constants {
 	public static final String PLACES_API_BASE ="http://maps.googleapis.com/maps/api/geocode";
 	public static final String TYPE_AUTOCOMPLETE = "/autocomplete";
 	public static final String OUT_JSON = "/json";
+	public static final Object DEVELOPMENT = "dev";
 	public static String LINK_SHARE_FACEBOOK_GLOBAL = null;
 
 }
