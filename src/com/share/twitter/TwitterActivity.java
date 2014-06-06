@@ -108,7 +108,14 @@ public class TwitterActivity extends Activity {
 				twitterWebView.getSettings().setSavePassword(false);
 				twitterWebView.loadUrl(url);
 			} catch (Exception e) {
-				progressBar.setVisibility(View.GONE);
+				runOnUiThread(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						progressBar.setVisibility(View.GONE);	
+					}
+				});
 				e.printStackTrace();
 				
 			}
