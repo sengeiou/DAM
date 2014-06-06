@@ -21,8 +21,8 @@ import android.util.Log;
 public class ParseApplication {
 
 	
-	private static final String APPLICATION_ID = "b6Aq0s7gZq2XK79XJJMxCJu2GAi8FAarj2X3QRXS";
-	private static final String CLIENT_KEY = "nbVoZs1qjWcOCMk4ztIQP0pZzIXPamBk4gfuT0bH";
+	private static final String APPLICATION_ID = "pGrgW9HKJwPcLgX7egITPWLcj4tcQ5Ap1pIpwVFq";
+	private static final String CLIENT_KEY = "YVdFROn2JrpDnV8X9f3rm5X3tnviJXmkOpRDDXJg";
 	public static void registerPushNotification(Context context) {
 
 		// Add your initialization code here
