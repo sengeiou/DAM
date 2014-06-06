@@ -143,7 +143,7 @@ public class Service implements Runnable {
 	}
 
 	public void getFriends(String token, String user_id) {
-		// ÖNedd add page and key = if search
+		// ï¿½Nedd add page and key = if search
 
 		_action = ServiceAction.ActionGetFriends;
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -157,7 +157,7 @@ public class Service implements Runnable {
 	}
 
 	public void getInvitation(String token, String listInvited) {
-		// ÖNedd add page and key = if search
+		// ï¿½Nedd add page and key = if search
 
 		_action = ServiceAction.ActionGetInvitations;
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -171,7 +171,7 @@ public class Service implements Runnable {
 	}
 
 	public void getInvitationNotification(String token, String listInvited) {
-		// ÖNedd add page and key = if search
+		// ï¿½Nedd add page and key = if search
 
 		_action = ServiceAction.ActionGetInvitationsNotification;
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -992,7 +992,7 @@ public class Service implements Runnable {
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
 		params.put("appname", appName);
-		params.put("development", Constants.DEVELOPMENT);//pro
+		params.put("env", Constants.DEVELOPMENT);//pro
 		params.put("appversion", appVersion);
 		params.put("devicename", deviceName);
 		params.put("devicemodel", deviceModel);
