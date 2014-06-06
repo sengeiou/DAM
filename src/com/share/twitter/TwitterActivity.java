@@ -103,10 +103,17 @@ public class TwitterActivity extends Activity {
 					e.printStackTrace();
 				}
 				
-				twitterWebView.setWebViewClient(new TWWebviewClient());
-				twitterWebView.getSettings().setJavaScriptEnabled(true);
-				twitterWebView.getSettings().setSavePassword(false);
-				twitterWebView.loadUrl(url);
+				runOnUiThread(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						twitterWebView.setWebViewClient(new TWWebviewClient());
+						twitterWebView.getSettings().setJavaScriptEnabled(true);
+						twitterWebView.getSettings().setSavePassword(false);
+						twitterWebView.loadUrl(url);
+					}
+				});
 			} catch (Exception e) {
 				runOnUiThread(new Runnable() {
 					
