@@ -39,6 +39,8 @@ public class PushNotificationActivity extends Activity {
 				i.putExtras(bundle);
 				startActivity(i);
 				finish();
+			}else{
+				finish();
 			}
 		}
 	}
