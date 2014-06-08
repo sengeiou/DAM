@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/category_button"
     android:orientation="vertical"
     android:padding="@dimen/base_padding" >
 
@@ -10,11 +11,19 @@
         style="@style/text_medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/category_button"
         android:drawableLeft="@drawable/icon_status_friend"
         android:drawablePadding="@dimen/base_padding"
         android:padding="@dimen/base_padding"
         android:textColor="@android:color/black"
         android:textSize="16sp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/bg_comment"
+        android:padding="15dp" />
+
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package whyq.activity;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -418,6 +419,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 					Util.showDialog(context, data.getMessage());
 				}
 			}
+			Log.d("scheduleDeliery","scheduleDelier: "+scheduleDeliery);
 			if(scheduleDeliery > 0){
 				WhyqApplication.Instance().pushNotification(WhyqApplication.Instance().getApplicationContext(), scheduleDeliery, "Ready to get your product?", "your delivery action will be 15 minutes next");	
 			}
@@ -429,11 +431,16 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 
 	private boolean exeCheckTimeInput() {
 		// TODO Auto-generated method stub
-		Time today = new Time(Time.getCurrentTimezone());
-		today.setToNow();
-		int hourNow = today.hour;
-		int minutesNow = today.hour;
-		if((currentHours > hourNow) || (currentHours == calHour ) && (calMinutes < currentMinutes)){
+//		Time today = new Time(Time.getCurrentTimezone());
+//		today.setToNow();
+//		int hourNow = today.hour;
+//		int minutesNow = today.hour;
+		Calendar cal = Calendar.getInstance();
+		int hourNow = cal.get(Calendar.HOUR) - 17;
+		int minutesNow = cal.get(Calendar.MINUTE);
+
+		Log.d("","currentHours: "+currentHours+"currentMinutes: "+currentMinutes+"hourNow: "+hourNow+"minutesNow: "+minutesNow);
+		if((currentHours > hourNow) || (currentHours == hourNow ) && (minutesNow < currentMinutes)){
 			calHour = currentHours - hourNow;
 			calMinutes = currentMinutes - minutesNow;
 			scheduleDeliery = System.currentTimeMillis() + calHour*60*60*1000 + calMinutes*60 * 1000;

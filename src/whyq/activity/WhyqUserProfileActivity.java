@@ -504,6 +504,7 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 			ViewHolder holder = getViewHolder(convertView);
 			ActivityItem item = mItems.get(position);
 			String message = Html.fromHtml(item.getMessage()).toString();
+			String messageContent = item.getMessageContent();
 			String key = ACTIVITY_MAP.get(item.getActivity_type());
 			if (key == null) {
 				holder.activity.setText(message);
@@ -512,6 +513,13 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 						key, 0xff808080));
 
 			}
+			if(messageContent !=null){
+				holder.messageContent.setVisibility(View.VISIBLE);
+				holder.messageContent.setText(Html.fromHtml(messageContent));
+			}else{
+				holder.messageContent.setVisibility(View.GONE);
+			}
+			
 			if (item.getActivity_type().toUpperCase().equals("COMMENT")) {
 				holder.activity.setCompoundDrawablesWithIntrinsicBounds(
 						R.drawable.icon_status_comment, 0, 0, 0);
@@ -529,10 +537,11 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 		}
 
 		class ViewHolder {
-			TextView activity;
+			TextView activity, messageContent;
 
 			public ViewHolder(View view) {
 				activity = (TextView) view.findViewById(R.id.activity);
+				messageContent = (TextView)view.findViewById(R.id.tv_content);
 			}
 		}
 

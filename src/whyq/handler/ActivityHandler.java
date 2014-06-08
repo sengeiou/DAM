@@ -20,6 +20,7 @@ public class ActivityHandler extends BaseHandler {
 	private static final String TAG_OPTIONAL_ID = "optional_id";
 	private static final String TAG_ACTIVITY_TYPE = "activity_type";
 	private static final String TAG_MESSAGE = "message";
+	private static final String TAG_MESSAGE_CONTENT = "content";
 	private static final String TAG_IS_READ = "is_read";
 	private static final String TAG_CREATEDATE = "createdate";
 	private static final String TAG_UPDATEDATE = "updatedate";
@@ -62,6 +63,8 @@ public class ActivityHandler extends BaseHandler {
 				currentActivityItem.setIs_read(getInt());
 			} else if (localName.equalsIgnoreCase(TAG_MESSAGE)) {
 				currentActivityItem.setMessage(getString());
+			}else if (localName.equalsIgnoreCase(TAG_MESSAGE_CONTENT)) {
+				currentActivityItem.setMessageContent(getString());
 			} else if (localName.equalsIgnoreCase(TAG_OPTIONAL_ID)) {
 				currentActivityItem.setOptional_id(getString());
 			} else if (localName.equalsIgnoreCase(TAG_UPDATEDATE)) {

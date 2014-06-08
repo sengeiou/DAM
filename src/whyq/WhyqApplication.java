@@ -236,13 +236,14 @@ public class WhyqApplication extends Application {
 		Intent intentAlarm = new Intent(ctx, AlarmReceiver.class);
 		intentAlarm.putExtra("title", title);
 		intentAlarm.putExtra("message", "message");
-
+		Log.d("pushNotification","compare time: "+ (time - System.currentTimeMillis()));
 		if (time <= System.currentTimeMillis() + 15 * 60 * 1000)
 			time = time + 60 * 1000;
 		else if (time - 15 * 60 * 1000 >= System.currentTimeMillis())
 			// notify before 15'
 			time = time - 15 * 60 * 1000;
 
+		Log.d("pushNotification","pushNotification time: "+time+" current time: "+System.currentTimeMillis());
 		// create the object
 		AlarmManager alarmManager = (AlarmManager) ctx
 				.getSystemService(ALARM_SERVICE);

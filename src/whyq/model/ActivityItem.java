@@ -13,6 +13,7 @@ public class ActivityItem {
 	private String updatedate;
 	private BusinessInfo business_info;
 	private String user_name;
+	private String messageContent;
 
 	public String getId() {
 		return id;
@@ -100,5 +101,13 @@ public class ActivityItem {
 
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
+	}
+
+	public String getMessageContent() {
+		return messageContent;
+	}
+
+	public void setMessageContent(String messageContent) {
+		this.messageContent = messageContent;
 	}
 }
