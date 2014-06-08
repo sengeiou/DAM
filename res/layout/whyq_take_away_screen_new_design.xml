@@ -110,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:text="What time you will colect your order" />
+            android:text="What time will you collect your order?" />
 
         <LinearLayout
             android:id="@+id/lnTimeTogoField"
