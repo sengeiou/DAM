@@ -437,7 +437,9 @@ public class Service implements Runnable {
 		case ActionGetDeliveryFeeList:
 			resObj = parser.parseLGetDeliveryFeeList(result);
 			break;
-			
+		case ActionPostFavorite:
+			resObj = parser.parseLFavouriteResult(result);
+			break;
 		case ActionOrderEcoCash:
 			resObj = parser.parseOrderEcoCash(result);
 			break;
