@@ -1485,14 +1485,13 @@ public class ListDetailActivity extends FragmentActivity implements
 				List<Bill> list = billList.get(key);
 				for (Bill bill : list) {
 					float sizeValue = getTotalSize(bill.getSizeList());
+					float optionValue = getTotalOption(bill.getOptionList());
+					float extraValue = getTotalExtra(bill.getExtraList());
 					float price = 0;
-					if(sizeValue == 0){
+					if((sizeValue + optionValue + extraValue) <= 0){
 						price = Float.parseFloat(bill.getPrice());
 						price =Integer.parseInt(bill.getUnit())*price;
 					}
-					float optionValue = getTotalOption(bill.getOptionList());
-					float extraValue = getTotalExtra(bill.getExtraList());
-					
 					total+= price + Integer.parseInt(bill.getUnit())*(sizeValue + optionValue + extraValue);
 				}
 			
