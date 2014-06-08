@@ -5,6 +5,7 @@ import java.util.List;
 
 import whyq.WhyqApplication;
 import whyq.adapter.PlacesAutoCompleteAdapter;
+import whyq.interfaces.IDialogListener;
 import whyq.interfaces.IServiceListener;
 import whyq.model.DeliveryFee;
 import whyq.model.ResponseData;
@@ -401,7 +402,14 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 			ResponseData data = (ResponseData) result.getData();
 			if (data != null) {
 				if (data.getStatus().equals("200")) {
-					Util.showDialog(context, data.getMessage());
+					Util.showDialog(context, data.getMessage(),new IDialogListener() {
+						
+						@Override
+						public void onClose(int type, Object data) {
+							// TODO Auto-generated method stub
+							finish();
+						}
+					});
 //					WhyqOrderMenuActivity.sOrderMenuActivity.dismiss();
 //					WhyQBillScreen.sBillActivity.finish();
 				} else if (data.getStatus().equals("401")) {
@@ -413,7 +421,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 			if(scheduleDeliery > 0){
 				WhyqApplication.Instance().pushNotification(WhyqApplication.Instance().getApplicationContext(), scheduleDeliery, "Ready to get your product?", "your delivery action will be 15 minutes next");	
 			}
-			finish();
+//			finish();
 		}else if(result.getAction() == ServiceAction.ActionOrderSend){
 			finish();
 		}
