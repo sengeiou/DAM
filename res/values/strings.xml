@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">DAM</string>
+    <string name="app_name">DEAL A DELIVERY</string>
     <string name="app_name_title">DEAL A DELIVERY</string>
     <string name="app_name_inkakao"> 펌핑 이미지 SNS </string>
     <string name="bt_join">회원 등록</string>
