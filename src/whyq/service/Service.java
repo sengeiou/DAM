@@ -991,7 +991,7 @@ public class Service implements Runnable {
 		params.put("token", "" + WhyqApplication.Instance().getRSAToken());
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
-		params.put("appname", appName);
+		params.put("appname", Constants.APP_NAME);
 		params.put("env", Constants.DEVELOPMENT);//pro
 		params.put("appversion", appVersion);
 		params.put("devicename", deviceName);
