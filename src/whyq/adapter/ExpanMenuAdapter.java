@@ -460,27 +460,41 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 //					final View preview = LayoutInflater.from(mContext).inflate(R.layout.item_extra_preview, viewGroup,false);
 //					ImageButton btnDeleteMenu = (ImageButton)preview.findViewById(R.id.imgbtn_delete_item);
 //					viewHolder.lnPreview.addView(preview);
-					if(bill.getSizeList() !=null && bill.getSizeList().size() > 0){
+					if((bill.getSizeList() !=null && bill.getSizeList().size() > 0) ||(bill.getOptionList() !=null && bill.getOptionList().size() > 0
+							||(bill.getExtraList() !=null && bill.getExtraList().size() > 0))){
 						final View preview = LayoutInflater.from(mContext).inflate(R.layout.item_extra_preview, viewGroup,false);
 						ImageButton btnDeleteMenu = (ImageButton)preview.findViewById(R.id.imgbtn_delete_item);
 						viewHolder.lnPreview.addView(preview);
 						
 						if(bill.getSizeList() !=null && bill.getSizeList().size() > 0){
 							viewHolder.lnPreview.setVisibility(View.VISIBLE);
-							SizeItem sizeItem = bill.getSizeList().get(bill.getSizeList().size() - 1);
-							((TextView) preview.findViewById(R.id.tv_size)).setText("Size: $"+sizeItem.getValue());
-							sizeValue += Float.parseFloat(sizeItem.getValue());
+//							SizeItem sizeItem = bill.getSizeList().get(bill.getSizeList().size() - 1);
+//							((TextView) preview.findViewById(R.id.tv_size)).setText("Size: $"+sizeItem.getValue());
+//							sizeValue += Float.parseFloat(sizeItem.getValue());
+							float value = getTotolSizePrice(bill.getSizeList());
+							((TextView) preview.findViewById(R.id.tv_size)).setText("Size: $"+value);
+							sizeValue += value;
+							
 						}
 
 						if(bill.getOptionList()!=null && bill.getOptionList().size() > 0){
-							OptionItem optionItem = bill.getOptionList().get(bill.getOptionList().size() - 1);
-							((TextView) preview.findViewById(R.id.tv_option)).setText("Option: $"+optionItem.getValue());
-							sizeValue += Float.parseFloat(optionItem.getValue());
+							viewHolder.lnPreview.setVisibility(View.VISIBLE);
+//							OptionItem optionItem = bill.getOptionList().get(bill.getOptionList().size() - 1);
+//							((TextView) preview.findViewById(R.id.tv_option)).setText("Option: $"+optionItem.getValue());
+//							sizeValue += Float.parseFloat(optionItem.getValue());
+							float value = getTotalOptionPrice(bill.getOptionList());
+							((TextView) preview.findViewById(R.id.tv_option)).setText("Option: $"+value);
+							sizeValue += value;
 						}
 						if(bill.getExtraList()!=null && bill.getExtraList().size() > 0){
-							ExtraItem extraItem = bill.getExtraList().get(bill.getExtraList().size() - 1);
-							((TextView) preview.findViewById(R.id.tv_extra)).setText("Extra: $"+extraItem.getValue());
-							sizeValue += Float.parseFloat(extraItem.getValue());
+							viewHolder.lnPreview.setVisibility(View.VISIBLE);
+//							ExtraItem extraItem = bill.getExtraList().get(bill.getExtraList().size() - 1);
+//							((TextView) preview.findViewById(R.id.tv_extra)).setText("Extra: $"+extraItem.getValue());
+//							sizeValue += Float.parseFloat(extraItem.getValue());
+							float value = getTotalExtraPrice(bill.getExtraList());
+							((TextView) preview.findViewById(R.id.tv_extra)).setText("Extra: $"+value);
+							sizeValue += value;
+
 						}
 						
 						btnDeleteMenu.setOnClickListener(new View.OnClickListener() {
