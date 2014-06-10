@@ -551,12 +551,12 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		return result;
 	}
 
-	private int getTotalOptionPrice(List<OptionItem> optionList) {
+	private float getTotalOptionPrice(List<OptionItem> optionList) {
 		// TODO Auto-generated method stub
-		int result = 0;
+		float result = 0;
 		for(OptionItem item: optionList){
 			try {
-				result+=Integer.parseInt(item.getValue());
+				result+=Float.parseFloat(item.getValue());
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -565,12 +565,12 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		return result;
 	}
 
-	private int getTotolSizePrice(List<SizeItem> sizeList) {
+	private float getTotolSizePrice(List<SizeItem> sizeList) {
 		// TODO Auto-generated method stub
-		int result = 0;
+		float result = 0;
 		for(SizeItem item: sizeList){
 			try {
-				result+=Integer.parseInt(item.getValue());
+				result+=Float.parseFloat(item.getValue());
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -579,12 +579,12 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		return result;
 	}
 
-	private int getTotalExtraPrice(List<ExtraItem> extraList) {
+	private float getTotalExtraPrice(List<ExtraItem> extraList) {
 		// TODO Auto-generated method stub
-		int result = 0;
+		float result = 0;
 		for(ExtraItem item: extraList){
 			try {
-				result+=Integer.parseInt(item.getValue());
+				result+=Float.parseFloat(item.getValue());
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
