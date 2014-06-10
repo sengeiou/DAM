@@ -1128,10 +1128,10 @@ public class ListDetailActivity extends FragmentActivity implements
 				if (bill != null) {
 					if (result.equals("")) {
 						result += bill.getProductId() + ":" + bill.getUnit()
-								+ ":" + bill.getPrice()+":"+getSizeExtraOptionId(bill)+":"+bill.getNote();
+								+ ":" + bill.getPrice()+":"+getSizeExtraOptionId(bill)+":"+getNote(bill);
 					} else {
 						result += "|" + bill.getProductId() + ":"
-								+ bill.getUnit() + ":" + bill.getPrice()+":"+getSizeExtraOptionId(bill)+":"+bill.getNote();
+								+ bill.getUnit() + ":" + bill.getPrice()+":"+getSizeExtraOptionId(bill)+":"+getNote(bill);
 					}
 
 				}
@@ -1157,6 +1157,11 @@ public class ListDetailActivity extends FragmentActivity implements
 		// }
 		// }
 		return result;
+	}
+
+	private String getNote(Bill bill) {
+		// TODO Auto-generated method stub
+		return ExpanMenuAdapter.noteList.get(bill.getId());
 	}
 
 	private String getSizeExtraOptionId(Bill bill) {

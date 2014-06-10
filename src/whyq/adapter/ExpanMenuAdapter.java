@@ -16,7 +16,9 @@ import whyq.model.SizeItem;
 import whyq.service.Service;
 import whyq.utils.Util;
 import android.content.Context;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
@@ -61,6 +64,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 	private int mFocusColor;
 	private int mNormalColor;
 
+	public static Map<String, String> noteList = new HashMap<String, String>();
+	
 	public ExpanMenuAdapter(Context pContext, ExpandableListView pExpandableListView,
 			List<GroupMenu> pGroupCollection) {
 		mContext = pContext;
@@ -217,6 +222,7 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 //			setViewVisibility(viewHolder.lnPreview, isItemInBillList);
 			setViewVisibility(viewHolder.rlExtraView, isItemInBillList);	
 			
+			
 			setViewVisibility(viewHolder.tvItem1NameOption, isItemInBillList);
 			setViewVisibility(viewHolder.tvItem1PriceOption, isItemInBillList);
 			setViewVisibility(viewHolder.tvItem2NameOption, isItemInBillList);
@@ -238,6 +244,37 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 			setViewVisibility(viewHolder.tvItem3NameExtra, isItemInBillList);
 			setViewVisibility(viewHolder.tvItem3PriceExtra, isItemInBillList);
 
+			
+			/*
+			 * Set text note change
+			 */
+//			setViewVisibility(viewHolder.etNote, isItemInBillList);
+			viewHolder.etNote = (EditText) view.findViewById(R.id.et_note);
+			viewHolder.etNote.setText(item.getNote());
+			setViewVisibility(view.findViewById(R.id.rl_note), isItemInBillList);
+			viewHolder.etNote.addTextChangedListener(new TextWatcher() {
+				
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count,
+						int after) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void afterTextChanged(Editable s) {
+					// TODO Auto-generated method stub
+					item.setNote(s.toString());
+					noteList.put(item.getId(), s.toString());
+				}
+			});
+			
 
 
 			/***
@@ -856,6 +893,7 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		}
 		bill.setPrice(""+price);
 		bill.setUnit(""+menu.getUnitForBill());
+		bill.setNote(noteList.get(menu.getId()));
 		
 		if(menu.getUnitForBill() > 0){
 			for(SizeItem item: sizelist){
@@ -1106,6 +1144,7 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		public String menuId;
 		public LinearLayout lnPreview;
 		public RelativeLayout rlExtraView;
+		public EditText etNote;
 		public Button btnDoneSelect;
 		public TextView tvItem1NameOption;
 		public TextView tvItem1PriceOption;
