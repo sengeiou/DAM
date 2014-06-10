@@ -169,8 +169,10 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 	private void addMarkersToMap() {
 		try {
 
-			LatLng STORE_POSITION = new LatLng(Double.parseDouble(latgitude),
+			LatLng CURRENT_POSITION = new LatLng(Double.parseDouble(latgitude),
 					Double.parseDouble(longitude));
+			LatLng STORE_POSITION = new LatLng(Double.parseDouble(ListDetailActivity.store.getLatitude()),
+					Double.parseDouble(ListDetailActivity.store.getLongitude()));
 			// TODO Auto-generated method stub
 			store = mMap.addMarker(new MarkerOptions()
 					.position(STORE_POSITION)
@@ -178,6 +180,13 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 					.snippet("")
 					.icon(BitmapDescriptorFactory
 							.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+			 mMap.addMarker(new MarkerOptions()
+			.position(CURRENT_POSITION)
+			.title("")
+			.snippet("")
+			.icon(BitmapDescriptorFactory
+					.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+			
 			LatLngBounds bounds = new LatLngBounds.Builder().include(
 					STORE_POSITION).build();
 			// mMap.moveCamera(CameraUpdateFactory
