@@ -111,12 +111,39 @@
                 android:textColor="@android:color/background_dark" />
         </LinearLayout>
     </LinearLayout>
+    
+    <RelativeLayout
+        android:id="@+id/rl_note"
+        android:layout_below="@+id/ln_content_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:visibility="visible" >
+
+        <View
+            android:id="@+id/v_delivery"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey" />
+
+        <EditText
+            android:id="@+id/et_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/v_delivery"
+            android:layout_margin="6dp"
+            android:background="@drawable/white_container"
+            android:hint="Send us a note?"
+            android:padding="3dp"
+            android:singleLine="true"
+            />
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rl_extra_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ln_content_menu"
+        android:layout_below="@+id/rl_note"
         android:visibility="gone" >
 
         <include
