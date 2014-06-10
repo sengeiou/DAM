@@ -13,6 +13,7 @@ import whyq.model.ResponseData;
 import whyq.service.Service;
 import whyq.service.ServiceAction;
 import whyq.service.ServiceResponse;
+import whyq.utils.Constants;
 import whyq.utils.Util;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -430,7 +431,8 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 			}
 			Log.d("scheduleDeliery","scheduleDelier: "+scheduleDeliery);
 			if(scheduleDeliery > 0){
-				WhyqApplication.Instance().pushNotification(WhyqApplication.Instance().getApplicationContext(), scheduleDeliery, "Ready to get your product?", "your delivery action will be 15 minutes next");	
+				String message = "Hey, your order at "+ListDetailActivity.store.getNameStore()+" is on the way to your set-up place, will come at around "+currentHours+"h "+currentMinutes+". Make sure you are there to get it. Thanks.";
+				WhyqApplication.Instance().pushNotification(WhyqApplication.Instance().getApplicationContext(), scheduleDeliery, Constants.APP_NAME, message);	
 			}
 //			finish();
 		}else if(result.getAction() == ServiceAction.ActionOrderSend){
