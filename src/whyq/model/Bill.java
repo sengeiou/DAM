@@ -14,6 +14,7 @@ public class Bill {
 	private List<OptionItem> optionList;
 	private List<SizeItem> sizeList;
 	private List<ExtraItem> extraList;
+	private String note;
 
 	public String getId() {
 		return id;
@@ -140,6 +141,14 @@ public class Bill {
 	 */
 	public void setExtraList(List<ExtraItem> extraList) {
 		this.extraList = extraList;
+	}
+
+	public String getNote() {
+		return note == null? "": note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 }

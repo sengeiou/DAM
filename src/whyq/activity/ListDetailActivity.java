@@ -1128,10 +1128,10 @@ public class ListDetailActivity extends FragmentActivity implements
 				if (bill != null) {
 					if (result.equals("")) {
 						result += bill.getProductId() + ":" + bill.getUnit()
-								+ ":" + bill.getPrice();
+								+ ":" + bill.getPrice()+":"+getSizeExtraOptionId(bill)+":"+bill.getNote();
 					} else {
 						result += "|" + bill.getProductId() + ":"
-								+ bill.getUnit() + ":" + bill.getPrice();
+								+ bill.getUnit() + ":" + bill.getPrice()+":"+getSizeExtraOptionId(bill)+":"+bill.getNote();
 					}
 
 				}
@@ -1156,6 +1156,32 @@ public class ListDetailActivity extends FragmentActivity implements
 		//
 		// }
 		// }
+		return result;
+	}
+
+	private String getSizeExtraOptionId(Bill bill) {
+		// TODO Auto-generated method stub
+		String result = "";
+		List<SizeItem> sizeList = bill.getSizeList();
+		if(sizeList !=null){
+			for(SizeItem item: sizeList){
+				result+=result.equals("")? item.getId():","+item.getId();
+			}
+		}
+		
+		List<OptionItem> optionList = bill.getOptionList();
+		if(optionList !=null){
+			for(OptionItem item: optionList){
+				result+=result.equals("")? item.getId():","+item.getId();
+			}
+		}
+		
+		List<ExtraItem> extraList = bill.getExtraList();
+		if(extraList !=null){
+			for(ExtraItem item: extraList){
+				result+=result.equals("")? item.getId():","+item.getId();
+			}
+		}
 		return result;
 	}
 
