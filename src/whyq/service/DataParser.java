@@ -964,7 +964,7 @@ public class DataParser {
 										}
 										menu.setProductTypeInfoList(productTypeInfoList);
 
-										NodeList optionItem = elementList
+										NodeList optionItem = element
 												.getElementsByTagName("option_item");
 										int lengthOption = optionItem
 												.getLength();
@@ -1014,7 +1014,7 @@ public class DataParser {
 										}
 										menu.setOptionItemList(optionItemList);
 
-										NodeList extraItem = elementList
+										NodeList extraItem = element
 												.getElementsByTagName("extra_item");
 										int lengthExtra = extraItem.getLength();
 										List<ExtraItem> extraItemList = new ArrayList<ExtraItem>();
