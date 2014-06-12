@@ -81,7 +81,7 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 			}
 			if(pushNotificationData!=null){
 				billId = pushNotificationData.getBillId();
-				btnDone.setText("Paypal");
+				btnDone.setText("Pay");
 				Toast.makeText(WhyQBillScreen.this, pushNotificationData.getAlert(), Toast.LENGTH_LONG).show();
 
 			}else{
