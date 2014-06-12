@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">DEAL A DELIVERY</string>
-    <string name="app_name_title">DEAL A DELIVERY</string>
+    <string name="app_name">DIAL A DELIVERY</string>
+    <string name="app_name_title">DIAL A DELIVERY</string>
     <string name="app_name_inkakao"> 펌핑 이미지 SNS </string>
     <string name="bt_join">회원 등록</string>
     <string name="bt_login">로그인</string>
@@ -194,7 +194,7 @@
     <string name="facebook_app_id">429233960446986</string>
     
     
-    <string name="share_with_whyq">Share with DEAL A DELIVERY users</string>
+    <string name="share_with_whyq">Share with DIAL A DELIVERY users</string>
     <string name="share_with_FB">Share to Facebook friends</string>
     <string name="tag_friend">Tag friends</string>
     <string name="hint_comment">How do you feel about this place?</string>
