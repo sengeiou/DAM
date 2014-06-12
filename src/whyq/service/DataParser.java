@@ -1169,7 +1169,7 @@ public class DataParser {
 											storeInfo.setHotelDeliver(getValue(
 													infoElement,
 													"is_hotel_deliver").equals(
-													"2") ? true : false);
+													"1") ? true : false);
 											storeInfo
 													.setTakeAray(getValue(
 															infoElement,
@@ -1180,7 +1180,7 @@ public class DataParser {
 													.setAtPlace(getValue(
 															infoElement,
 															"is_at_place")
-															.equals("2") ? true
+															.equals("1") ? true
 															: false);
 											storeInfo
 													.setStartTimeDeliver(getValue(
