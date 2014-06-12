@@ -477,8 +477,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 				float price = ((ListDetailActivity) mContext).getTotalSize(item.getSizeItemList())
 						+ ((ListDetailActivity) mContext).getTotalOption(item.getOptionItemList())
 						+ ((ListDetailActivity) mContext).getTotalExtra(item.getExtraItemList());
-				if(price <= 0){
-					price = Float.parseFloat(item.getValue());
+				if(((ListDetailActivity) mContext).getTotalSize(item.getSizeItemList()) <= 0){
+					price += Float.parseFloat(item.getValue());
 				}
 				viewHolder.tvPrice.setText("$" + price);
 			}
