@@ -269,7 +269,7 @@ public class WhyqShareActivity extends FragmentActivity implements
 		shareData.setDescription("");
 		shareData.setLink(data.getLink());
 		shareData.setMessage(etMessage.getText().toString().replace(facebookNameTag, ""));
-		shareData.setName("WHY Q");
+		shareData.setName(getResources().getString(R.string.app_name));
 		shareData.setPicture(data.getImage());
 		shareData.setThumb("");
 		shareData.setTags(tagsList);
