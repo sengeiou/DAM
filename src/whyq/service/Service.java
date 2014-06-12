@@ -361,6 +361,10 @@ public class Service implements Runnable {
 			result = result.replace("<0></0>", "");
 			resObj = parser.parserLoginData(result);
 			break;
+		case ActionLoginasGuest:
+			result = result.replace("<0></0>", "");
+			resObj = parser.parserLoginData(result);
+			break;
 		case ActionSigup:
 			resObj = parser.parserSignupResult(result);
 			break;
@@ -937,6 +941,18 @@ public class Service implements Runnable {
 		params.put("password", pass);
 	}
 
+	public void loginasGuest(String deviceToken) {
+		// TODO Auto-generated method stub
+		_action = ServiceAction.ActionLoginasGuest;
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("app", Constants.APP);
+		params.put("app_name", Constants.APP_NAME);
+		params.put("device_token", deviceToken);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
+		request("/m/login/guest", params, true, false);
+	}
+	
 	public void register(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
 		_action = ServiceAction.ActionSigup;

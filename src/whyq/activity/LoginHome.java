@@ -3,7 +3,14 @@
  */
 package whyq.activity;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 import twitter4j.auth.AccessToken;
 import whyq.WhyqApplication;
@@ -241,8 +248,31 @@ public class LoginHome extends FragmentActivity implements IServiceListener,
 	}
 
 	public void onClickedSkipLogin(View v) {
-		Intent intent = new Intent(LoginHome.this, WhyqMain.class);
-		startActivity(intent);
+//		Intent intent = new Intent(LoginHome.this, WhyqMain.class);
+//		startActivity(intent);
+		Service service = new Service(LoginHome.this);
+		try {
+			service.loginasGuest(Util.encryptToken(Util.generateDeviceId()));
+		} catch (InvalidKeyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		pendingRequest = false;
 	}
 
 	public void exeLoginFacebook(String accessToken) {
@@ -340,6 +370,28 @@ public class LoginHome extends FragmentActivity implements IServiceListener,
 				Util.showDialog(context, data.getMessage());
 			}
 
+		}else if(result.isSuccess()&& result.getAction()==ServiceAction.ActionLoginasGuest){
+			ResponseData data = (ResponseData)result.getData();
+			if(data.getStatus().equals("200")){
+				User user = (User)data.getData();
+					WhyqApplication.Instance().setToken(user);
+					XMLParser.storeUserAccount(WhyqApplication.Instance().getApplicationContext(),
+							 user);
+					ListActivity.isLogin = true;
+					ListActivity.loginType = 2;
+					Intent intent = new Intent(LoginHome.this, WhyqMain.class);
+					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+					startActivity(intent);
+
+			}else if(data.getStatus().equals("401")){
+				
+				Util.loginAgain(context, data.getMessage());
+			}else{
+				Util.showDialog(context, data.getMessage());
+			}
+
+		}else if(!result.isSuccess()&& result.getAction()==ServiceAction.ActionLoginasGuest){
+			Util.showDialog(context,"Can not login for now\nTry again!");
 		}
 	}
 
