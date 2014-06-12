@@ -74,7 +74,7 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 			String billStatus = bundle.getString("bill_status");
 			if(billStatus!=null){
 				if(billStatus.equalsIgnoreCase("1")){
-					btnDone.setText("Paypal");		
+					btnDone.setText("Pay");		
 				}else{
 					btnDone.setVisibility(View.INVISIBLE);
 				}
