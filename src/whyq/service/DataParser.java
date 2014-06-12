@@ -708,6 +708,7 @@ public class DataParser {
 						item.setHomeDeliver(isHomeDeliver);
 						item.setHotelDeliver(isHotelDeliver);
 						item.setTakeAway(isTakeAway);
+						item.setAtPlace(isPlace);
 
 						item.setTableQuantity(tableQuantity);
 						item.setCountFavaouriteMember(countFavouriteMemebr);
@@ -835,6 +836,7 @@ public class DataParser {
 					item.setHomeDeliver(isHomeDeliver);
 					item.setHotelDeliver(isHotelDeliver);
 					item.setTakeAway(isTakeAway);
+					item.setAtPlace(isPlace);
 
 					item.setTableQuantity(tableQuantity);
 					item.setCountFavaouriteMember(countFavouriteMemebr);
