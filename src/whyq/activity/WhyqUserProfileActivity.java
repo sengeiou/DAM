@@ -62,7 +62,7 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 	static {
 		ACTIVITY_MAP = new HashMap<String, String>();
 		ACTIVITY_MAP.put("friend_invite",
-				"wants to add you as friend on WHY Q, accept");
+				"wants to add you as friend on DIAL A DELIVERY, accept");
 		ACTIVITY_MAP.put("favourite", "favoured");
 		ACTIVITY_MAP.put("comment", "commented on");
 		ACTIVITY_MAP.put("comment_like", "liked a comment of");
