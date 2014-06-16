@@ -1161,7 +1161,7 @@ public class ListDetailActivity extends FragmentActivity implements
 
 	private String getNote(Bill bill) {
 		// TODO Auto-generated method stub
-		return ExpanMenuAdapter.noteList.get(bill.getId());
+		return ExpanMenuAdapter.noteList.get(bill.getId()) ==null? "": ExpanMenuAdapter.noteList.get(bill.getId());
 	}
 
 	private String getSizeExtraOptionId(Bill bill) {
