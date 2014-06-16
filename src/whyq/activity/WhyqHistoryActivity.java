@@ -115,6 +115,7 @@ public class WhyqHistoryActivity extends ImageWorkerActivity {
 	public void onCompleted(Service service, ServiceResponse result) {
 		super.onCompleted(service, result);
 		setLoading(false);
+		mListview.onLoadMoreComplete();
 		if (result != null && result.isSuccess()
 				&& result.getAction() == ServiceAction.ActionGetHistories) {
 			DataParser parser = new DataParser();
@@ -129,6 +130,7 @@ public class WhyqHistoryActivity extends ImageWorkerActivity {
 				}
 				newData.addAll((List<BillItem>) data.getData());
 				mAdapter.setItems(newData);
+				mAdapter.notifyDataSetChanged();
 			}
 		}
 	}
