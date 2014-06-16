@@ -820,6 +820,8 @@ public class DataParser {
 							"table_quantity");
 					String countFavouriteMemebr = getValue(permElement,
 							"count_favourite_member");
+					boolean isFavourite = getValue(permElement,
+							"is_favourite").equals("1") ? true : false;
 					String coutBill = getValue(permElement, "count_bill");
 					String inCome = getValue(permElement, "income");
 					String nameCate = getValue(permElement, "name_cate");
@@ -854,6 +856,7 @@ public class DataParser {
 
 					item.setTableQuantity(tableQuantity);
 					item.setCountFavaouriteMember(countFavouriteMemebr);
+					item.setIsFavourite(isFavourite);
 					item.setCoutBill(coutBill);
 					item.setIncome(inCome);
 					item.setNameCate(nameCate);

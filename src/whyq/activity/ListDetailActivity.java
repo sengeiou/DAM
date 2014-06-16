@@ -140,13 +140,7 @@ public class ListDetailActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.store_detail);
 		context = ListDetailActivity.this;
-		if(getIntent().getSerializableExtra("push_data")!=null){
-			BillPushNotification declineData = (BillPushNotification) getIntent().getSerializableExtra("push_data");
-			id = declineData.getStoryId();
-			setViewContent(2);
-		}
-		id = getIntent().getStringExtra("id");
-		Log.d("ListDetailActivity", "id " + id);
+
 		
 		promotion = null;
 		
@@ -195,6 +189,7 @@ public class ListDetailActivity extends FragmentActivity implements
 		vpPhotoList = (CustomViewPager) findViewById(R.id.vpStorephoto);
 		rlPhotoList = (RelativeLayout) findViewById(R.id.rlPhotoList);
 		etComment = (EditText) findViewById(R.id.etComment);
+		radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 		// showHeaderImage();
 		storeName = getIntent().getStringExtra("store_name");
 		showPhotoList();
@@ -208,12 +203,22 @@ public class ListDetailActivity extends FragmentActivity implements
 				vpPhotoList.setFocusable(true);
 			}
 		});
+		
+		if(getIntent().getExtras().getSerializable("push_data")!=null){
+			BillPushNotification declineData = (BillPushNotification) getIntent().getExtras().getSerializable("push_data");
+			id = declineData.getStoryId();
+			setViewContent(2);
+		}else{
+			id = getIntent().getStringExtra("id");			
+		}
+
+		Log.d("ListDetailActivity", "id " + id);
 		getDetailData();
 		// hide photos list when scroll
 		// lvResult.setOnScrollListener(this);
 
 		edSearch.addTextChangedListener(mTextEditorWatcher);
-		radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+
 		radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
