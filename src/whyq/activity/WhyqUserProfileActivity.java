@@ -25,8 +25,6 @@ import whyq.utils.ImageViewHelper;
 import whyq.utils.SpannableUtils;
 import whyq.utils.Util;
 import whyq.utils.XMLParser;
-import whyq.view.ExtendedListView;
-import whyq.view.ExtendedListView.OnPositionChangedListener;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -47,6 +45,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.costum.android.widget.LoadMoreListView;
+import com.costum.android.widget.LoadMoreListView.OnPositionChangedListener;
 import com.devsmart.android.ui.HorizontalListView;
 import com.dam.R;
 
@@ -94,7 +93,7 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 		tvHeader = (TextView) findViewById(R.id.tvHeaderTitle);
 		tvHeader.setText("Profile");
 		mLvActivity = (LoadMoreListView) findViewById(R.id.listview);
-//		mLvActivity.setOnPositionChangedListener(this);
+		mLvActivity.setOnPositionChangedListener(this);
 		mActivitiesAdapter = new ActivitiesAdapter(this);
 		mLvActivity.setAdapter(mActivitiesAdapter);
 		mLvActivity.setOnLoadMoreListener(new LoadMoreListView.OnLoadMoreListener() {
@@ -238,9 +237,10 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 	}
 
 	@Override
-	public void onPositionChanged(ExtendedListView listView, int position,
+	public void onPositionChanged(LoadMoreListView listView, int position,
 			View scrollBarPanel) {
 
+		Log.d("onPositionChanged","onPositionChanged position: "+position);
 		final TextView tvTime = (TextView) scrollBarPanel
 				.findViewById(R.id.textTime);
 		tvTime.getLayoutParams().height = clockHeight / 2;
