@@ -54,6 +54,11 @@ public class Store implements Serializable{
 	private String countComment;
 	private String hotelPlace;
 	
+	private boolean isCash;
+	private boolean isEcoCash;
+	private boolean isVisa;
+	private boolean isVPayment;
+	
 	public String getCountComment() {
 		return countComment;
 	}
@@ -646,5 +651,30 @@ public class Store implements Serializable{
 	public void setFreeChargeOutRadiusDelieverPerOrder(
 			String freeChargeOutRadiusDelieverPerOrder) {
 		this.freeChargeOutRadiusDelieverPerOrder = freeChargeOutRadiusDelieverPerOrder;
+	}
+
+	public boolean isCash() {
+		return isCash;
+	}
+	public void setCash(boolean isCash) {
+		this.isCash = isCash;
+	}
+	public boolean isEcoCash() {
+		return isEcoCash;
+	}
+	public void setEcoCash(boolean isEcoCash) {
+		this.isEcoCash = isEcoCash;
+	}
+	public boolean isVisa() {
+		return isVisa;
+	}
+	public void setVisa(boolean isVisa) {
+		this.isVisa = isVisa;
+	}
+	public boolean isVPayment() {
+		return isVPayment;
+	}
+	public void setVPayment(boolean isVPayment) {
+		this.isVPayment = isVPayment;
 	}
 }

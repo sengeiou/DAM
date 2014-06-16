@@ -94,6 +94,10 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 		tvDiscount = (TextView)findViewById(R.id.tvDiscount);
 		tvTotalAfterDiscount = (TextView)findViewById(R.id.tvTotalafterDiscount);
 		
+		findViewById(R.id.imgCash).setVisibility(ListDetailActivity.store.isCash()?View.VISIBLE: View.INVISIBLE);
+		findViewById(R.id.imgEcoCash).setVisibility(ListDetailActivity.store.isEcoCash()?View.VISIBLE: View.INVISIBLE);
+		findViewById(R.id.imgVisa).setVisibility(ListDetailActivity.store.isVisa()?View.VISIBLE: View.INVISIBLE);
+		findViewById(R.id.imgPayment).setVisibility(ListDetailActivity.store.isVPayment()?View.VISIBLE: View.INVISIBLE);
 		
 		bindDatatoListview();
 		getValue(listBill);

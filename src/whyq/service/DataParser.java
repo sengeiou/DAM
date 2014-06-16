@@ -869,6 +869,21 @@ public class DataParser {
 					item.setPlace(isPlace);
 					item.setCountComment(countComment);
 					item.setMinimum(minimunTimeDeliver);
+					
+					NodeList paymentMethod = permElement.getElementsByTagName("payment_method");
+					int lengPayment = paymentMethod.getLength();
+					for(int ii = 0; ii< lengPayment; ii++){
+						Element element = (Element) paymentMethod.item(ii);
+						String isCash = getValue(element, "is_cash");
+						String isEcoCash = getValue(element, "is_ecocash");
+						String isVisa = getValue(element, "is_visa");
+						String isVPayement = getValue(element, "is_vpayments");
+						item.setCash(isCash.equals("1")?true:false);
+						item.setEcoCash(isEcoCash.equals("1")?true:false);
+						item.setVisa(isVisa.equals("1")? true:false);
+						item.setVPayment(isVPayement.equals("1")?true:false);
+					}
+					
 					NodeList nodes = permElement.getElementsByTagName("user");
 					int lengthUser = nodes.getLength();
 					ArrayList<User> userList = new ArrayList<User>();
