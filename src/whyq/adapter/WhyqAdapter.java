@@ -876,5 +876,9 @@ public class WhyqAdapter extends ArrayAdapter<Store> implements OnClickListener 
 		return items;
 	}
 
+	public void changeSrc(ArrayList<Store> list) {
+		// TODO Auto-generated method stub
+		items = list;
+	}
 }
 

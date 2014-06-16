@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
+import com.costum.android.widget.LoadMoreListView;
 import com.dam.R;
 
 import whyq.WhyqApplication;
@@ -77,7 +78,9 @@ public class FavouriteActivity extends FragmentActivity implements Login_delegat
 	private ArrayList<Store> permListMain = new ArrayList<Store>();
 
 	private boolean isLoadMore = false;
-	private int page = 0;
+//	private int page = 0;
+	protected int mPage = 0;
+	protected int mTotalPage;
 	
 	public static int screenWidth;
 	public static int screenHeight;
@@ -87,7 +90,7 @@ public class FavouriteActivity extends FragmentActivity implements Login_delegat
 	public static boolean isCalendar = false;
 	int nextItem = -1;
 	
-	ListView whyqListView;
+	LoadMoreListView whyqListView;
 	ProgressBar progressBar;
 	WhyqAdapter permListAdapter;
 	View headerView = null;
@@ -173,7 +176,7 @@ public class FavouriteActivity extends FragmentActivity implements Login_delegat
 		setContentView(R.layout.whyq_favorite_screen);//
 		isFavorite = true;
 		
-		whyqListView = (ListView) findViewById(R.id.lvWhyqList);
+		whyqListView = (LoadMoreListView) findViewById(R.id.lvWhyqList);
 		loadPermList = new LoadPermList(false);
 		progressBar = (ProgressBar)findViewById(R.id.prgBar);
 		etTextSearch =(EditText) findViewById(R.id.etTextSearch);
@@ -217,27 +220,44 @@ public class FavouriteActivity extends FragmentActivity implements Login_delegat
 		});
 		etTextSearch.addTextChangedListener(mTextEditorWatcher);
 		
-		whyqListView.setOnScrollListener(new OnScrollListener() {
+//		whyqListView.setOnScrollListener(new OnScrollListener() {
+//			
+//			@Override
+//			public void onScrollStateChanged(AbsListView view, int scrollState) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			@Override
+//			public void onScroll(AbsListView view, int firstVisibleItem,
+//					int visibleItemCount, int totalItemCount) {
+//				// TODO Auto-generated method stub
+//				int currentItem = firstVisibleItem + visibleItemCount;
+//				Log.d("onScroll","onScroll current "+currentItem+" and total "+totalItemCount);
+//				if((currentItem >=  totalItemCount-1) && !isLoadMore){
+//					isLoadMore = true;
+//					page++;
+//					exeListActivity(isSearch);
+//				}
+//			}
+//		});
+		whyqListView.setOnLoadMoreListener(new LoadMoreListView.OnLoadMoreListener() {
 			
 			@Override
-			public void onScrollStateChanged(AbsListView view, int scrollState) {
+			public void onLoadMore() {
 				// TODO Auto-generated method stub
+				Log.d("loadmore listener", mPage+ "and total is "+ mTotalPage);
+				if( mPage < mTotalPage){
+					mPage++;
+					exeListActivity(false);	;
+					
+				}else{
+					whyqListView.onLoadMoreComplete();
+				}
 				
 			}
-			
-			@Override
-			public void onScroll(AbsListView view, int firstVisibleItem,
-					int visibleItemCount, int totalItemCount) {
-				// TODO Auto-generated method stub
-				int currentItem = firstVisibleItem + visibleItemCount;
-				Log.d("onScroll","onScroll current "+currentItem+" and total "+totalItemCount);
-				if((currentItem >=  totalItemCount-1) && !isLoadMore){
-					isLoadMore = true;
-					page++;
-					exeListActivity(isSearch);
-				}
-			}
 		});
+		mPage = 1;
 		exeListActivity(false);	
 	}
 
@@ -251,7 +271,7 @@ public class FavouriteActivity extends FragmentActivity implements Login_delegat
 	}
 	protected void exeSearch(String string) {
 		// TODO Auto-generated method stub
-		page = 1;
+		mPage = 1;
 		searchKey = string;
 		isSearch = true;
 		exeListActivity(true);
@@ -529,11 +549,11 @@ public class FavouriteActivity extends FragmentActivity implements Login_delegat
 //						nameValuePairs.add(new BasicNameValuePair("token",enToken));
 						postParams.put("token", enToken);
 						if(isLoadMore)
-							postParams.put("page", ""+page);
+							postParams.put("page", ""+mPage);
 						postParams.put("longitude", longitude);
 						postParams.put("latitude", latgitude);
 						Log.d("Favourite","Favourite is search"+isSearch);
-						Log.d("Favourite","page"+page);
+//						Log.d("Favourite","page"+page);
 						if(isSearch){
 //							nameValuePairs.add(new BasicNameValuePair("key", searchKey));
 //							nameValuePairs.add(new BasicNameValuePair("search_longitude", longitude));
@@ -696,7 +716,7 @@ public class FavouriteActivity extends FragmentActivity implements Login_delegat
 					exeDisableSearchFocus();
 					isSearch = false;
 					exeDisableSearchFocus();
-					page = 0;
+					mPage = 0;
 					exeListActivity(false);
 					
 				}else{
@@ -778,25 +798,45 @@ public class FavouriteActivity extends FragmentActivity implements Login_delegat
 		if(result.isSuccess()&& result.getAction() == ServiceAction.ActionGetBusinessList){
 			ResponseData data = (ResponseData)result.getData();
 			if(data.getStatus().equals("200")){
-				if(isLoadMore){if(permListMain==null){
-					permListMain = new ArrayList<Store>();
-				}
-					permListMain.addAll((ArrayList<Store>)data.getData());
+				mTotalPage = data.getTotalPage();
+				if(permListAdapter == null){
+					User user = WhyqUtils.isAuthenticated(getApplicationContext());	
+					permListMain = (ArrayList<Store>)data.getData();
+					this.permListAdapter = new WhyqAdapter(FavouriteActivity.this,
+							getSupportFragmentManager(),R.layout.whyq_item_1, permListMain, this, screenWidth, screenHeight, header, user);
+					whyqListView.setAdapter(permListAdapter);
+					
 				}else{
-					permListMain = (ArrayList<Store>)data.getData();	
-				}
-				
-				loadPerms();
-				
-				WhyqListController.isLoading = false;
-				if(permListAdapter != null) {
+					ArrayList<Store> newData = permListAdapter.getData();
+					if(mPage == 1){
+						newData.clear();
+					}
+					newData.addAll((ArrayList<Store>)data.getData());
+					permListAdapter.changeSrc(newData);
 					permListAdapter.notifyDataSetChanged();
 				}
+				
+				
+				
+//				if(isLoadMore)
+//				{
+//					if(permListMain==null){
+//					permListMain = new ArrayList<Store>();
+//				}
+//					permListMain.addAll((ArrayList<Store>)data.getData());
+//				}else{
+//					permListMain = (ArrayList<Store>)data.getData();	
+//				}
+				
+//				loadPerms();
+				
+				WhyqListController.isLoading = false;
+				
 			}else if(data.getStatus().equals("401")){
 				Util.loginAgain(getParent(), data.getMessage());
 			}else if(data.getStatus().equals("204")){
-				if(isLoadMore)
-					page--;
+//				if(isLoadMore)
+//					page--;
 				
 			}else{
 				Util.showDialog(getParent(), data.getMessage());
