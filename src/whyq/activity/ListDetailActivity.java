@@ -1352,6 +1352,7 @@ public class ListDetailActivity extends FragmentActivity implements
 	}
 
 	public void gotoCommentScreen(View v) {
+		Log.d("gotoCommentScreen", "test goto screen comment");
 		if (store != null) {
 			if (store.getCountFavaouriteMember() != null) {
 				if (store.getCountFavaouriteMember().equals("0")) {

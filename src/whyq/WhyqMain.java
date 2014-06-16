@@ -26,6 +26,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -51,6 +52,8 @@ public class WhyqMain extends TabActivity implements IServiceListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
+		initScreenSize();
+		
 		token = XMLParser.getToken(WhyqApplication.Instance()
 				.getApplicationContext());
 			tabHost = getTabHost();
@@ -197,6 +200,13 @@ public class WhyqMain extends TabActivity implements IServiceListener {
 		}
 
 //	}
+	
+	private void initScreenSize() {
+		DisplayMetrics displaymetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+		WhyqApplication.initScreenSize(displaymetrics.widthPixels,
+				displaymetrics.heightPixels);
+	}
 	
 	public static void hideTabBar(){
 		for(int i =0; i < 2;i++){

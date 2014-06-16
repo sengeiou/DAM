@@ -228,7 +228,8 @@ public class CommentDialog extends Dialog implements IServiceListener {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			Comment item = mItems.get(position);
-			convertView = viewList.get(item.getId());
+//			convertView = viewList.get(item.getId());
+			ViewHolder holder;
 			if (convertView == null) {
 				if (convertView == null) {
 					convertView = LayoutInflater.from(mContext).inflate(
@@ -236,46 +237,44 @@ public class CommentDialog extends Dialog implements IServiceListener {
 					Util.applyTypeface(convertView,
 							WhyqApplication.sTypefaceRegular);
 				}
-
-				ViewHolder holder = getViewHolder(convertView);
-
-				holder.name.setText(item.getUser().getFirstName() + " "
-						+ item.getUser().getLastName());
-				holder.comment.setText(item.getContent());
-				holder.like.setText("" + item.getCount_like());
-				holder.like.setOnClickListener(new View.OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-
-					}
-				});
-				// mImageWorker.downloadImage(item.getUser().getUrlAvatar(),
-				// holder.avatar);
-				mImageLoader.DisplayImage(item.getUser().getUrlAvatar(),
-						holder.avatar);
-				Photo photo = item.getPhotos();
-				if (photo != null && photo.getThumb() != null) {
-//					mImageWorker.downloadImage(item.getPhotos().getThumb(),
-//							holder.thumb);
-					mImageLoader.DisplayImage(item.getPhotos().getThumb(), holder.thumb);
-				}else{
-					holder.thumb.setVisibility(View.GONE);
-				}
-				if (item.getUser().getLike() > 0) {
-					holder.favorite
-							.setImageResource(R.drawable.icon_fav_enable);
-				} else {
-					holder.favorite
-							.setImageResource(R.drawable.icon_fav_disable);
-				}
-
-				return convertView;
+				holder = new ViewHolder(convertView);
 			} else {
-				return convertView;
+				holder = getViewHolder(convertView);
+			}
+		
+			holder.name.setText(item.getUser().getFirstName() + " "
+					+ item.getUser().getLastName());
+			holder.comment.setText(item.getContent());
+			holder.like.setText("" + item.getCount_like());
+			holder.like.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+
+				}
+			});
+			// mImageWorker.downloadImage(item.getUser().getUrlAvatar(),
+			// holder.avatar);
+			mImageLoader.DisplayImage(item.getUser().getUrlAvatar(),
+					holder.avatar);
+			Photo photo = item.getPhotos();
+			if (photo != null && photo.getThumb() != null) {
+//				mImageWorker.downloadImage(item.getPhotos().getThumb(),
+//						holder.thumb);
+				mImageLoader.DisplayImage(item.getPhotos().getThumb(), holder.thumb);
+			}else{
+//				holder.thumb.setVisibility(View.GONE);
+			}
+			if (item.getUser().getLike() > 0) {
+				holder.favorite
+						.setImageResource(R.drawable.icon_fav_enable);
+			} else {
+				holder.favorite
+						.setImageResource(R.drawable.icon_fav_disable);
 			}
 
+			return convertView;
 		}
 
 		private ViewHolder getViewHolder(View view) {
