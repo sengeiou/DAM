@@ -263,7 +263,7 @@ public class CommentDialog extends Dialog implements IServiceListener {
 					Util.applyTypeface(convertView,
 							WhyqApplication.sTypefaceRegular);
 				}
-				holder = new ViewHolder(convertView);
+				holder = getViewHolder(convertView);
 			} else {
 				holder = getViewHolder(convertView);
 			}
@@ -288,9 +288,10 @@ public class CommentDialog extends Dialog implements IServiceListener {
 			if (photo != null && photo.getThumb() != null) {
 //				mImageWorker.downloadImage(item.getPhotos().getThumb(),
 //						holder.thumb);
+				holder.thumb.setVisibility(View.VISIBLE);
 				mImageLoader.DisplayImage(item.getPhotos().getThumb(), holder.thumb);
 			}else{
-//				holder.thumb.setVisibility(View.GONE);
+				holder.thumb.setVisibility(View.GONE);
 			}
 			if (item.getUser().getLike() > 0) {
 				holder.favorite

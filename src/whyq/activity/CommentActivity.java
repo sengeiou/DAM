@@ -285,6 +285,7 @@ public class CommentActivity extends ImageWorkerActivity {
 				if (photo != null && photo.getThumb() != null) {
 //					mImageWorker.downloadImage(item.getPhotos().getThumb(),
 //							holder.thumb);
+					holder.thumb.setVisibility(View.VISIBLE);
 					mImageLoader.DisplayImage(item.getPhotos().getThumb(), holder.thumb);
 				}else{
 					holder.thumb.setVisibility(View.GONE);
