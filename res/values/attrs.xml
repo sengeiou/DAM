@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 
-    <declare-styleable name="AnalogClock">
+<!--     <declare-styleable name="AnalogClock">
         <attr name="dial" format="reference" />
         <attr name="hand_hour" format="reference" />
         <attr name="hand_minute" format="reference" />
@@ -11,6 +11,6 @@
         <attr name="scrollBarPanel" format="reference" />
         <attr name="scrollBarPanelInAnimation" format="reference" />
         <attr name="scrollBarPanelOutAnimation" format="reference" />
-    </declare-styleable>
+    </declare-styleable> -->
 
 </resources>
