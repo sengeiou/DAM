@@ -825,13 +825,14 @@ public class Service implements Runnable {
 		request("/m/member/profile/order", params, true, false);
 	}
 
-	public void getHistories(String encryptedToken, String userId) {
+	public void getHistories(String encryptedToken, String userId, int page) {
 		_action = ServiceAction.ActionGetHistories;
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("token", encryptedToken);
 		params.put("user_id", userId);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("page", page);
 		params.put("version", Constants.APP_VERSION);
 		params.put("time_zone", TimeZone.getDefault());
 		request("/m/member/order", params, true, false);
