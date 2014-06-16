@@ -119,6 +119,7 @@ public class WhyqHistoryActivity extends ImageWorkerActivity {
 				&& result.getAction() == ServiceAction.ActionGetHistories) {
 			DataParser parser = new DataParser();
 			ResponseData data = (ResponseData) parser.parseBills(String.valueOf(result.getData()));
+			mTotalPage = data.getTotalPage();
 			if (data.getStatus().equals("401")) {
 				Util.loginAgain(this, data.getMessage()) ;
 			} else if(data.getStatus().equals("200")) {

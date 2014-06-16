@@ -215,6 +215,7 @@ public class DataParser {
 			ResponseData data = new ResponseData();
 			String statusResponse = doc.getElementsByTagName("Status").item(0)
 					.getFirstChild().getNodeValue();
+			
 			if (statusResponse.equals("200")) {
 				XMLReader xmlReader = initializeReader();
 				BillHandler handler = new BillHandler();
@@ -223,8 +224,11 @@ public class DataParser {
 
 				final String mes = doc.getElementsByTagName("Message").item(0)
 						.getFirstChild().getNodeValue();
+				String totalPage = doc.getElementsByTagName("TotalPage").item(0)
+						.getFirstChild().getNodeValue();
 				data.setStatus(statusResponse);
 				data.setData(handler.getBills());
+				data.setTotalPage(Integer.parseInt(totalPage));
 				data.setMessage(mes);
 				return data;
 			} else {
