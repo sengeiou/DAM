@@ -64,6 +64,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.costum.android.widget.*;
 
 import com.dam.R;
 
@@ -92,7 +93,7 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 	int nextItem = -1;
 
 	public static String storeId;
-	ListView whyqListView;
+	LoadMoreListView whyqListView;
 	ProgressBar progressBar;
 	WhyqAdapter permListAdapter;
 	View headerView = null;
@@ -249,7 +250,7 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 
 		lnPageContent = (LinearLayout) findViewById(R.id.page_content);
 		lnNavigation = (RelativeLayout) findViewById(R.id.lnNavigation);
-		whyqListView = (ListView) findViewById(R.id.lvWhyqList);
+		whyqListView = (LoadMoreListView) findViewById(R.id.lvWhyqList);
 		lnCutlery = (LinearLayout) findViewById(R.id.lnCutleryTab);
 		lnWine = (LinearLayout) findViewById(R.id.lnWineTab);
 		lnCoffe = (LinearLayout) findViewById(R.id.lnCoffeTab);
@@ -288,6 +289,22 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 		((TextView)findViewById(R.id.tvHeaderTitle)).setText("DIAL A DELIVERY");
 		context = ListActivity.this;
 		whyqListView.setOnItemClickListener(onStoreItemListener);
+		
+		whyqListView.setOnLoadMoreListener(new LoadMoreListView.OnLoadMoreListener() {
+			
+			@Override
+			public void onLoadMore() {
+				// TODO Auto-generated method stub
+				if((page < mTotalPage) || mTotalPage <=0){
+					isLoadMore = true;
+					page++;
+					loadPermList = new LoadPermList(isSearch);
+					loadPermList.execute();
+					showProgress();
+				}
+			}
+		});
+		
 		etTextSearch
 				.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 					@Override
@@ -836,6 +853,7 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 	private int mPosition;
 	private int mOffset;
 	private boolean isLoadMore = false;
+	private int mTotalPage;
 
 	@Override
 	public void onFocusChange(View v, boolean hasFocus) {
@@ -1006,26 +1024,29 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 		if (result.isSuccess()
 				&& result.getAction() == ServiceAction.ActionGetBusinessList) {
 			ResponseData data = (ResponseData) result.getData();
+			mTotalPage = data.getTotalPage();
 			if (data.getStatus().equals("200")) {
 				if (isExpandableSearch) {
-					if (isLoadMore) {
-						permListMain.addAll((ArrayList<Store>) data.getData());
-					} else {
-//						permListMain = (ArrayList<Store>) data.getData();
-					}
+					permListMain.addAll((ArrayList<Store>) data.getData());
+//					if (isLoadMore) {
+//						permListMain.addAll((ArrayList<Store>) data.getData());
+//					} else {
+////						permListMain = (ArrayList<Store>) data.getData();
+//					}
 
 					exeBindSearchExpandableStoreData(permListMain);
 					isExpandableSearch = false;
 				} else {
 					showSearchExpandableList(false);
-					if (isLoadMore) {
+//					if (isLoadMore) {
 						if (permListMain == null) {
 							permListMain = new ArrayList<Store>();
 						}
-						permListMain.addAll((ArrayList<Store>) data.getData());
-					} else {
-//						permListMain = (ArrayList<Store>) data.getData();
-					}
+//						permListMain.addAll((ArrayList<Store>) data.getData());
+//					} else {
+////						permListMain = (ArrayList<Store>) data.getData();
+//					}
+					permListMain.addAll((ArrayList<Store>) data.getData());
 					loadPerms();
 
 					WhyqListController.isLoading = false;
@@ -1132,13 +1153,13 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 		int currentItem = firstVisibleItem + visibleItemCount;
 		Log.d("onScroll", "onScroll current " + currentItem + " and total "
 				+ totalItemCount);
-		if ((currentItem >= totalItemCount - 1) && !isLoadMore) {
-			isLoadMore = true;
-			page++;
-			loadPermList = new LoadPermList(isSearch);
-			loadPermList.execute();
-			showProgress();
-		}
+//		if ((currentItem >= totalItemCount - 1) && !isLoadMore) {
+//			isLoadMore = true;
+//			page++;
+//			loadPermList = new LoadPermList(isSearch);
+//			loadPermList.execute();
+//			showProgress();
+//		}
 
 	}
 
