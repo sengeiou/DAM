@@ -1,5 +1,6 @@
 package whyq.service.pushnotification;
 
+import whyq.activity.ListDetailActivity;
 import whyq.activity.LoginHome;
 import whyq.activity.WhyQBillScreen;
 import whyq.activity.WhyqShareActivity;
@@ -41,7 +42,7 @@ public class PushNotificationActivity extends Activity {
 				startActivity(i);
 				finish();
 			}else{
-				Intent i = new Intent(this, LoginHome.class);
+				Intent i = new Intent(this, ListDetailActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("push_data", data);
 				i.putExtras(bundle);

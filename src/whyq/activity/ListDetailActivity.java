@@ -3,7 +3,6 @@ package whyq.activity;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +18,7 @@ import whyq.adapter.WhyqMenuAdapter;
 import whyq.interfaces.IServiceListener;
 import whyq.map.MapsActivity;
 import whyq.model.Bill;
+import whyq.model.BillPushNotification;
 import whyq.model.DeliveryFee;
 import whyq.model.ExtraItem;
 import whyq.model.ExtraItemSet;
@@ -26,7 +26,6 @@ import whyq.model.GroupMenu;
 import whyq.model.Menu;
 import whyq.model.OptionItem;
 import whyq.model.Photo;
-import whyq.model.ProductTypeInfo;
 import whyq.model.Promotion;
 import whyq.model.ResponseData;
 import whyq.model.SizeItem;
@@ -45,8 +44,6 @@ import whyq.view.ScreenGestureController;
 import whyq.view.ScrollviewCustom;
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
-import android.net.ParseException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -143,6 +140,11 @@ public class ListDetailActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.store_detail);
 		context = ListDetailActivity.this;
+		if(getIntent().getSerializableExtra("push_data")!=null){
+			BillPushNotification declineData = (BillPushNotification) getIntent().getSerializableExtra("push_data");
+			id = declineData.getStoryId();
+			setViewContent(2);
+		}
 		id = getIntent().getStringExtra("id");
 		Log.d("ListDetailActivity", "id " + id);
 		
