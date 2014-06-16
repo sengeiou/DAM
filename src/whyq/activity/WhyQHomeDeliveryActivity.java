@@ -357,6 +357,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 			}
 			params.put("deliver_latitude", longitude);
 			params.put("deliver_longitude", latgitude);
+			params.put("deliver_fee_value", ""+Util.round(ListDetailActivity.deliveryFee, 2));
 			params.put("phone_deliver", etPhoneNumber.getText().toString());
 			params.put("note", note);
 			params.put("token", WhyqApplication.Instance().getRSAToken());
