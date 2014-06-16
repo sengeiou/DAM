@@ -4,6 +4,7 @@ public class ResponseData {
 	private String status;
 	private String message;
 	private Object data;
+	private int totalPage;
 	/**
 	 * @return the status
 	 */
@@ -39,5 +40,11 @@ public class ResponseData {
 	 */
 	public void setData(Object data) {
 		this.data = data;
+	}
+	public int getTotalPage() {
+		return totalPage;
+	}
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
 	}
 }
