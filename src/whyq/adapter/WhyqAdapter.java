@@ -1,8 +1,10 @@
 package whyq.adapter;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TimeZone;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -23,6 +25,7 @@ import whyq.service.img.good.ImageLoader;
 import whyq.utils.API;
 import whyq.utils.Constants;
 import whyq.utils.HttpPermUtils;
+import whyq.utils.Util;
 import whyq.utils.WhyqUtils;
 import whyq.utils.facebook.FacebookConnector;
 import android.app.Activity;
@@ -206,6 +209,18 @@ public class WhyqAdapter extends ArrayAdapter<Store> implements OnClickListener 
 //					viewList.put(store.getStoreId(), rowView);
 					
 				}
+				
+				final boolean isOpen = checkOpenTime(item);
+				rowView.findViewById(R.id.v_grey_no_open).setVisibility(isOpen ? View.INVISIBLE: View.VISIBLE);
+				((Button)rowView.findViewById(R.id.v_grey_no_open)).setOnClickListener(new View.OnClickListener() {
+					
+					@Override
+					public void onClick(View arg0) {
+						// TODO Auto-generated method stub
+						Util.showDialog(context, "This store openning from"+store.getStartTime()+" to "+store.getEndTime());	
+					}
+				});
+				
 				viewHolder.tvItemName.setText(item.getNameStore().toUpperCase());
 				viewHolder.tvItemAddress.setText(item.getAddress());
 				viewHolder.tvNumberFavourite.setText(""+item.getCountFavaouriteMember());
@@ -256,10 +271,12 @@ public class WhyqAdapter extends ArrayAdapter<Store> implements OnClickListener 
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						if( FavouriteActivity.isFavorite)
-							((FavouriteActivity)context).onFavouriteClicked(v);
-						else
-							((ListActivity)context).onFavouriteClicked(v);
+						if(isOpen){
+							if( FavouriteActivity.isFavorite)
+								((FavouriteActivity)context).onFavouriteClicked(v);
+							else
+								((ListActivity)context).onFavouriteClicked(v);
+						}
 					}
 				});
 //				UrlImageViewHelper.setUrlDrawable(viewHolder.imgThumb, item.getLogo());
@@ -272,19 +289,23 @@ public class WhyqAdapter extends ArrayAdapter<Store> implements OnClickListener 
 						// TODO Auto-generated method stub
 						Log.d("rowView","rowView oid"+viewId);
 
-						if(viewId.equals(""+49)){
-							//Vip restaurent
-							Intent intent = new Intent(context, ListVipStoreActivity.class);
-							intent.putExtra("vip", true);
-							intent.putExtra("name", store.getNameStore());
-							context.startActivity(intent);							
-							
-							
+						if(isOpen){
+							if(viewId.equals(""+49)){
+								//Vip restaurent
+								Intent intent = new Intent(context, ListVipStoreActivity.class);
+								intent.putExtra("vip", true);
+								intent.putExtra("name", store.getNameStore());
+								context.startActivity(intent);							
+								
+								
+							}else{
+								Intent intent = new Intent(context, ListDetailActivity.class);
+								intent.putExtra("store_id", store.getStoreId());//store.getStoreId()
+								intent.putExtra("id", viewId);//store.getStoreId()
+								context.startActivity(intent);							
+							}
 						}else{
-							Intent intent = new Intent(context, ListDetailActivity.class);
-							intent.putExtra("store_id", store.getStoreId());//store.getStoreId()
-							intent.putExtra("id", viewId);//store.getStoreId()
-							context.startActivity(intent);							
+							Util.showDialog(context, "store open from"+store.getStartTime()+" to "+store.getEndTime());
 						}
 					}
 				});
@@ -294,7 +315,8 @@ public class WhyqAdapter extends ArrayAdapter<Store> implements OnClickListener 
 				}
 				viewHolder.imgFavouriteThumb.setTag(item);
 				viewHolder.btnDistance.setTag(item);
-				rowView.setEnabled(true);
+				rowView.setEnabled(isOpen);
+			
 				return rowView;
 			}
 			else{
@@ -309,6 +331,35 @@ public class WhyqAdapter extends ArrayAdapter<Store> implements OnClickListener 
 		}
 	}
 	
+	private boolean checkOpenTime(Store store) {
+		// TODO Auto-generated method stub
+		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+		int hour = cal.HOUR;
+		int minutes = cal.MINUTE;
+		long current =  hour*60 + minutes;
+		
+		String start = store.getStartTime();
+		String end = store.getEndTime();
+		
+		long startTime = getLongFromTime(start);
+		long endTime = getLongFromTime(end);
+		
+		if((current > startTime) && (current < endTime)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	private long getLongFromTime(String start) {
+		// TODO Auto-generated method stub
+		
+		String hour = start.substring(0, start.indexOf(":"));
+		String minute = start.substring(start.indexOf(":")+1, start.length());
+		
+		return Integer.parseInt(hour)*60 + Integer.parseInt(minute);
+	}
+
 	public void addComments(View view, Store store) {
 		LinearLayout comments = (LinearLayout) view
 				.findViewById(R.id.comments);
