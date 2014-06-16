@@ -83,7 +83,7 @@ public class ProfileWhyQActivty extends Activity {
 		intent.putExtra(Intent.EXTRA_SUBJECT, subject);
 		String message="/n/nSend from my device";
 		intent.putExtra(Intent.EXTRA_TEXT, message);
-		String to = "support@whyq.net.au";
+		String to = "support@dad.whyq.info";
 		intent.setData(Uri.parse("mailto:" + to)); // or just "mailto:" for
 		// blank
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make
