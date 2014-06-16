@@ -61,7 +61,7 @@ public class ProfileWhyQActivty extends Activity {
 	public void onRateClicked(View v) {
 		Intent i = new Intent(ProfileWhyQActivty.this,
 				WhyqProfileChildBasic.class);
-		i.putExtra("question", "WHY Q V2.1.1 Rate it");
+		i.putExtra("question", "DIAL A DELIVERY V2.1.1 Rate it");
 		i.putExtra("isWebview", "0");
 		startActivity(i);
 	}
