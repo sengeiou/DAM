@@ -32,6 +32,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -45,6 +46,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.costum.android.widget.LoadMoreListView;
 import com.devsmart.android.ui.HorizontalListView;
 import com.dam.R;
 
@@ -76,6 +78,9 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 	private TextView tvHeader;
 	private boolean isFriendProfile;
 	private boolean isFriended;
+	private LoadMoreListView mLvActivity;
+	protected int mPage = 0;
+	protected int mTotalPage;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -88,11 +93,27 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 		clockHeight = (int) (getResources().getDisplayMetrics().density * 32);
 		tvHeader = (TextView) findViewById(R.id.tvHeaderTitle);
 		tvHeader.setText("Profile");
-		ExtendedListView lv = (ExtendedListView) findViewById(R.id.listview);
-		lv.setOnPositionChangedListener(this);
+		mLvActivity = (LoadMoreListView) findViewById(R.id.listview);
+//		mLvActivity.setOnPositionChangedListener(this);
 		mActivitiesAdapter = new ActivitiesAdapter(this);
-		lv.setAdapter(mActivitiesAdapter);
-
+		mLvActivity.setAdapter(mActivitiesAdapter);
+		mLvActivity.setOnLoadMoreListener(new LoadMoreListView.OnLoadMoreListener() {
+			
+			@Override
+			public void onLoadMore() {
+				// TODO Auto-generated method stub
+				Log.d("loadmore listener", mPage+ "and total is "+ mTotalPage);
+				if( mPage < mTotalPage){
+					mPage++;
+					getActivityList(mPage);
+					
+				}else{
+					mLvActivity.onLoadMoreComplete();
+				}
+			}
+		});
+		
+		
 		mPhotoAdapter = new PhotoAdapter(this, mImageWorker);
 		int PHOTO_SIZE = WhyqApplication.sScreenWidth / 5;
 		mPhotos = (HorizontalListView) findViewById(R.id.gallery);
@@ -163,13 +184,19 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 		hideExtraButton();
 
 		setLoading(true);
-		getService().getUserActivities(
-				WhyqApplication.Instance().getRSAToken(), mUserId);
+		mPage=1;
+		getActivityList(mPage);
 		getService().getPhotos(WhyqApplication.Instance().getRSAToken(),
 				mUserId);
 		getService().getProfiles(WhyqApplication.Instance().getRSAToken(),
 				mUserId);
 
+	}
+
+	private void getActivityList(int page) {
+		// TODO Auto-generated method stub
+		getService().getUserActivities(
+				WhyqApplication.Instance().getRSAToken(), mUserId, page);
 	}
 
 	public void exeInviteFriend() {
@@ -309,12 +336,20 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 			ResponseData data = (ResponseData) parser.parseActivities(String
 					.valueOf(result.getData()));
 
+			mTotalPage = data.getTotalPage();
+			mLvActivity.onLoadMoreComplete();
 			if (data.getStatus().equals("401")) {
 				Util.loginAgain(this, data.getMessage());
 				return;
-			} else {
-				mActivitiesAdapter
-						.setItems((List<ActivityItem>) data.getData());
+			} else if(data.getStatus().equals("200")) {
+				
+				List<ActivityItem> newData = mActivitiesAdapter.getData();
+				if(mPage == 1){
+					newData.clear();
+				}
+				newData.addAll((List<ActivityItem>)data.getData());
+				mActivitiesAdapter.setItems(newData);
+				mActivitiesAdapter.notifyDataSetChanged();
 			}
 		} else if (result.getAction() == ServiceAction.ActionGetPhotos) {
 			ResponseData data = (ResponseData) parser.parsePhotos(String
@@ -543,6 +578,14 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 				activity = (TextView) view.findViewById(R.id.activity);
 				messageContent = (TextView)view.findViewById(R.id.tv_content);
 			}
+		}
+
+		public List<ActivityItem> getData(){
+			return mItems;
+		}
+		
+		public void changeSrc(List<ActivityItem> list){
+			mItems = list;
 		}
 
 	}

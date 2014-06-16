@@ -3,6 +3,7 @@ package whyq.activity;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -49,6 +50,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -59,6 +61,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.costum.android.widget.LoadMoreListView;
 import com.dam.R;
 
 public class ProfileActivity extends Activity implements Get_Board_delegate{
@@ -83,6 +86,10 @@ public class ProfileActivity extends Activity implements Get_Board_delegate{
 	public WhyqBoard board;
 	public Context context;
 	//private int selectedBoardId = -1;
+	
+	protected int mPage = 0;
+	protected int mTotalPage;
+	
 	private BroadcastReceiver receiver = new BroadcastReceiver() {
 
 		@Override
@@ -105,6 +112,7 @@ public class ProfileActivity extends Activity implements Get_Board_delegate{
 		}
 	};
 	private TextView tvHeader;
+	private LoadMoreListView mLvUuserBoards;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -255,7 +263,8 @@ public class ProfileActivity extends Activity implements Get_Board_delegate{
     			btnAccount.setText(context.getString(R.string.account));
     			ArrayList<WhyqBoard> boards = (ArrayList<WhyqBoard>) user.getBoards();
             	BoardAdapter boardAdapter = new BoardAdapter(ProfileActivity.this,R.layout.board_item, boards);
-            	exeGet(boardAdapter);
+            	refreshBoardsData(boardAdapter);
+            	exeGet();
             	btnAccount.setVisibility(View.VISIBLE);
             	findViewById(R.id.imageBeforRefeshbtnNew2).setVisibility(View.VISIBLE);
             	btnAccount.invalidate();
@@ -285,7 +294,7 @@ public class ProfileActivity extends Activity implements Get_Board_delegate{
     	}
     }
  
-    public void exeGet( BoardAdapter boardAdapter){
+    public void exeGet(){
     	try {
     	   
 //            if (user != null) {
@@ -314,9 +323,7 @@ public class ProfileActivity extends Activity implements Get_Board_delegate{
 //                followings.setText(String.valueOf(user.getFollowings() + " followings"));
                 
                 // Build the list of user's boards
-                ListView userBoards = (ListView) findViewById(R.id.userBoards);
-                userBoards.setAdapter(boardAdapter);
-                userBoards.setOnItemClickListener(new BoardClickListener());
+
 //            } else {
 //            	PermpingMain.showLogin();
 //            }        
@@ -398,6 +405,7 @@ public class ProfileActivity extends Activity implements Get_Board_delegate{
 
 		private String filePath = "";
 		public  String title = "";
+		private BoardAdapter mBoardAdapter;
 		public getUserProfile(String filePath) {
 			this.filePath = filePath;
 		}
@@ -443,8 +451,16 @@ public class ProfileActivity extends Activity implements Get_Board_delegate{
 			if(boards != null){
 				//Log.d("tttttt","OOOOOOO=======>>>>>"+boards);
 	    		user = WhyqUtils.isAuthenticated(getApplicationContext());
-	            BoardAdapter boardAdapter = new BoardAdapter(ProfileActivity.this,R.layout.board_item, boards);
-	    		exeGet(boardAdapter);
+	    		if(mBoardAdapter !=null){
+	    			List<WhyqBoard> newData = mBoardAdapter.getData();
+	    			newData.addAll(boards);
+	    			mBoardAdapter.changeSrc(newData);
+	    			mBoardAdapter.notifyDataSetChanged();
+	    		}else{
+	    			mBoardAdapter = new BoardAdapter(ProfileActivity.this,R.layout.board_item, boards);
+	    		}
+                refreshBoardsData(mBoardAdapter);
+	    		exeGet();
 			}
 		} 
 	}
@@ -505,6 +521,28 @@ public class ProfileActivity extends Activity implements Get_Board_delegate{
 		return boards;
 		// Toast.makeText(getApplicationContext(),"Please login first!",Toast.LENGTH_LONG).show();
 	}
+	public void refreshBoardsData(BoardAdapter mBoardAdapter) {
+		// TODO Auto-generated method stub
+		if(mLvUuserBoards==null)
+			mLvUuserBoards = (LoadMoreListView) findViewById(R.id.userBoards);
+        mLvUuserBoards.setAdapter(mBoardAdapter);
+        mLvUuserBoards.setOnItemClickListener(new BoardClickListener());
+        mLvUuserBoards.setOnLoadMoreListener(new LoadMoreListView.OnLoadMoreListener() {
+			
+			@Override
+			public void onLoadMore() {
+				// TODO Auto-generated method stub
+				Log.d("loadmore listener", mPage+ "and total is "+ mTotalPage);
+				if( mPage < mTotalPage){
+					mPage++;
+					
+				}else{
+					mLvUuserBoards.onLoadMoreComplete();
+				}
+			}
+		});
+	}
+
 	boolean parseXmlFollowFile(String xmlFile) {
 		Document doc = null;
 

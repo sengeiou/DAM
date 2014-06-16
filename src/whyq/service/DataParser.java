@@ -172,7 +172,10 @@ public class DataParser {
 			if(doc.getElementsByTagName("Status") !=null){
 				String statusResponse = doc.getElementsByTagName("Status").item(0)
 						.getFirstChild().getNodeValue();
+				
 				if (statusResponse.equals("200")) {
+					String totalPage = doc.getElementsByTagName("TotalPage").item(0)
+							.getFirstChild().getNodeValue();
 					XMLReader xmlReader = initializeReader();
 					ActivityHandler handler = new ActivityHandler();
 					xmlReader.setContentHandler(handler);
@@ -181,6 +184,7 @@ public class DataParser {
 					final String mes = doc.getElementsByTagName("Message").item(0)
 							.getFirstChild().getNodeValue();
 					data.setStatus(statusResponse);
+					data.setTotalPage(Integer.parseInt(totalPage));
 					data.setData(handler.getActivities());
 					data.setMessage(mes);
 					return data;

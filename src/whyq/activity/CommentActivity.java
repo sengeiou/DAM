@@ -140,7 +140,7 @@ public class CommentActivity extends ImageWorkerActivity {
 		Log.d("onResume","storeId "+mStoreId);
 		super.onResume();
 //		page = 1;
-		mPage++;
+		mPage = 1;
 		getComments(false);
 	}
 	
@@ -190,7 +190,11 @@ public class CommentActivity extends ImageWorkerActivity {
 			} else {
 				if(mAdapter != null){//isLoadMore
 					List<Comment> newData = mAdapter.getItems();
+					
 					if(data !=null && data.getData() !=null){
+						if(mPage == 1){
+							newData.clear();
+						}
 						newData.addAll((List<Comment>) data.getData());
 						mAdapter.setItems(newData);
 						mAdapter.notifyDataSetChanged();

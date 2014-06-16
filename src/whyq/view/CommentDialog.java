@@ -117,7 +117,7 @@ public class CommentDialog extends Dialog implements IServiceListener {
 			// filter.setVisibility(View.INVISIBLE);
 			findViewById(R.id.btnCommentHere).setVisibility(View.GONE);
 		}
-		mPage++;
+		mPage  = 1;
 		getComments(false);
 //		mListview.setOnScrollListener(new AbsListView.OnScrollListener() {
 //
@@ -181,6 +181,9 @@ public class CommentDialog extends Dialog implements IServiceListener {
 				if (mAdapter !=null) {//isLoadMore
 					List<Comment> newData = mAdapter.getItems();
 					if (data != null && data.getData() != null) {
+						if(mPage == 1){
+							newData.clear();
+						}
 						newData.addAll((List<Comment>) data.getData());
 						mAdapter.setItems(newData);
 					}

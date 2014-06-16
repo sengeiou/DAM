@@ -1,6 +1,7 @@
 package whyq.adapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import whyq.model.WhyqBoard;
 import android.content.Context;
@@ -14,7 +15,7 @@ import com.dam.R;
 
 public class BoardAdapter extends ArrayAdapter<WhyqBoard> {
 
-	private ArrayList<WhyqBoard> items;
+	private List<WhyqBoard> items;
 	
 	private int textViewResourceId ;
 	private Context context;
@@ -73,6 +74,14 @@ public class BoardAdapter extends ArrayAdapter<WhyqBoard> {
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
 		return position;
+	}
+	
+	public List<WhyqBoard> getData(){
+		return items;
+	}
+	
+	public void changeSrc(List<WhyqBoard> list){
+		items = list;
 	}
 
 }

@@ -227,13 +227,14 @@ public class Service implements Runnable {
 		request("/m/member/friend/facebook/invite", params, true, false);
 	}
 
-	public void getUserActivities(String encryptedToken, String userId) {
+	public void getUserActivities(String encryptedToken, String userId, int page) {
 		_action = ServiceAction.ActionGetUserActivities;
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("token", encryptedToken);
 		params.put("user_id", userId);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("page", page);
 		params.put("version", Constants.APP_VERSION);
 		params.put("time_zone", TimeZone.getDefault());
 		request("/m/member/recent/activity", params, true, false);
