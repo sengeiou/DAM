@@ -11,6 +11,7 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
+import com.costum.android.widget.LoadMoreListView;
 import com.dam.R;
 
 import whyq.WhyqApplication;
@@ -47,12 +48,14 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 public class CommentDialog extends Dialog implements IServiceListener {
 	private CommentAdapter mAdapter;
 	private RadioGroup mFilterLayout;
-	private int page = 1;
 	private boolean isLoadMore = false;
 	private boolean mIsShowFilter;
 
 	// this should be storeId or userId
 	private String id;
+	protected int mPage = 0;
+	protected int mTotalPage;
+	private LoadMoreListView mListview;
 
 	public CommentDialog(Context context, boolean mIsShowFilter, String id) {
 		super(context);
@@ -73,8 +76,8 @@ public class CommentDialog extends Dialog implements IServiceListener {
 
 		mAdapter = new CommentAdapter(getContext());
 
-		ListView listview = (ListView) findViewById(R.id.listview);
-		listview.setAdapter(mAdapter);
+		mListview = (LoadMoreListView) findViewById(R.id.listview);
+		mListview.setAdapter(mAdapter);
 
 		mFilterLayout = (RadioGroup) findViewById(R.id.filterLayout);
 		mFilterLayout.getLayoutParams().width = WhyqApplication.sScreenWidth * 2 / 3;
@@ -90,6 +93,23 @@ public class CommentDialog extends Dialog implements IServiceListener {
 			}
 		});
 
+		mListview.setOnLoadMoreListener(new LoadMoreListView.OnLoadMoreListener() {
+			
+			@Override
+			public void onLoadMore() {
+				// TODO Auto-generated method stub
+				Log.d("loadmore listener", mPage+ "and total is "+ mTotalPage);
+				if( mPage < mTotalPage){
+					mPage++;
+					getComments(true);
+					
+				}else{
+					mListview.onLoadMoreComplete();
+				}
+				
+			}
+		});
+		
 		// View filter = getLayoutInflater().inflate(R.layout.filter, null);
 		// setExtraView(filter);
 
@@ -97,29 +117,30 @@ public class CommentDialog extends Dialog implements IServiceListener {
 			// filter.setVisibility(View.INVISIBLE);
 			findViewById(R.id.btnCommentHere).setVisibility(View.GONE);
 		}
-		// getComments(false);
-		listview.setOnScrollListener(new AbsListView.OnScrollListener() {
-
-			@Override
-			public void onScrollStateChanged(AbsListView view, int scrollState) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void onScroll(AbsListView view, int firstVisibleItem,
-					int visibleItemCount, int totalItemCount) {
-				// TODO Auto-generated method stub
-				int currentItem = firstVisibleItem + visibleItemCount;
-				Log.d("onScroll", "onScroll current " + currentItem
-						+ " and total " + totalItemCount);
-				if ((currentItem >= totalItemCount - 1) && !isLoadMore) {
-					isLoadMore = true;
-					page++;
-					getComments(false);
-				}
-			}
-		});
+		mPage++;
+		getComments(false);
+//		mListview.setOnScrollListener(new AbsListView.OnScrollListener() {
+//
+//			@Override
+//			public void onScrollStateChanged(AbsListView view, int scrollState) {
+//				// TODO Auto-generated method stub
+//
+//			}
+//
+//			@Override
+//			public void onScroll(AbsListView view, int firstVisibleItem,
+//					int visibleItemCount, int totalItemCount) {
+//				// TODO Auto-generated method stub
+//				int currentItem = firstVisibleItem + visibleItemCount;
+//				Log.d("onScroll", "onScroll current " + currentItem
+//						+ " and total " + totalItemCount);
+//				if ((currentItem >= totalItemCount - 1) && !isLoadMore) {
+//					isLoadMore = true;
+//					mPage++;
+//					getComments(false);
+//				}
+//			}
+//		});
 		
 		findViewById(R.id.btnCommentHere).setOnClickListener(new View.OnClickListener() {
 			
@@ -138,6 +159,7 @@ public class CommentDialog extends Dialog implements IServiceListener {
 	public void onCompleted(Service service, ServiceResponse result) {
 		Log.e("CommentDialog", "onCompleted");
 		setLoading(false);
+		mListview.onLoadMoreComplete();
 		if (result != null && result.getCode() == ResultCode.Success
 				&& result.getAction() == ServiceAction.ActionGetComment) {
 			DataParser paser = new DataParser();
@@ -147,14 +169,16 @@ public class CommentDialog extends Dialog implements IServiceListener {
 				return;
 			}
 
+			mTotalPage = data.getTotalPage();
+			
 			if (data.getStatus().equals("401")) {
 				Util.loginAgain(getContext(), data.getStatus());
 			}
 			if (data.getStatus().equals("204")) {
 				isLoadMore = false;
-				page = 1;
+//				mPage = 1;
 			} else {
-				if (isLoadMore) {
+				if (mAdapter !=null) {//isLoadMore
 					List<Comment> newData = mAdapter.getItems();
 					if (data != null && data.getData() != null) {
 						newData.addAll((List<Comment>) data.getData());
@@ -170,9 +194,8 @@ public class CommentDialog extends Dialog implements IServiceListener {
 
 	private void getComments(boolean onlyFriend) {
 		setLoading(true);
-		if (!isLoadMore)
-			page = 1;
-		new Service(this).getComments(WhyqApplication.getRSAToken(), id, page, 20,
+
+		new Service(this).getComments(WhyqApplication.getRSAToken(), id, mPage, 20,
 				onlyFriend, mIsShowFilter);
 	}
 

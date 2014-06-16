@@ -306,6 +306,8 @@ public class DataParser {
 			ResponseData data = new ResponseData();
 			String statusResponse = doc.getElementsByTagName("Status").item(0)
 					.getFirstChild().getNodeValue();
+			String totalPage = doc.getElementsByTagName("TotalPage").item(0)
+					.getFirstChild().getNodeValue();
 			if (statusResponse.equals("200")) {
 				XMLReader xmlReader = initializeReader();
 				CommentHandler handler = new CommentHandler();
@@ -317,11 +319,13 @@ public class DataParser {
 				data.setStatus(statusResponse);
 				data.setData(handler.getComments());
 				data.setMessage(mes);
+				data.setTotalPage(Integer.parseInt(totalPage));
 				return data;
 			} else {
 				final String mes = doc.getElementsByTagName("Message").item(0)
 						.getFirstChild().getNodeValue();
 				data.setStatus(statusResponse);
+				data.setTotalPage(Integer.parseInt(totalPage));
 				data.setData(null);
 				data.setMessage(mes);
 				return data;
@@ -742,6 +746,7 @@ public class DataParser {
 				final String mes = doc.getElementsByTagName("Message").item(0)
 						.getFirstChild().getNodeValue();
 				data.setStatus(statusResponse);
+				data.setTotalPage(Integer.parseInt(totalPage));
 				data.setData(permList);
 				data.setMessage(mes);
 				return data;
