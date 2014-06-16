@@ -169,28 +169,30 @@ public class DataParser {
 		try {
 			Document doc = XMLfromString(inputString);
 			ResponseData data = new ResponseData();
-			String statusResponse = doc.getElementsByTagName("Status").item(0)
-					.getFirstChild().getNodeValue();
-			if (statusResponse.equals("200")) {
-				XMLReader xmlReader = initializeReader();
-				ActivityHandler handler = new ActivityHandler();
-				xmlReader.setContentHandler(handler);
-				xmlReader.parse(new InputSource(new StringReader(inputString)));
-
-				final String mes = doc.getElementsByTagName("Message").item(0)
+			if(doc.getElementsByTagName("Status") !=null){
+				String statusResponse = doc.getElementsByTagName("Status").item(0)
 						.getFirstChild().getNodeValue();
-				data.setStatus(statusResponse);
-				data.setData(handler.getActivities());
-				data.setMessage(mes);
-				return data;
-			} else {
-				final String mes = doc.getElementsByTagName("Message").item(0)
-						.getFirstChild().getNodeValue();
-				data.setStatus(statusResponse);
-				data.setData(null);
-				data.setMessage(mes);
-				return data;
+				if (statusResponse.equals("200")) {
+					XMLReader xmlReader = initializeReader();
+					ActivityHandler handler = new ActivityHandler();
+					xmlReader.setContentHandler(handler);
+					xmlReader.parse(new InputSource(new StringReader(inputString)));
 
+					final String mes = doc.getElementsByTagName("Message").item(0)
+							.getFirstChild().getNodeValue();
+					data.setStatus(statusResponse);
+					data.setData(handler.getActivities());
+					data.setMessage(mes);
+					return data;
+				} else {
+					final String mes = doc.getElementsByTagName("Message").item(0)
+							.getFirstChild().getNodeValue();
+					data.setStatus(statusResponse);
+					data.setData(null);
+					data.setMessage(mes);
+					return data;
+
+				}
 			}
 
 		} catch (ParserConfigurationException e) {
