@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="Share your comment to help WHYQ users make a good decisionn on whre to go!" />
+            android:text="Share your comment to help DIAL A DELIVERY users make a good decisionn on whre to go!" />
 
         <View
             android:layout_width="match_parent"
