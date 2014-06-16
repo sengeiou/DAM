@@ -3,6 +3,7 @@ package whyq.activity;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TimeZone;
 
 import whyq.WhyqApplication;
 import whyq.adapter.PlacesAutoCompleteAdapter;
@@ -443,19 +444,17 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 
 	private boolean exeCheckTimeInput() {
 		// TODO Auto-generated method stub
-//		Time today = new Time(Time.getCurrentTimezone());
-//		today.setToNow();
-//		int hourNow = today.hour;
-//		int minutesNow = today.hour;
-		Calendar cal = Calendar.getInstance();
-		int hourNow = cal.get(Calendar.HOUR) - 17;
-		int minutesNow = cal.get(Calendar.MINUTE);
 
+//		TimeZone tz = TimeZone.getTimeZone("GMT+07:00");
+//		Calendar cal = Calendar.getInstance(tz);
+		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+		int hourNow = cal.get(Calendar.HOUR);
+		int minutesNow = cal.get(Calendar.MINUTE);
 		Log.d("","currentHours: "+currentHours+"currentMinutes: "+currentMinutes+"hourNow: "+hourNow+"minutesNow: "+minutesNow);
 		if((currentHours > hourNow) || (currentHours == hourNow ) && (minutesNow < currentMinutes)){
 			calHour = currentHours - hourNow;
 			calMinutes = currentMinutes - minutesNow;
-			scheduleDeliery = System.currentTimeMillis() + calHour*60*60*1000 + calMinutes*60 * 1000;
+			scheduleDeliery = cal.getTimeInMillis() + calHour*60*60*1000 + calMinutes*60 * 1000;
 		}else{
 			Toast.makeText(context, "Time incorrect", Toast.LENGTH_LONG).show();
 			return false;
