@@ -476,7 +476,7 @@ public class Service implements Runnable {
 			resObj = parser.parseFavouriteFood(result);
 			break;
 		case ActionPostFavouriteFoods:
-//			resObj = parser.parserPostOpenGraphResult(result);
+			resObj = parser.parseLFavouriteResult(result);
 			break;
 		default:
 			resObj = result;

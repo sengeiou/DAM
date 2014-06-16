@@ -961,6 +961,9 @@ public class DataParser {
 												"updatedate"));
 										menu.setSort(getValue(element, "sort"));
 
+										menu.setFavorite(getValue(element, "is_like").equals("1")? true: false);
+										menu.setCountFavorite(Integer.parseInt(getValue(element, "count_like")));
+										
 										NodeList productTypeInfoNodes = permElement
 												.getElementsByTagName("product_type_info");
 										int length = productTypeInfoNodes

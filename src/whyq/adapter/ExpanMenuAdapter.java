@@ -7,13 +7,17 @@ import java.util.Map;
 
 import whyq.WhyqApplication;
 import whyq.activity.ListDetailActivity;
+import whyq.interfaces.IServiceListener;
 import whyq.model.Bill;
 import whyq.model.ExtraItem;
 import whyq.model.GroupMenu;
 import whyq.model.Menu;
 import whyq.model.OptionItem;
+import whyq.model.ResponseData;
 import whyq.model.SizeItem;
 import whyq.service.Service;
+import whyq.service.ServiceAction;
+import whyq.service.ServiceResponse;
 import whyq.utils.Util;
 import android.content.Context;
 import android.text.Editable;
@@ -216,6 +220,9 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 				viewHolder = (ViewHolderMitemInfo) view.getTag();
 			}
 
+			
+			viewHolder.tvFavouriteCount.setText(""+item.getCountFavorite());
+			viewHolder.imgFavourite.setImageResource(item.isFavorite()? R.drawable.icon_fav_enable: R.drawable.icon_fav_disable);
 //			boolean isItemInBillList = ListDetailActivity.billList.containsKey(item.getId());
 			boolean isItemInBillList = item.getUnitForBill() > 0;
 
@@ -457,8 +464,32 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 				@Override
 				public void onClick(View v) {
 					
-					viewHolder.imgFavourite.setImageResource(R.drawable.icon_fav_enable);;
-					new Service().postLikeFavouriteFoods(item.getId());
+					
+					Service service = new Service(new IServiceListener() {
+						
+						@Override
+						public void onCompleted(Service service, ServiceResponse result) {
+							// TODO Auto-generated method stub
+							try {
+								Log.d("favorite onCompleted", "isFavorite "+item.isFavorite());
+								ResponseData data = (ResponseData) result.getData();
+
+								if (data.getStatus().equals("200")) {
+									item.setFavorite(!item.isFavorite());
+									viewHolder.imgFavourite.setImageResource(item.isFavorite()? R.drawable.icon_fav_enable: R.drawable.icon_fav_disable);
+								} else if (data.getStatus().equals("401")) {
+									Util.loginAgain(mContext, data.getMessage());
+								} else {
+									Util.showDialog(mContext, data.getMessage());
+								}
+							} catch (Exception e) {
+								// TODO: handle exception
+								e.printStackTrace();
+							}
+								
+						}
+					});
+					service.postLikeFavouriteFoods(item.getId());	
 				}
 			});
 			

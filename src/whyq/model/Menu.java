@@ -22,6 +22,9 @@ public class Menu implements Serializable{
 	String sort;
 	private int unitForBill =0;
 	private String note;
+	private int countFavorite;
+	private boolean isFavorite;
+	
 	public String getSort() {
 		return sort;
 	}
@@ -189,6 +192,18 @@ public class Menu implements Serializable{
 	}
 	public void setNote(String note) {
 		this.note = note;
+	}
+	public boolean isFavorite() {
+		return isFavorite;
+	}
+	public void setFavorite(boolean isFavorite) {
+		this.isFavorite = isFavorite;
+	}
+	public int getCountFavorite() {
+		return countFavorite;
+	}
+	public void setCountFavorite(int countFavorite) {
+		this.countFavorite = countFavorite;
 	}
 	String typeProductId;
 	String createDate;
