@@ -101,13 +101,24 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 			@Override
 			public void onLoadMore() {
 				// TODO Auto-generated method stub
-				Log.d("loadmore listener", mPage+ "and total is "+ mTotalPage);
-				if( mPage < mTotalPage){
-					mPage++;
-					getActivityList(mPage);
-					
-				}else{
-					mLvActivity.onLoadMoreComplete();
+				try {
+					Log.d("loadmore listener", mPage+ "and total is "+ mTotalPage);
+					if( mPage < mTotalPage){
+						mPage++;
+						getActivityList(mPage);
+						
+					}else{
+						mLvActivity.onLoadMoreComplete();
+					}
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+					try {
+						mLvActivity.onLoadMoreComplete();
+					} catch (Exception e2) {
+						// TODO: handle exception
+						e2.printStackTrace();
+					}
 				}
 			}
 		});
@@ -333,23 +344,30 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 		DataParser parser = new DataParser();
 
 		if (result.getAction() == ServiceAction.ActionGetUserActivities) {
-			ResponseData data = (ResponseData) parser.parseActivities(String
-					.valueOf(result.getData()));
+			try {
 
-			mTotalPage = data.getTotalPage();
-			mLvActivity.onLoadMoreComplete();
-			if (data.getStatus().equals("401")) {
-				Util.loginAgain(this, data.getMessage());
-				return;
-			} else if(data.getStatus().equals("200")) {
-				
-				List<ActivityItem> newData = mActivitiesAdapter.getData();
-				if(mPage == 1){
-					newData.clear();
+				ResponseData data = (ResponseData) parser.parseActivities(String
+						.valueOf(result.getData()));
+
+				mTotalPage = data.getTotalPage();
+				mLvActivity.onLoadMoreComplete();
+				if (data.getStatus().equals("401")) {
+					Util.loginAgain(this, data.getMessage());
+					return;
+				} else if(data.getStatus().equals("200")) {
+					
+					List<ActivityItem> newData = mActivitiesAdapter.getData();
+					if(mPage == 1){
+						newData.clear();
+					}
+					newData.addAll((List<ActivityItem>)data.getData());
+					mActivitiesAdapter.setItems(newData);
+					mActivitiesAdapter.notifyDataSetChanged();
 				}
-				newData.addAll((List<ActivityItem>)data.getData());
-				mActivitiesAdapter.setItems(newData);
-				mActivitiesAdapter.notifyDataSetChanged();
+			
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
 			}
 		} else if (result.getAction() == ServiceAction.ActionGetPhotos) {
 			ResponseData data = (ResponseData) parser.parsePhotos(String
