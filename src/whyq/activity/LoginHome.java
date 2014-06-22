@@ -43,6 +43,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.Session;
 import com.facebook.Session.StatusCallback;
@@ -85,6 +86,10 @@ public class LoginHome extends FragmentActivity implements IServiceListener,
 			textView.setTypeface(tf);
 		}
 		context = LoginHome.this;
+		if(getIntent().getBooleanExtra("is_push_delivery", false)){
+//			Toast.makeText(context, getIntent().getStringExtra("message"), Toast.LENGTH_LONG).show();
+			Util.showDialog(context, getIntent().getStringExtra("message"));
+		}
 		prefs = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
 		facebookLogin = (Button) findViewById(R.id.btnFbLogin);

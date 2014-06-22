@@ -37,6 +37,8 @@ public class NotificationService extends Service {
 				.setAutoCancel(true);
 
 		Intent resultIntent = new Intent(this, LoginHome.class);
+		resultIntent.putExtra("is_push_delivery", true);
+		resultIntent.putExtra("message", message);
 		// Because clicking the notification opens a new ("special") activity,
 		// there's
 		// no need to create an artificial back stack.

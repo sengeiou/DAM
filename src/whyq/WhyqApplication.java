@@ -238,7 +238,7 @@ public class WhyqApplication extends Application {
 			String message) {
 		Intent intentAlarm = new Intent(ctx, AlarmReceiver.class);
 		intentAlarm.putExtra("title", title);
-		intentAlarm.putExtra("message", "message");
+		intentAlarm.putExtra("message", ""+message);
 		
 //		TimeZone tz = TimeZone.getTimeZone("GMT+07:00");
 		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
