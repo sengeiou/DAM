@@ -183,11 +183,31 @@ public class WhyqHistoryActivity extends ImageWorkerActivity {
 			BillItem item = mItems.get(position);
 			ViewHolder holder = getViewHolder(convertView, item);
 			
-			if (item.getStatus_bill() > 0 && item.getStatus_bill() <= 6) {
-				holder.circleIcon.setImageResource(STATUS_MAP[item.getStatus_bill() - 1]);
-			} else {
+//			if (item.getStatus_bill() > 0 && item.getStatus_bill() <= 6) {
+//				holder.circleIcon.setImageResource(STATUS_MAP[item.getStatus_bill() - 1]);
+//			} else {
+//				holder.circleIcon.setImageResource(R.drawable.circle);
+//			}
+			int statusBill = item.getStatus_bill();
+			
+			if(statusBill == -1){
+				holder.circleIcon.setImageResource(R.drawable.circle);
+			}else if(statusBill == 0){
+				
+			}else if(statusBill == 1){
+				holder.circleIcon.setImageResource(STATUS_MAP[0]);
+			}else if(statusBill == 2 && statusBill == 6){
+				holder.circleIcon.setImageResource(STATUS_MAP[5]);
+			}else if(statusBill == 3 && statusBill == 7){
+				holder.circleIcon.setImageResource(STATUS_MAP[2]);
+			}else if(statusBill == 4){
+				holder.circleIcon.setImageResource(STATUS_MAP[3]);
+			}else if(statusBill == 5){
+				
+			}else{
 				holder.circleIcon.setImageResource(R.drawable.circle);
 			}
+			
 			holder.circleIcon.setVisibility(View.VISIBLE);
 			BusinessInfo bi = item.getBusiness_info();
 			if (bi != null) {
