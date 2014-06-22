@@ -334,8 +334,8 @@ public class WhyqAdapter extends ArrayAdapter<Store> implements OnClickListener 
 	private boolean checkOpenTime(Store store) {
 		// TODO Auto-generated method stub
 		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
-		int hour = cal.HOUR;
-		int minutes = cal.MINUTE;
+		int hour = cal.get(Calendar.HOUR);
+		int minutes = cal.get(Calendar.MINUTE);
 		long current =  hour*60 + minutes;
 		
 		String start = store.getStartTime();
@@ -344,7 +344,7 @@ public class WhyqAdapter extends ArrayAdapter<Store> implements OnClickListener 
 		long startTime = getLongFromTime(start);
 		long endTime = getLongFromTime(end);
 		
-		if((current > startTime) && (current < endTime)){
+		if((current >= startTime) && (current <= endTime)){
 			return true;
 		}else{
 			return false;
