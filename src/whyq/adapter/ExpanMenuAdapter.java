@@ -477,6 +477,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 								if (data.getStatus().equals("200")) {
 									item.setFavorite(!item.isFavorite());
 									viewHolder.imgFavourite.setImageResource(item.isFavorite()? R.drawable.icon_fav_enable: R.drawable.icon_fav_disable);
+									int newNumberFavCount = item.isFavorite()?Integer.parseInt(viewHolder.tvFavouriteCount.getText().toString())+1: Integer.parseInt(viewHolder.tvFavouriteCount.getText().toString())-1; 
+									viewHolder.tvFavouriteCount.setText(newNumberFavCount > 0? ""+newNumberFavCount: "0");
 								} else if (data.getStatus().equals("401")) {
 									Util.loginAgain(mContext, data.getMessage());
 								} else {
