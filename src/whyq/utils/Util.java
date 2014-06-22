@@ -739,4 +739,19 @@ public class Util {
 	        return new Date(0);
 	    }
 	}
+	
+	public static int getCurrentHour(){
+		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+		int hour = cal.get(Calendar.HOUR);
+		int minutes = cal.get(Calendar.MINUTE);
+		long current =  hour*60 + minutes;
+		return hour;
+	}
+	public static int getCurrentMinute(){
+		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+		int hour = cal.get(Calendar.HOUR);
+		int minutes = cal.get(Calendar.MINUTE);
+		long current =  hour*60 + minutes;
+		return minutes;
+	}
 }
