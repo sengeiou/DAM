@@ -69,7 +69,7 @@ public class WhyqShareActivity extends FragmentActivity implements
 	private ToggleButton tglShareWhyq;
 	private ToggleButton tgleShareFb;
 	private ProgressBar prgBar;
-	private String facebookIdTag, facebookNameTag;
+	private String facebookIdTag="", facebookNameTag="";
 	private Context context;
 	private boolean isComment;
 	private RelativeLayout rlTags;
