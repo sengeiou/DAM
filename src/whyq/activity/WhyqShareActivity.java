@@ -301,7 +301,7 @@ public class WhyqShareActivity extends FragmentActivity implements
 		try {
 
 			Log.d("onActivityResult Join", "onActivityResult " + requestCode);
-			 if (session
+			 if (session != null &&session
 						.onActivityResult(this, requestCode, resultCode, data)
 						&& pendingRequest && this.session.getState().isOpened()) {
 
