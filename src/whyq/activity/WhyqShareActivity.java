@@ -411,7 +411,7 @@ public class WhyqShareActivity extends FragmentActivity implements
 			ResponseData data = (ResponseData) result.getData();
 			if (data != null) {
 				if (data.getStatus().equals("200")) {
-					Toast.makeText(context, "Posted comment", Toast.LENGTH_LONG)
+					Toast.makeText(context, "Message sent.", Toast.LENGTH_LONG)
 							.show();
 					orderCheck = (OrderCheckData) data.getData();
 					if (tgleShareFb.isChecked())
@@ -429,7 +429,7 @@ public class WhyqShareActivity extends FragmentActivity implements
 			setProgressBar(false);
 			boolean status = (Boolean) result.getData();
 			if(status){
-				Toast.makeText(context, "Posted to Facebook!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "Message sent.", Toast.LENGTH_LONG).show();
 			}
 		} else if ((!result.isSuccess()
 				&& result.getAction() == ServiceAction.ActionPostFBComment)||((result.isSuccess()
@@ -446,17 +446,27 @@ public class WhyqShareActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 		try {
 			tvTitle.setText("" + store.getNameStore());
-			String cateId = store.getCateid();
-			if (cateId.equals("1")) {
-				imgTitle.setImageResource(R.drawable.icon_cat_cutlery);
-			} else if (cateId.equals("1")) {
-				imgTitle.setImageResource(R.drawable.icon_cat_wine);
-			} else if (cateId.equals("1")) {
-				imgTitle.setImageResource(R.drawable.icon_cat_coffee);
-			} else {
-				imgTitle.setImageResource(R.drawable.icon_cat_hotel);
+//			String cateId = store.getCateid();
+//			if (cateId.equals("1")) {
+//				imgTitle.setImageResource(R.drawable.icon_cat_cutlery);
+//			} else if (cateId.equals("1")) {
+//				imgTitle.setImageResource(R.drawable.icon_cat_wine);
+//			} else if (cateId.equals("1")) {
+//				imgTitle.setImageResource(R.drawable.icon_cat_coffee);
+//			} else {
+//				imgTitle.setImageResource(R.drawable.icon_cat_hotel);
+//			}
+			int storeType = Integer.parseInt(store.getCateid());
+			if (storeType == 1) {
+				imgTitle.setImageResource(R.drawable.icon_tab_cutlery_active);
+			} else if (storeType == 2) {
+				imgTitle.setImageResource(R.drawable.icon_tab_wine_active);
+			} else if (storeType == 3) {
+				imgTitle.setImageResource(R.drawable.icon_tab_coffee_active);
+			} else if (storeType == 4) {
+				imgTitle.setImageResource(R.drawable.icon_tab_hotel_active);
 			}
-			Log.d("bindHeaderData", "cate id " + cateId);
+//			Log.d("bindHeaderData", "cate id " + cateId);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

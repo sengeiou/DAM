@@ -217,7 +217,7 @@ public class WhyqAdapter extends ArrayAdapter<Store> implements OnClickListener 
 					@Override
 					public void onClick(View arg0) {
 						// TODO Auto-generated method stub
-						Util.showDialog(context, "This store openning from"+store.getStartTime()+" to "+store.getEndTime());	
+						Util.showDialog(context, "This store is open from "+store.getStartTime()+" to "+store.getEndTime());	
 					}
 				});
 				

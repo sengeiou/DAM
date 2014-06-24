@@ -81,7 +81,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 		setContentView(R.layout.whyq_home_delivery);
 		context = this;
 		TextView headerTitle = (TextView) findViewById(R.id.tvHeaderTitle);
-		headerTitle.setText("Home Deliver");
+		headerTitle.setText("Home Delivery");
 		storeId = getIntent().getStringExtra("store_id");
 		etOtherAddress = (EditText) findViewById(R.id.etOtherAddress);
 		etPhoneNumber = (EditText) findViewById(R.id.etPhoneNumber);

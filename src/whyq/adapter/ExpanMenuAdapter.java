@@ -298,7 +298,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 						setViewVisibility(viewHolder.tvItem1NameOption, true);
 						setViewVisibility(viewHolder.tvItem1PriceOption, true);
 						viewHolder.tvItem1NameOption.setText(itemDetail.getName());
-						viewHolder.tvItem1PriceOption.setText("$" + itemDetail.getValue());
+						if(floatValue(itemDetail.getValue()) !=0)
+							viewHolder.tvItem1PriceOption.setText("$" + itemDetail.getValue());
 						viewHolder.tvItem1PriceOption.setTag(itemDetail);
 						
 						viewHolder.lnItem1Option.setTag(itemDetail);
@@ -311,7 +312,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 						setViewVisibility(viewHolder.tvItem2NameOption, true);
 						setViewVisibility(viewHolder.tvItem2NameOption, true);
 						viewHolder.tvItem2NameOption.setText(itemDetail.getName());
-						viewHolder.tvItem2PriceOption.setText("$" + itemDetail.getValue());
+						if(floatValue(itemDetail.getValue()) !=0)
+							viewHolder.tvItem2PriceOption.setText("$" + itemDetail.getValue());
 						viewHolder.tvItem2PriceOption.setTag(itemDetail);
 						viewHolder.tvItem2NameOption.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
 						viewHolder.tvItem2PriceOption.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
@@ -323,7 +325,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 						setViewVisibility(viewHolder.tvItem3NameOption, true);
 						setViewVisibility(viewHolder.tvItem3PriceOption, true);
 						viewHolder.tvItem3NameOption.setText(itemDetail.getName());
-						viewHolder.tvItem3PriceOption.setText("$" + itemDetail.getValue());
+						if(floatValue(itemDetail.getValue()) !=0)
+							viewHolder.tvItem3PriceOption.setText("$" + itemDetail.getValue());
 						viewHolder.tvItem3PriceOption.setTag(itemDetail);
 						viewHolder.tvItem3NameOption.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
 						viewHolder.tvItem3PriceOption.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
@@ -350,7 +353,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 						setViewVisibility(viewHolder.tvItem1NameSize, true);
 						setViewVisibility(viewHolder.tvItem1PriceSize, true);
 						viewHolder.tvItem1NameSize.setText(itemDetail.getName());
-						viewHolder.tvItem1PriceSize.setText("$" + itemDetail.getValue());
+						if(floatValue(itemDetail.getValue()) !=0)
+							viewHolder.tvItem1PriceSize.setText("$" + itemDetail.getValue());
 						viewHolder.tvItem1PriceSize.setTag(itemDetail);
 						viewHolder.tvItem1NameSize.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
 						viewHolder.tvItem1PriceSize.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
@@ -362,7 +366,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 						setViewVisibility(viewHolder.tvItem2NameSize, true);
 						setViewVisibility(viewHolder.tvItem1PriceSize, true);
 						viewHolder.tvItem2NameSize.setText(itemDetail.getName());
-						viewHolder.tvItem2PriceSize.setText("$" + itemDetail.getValue());
+						if(floatValue(itemDetail.getValue()) !=0)
+							viewHolder.tvItem2PriceSize.setText("$" + itemDetail.getValue());
 						viewHolder.tvItem2PriceSize.setTag(itemDetail);
 						viewHolder.tvItem2NameSize.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
 						viewHolder.tvItem2PriceSize.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
@@ -374,7 +379,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 						setViewVisibility(viewHolder.tvItem3NameSize, true);
 						setViewVisibility(viewHolder.tvItem3PriceSize, true);
 						viewHolder.tvItem3NameSize.setText(itemDetail.getName());
-						viewHolder.tvItem3PriceSize.setText("$" + itemDetail.getValue());
+						if(floatValue(itemDetail.getValue()) !=0)
+							viewHolder.tvItem3PriceSize.setText("$" + itemDetail.getValue());
 						viewHolder.tvItem3PriceSize.setTag(itemDetail);
 						viewHolder.tvItem3NameSize.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
 						viewHolder.tvItem3PriceSize.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
@@ -403,7 +409,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 						setViewVisibility(viewHolder.tvItem1NameExtra, true);
 						setViewVisibility(viewHolder.tvItem1PriceExtra, true);
 						viewHolder.tvItem1NameExtra.setText(itemDetail.getName());
-						viewHolder.tvItem1PriceExtra.setText("$" + itemDetail.getValue());
+						if(floatValue(itemDetail.getValue()) !=0)
+							viewHolder.tvItem1PriceExtra.setText("$" + itemDetail.getValue());
 						viewHolder.tvItem1PriceExtra.setTag(itemDetail);
 						viewHolder.tvItem1NameExtra.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
 						viewHolder.tvItem1PriceExtra.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
@@ -415,7 +422,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 						setViewVisibility(viewHolder.tvItem2NameExtra, true);
 						setViewVisibility(viewHolder.tvItem2PriceExtra, true);
 						viewHolder.tvItem2NameExtra.setText(itemDetail.getName());
-						viewHolder.tvItem2PriceExtra.setText("$" + itemDetail.getValue());
+						if(floatValue(itemDetail.getValue()) !=0)
+							viewHolder.tvItem2PriceExtra.setText("$" + itemDetail.getValue());
 						viewHolder.tvItem2PriceExtra.setTag(itemDetail);
 						viewHolder.tvItem2NameExtra.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
 						viewHolder.tvItem2PriceExtra.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
@@ -427,7 +435,8 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 						setViewVisibility(viewHolder.tvItem3NameExtra, true);
 						setViewVisibility(viewHolder.tvItem3PriceExtra, true);
 						viewHolder.tvItem3NameExtra.setText(itemDetail.getName());
-						viewHolder.tvItem3PriceExtra.setText("$" + itemDetail.getValue());
+						if(floatValue(itemDetail.getValue()) !=0)
+							viewHolder.tvItem3PriceExtra.setText("$" + itemDetail.getValue());
 						viewHolder.tvItem3PriceExtra.setTag(itemDetail);
 						viewHolder.tvItem3NameExtra.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
 						viewHolder.tvItem3PriceExtra.setTextColor( itemDetail.isSelected()?mFocusColor:mNormalColor);
@@ -604,6 +613,15 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 		}
 		
 		return view;
+	}
+
+	private float floatValue(String value) {
+		// TODO Auto-generated method stub
+		float result =0;
+		if(value !=null && !value.equals("")){
+			result = Float.parseFloat(""+Util.round(Float.parseFloat(value), 2));
+		}
+		return result;
 	}
 
 	private int getTotolPrice(List<Bill> list) {
