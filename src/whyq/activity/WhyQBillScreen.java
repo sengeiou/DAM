@@ -13,14 +13,18 @@ import whyq.model.ResponseData;
 import whyq.service.Service;
 import whyq.service.ServiceAction;
 import whyq.service.ServiceResponse;
-import whyq.service.paypal.PayPalUI;
+import whyq.utils.Constants;
 import whyq.utils.Util;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.Editable;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -239,7 +243,26 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 
-				service.ecoCash(billId, "12345");
+//				service.ecoCash(billId, "12345");
+				
+				final EditText input = new EditText(WhyQBillScreen.this);
+				input.setInputType(InputType.TYPE_CLASS_NUMBER);
+				new AlertDialog.Builder(WhyQBillScreen.this)
+			    .setTitle("DIAL A DELIVERY")
+			    .setMessage("Please enter payment ID for order "+billId)
+			    .setView(input)
+			    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+			        public void onClick(DialogInterface dialog, int whichButton) {
+			            Editable value = input.getText(); 
+			        	service.ecoCash(billId, ""+value);
+			        }
+			    }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			        public void onClick(DialogInterface dialog, int whichButton) {
+			            // Do nothing.
+			        }
+			    }).show();
+				
+//				service.ecoCash(billId, "12345");
 				alertError.dismiss();
 			}
 		});
