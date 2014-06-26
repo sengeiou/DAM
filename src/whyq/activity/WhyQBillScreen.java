@@ -246,7 +246,7 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 //				service.ecoCash(billId, "12345");
 				
 				final EditText input = new EditText(WhyQBillScreen.this);
-				input.setInputType(InputType.TYPE_CLASS_NUMBER);
+//				input.setInputType(InputType.TYPE_CLASS_NUMBER);
 				new AlertDialog.Builder(WhyQBillScreen.this)
 			    .setTitle("DIAL A DELIVERY")
 			    .setMessage("Please enter payment ID for order "+billId)
