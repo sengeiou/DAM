@@ -148,7 +148,7 @@ public class ExpandableStoreAdapter extends BaseExpandableListAdapter {
 			if(store.getPromotionList().size() > 0){
 				viewHolder.tvDiscoutNumber.setVisibility(View.VISIBLE);
 				Promotion promotion = store.getPromotionList().get(0);
-				viewHolder.tvDiscoutNumber.setText(""+promotion.getValuePromotion()+promotion.getTypeValue()+ " for bill over $"+promotion.getConditionPromotion());
+				viewHolder.tvDiscoutNumber.setText(""+promotion.getValuePromotion()+promotion.getTypeValue()+ " for order over $"+promotion.getConditionPromotion());
 			}else{
 				viewHolder.rlDiscount.setVisibility(View.GONE);
 				
