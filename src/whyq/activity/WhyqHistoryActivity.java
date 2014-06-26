@@ -196,9 +196,9 @@ public class WhyqHistoryActivity extends ImageWorkerActivity {
 				
 			}else if(statusBill == 1){
 				holder.circleIcon.setImageResource(STATUS_MAP[0]);
-			}else if(statusBill == 2 && statusBill == 6){
+			}else if(statusBill == 2 || statusBill == 6){
 				holder.circleIcon.setImageResource(STATUS_MAP[5]);
-			}else if(statusBill == 3 && statusBill == 7){
+			}else if(statusBill == 3 || statusBill == 7){
 				holder.circleIcon.setImageResource(STATUS_MAP[2]);
 			}else if(statusBill == 4){
 				holder.circleIcon.setImageResource(STATUS_MAP[3]);
