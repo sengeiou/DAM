@@ -248,16 +248,29 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 
 //				service.ecoCash(billId, "12345");
 				
-				final EditText input = new EditText(WhyQBillScreen.this);
-//				input.setInputType(InputType.TYPE_CLASS_NUMBER);
 				new AlertDialog.Builder(WhyQBillScreen.this)
 			    .setTitle("DIAL A DELIVERY")
-			    .setMessage("Please enter payment ID for order "+billId)
-			    .setView(input)
+			    .setMessage("Please enter Phone application and enter *900# to proceed payment through Ecocash")
 			    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 			        public void onClick(DialogInterface dialog, int whichButton) {
-			            Editable value = input.getText(); 
-			        	service.ecoCash(billId, ""+value);
+						final EditText input = new EditText(WhyQBillScreen.this);
+//						input.setInputType(InputType.TYPE_CLASS_NUMBER);
+						
+						new AlertDialog.Builder(WhyQBillScreen.this)
+					    .setTitle("DIAL A DELIVERY")
+					    .setMessage("Please enter payment ID for order "+billId)
+					    .setView(input)
+					    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+					        public void onClick(DialogInterface dialog, int whichButton) {
+					            Editable value = input.getText(); 
+					        	service.ecoCash(billId, ""+value);
+					        }
+					    }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+					        public void onClick(DialogInterface dialog, int whichButton) {
+					            // Do nothing.
+					        	
+					        }
+					    }).show();
 			        }
 			    }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 			        public void onClick(DialogInterface dialog, int whichButton) {
