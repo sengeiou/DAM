@@ -559,7 +559,7 @@ public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 			String message = Html.fromHtml(item.getMessage()).toString();
 			String messageContent = item.getMessageContent();
 			String key = ACTIVITY_MAP.get(item.getActivity_type());
-			if (key == null) {
+			if (key == null || (key !=null && !message.contains(key))) {
 				holder.activity.setText(message);
 			} else {
 				holder.activity.setText(SpannableUtils.stylistText(message,
