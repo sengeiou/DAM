@@ -275,7 +275,7 @@ public class DataParser {
 			ResponseData data = new ResponseData();
 			String statusResponse = "";
 			if (doc != null)
-				doc.getElementsByTagName("Status").item(0).getFirstChild()
+				statusResponse = doc.getElementsByTagName("Status").item(0).getFirstChild()
 						.getNodeValue();
 			if (statusResponse.equals("200")) {
 				XMLReader xmlReader = initializeReader();
