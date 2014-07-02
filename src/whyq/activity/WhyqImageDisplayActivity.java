@@ -1,5 +1,7 @@
 package whyq.activity;
 
+import whyq.WhyqApplication;
+import whyq.service.img.good.ImageLoader;
 import whyq.utils.ImageViewHelper;
 import whyq.utils.ImageViewHelper.OnCompleteListener;
 import android.app.Activity;
@@ -27,6 +29,7 @@ public class WhyqImageDisplayActivity extends Activity {
 		
 		ImageView imageView = (ImageView) findViewById(R.id.image);
 		final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+		progressBar.setVisibility(View.GONE);
 		ImageViewHelper imageWorker = new ImageViewHelper();
 		imageWorker.setOnCompleteListener(new OnCompleteListener() {
 			
@@ -35,6 +38,8 @@ public class WhyqImageDisplayActivity extends Activity {
 				progressBar.setVisibility(View.GONE);
 			}
 		});
-		imageWorker.downloadImage(imageUrl, imageView);
+//		imageWorker.downloadImage(imageUrl, imageView);
+		ImageLoader mImageLoader = WhyqApplication.Instance().getImageLoader();
+		mImageLoader.DisplayImage(imageUrl, imageView);
 	}
 }
