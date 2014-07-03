@@ -9,6 +9,7 @@ import whyq.adapter.WhyQBillAdapter;
 import whyq.interfaces.IServiceListener;
 import whyq.model.Bill;
 import whyq.model.BillPushNotification;
+import whyq.model.Promotion;
 import whyq.model.ResponseData;
 import whyq.service.Service;
 import whyq.service.ServiceAction;
@@ -110,6 +111,13 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 		getValue(listBill);
 		bindBillValue();
 	}
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		ListDetailActivity.promotion = null;
+		ListDetailActivity.deliveryFee = 0;
+	}
 	private void exeGetBillDetail(String billId) {
 		// TODO Auto-generated method stub
 		Service service = new Service(WhyQBillScreen.this);
@@ -158,6 +166,12 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 				float price = item.getPrice()!=null?Float.parseFloat(item.getPrice()):0;
 //				float discount = item.getDiscount()!=null?Float.parseFloat(item.getDiscount()):0;
 				totalValue += price*unit;
+				if(isOrdered){
+					ListDetailActivity.deliveryFee = Float.parseFloat(item.getDeliveryFeeValue());
+					valueDiscount = item.getDiscount()!=null?Float.parseFloat(item.getDiscount()):Float.parseFloat(ListDetailActivity.promotion.getValuePromotion());
+					ListDetailActivity.promotion  = new Promotion();
+					ListDetailActivity.promotion.setValuePromotion(""+Util.round(valueDiscount,2));
+				}
 //				valueDiscount = 0;
 //				valueDiscount = discount*price*unit;
 //				totalafterDiscount=totalValue - valueDiscount;
@@ -167,7 +181,9 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 			}
 		}
 		if(ListDetailActivity.promotion !=null && ListDetailActivity.promotion.getValuePromotion() !=null && !ListDetailActivity.promotion.getValuePromotion().equals("")){
-			valueDiscount = Float.parseFloat(ListDetailActivity.promotion.getValuePromotion());	
+			if(!isOrdered){
+				valueDiscount = Float.parseFloat(ListDetailActivity.promotion.getValuePromotion());	
+			}
 			totalafterDiscount=totalValue - valueDiscount;
 		}
 

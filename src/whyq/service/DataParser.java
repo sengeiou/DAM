@@ -1978,12 +1978,14 @@ public class DataParser {
 				data.setMessage(mes);
 
 				String discount = "0";
+				String deliveryFeeValue = "0";
 				NodeList objNodeList = doc.getElementsByTagName("obj");
 				int sizeObj = objNodeList.getLength();
 				for (int ii = 0; ii < sizeObj; ii++) {
 					Element element1 = (Element) objNodeList.item(ii);
 
 					discount = getValue(element1, "discount_value");
+					deliveryFeeValue = getValue(element1, "deliver_fee_value");
 					ArrayList<Bill> listBill = new ArrayList<Bill>();
 					NodeList nodeList = doc.getElementsByTagName("detail");
 					int size = nodeList.getLength();
@@ -2009,6 +2011,7 @@ public class DataParser {
 											"product_id"));
 									item.setUnit(getValue(element, "quantity"));
 									item.setDiscount(discount);
+									item.setDeliveryFeeValue(deliveryFeeValue);
 									NodeList productes = element
 											.getElementsByTagName("product");
 									for (int j = 0; j < productes.getLength(); j++) {
