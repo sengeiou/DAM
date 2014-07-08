@@ -170,7 +170,8 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 					ListDetailActivity.deliveryFee = Float.parseFloat(item.getDeliveryFeeValue());
 					valueDiscount = item.getDiscount()!=null?Float.parseFloat(item.getDiscount()):Float.parseFloat(ListDetailActivity.promotion.getValuePromotion());
 					ListDetailActivity.promotion  = new Promotion();
-					ListDetailActivity.promotion.setValuePromotion(""+Util.round(valueDiscount,2));
+					ListDetailActivity.promotion.setValuePromotion(""+Util.round((valueDiscount/totalValue)*100,0));
+					valueDiscount = Float.parseFloat(""+Util.round((valueDiscount/totalValue)*100,0));
 				}
 //				valueDiscount = 0;
 //				valueDiscount = discount*price*unit;
@@ -344,7 +345,7 @@ public class WhyQBillScreen extends FragmentActivity implements IServiceListener
 		} else if(!result.isSuccess()&& result.getAction() == ServiceAction.ActionGetBillDetail){
 			Toast.makeText(WhyQBillScreen.this, "Can not get data for now.", Toast.LENGTH_LONG).show();
 		}else if(result.isSuccess()&& result.getAction() == ServiceAction.ActionOrderEcoCash){
-			Toast.makeText(WhyQBillScreen.this, "Payment is successful!", Toast.LENGTH_LONG).show();
+			Toast.makeText(WhyQBillScreen.this, "Done!", Toast.LENGTH_LONG).show();
 		}else if(!result.isSuccess()&& result.getAction() == ServiceAction.ActionOrderEcoCash){
 			Toast.makeText(WhyQBillScreen.this, "Payment is failed.", Toast.LENGTH_LONG).show();
 		}
