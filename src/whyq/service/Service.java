@@ -1202,7 +1202,7 @@ public class Service implements Runnable {
 		params.put("sdk_version", 1);
 		params.put("venue", data.getLink());
 
-		request("/whyqapp:comment", params, true, false);
+		request("/dial_a_delivery:comment", params, true, false);
 	}
 
 	public void postFBCheckBill(String accessToken, ShareData data) {

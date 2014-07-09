@@ -2,6 +2,7 @@ package whyq.activity;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import whyq.WhyqApplication;
@@ -49,6 +50,7 @@ import android.widget.ToggleButton;
 
 import com.facebook.Session;
 import com.facebook.SessionState;
+import com.facebook.Session.NewPermissionsRequest;
 import com.facebook.Session.StatusCallback;
 import com.dam.R;
 
@@ -203,7 +205,11 @@ public class WhyqShareActivity extends FragmentActivity implements
 
 			this.isSend = isSend;
 			session = Util.createSession();
+
 			if (session.isOpened()) {
+				List<String> permissions = Arrays.asList("publish_actions");
+				NewPermissionsRequest newPermission = new Session.NewPermissionsRequest(this, permissions);
+				session.requestNewPublishPermissions(newPermission);
 				if (isSend) {
 					shareWhyq(session.getAccessToken());
 				} else {
@@ -231,6 +237,10 @@ public class WhyqShareActivity extends FragmentActivity implements
 									.setPositiveButton(R.string.ok, null)
 									.show();
 							session = Util.createSession();
+							List<String> permissions = Arrays.asList("publish_actions");
+							NewPermissionsRequest newPermission = new Session.NewPermissionsRequest(WhyqShareActivity.this, permissions);
+							session.requestNewPublishPermissions(newPermission);
+							exePostFacebook(session.getAccessToken());	
 						}
 					}
 				};
@@ -435,6 +445,7 @@ public class WhyqShareActivity extends FragmentActivity implements
 				&& result.getAction() == ServiceAction.ActionPostFBComment)||((result.isSuccess()
 						&& result.getAction() == ServiceAction.ActionPostFBCheckBill))) {
 			setProgressBar(false);
+			Log.d("Fail post to Facebook",""+result.getData());
 			Toast.makeText(context, "Fail post to Facebook!", Toast.LENGTH_LONG).show();
 		}else if (!result.isSuccess()
 				&& result.getAction() == ServiceAction.ActionPostComment) {
