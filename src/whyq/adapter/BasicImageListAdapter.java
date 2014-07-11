@@ -45,7 +45,7 @@ public class BasicImageListAdapter extends Fragment implements OnScrollListener 
 		if(v!=null){
 			return v;
 		}else{
-			String url = photo.getThumb();
+			
 
 			v = inflater.inflate(R.layout.image_item, container, false);
 			imgView = (ImageView)v.findViewById(R.id.imgView);
@@ -57,10 +57,14 @@ public class BasicImageListAdapter extends Fragment implements OnScrollListener 
 //			tvAddresss.setText(ListDetailActivity.store.getAddress());
 //			tvNumberFavourtie.setText(ListDetailActivity.store.getCountFavaouriteMember());
 
-			if(photo.getThumb() !=null)
-//				UrlImageViewHelper.setUrlDrawable(imgView, photo.getThumb());
-				WhyqApplication.Instance().getImageLoader().DisplayImage(photo.getThumb(), imgView);
 
+			if(photo !=null){
+				String url = photo.getThumb();
+				if(photo.getThumb() !=null)
+//					UrlImageViewHelper.setUrlDrawable(imgView, photo.getThumb());
+					WhyqApplication.Instance().getImageLoader().DisplayImage(photo.getThumb(), imgView);
+
+			}
 			return v;
 		}
 

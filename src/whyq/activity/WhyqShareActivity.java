@@ -208,7 +208,7 @@ public class WhyqShareActivity extends FragmentActivity implements
 
 			if (session.isOpened()) {
 				
-				List<String> permissions = Arrays.asList("publish_actions", "publish_stream","user_checkins","publish_actions","offline_access");
+				List<String> permissions = Arrays.asList("publish_actions", "publish_stream","user_checkins");
 				NewPermissionsRequest newPermission = new Session.NewPermissionsRequest(this, permissions);
 				session.requestNewPublishPermissions(newPermission);
 				if (isSend) {
@@ -238,9 +238,9 @@ public class WhyqShareActivity extends FragmentActivity implements
 									.setPositiveButton(R.string.ok, null)
 									.show();
 							session = Util.createSession();
-							List<String> permissions = Arrays.asList("publish_actions", "publish_stream","user_checkins","publish_actions","offline_access");
-							NewPermissionsRequest newPermission = new Session.NewPermissionsRequest(WhyqShareActivity.this, permissions);
-							session.requestNewPublishPermissions(newPermission);
+//							List<String> permissions = Arrays.asList("publish_actions", "publish_stream","user_checkins");
+//							NewPermissionsRequest newPermission = new Session.NewPermissionsRequest(WhyqShareActivity.this, permissions);
+//							session.requestNewPublishPermissions(newPermission);
 							exePostFacebook(session.getAccessToken());	
 						}
 					}
