@@ -3,6 +3,7 @@ package whyq.activity;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import org.json.JSONException;
@@ -240,8 +241,9 @@ public class WhyqShareActivity extends FragmentActivity implements
 //							List<String> permissions = Arrays.asList("publish_actions", "publish_stream","user_checkins");
 //							NewPermissionsRequest newPermission = new Session.NewPermissionsRequest(WhyqShareActivity.this, permissions);
 //							session.requestNewPublishPermissions(newPermission);
-							exePostFacebook(session.getAccessToken());	
+//							exePostFacebook(session.getAccessToken());	
 						}
+						exePostFacebook(session.getAccessToken());
 					}
 				};
 				pendingRequest = true;
@@ -287,10 +289,11 @@ public class WhyqShareActivity extends FragmentActivity implements
 //		shareHandler.postFacebook(accessToken, shareData);
 		Service service = new Service(WhyqShareActivity.this);
 		if(isComment){
-			if(data.getImage() !=null && !"".equals(data.getImage())){
-				
-				postImageToWll(accessToken, shareData);	
+			if(data.getImage() ==null || "".equals(data.getImage())){
+				service.postFBComments(accessToken, shareData);				
+//				postImageToWll(accessToken, shareData);	
 			}else{
+//				service.postFBComments(accessToken, shareData);
 				postImageToWll(accessToken, shareData);
 //				service.postFBComments(accessToken, shareData);		
 			}
@@ -304,42 +307,47 @@ public class WhyqShareActivity extends FragmentActivity implements
 		
 		pendingRequest = false;
 	}
-
+	private boolean isSubsetOf(Collection<String> subset, Collection<String> superset) {
+	    for (String string : subset) {
+	        if (!superset.contains(string)) {
+	            return false;
+	        }
+	    }
+	    return true;
+	}
+	private static final List<String> PERMISSIONS = Arrays.asList("publish_actions");
 	private void postImageToWll(String accessToken, ShareData shareData) {
 		Session session = Session.getActiveSession();
 
 		if (session != null) {
 
 			// Check for publish permissions
-			List<String> permissions = session.getPermissions();
-			// if (!isSubsetOf(PERMISSIONS, permissions)) {
-			// pendingPublishReauthorization = true;
-			// Session.NewPermissionsRequest newPermissionsRequest = new Session
-			// .NewPermissionsRequest(this, PERMISSIONS);
-			// session.requestNewPublishPermissions(newPermissionsRequest);
-			// return;
-			// }
+//			List<String> permissions = session.getPermissions();
+//			if (!isSubsetOf(PERMISSIONS, permissions)) {
+////				pendingPublishReauthorization = true;
+//				Session.NewPermissionsRequest newPermissionsRequest = new Session.NewPermissionsRequest(
+//						this, PERMISSIONS);
+//				session.requestNewPublishPermissions(newPermissionsRequest);
+//				return;
+//			}
 
 			Bundle postParams = new Bundle();
-			postParams.putString("name", "Facebook SDK for Android");
-			postParams.putString("caption",
-					"Build great social apps and get more installs.");
-			postParams
-					.putString(
-							"description",
-							"The Facebook SDK for Android makes it easier and faster to develop Facebook integrated Android apps.");
-			postParams.putString("link",
-					"https://developers.facebook.com/android");
-			postParams
-					.putString("picture",
-							"https://raw.github.com/fbsamples/ios-3.x-howtos/master/Images/iossdk_logo.png");
-
+			postParams.putString("name", "DEAL A MEAL");
+//			postParams.putString("caption", "");
+//			postParams.putString("description", "");
+			postParams.putString("link", ""+shareData.getLink());
+			postParams.putString("picture", ""+shareData.getPicture());
+			postParams.putString("message", ""+shareData.getMessage());
+			
 			Request.Callback callback = new Request.Callback() {
 				public void onCompleted(Response response) {
-					JSONObject graphResponse = response.getGraphObject()
-							.getInnerJSONObject();
-					String postId = null;
+
 					try {
+						setProgressBar(false);
+						Log.d("Request.Callback", "response: "+response);
+						JSONObject graphResponse = response.getGraphObject()
+								.getInnerJSONObject();
+						String postId = null;
 						postId = graphResponse.getString("id");
 					} catch (JSONException e) {
 						Log.i("JSON error", "JSON error " + e.getMessage());
@@ -351,9 +359,9 @@ public class WhyqShareActivity extends FragmentActivity implements
 								error.getErrorMessage(), Toast.LENGTH_SHORT)
 								.show();
 					} else {
-						Toast.makeText(
-								WhyqShareActivity.this.getApplicationContext(),
-								postId, Toast.LENGTH_LONG).show();
+//						Toast.makeText(
+//								WhyqShareActivity.this.getApplicationContext(),
+//								postId, Toast.LENGTH_LONG).show();
 					}
 				}
 			};
