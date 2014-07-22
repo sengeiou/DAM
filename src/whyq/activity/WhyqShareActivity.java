@@ -241,9 +241,9 @@ public class WhyqShareActivity extends FragmentActivity implements
 //							List<String> permissions = Arrays.asList("publish_actions", "publish_stream","user_checkins");
 //							NewPermissionsRequest newPermission = new Session.NewPermissionsRequest(WhyqShareActivity.this, permissions);
 //							session.requestNewPublishPermissions(newPermission);
-//							exePostFacebook(session.getAccessToken());	
+							exePostFacebook(session.getAccessToken());	
 						}
-						exePostFacebook(session.getAccessToken());
+//						exePostFacebook(session.getAccessToken());
 					}
 				};
 				pendingRequest = true;
@@ -345,12 +345,24 @@ public class WhyqShareActivity extends FragmentActivity implements
 					try {
 						setProgressBar(false);
 						Log.d("Request.Callback", "response: "+response);
-						JSONObject graphResponse = response.getGraphObject()
-								.getInnerJSONObject();
-						String postId = null;
-						postId = graphResponse.getString("id");
+						if(response.getGraphObject() != null){
+							JSONObject graphResponse = response.getGraphObject()
+									.getInnerJSONObject();
+							String postId = null;
+							postId = graphResponse.getString("id");
+							if(postId !=null){
+								Toast.makeText(context, "Message sent!", Toast.LENGTH_LONG).show();
+							}else{
+								Toast.makeText(context, "Post to Facebook is failure!", Toast.LENGTH_LONG).show();
+							}
+							Log.d("post fb","post fb success postid: "+postId);
+							
+						}else{
+							Toast.makeText(context, "Post to Facebook is failure!", Toast.LENGTH_LONG).show();
+						}
 					} catch (JSONException e) {
 						Log.i("JSON error", "JSON error " + e.getMessage());
+						Toast.makeText(context, "Post to Facebook is failure!", Toast.LENGTH_LONG).show();
 					}
 					FacebookRequestError error = response.getError();
 					if (error != null) {
@@ -519,7 +531,7 @@ public class WhyqShareActivity extends FragmentActivity implements
 						.show();
 			}
 		} else if ((!result.isSuccess() && result.getAction() == ServiceAction.ActionPostFBComment)
-				|| ((result.isSuccess() && result.getAction() == ServiceAction.ActionPostFBCheckBill))) {
+				|| ((!result.isSuccess() && result.getAction() == ServiceAction.ActionPostFBCheckBill))) {
 			setProgressBar(false);
 			Log.d("Fail post to Facebook", "" + result.getData());
 			Toast.makeText(context, "Fail post to Facebook!", Toast.LENGTH_LONG)
