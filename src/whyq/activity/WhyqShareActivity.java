@@ -294,8 +294,8 @@ public class WhyqShareActivity extends FragmentActivity implements
 //				postImageToWll(accessToken, shareData);	
 			}else{
 //				service.postFBComments(accessToken, shareData);
-				postImageToWll(accessToken, shareData);
-//				service.postFBComments(accessToken, shareData);		
+//				postImageToWll(accessToken, shareData);
+				service.postFBComments(accessToken, shareData);		
 			}
 				
 	
@@ -332,10 +332,10 @@ public class WhyqShareActivity extends FragmentActivity implements
 //			}
 
 			Bundle postParams = new Bundle();
-			postParams.putString("name", "DEAL A MEAL");
+//			postParams.putString("name", "DEAL A MEAL");
 //			postParams.putString("caption", "");
 //			postParams.putString("description", "");
-			postParams.putString("link", ""+shareData.getLink());
+//			postParams.putString("link", ""+shareData.getLink());
 			postParams.putString("picture", ""+shareData.getPicture());
 			postParams.putString("message", ""+shareData.getMessage());
 			

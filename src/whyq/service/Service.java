@@ -1193,8 +1193,10 @@ public class Service implements Runnable {
 		params.put("access_token", accessToken);
 		params.put("fb:explicitly_shared", true);
 		params.put("format", "json");
-		if(data.getPicture()!=null)
+		if(data.getPicture()!=null && !"".equals(""+data.getPicture())){
 			params.put("image[0][url]", data.getPicture());
+			params.put("image[0][user_generated]", true);
+		}
 		params.put("message", "" + data.getMessage());
 		params.put("place", data.getLink());
 		params.put("scrape", true);
