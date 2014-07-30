@@ -26,7 +26,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class WhyQHotelRoomDelivery extends FragmentActivity implements IServiceListener, OnClickListener {
 	private EditText etRoomNo;

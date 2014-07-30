@@ -10,7 +10,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class ExampleAdapter extends BaseExpandableListAdapter {
 

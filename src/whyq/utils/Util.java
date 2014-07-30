@@ -85,7 +85,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 import com.facebook.Session;
 
 public class Util {
@@ -609,7 +609,7 @@ public class Util {
 		// TODO Auto-generated method stub
 		try {
 			PackageInfo info = context.getPackageManager().getPackageInfo(
-					"com.dam", PackageManager.GET_SIGNATURES);
+					"com.dealadelivery.whyq", PackageManager.GET_SIGNATURES);
 			for (Signature signature : info.signatures) {
 				MessageDigest md = MessageDigest.getInstance("SHA");
 				md.update(signature.toByteArray());

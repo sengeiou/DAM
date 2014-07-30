@@ -12,7 +12,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 import com.costum.android.widget.LoadMoreListView;
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 import whyq.WhyqApplication;
 import whyq.activity.WhyqShareActivity;

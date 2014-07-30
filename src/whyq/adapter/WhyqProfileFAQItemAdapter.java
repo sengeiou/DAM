@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class WhyqProfileFAQItemAdapter extends ArrayAdapter<Faq> {
 

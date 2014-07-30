@@ -42,7 +42,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.custom.WebImageView;
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnClickListener {
 

@@ -15,7 +15,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class WhyqOrderMenuActivity extends DialogFragment implements
 		OnClickListener {

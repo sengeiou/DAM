@@ -66,7 +66,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.costum.android.widget.*;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class ListActivity extends FragmentActivity implements OnClickListener,
 		OnFocusChangeListener, IServiceListener, OnScrollListener {

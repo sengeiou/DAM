@@ -62,7 +62,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.costum.android.widget.LoadMoreListView;
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class ProfileActivity extends Activity implements Get_Board_delegate{
 	

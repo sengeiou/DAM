@@ -30,7 +30,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 
 public class WhyQBillScreen extends FragmentActivity implements IServiceListener{

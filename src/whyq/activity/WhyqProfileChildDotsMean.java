@@ -1,6 +1,6 @@
 package whyq.activity;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 import android.app.Activity;
 import android.os.Bundle;

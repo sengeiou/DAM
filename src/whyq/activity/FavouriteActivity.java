@@ -9,7 +9,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.costum.android.widget.LoadMoreListView;
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 import whyq.WhyqApplication;
 import whyq.WhyqMain;

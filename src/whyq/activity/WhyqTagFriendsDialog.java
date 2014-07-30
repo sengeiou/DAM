@@ -34,7 +34,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class WhyqTagFriendsDialog extends FragmentActivity {
 

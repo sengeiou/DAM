@@ -17,7 +17,7 @@ import android.widget.ProgressBar;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.Session.StatusCallback;
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class WhyqLogout extends Activity implements IServiceListener{
 	

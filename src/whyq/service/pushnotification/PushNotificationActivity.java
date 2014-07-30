@@ -11,7 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class PushNotificationActivity extends Activity {
 

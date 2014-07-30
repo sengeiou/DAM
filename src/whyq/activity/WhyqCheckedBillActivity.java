@@ -30,7 +30,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class WhyqCheckedBillActivity extends ImageWorkerActivity {
 

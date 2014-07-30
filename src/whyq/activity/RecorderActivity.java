@@ -16,7 +16,7 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class RecorderActivity extends Activity {
 	private static final int RECORDER_BPP = 16;

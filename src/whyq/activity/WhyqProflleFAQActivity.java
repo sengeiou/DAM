@@ -21,7 +21,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class WhyqProflleFAQActivity extends Activity implements IServiceListener{
 	public static final String HOW_WHYQ_WORK = "How does DIAL A DELIVERY work?";

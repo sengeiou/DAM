@@ -26,7 +26,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 
 public class TwitterFragment extends DialogFragment {

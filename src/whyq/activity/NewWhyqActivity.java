@@ -79,7 +79,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class NewWhyqActivity extends Activity implements OnClickListener {
 

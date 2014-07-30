@@ -2,7 +2,7 @@ package whyq.service.pushnotification;
 
 import whyq.activity.LoginHome;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 import android.app.Notification;
 import android.app.NotificationManager;

@@ -47,7 +47,7 @@ import android.widget.Toast;
 import com.costum.android.widget.LoadMoreListView;
 import com.costum.android.widget.LoadMoreListView.OnPositionChangedListener;
 import com.devsmart.android.ui.HorizontalListView;
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class WhyqUserProfileActivity extends ImageWorkerActivity implements
 		OnPositionChangedListener {

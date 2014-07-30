@@ -36,7 +36,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class ExpandableStoreAdapter extends BaseExpandableListAdapter {
 

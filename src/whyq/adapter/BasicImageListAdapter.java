@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class BasicImageListAdapter extends Fragment implements OnScrollListener {
 	public static String EXTRA_MESSAGE = "EXTRA_MESSAGE";

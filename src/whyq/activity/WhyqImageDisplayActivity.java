@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class WhyqImageDisplayActivity extends Activity {
 

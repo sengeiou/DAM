@@ -28,7 +28,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class WhyqProfileEditAccountActivity extends Activity implements IServiceListener{
 

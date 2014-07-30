@@ -31,7 +31,7 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 /**
  * This {@link Activity} is used to enable the user to login at PayPal and

@@ -32,7 +32,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
 import com.costum.android.widget.LoadMoreListView;
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class CommentActivity extends ImageWorkerActivity {
 

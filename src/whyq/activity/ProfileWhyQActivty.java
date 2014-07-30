@@ -10,7 +10,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class ProfileWhyQActivty extends Activity {
 

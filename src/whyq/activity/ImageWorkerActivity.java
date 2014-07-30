@@ -4,7 +4,7 @@ import whyq.utils.ImageViewHelper;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class ImageWorkerActivity extends ConsumeServiceActivity {
 

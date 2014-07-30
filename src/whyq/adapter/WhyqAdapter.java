@@ -57,7 +57,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class WhyqAdapter extends ArrayAdapter<Store> implements OnClickListener {
 

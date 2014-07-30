@@ -36,7 +36,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class FbDialog extends Dialog {
 	static final int FB_BLUE = 0xFF6D84B4;

@@ -74,7 +74,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class ListDetailActivity extends FragmentActivity implements
 		IServiceListener, OnScrollListener {

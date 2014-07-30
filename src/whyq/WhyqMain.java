@@ -34,7 +34,7 @@ import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 import com.parse.ParseAnalytics;
 
 public class WhyqMain extends TabActivity implements IServiceListener {

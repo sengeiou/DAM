@@ -2,7 +2,7 @@ package whyq.adapter;
 
 import java.util.ArrayList;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 import whyq.WhyqApplication;
 import whyq.model.Product;

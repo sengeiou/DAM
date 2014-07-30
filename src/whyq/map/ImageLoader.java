@@ -20,7 +20,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
   
 public class ImageLoader {
   

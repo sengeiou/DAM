@@ -15,7 +15,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 /**
  * @author Linh Nguyen

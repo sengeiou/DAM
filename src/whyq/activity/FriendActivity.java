@@ -45,7 +45,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.custom.WebImageView;
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class FriendActivity extends Activity implements View.OnClickListener , MyDiary_Delegate, Get_Perm_Delegate {
 

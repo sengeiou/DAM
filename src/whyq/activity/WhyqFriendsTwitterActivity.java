@@ -23,8 +23,8 @@ import whyq.utils.WhyqUtils;
 import whyq.view.AmazingListView;
 import whyq.view.SearchField;
 
-import com.dam.BuildConfig;
-import com.dam.R;
+import com.dealadelivery.whyq.BuildConfig;
+import com.dealadelivery.whyq.R;
 
 import android.content.Intent;
 import android.os.Bundle;

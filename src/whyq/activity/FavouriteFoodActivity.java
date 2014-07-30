@@ -23,7 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.dam.R;
+import com.dealadelivery.whyq.R;
 
 public class FavouriteFoodActivity extends FragmentActivity implements
 		IServiceListener {
