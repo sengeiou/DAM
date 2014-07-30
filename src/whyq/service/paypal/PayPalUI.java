@@ -39,9 +39,9 @@ public class PayPalUI extends DialogFragment implements IServiceListener{
 	public PayPalUI() {
 	}
 	
-	public PayPalUI(IPaypalListener listener) {
-		this.listener = listener;
-	}
+//	public PayPalUI(IPaypalListener listener) {
+//		this.listener = listener;
+//	}
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

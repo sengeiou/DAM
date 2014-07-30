@@ -314,9 +314,10 @@ public class DataParser {
 			ResponseData data = new ResponseData();
 			String statusResponse = doc.getElementsByTagName("Status").item(0)
 					.getFirstChild().getNodeValue();
-			String totalPage = doc.getElementsByTagName("TotalPage").item(0)
-					.getFirstChild().getNodeValue();
+
 			if (statusResponse.equals("200")) {
+				String totalPage = doc.getElementsByTagName("TotalPage").item(0)
+						.getFirstChild().getNodeValue();
 				XMLReader xmlReader = initializeReader();
 				CommentHandler handler = new CommentHandler();
 				xmlReader.setContentHandler(handler);
@@ -333,7 +334,7 @@ public class DataParser {
 				final String mes = doc.getElementsByTagName("Message").item(0)
 						.getFirstChild().getNodeValue();
 				data.setStatus(statusResponse);
-				data.setTotalPage(Integer.parseInt(totalPage));
+				data.setTotalPage(Integer.parseInt("0"));
 				data.setData(null);
 				data.setMessage(mes);
 				return data;
@@ -552,9 +553,10 @@ public class DataParser {
 			ResponseData data = new ResponseData();
 			String statusResponse = doc.getElementsByTagName("Status").item(0)
 					.getFirstChild().getNodeValue();
-			String totalPage = doc.getElementsByTagName("TotalPage").item(0)
-					.getFirstChild().getNodeValue();
+
 			if (statusResponse.equals("200")) {
+				String totalPage = doc.getElementsByTagName("TotalPage").item(0)
+						.getFirstChild().getNodeValue();
 				NodeList nodeList = doc.getElementsByTagName("obj");
 
 				for (int i = 0; i < nodeList.getLength(); i++) {
@@ -754,7 +756,7 @@ public class DataParser {
 				final String mes = doc.getElementsByTagName("Message").item(0)
 						.getFirstChild().getNodeValue();
 				data.setStatus(statusResponse);
-				data.setTotalPage(Integer.parseInt(totalPage));
+				data.setTotalPage(Integer.parseInt("0"));
 				data.setData(permList);
 				data.setMessage(mes);
 				return data;

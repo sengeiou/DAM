@@ -797,7 +797,7 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 			break;
 		case R.id.btn_done_select_extra:
 			onDoneSelectedClicked(v);
-		case R.id.btn_delete_item:
+		case R.id.imgbtn_delete_item:
 			onRemoveMenuSelectClicked(v);
 			break;
 		default:

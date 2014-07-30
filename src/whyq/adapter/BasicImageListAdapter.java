@@ -30,9 +30,9 @@ public class BasicImageListAdapter extends Fragment implements OnScrollListener 
 //	private TextView tvNumberFavourtie;
 	private ImageView imgView;
 	private HashMap<String, View> viewList = new HashMap<String, View>();
-	public BasicImageListAdapter(ArrayList<Photo> photoList){
-		
-	}
+//	public BasicImageListAdapter(ArrayList<Photo> photoList){
+//		
+//	}
 	public BasicImageListAdapter() {
 		// TODO Auto-generated constructor stub
 	}
