@@ -1523,18 +1523,19 @@ public class ListDetailActivity extends FragmentActivity implements
 
 				List<Bill> list = billList.get(key);
 				for (Bill bill : list) {
-					float sizeValue = getTotalSize(bill.getSizeList());
-					float optionValue = getTotalOption(bill.getOptionList());
-					float extraValue = getTotalExtra(bill.getExtraList());
-					float price = 0;
-					if((sizeValue + optionValue + extraValue) <= 0){
-						price = Float.parseFloat(bill.getPrice());
-						price =Integer.parseInt(bill.getUnit())*price;
-					}else if(sizeValue <=0){
-						price = Float.parseFloat(bill.getPrice());
-						price =Integer.parseInt(bill.getUnit())*price;
-					}
-					total+= price + Integer.parseInt(bill.getUnit())*(sizeValue + optionValue + extraValue);
+//					float sizeValue = getTotalSize(bill.getSizeList());
+//					float optionValue = getTotalOption(bill.getOptionList());
+//					float extraValue = getTotalExtra(bill.getExtraList());
+//					float price = 0;
+//					if((sizeValue + optionValue + extraValue) <= 0){
+//						price = Float.parseFloat(bill.getPrice());
+//						price =Integer.parseInt(bill.getUnit())*price;
+//					}else if(sizeValue <=0){
+//						price = Float.parseFloat(bill.getPrice());
+//						price =Integer.parseInt(bill.getUnit())*price;
+//					}
+//					total+= price + Integer.parseInt(bill.getUnit())*(sizeValue + optionValue + extraValue);
+					total+=Integer.parseInt(bill.getUnit())*Float.parseFloat(bill.getPrice());
 				}
 			
 			} catch (Exception e) {
