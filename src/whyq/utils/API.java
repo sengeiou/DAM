@@ -3,7 +3,7 @@ package whyq.utils;
 public class API {
 
 	
-	public static final String hostURL = "http://v2.whyq.info";//"http://permping.com/services";
+	public static final String hostURL = "http://dad.whyq.info";//"http://v2.whyq.info";//"http://permping.com/services";
 	
 	public static final String popularBusinessListURL = "/m/business";
 	public static final String searchBusinessListURL = "/m/business";
