@@ -54,10 +54,10 @@
                         android:textColor="#ff3300" />
 
                     <ImageView
-                        android:layout_marginLeft="2dp"
                         android:id="@+id/imgFavouriteFood"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
                         android:onClick="onFavouriteClicked"
                         android:src="@drawable/icon_fav_disable" />
                 </LinearLayout>
@@ -112,12 +112,12 @@
                 android:textColor="@android:color/background_dark" />
         </LinearLayout>
     </LinearLayout>
-    
+
     <RelativeLayout
         android:id="@+id/rl_note"
-        android:layout_below="@+id/ln_content_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/ln_content_menu"
         android:gravity="center_vertical"
         android:visibility="visible" >
 
@@ -136,8 +136,7 @@
             android:background="@drawable/white_container"
             android:hint="Send us a note?"
             android:padding="3dp"
-            android:singleLine="true"
-            />
+            android:singleLine="true" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -147,10 +146,17 @@
         android:layout_below="@+id/rl_note"
         android:visibility="gone" >
 
-        <include
+        <!--
+                 <include
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             layout="@layout/extra_item" />
+        -->
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/extra_item_v2" />
     </RelativeLayout>
 
 </RelativeLayout>

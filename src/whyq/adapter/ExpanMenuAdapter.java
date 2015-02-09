@@ -157,7 +157,7 @@ public class ExpanMenuAdapter extends BaseExpandableListAdapter implements OnCli
 //			}
 			if (true) {//view == null
 				viewHolder = new ViewHolderMitemInfo();
-				view = inflator.inflate(R.layout.whyq_menu_item_phase2, null);
+				view = inflator.inflate(R.layout.whyq_menu_item_phase2_old, null);
 				viewHolder.tvType = (TextView) view.findViewById(R.id.tvType);
 				viewHolder.tvPrice = (TextView) view.findViewById(R.id.tvPrice);
 				viewHolder.imgThumb = (ImageView) view.findViewById(R.id.imgThumbnail);

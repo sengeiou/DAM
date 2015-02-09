@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_extra"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ln_preview_extra_selected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/bg_line" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_done_select_extra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/rl_extra_content"
+        android:gravity="center_horizontal" >
+
+        <Button
+            android:id="@+id/btn_done_select_extra"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="7dp"
+            android:background="@drawable/ic_btn_menu_done"
+            android:text="Done"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_extra_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ln_preview_extra_selected"
+        android:background="#f5f5f5" >
+
+        <EditText
+            android:id="@+id/et_product_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/white_container"
+            android:hint="Send us a note?"
+            android:padding="3dp"
+            android:singleLine="true"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/et_product_note"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/ln_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <com.meetme.android.horizontallistview.HorizontalListView
+                    android:id="@+id/hlv_sizes"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divery_1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/ln_size"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/grey" />
+
+            <LinearLayout
+                android:id="@+id/ln_option"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divery_1"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <com.meetme.android.horizontallistview.HorizontalListView
+                    android:id="@+id/hlv_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divery_2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/ln_option"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/grey" />
+
+            <LinearLayout
+                android:id="@+id/ln_extra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divery_2"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <com.meetme.android.horizontallistview.HorizontalListView
+                    android:id="@+id/hlv_extras"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

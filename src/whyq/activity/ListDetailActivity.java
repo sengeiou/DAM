@@ -12,8 +12,8 @@ import java.util.TreeMap;
 import whyq.WhyqApplication;
 import whyq.adapter.BasicImageListAdapter;
 import whyq.adapter.BasicUserAdapter;
-import whyq.adapter.ExpanMenuAdapter;
-import whyq.adapter.ExpanMenuAdapter.ViewHolderMitemInfo;
+import whyq.adapter.ExpandMenuAdapterV2;
+import whyq.adapter.ExpandMenuAdapterV2.ViewHolderMitemInfo;
 import whyq.adapter.WhyqMenuAdapter;
 import whyq.interfaces.IServiceListener;
 import whyq.map.MapsActivity;
@@ -271,7 +271,7 @@ public class ListDetailActivity extends FragmentActivity implements
 	private String currentStoreId;
 	public static Promotion promotion;
 	public static float deliveryFee;
-	private ExpanMenuAdapter mExpanMenuAdapter;
+	private ExpandMenuAdapterV2 mExpanMenuAdapter;
 	public static List<DeliveryFee> deliveryFeeLis;
 	public static String commentContent;
 
@@ -827,7 +827,7 @@ public class ListDetailActivity extends FragmentActivity implements
 						e.printStackTrace();
 					}
 				}
-				mExpanMenuAdapter = new ExpanMenuAdapter(
+				mExpanMenuAdapter = new ExpandMenuAdapterV2(
 						ListDetailActivity.this, lvMenu, mGroupCollection);
 
 				lvMenu.setAdapter(mExpanMenuAdapter);
@@ -1168,7 +1168,7 @@ public class ListDetailActivity extends FragmentActivity implements
 
 	private String getNote(Bill bill) {
 		// TODO Auto-generated method stub
-		return ExpanMenuAdapter.noteList.get(bill.getId()) ==null? "": ExpanMenuAdapter.noteList.get(bill.getId());
+		return ExpandMenuAdapterV2.noteList.get(bill.getId()) ==null? "": ExpandMenuAdapterV2.noteList.get(bill.getId());
 	}
 
 	private String getSizeExtraOptionId(Bill bill) {
