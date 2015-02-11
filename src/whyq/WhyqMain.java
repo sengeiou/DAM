@@ -195,7 +195,7 @@ public class WhyqMain extends TabActivity implements IServiceListener {
 			 * Register pushnotification
 			 */
 			ParseAnalytics.trackAppOpened(getIntent());
-			ParseApplication.registerPushNotification(context);
+//			ParseApplication.registerPushNotification(context);
 			ParseApplication.exePushNotification(context);
 		}
 

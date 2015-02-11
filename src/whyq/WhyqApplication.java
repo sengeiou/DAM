@@ -9,6 +9,7 @@ import java.util.TimeZone;
 import whyq.model.User;
 import whyq.service.img.good.ImageLoader;
 import whyq.service.pushnotification.AlarmReceiver;
+import whyq.service.pushnotification.ParseApplication;
 import whyq.utils.RSA;
 import whyq.utils.Util;
 import whyq.utils.XMLParser;
@@ -72,6 +73,12 @@ public class WhyqApplication extends Application {
 				.createFromAsset(getAssets(), "Roboto-Bold.ttf");
 		sTypefaceItalic = Typeface.createFromAsset(getAssets(),
 				"Roboto-Italic.ttf");
+		
+		/***
+		 * Register pushnotification
+		 */
+		ParseApplication.registerPushNotification(this);
+		ParseApplication.exePushNotification(this);
 	}
 
 	public static void initScreenSize(int width, int height) {
