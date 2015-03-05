@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.TimeZone;
 
 import whyq.WhyqApplication;
-import whyq.adapter.PlacesAutoCompleteAdapter;
 import whyq.interfaces.IDialogListener;
 import whyq.interfaces.IServiceListener;
 import whyq.model.DeliveryFee;
@@ -22,7 +21,6 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -110,7 +108,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				// TODO Auto-generated method stub
 				if(cbASAP.isChecked()){
-					disableTimeField();
+					resetTimeField();
 				}else{
 					endAbleTimeField();
 				}
@@ -121,6 +119,8 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 		if(address!=null)
 			atAddress.setText(address);
 		
+		cbASAP.setChecked(true);
+		resetTimeField();
 //		getDeliveryFeeList();
 	}
 
@@ -140,6 +140,16 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 		etHours.setEnabled(false);
 		etMinutes.setEnabled(false);
+		
+		resetTimeField();
+	}
+
+	private void resetTimeField() {
+		// TODO Auto-generated method stub
+		currentHours = 0;
+		currentMinutes = 0;
+		etHours.setText("");
+		etMinutes.setText("");
 	}
 
 	private void setUpMapIfNeeded() {
@@ -337,6 +347,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 			storeId = bundle.getString("store_id");
 			listItem = bundle.getString("list_items");
 			note = bundle.getString("note");
+				
 			if (location != null) {
 				longitude = location.get("lon");
 				latgitude = location.get("lat");
@@ -480,6 +491,9 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 		int id = v.getId();
 		if(id == R.id.etHours||id == R.id.etMinutes){
+			
+			cbASAP.setChecked(false);
+			
 			new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
 				
 				@Override
@@ -489,6 +503,8 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 					currentMinutes = minute;
 					etHours.setText(""+hourOfDay);
 					etMinutes.setText(""+minute);
+					
+					
 				}
 			}, currentHours, currentMinutes, true).show();
 		}

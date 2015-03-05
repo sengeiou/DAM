@@ -183,11 +183,14 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 	private TextView tvNumberResult;
 	private TextView tvTextSearch;
 	private int page = 0;
+	private int mGetLocationCount;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		createUI();
+		mGetLocationCount = 0;
+		
 		isExpandableSearch = false;
 		showSearchExpandableList(false);
 		FavouriteActivity.isFavorite = false;
@@ -355,6 +358,17 @@ public class ListActivity extends FragmentActivity implements OnClickListener,
 					WhyqApplication.Instance().setCurrentLocation(
 							LocationActivityNew.currentLocation);
 //					isFirst = true;
+				}else{
+					//Get again.
+					if (mGetLocationCount < 3) {
+						mGetLocationCount++;
+						getLocation();					
+					}else{
+						if (!isFinishing()) {
+							Toast.makeText(context, "Can not get location for now", Toast.LENGTH_LONG).show();
+						}
+					}
+					
 				}
 			}
 

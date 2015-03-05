@@ -2,6 +2,8 @@ package whyq.activity;
 
 import java.util.HashMap;
 
+import com.dealadelivery.whyq.R;
+
 import whyq.WhyqApplication;
 import whyq.interfaces.IDialogListener;
 import whyq.interfaces.IServiceListener;
@@ -28,7 +30,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.dealadelivery.whyq.R;
 
 public class WhyQTakeAwayActivity extends Activity implements OnClickListener,
 		IServiceListener, IDialogListener {
@@ -79,14 +80,15 @@ public class WhyQTakeAwayActivity extends Activity implements OnClickListener,
 		new asyncGetLocatoin().execute();
 		// btnDone = (Button)findViewById(R.id.btnDone);
 		// btnDone.setOnClickListener(this);
-		disableTimeField();
+		resetTimeField();
+		cbLeaveNow.setChecked(true);
 		cbLeaveNow.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				// TODO Auto-generated method stub
 				if(cbLeaveNow.isChecked()){
-					disableTimeField();
+					resetTimeField();
 				}else{
 					endAbleTimeField();
 				}
@@ -105,7 +107,22 @@ public class WhyQTakeAwayActivity extends Activity implements OnClickListener,
 		// TODO Auto-generated method stub
 		etHours.setEnabled(false);
 		etMinutes.setEnabled(false);
+		
+		resetTimeField();
 	}
+	
+	
+	
+	private void resetTimeField() {
+		// TODO Auto-generated method stub
+		etHours.setText("");
+		etMinutes.setText("");
+		currentHours = 0;
+		currentMinutes = 0;
+	}
+
+
+
 	class asyncGetLocatoin extends AsyncTask<Bundle, Void, Bundle> {
 
 		public asyncGetLocatoin() {
@@ -139,6 +156,9 @@ public class WhyQTakeAwayActivity extends Activity implements OnClickListener,
 			break;
 		}
 		if(id == R.id.etHours||id == R.id.etMinutes){
+			
+			cbLeaveNow.setChecked(false);
+			
 			new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
 
 
