@@ -716,7 +716,7 @@ public class Util {
 	public static boolean compareMinDates(String time1, String time2){
 	    Calendar now = Calendar.getInstance();
 
-	    int hour = now.get(Calendar.HOUR);
+	    int hour = now.get(Calendar.HOUR_OF_DAY);
 	    int minute = now.get(Calendar.MINUTE);
 
 	    Date date = parseDate(hour + ":" + minute);
@@ -742,14 +742,14 @@ public class Util {
 	
 	public static int getCurrentHour(){
 		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
-		int hour = cal.get(Calendar.HOUR);
+		int hour = cal.get(Calendar.HOUR_OF_DAY);
 		int minutes = cal.get(Calendar.MINUTE);
 		long current =  hour*60 + minutes;
 		return hour;
 	}
 	public static int getCurrentMinute(){
 		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
-		int hour = cal.get(Calendar.HOUR);
+		int hour = cal.get(Calendar.HOUR_OF_DAY);
 		int minutes = cal.get(Calendar.MINUTE);
 		long current =  hour*60 + minutes;
 		return minutes;

@@ -459,8 +459,8 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 //		TimeZone tz = TimeZone.getTimeZone("GMT+07:00");
 //		Calendar cal = Calendar.getInstance(tz);
 		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
-		int isAM = cal.get(Calendar.AM) ==0? 0: 12;
-		int hourNow = cal.get(Calendar.HOUR)+isAM;
+		int isAM = 0;//cal.get(Calendar.AM) ==0? 0: 12;
+		int hourNow = cal.get(Calendar.HOUR_OF_DAY)+isAM;
 		int minutesNow = cal.get(Calendar.MINUTE);
 		Log.d("","currentHours: "+currentHours+"currentMinutes: "+currentMinutes+"hourNow: "+hourNow+"minutesNow: "+minutesNow);
 		if((currentHours > hourNow) || (currentHours == hourNow ) && (minutesNow < currentMinutes)){
