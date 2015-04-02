@@ -20,6 +20,7 @@ import whyq.service.Service;
 import whyq.service.ServiceResponse;
 import whyq.utils.Util;
 import android.content.Context;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -28,6 +29,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseExpandableListAdapter;
@@ -49,9 +52,14 @@ import com.meetme.android.horizontallistview.HorizontalListView;
 
 public class ExpandMenuAdapterV2 extends BaseExpandableListAdapter implements OnClickListener, OnnOptionItemSelected , OnItemClickListener{
 
-	
+
 	public enum listview{
 		SIZES, OPTIONS, EXTRAS
+	}
+	
+	class OptionListViewTag{
+		public listview type;
+		public Object parentViewHolder;
 	}
 	
 	@Override
@@ -172,14 +180,30 @@ public class ExpandMenuAdapterV2 extends BaseExpandableListAdapter implements On
 				viewHolder.imgFavourite = (ImageView) view.findViewById(R.id.imgFavouriteFood);
 				
 				viewHolder.etNote = (EditText) view.findViewById(R.id.et_note);
+				viewHolder.tvOptionNote = (TextView) view.findViewById(R.id.tv_option_note);
 				
 				viewHolder.hlv_sizes = (HorizontalListView)view.findViewById(R.id.hlv_sizes);
 				viewHolder.hlv_options = (HorizontalListView)view.findViewById(R.id.hlv_options);
 				viewHolder.hlv_extras = (HorizontalListView)view.findViewById(R.id.hlv_extras);
 
-				viewHolder.hlv_sizes.setTag(listview.SIZES);
-				viewHolder.hlv_options.setTag(listview.OPTIONS);
-				viewHolder.hlv_extras.setTag(listview.EXTRAS);
+				OptionListViewTag tagSize = new OptionListViewTag();
+				tagSize.parentViewHolder = viewHolder;
+				tagSize.type = listview.SIZES;
+				
+				OptionListViewTag tagOption = new OptionListViewTag();
+				tagOption.parentViewHolder = viewHolder;
+				tagOption.type = listview.OPTIONS;
+				
+				OptionListViewTag tagExtra = new OptionListViewTag();
+				tagExtra.parentViewHolder = viewHolder;
+				tagExtra.type = listview.EXTRAS;
+//				listview tagSize = listview.SIZES;
+//				listview tagOption = listview.OPTIONS;
+//				listview tagExtra = listview.EXTRAS;
+				
+				viewHolder.hlv_sizes.setTag(tagSize);
+				viewHolder.hlv_options.setTag(tagOption);
+				viewHolder.hlv_extras.setTag(tagExtra);
 				
 				
 				viewHolder.hlv_sizes.setOnItemClickListener(this);
@@ -1059,6 +1083,7 @@ public class ExpandMenuAdapterV2 extends BaseExpandableListAdapter implements On
 		public LinearLayout lnPreview;
 		public RelativeLayout rlExtraView;
 		public EditText etNote;
+		public TextView tvOptionNote;
 		public Button btnDoneSelect;
 		
 	    private HorizontalListView hlv_sizes;
@@ -1088,28 +1113,119 @@ public class ExpandMenuAdapterV2 extends BaseExpandableListAdapter implements On
 	}
 
 	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	public void onItemClick(final AdapterView<?> parent, View view, int position, long id) {
 		// TODO Auto-generated method stub
 		OptionItemBasicAdapter.OptionItemHolder holder = (OptionItemBasicAdapter.OptionItemHolder) view.getTag();
-		OptionItem item = holder.data;
+		final OptionItem item = holder.data;
+		
+//		ExpandMenuAdapterV2.listview tag = (ExpandMenuAdapterV2.listview)parent.getTag();
 		
 		// Keep the current first position
-		int firstPosition = parent.getLastVisiblePosition();
-		
-		ExpandMenuAdapterV2.listview tag = (ExpandMenuAdapterV2.listview)parent.getTag();
-		if (tag == listview.SIZES) {
-			onSelected(0, SizeItemAdapter.convertOptionItemToSizeItem(item));
-			
-		}else if(tag == listview.OPTIONS){
-			onSelected(1, item);
-			
-		}else if(tag == listview.EXTRAS){
-			onSelected(2, ExtraItemAdapter.convertOptionItemToExtraItem(item));
-			
-		}
+		final int firstPosition = parent.getLastVisiblePosition();
+
 		Log.d("onItemClick", "setSelection "+firstPosition);
-		// Reset first position
-		parent.setSelection(firstPosition);
 		
-	}
+		ViewHolderMitemInfo parentHolder = (ViewHolderMitemInfo)((OptionListViewTag)parent.getTag()).parentViewHolder;
+		final TextView tvOptionNote = parentHolder.tvOptionNote;
+		tvOptionNote.setVisibility(View.VISIBLE);
+		tvOptionNote.setText(""+item.getNote());
+		
+//		ObjectAnimator anim = (ObjectAnimator) AnimatorInflater.loadAnimator(mContext, R.anim.flipping); 
+//		anim.setTarget(tvOptionNote);
+//		anim.setDuration(3000);
+//		anim.addListener(new Animator.AnimatorListener() {
+//			
+//			@Override
+//			public void onAnimationStart(Animator animation) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			@Override
+//			public void onAnimationRepeat(Animator animation) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			@Override
+//			public void onAnimationEnd(Animator animation) {
+//				// TODO Auto-generated method stub
+//				tvOptionNote.setVisibility(View.GONE);
+//				
+//				final OptionListViewTag optionTag = (ExpandMenuAdapterV2.OptionListViewTag)parent.getTag();
+//				ExpandMenuAdapterV2.listview tag = optionTag.type;
+//			
+//				if (tag == listview.SIZES) {
+//					onSelected(0, SizeItemAdapter.convertOptionItemToSizeItem(item));
+//					
+//				}else if(tag == listview.OPTIONS){
+//					onSelected(1, item);
+//					
+//				}else if(tag == listview.EXTRAS){
+//					onSelected(2, ExtraItemAdapter.convertOptionItemToExtraItem(item));
+//					
+//				}
+//				
+//				// Reset first position
+//				parent.setSelection(firstPosition);
+//			}
+//			
+//			@Override
+//			public void onAnimationCancel(Animator animation) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//		});
+//		anim.start();
+		
+		ScaleAnimation rotate=new ScaleAnimation(0, 1f, 0, 1f, Animation.RELATIVE_TO_SELF, (float)0.5,Animation.RELATIVE_TO_SELF, (float)0.5);
+		rotate.setDuration(300);
+
+		rotate.setAnimationListener(new Animation.AnimationListener() {
+			
+			@Override
+			public void onAnimationStart(Animation animation) {
+				// TODO Auto-generated method stub			
+			}
+			
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				// TODO Auto-generated method stub
+				Handler handle = new Handler();
+				handle.postDelayed(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						tvOptionNote.setVisibility(View.GONE);
+						
+						final OptionListViewTag optionTag = (ExpandMenuAdapterV2.OptionListViewTag)parent.getTag();
+						ExpandMenuAdapterV2.listview tag = optionTag.type;
+					
+						if (tag == listview.SIZES) {
+							onSelected(0, SizeItemAdapter.convertOptionItemToSizeItem(item));
+							
+						}else if(tag == listview.OPTIONS){
+							onSelected(1, item);
+							
+						}else if(tag == listview.EXTRAS){
+							onSelected(2, ExtraItemAdapter.convertOptionItemToExtraItem(item));
+							
+						}
+						
+						// Reset first position
+						parent.setSelection(firstPosition);
+					}
+				}, 300);
+			}
+		});
+		
+		tvOptionNote.setAnimation(rotate);
+	}	
 }

@@ -137,6 +137,17 @@
             android:hint="Send us a note?"
             android:padding="3dp"
             android:singleLine="true" />
+        
+        <TextView android:id="@+id/tv_option_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/v_delivery"
+            android:layout_margin="6dp"
+            android:background="@drawable/black_container"
+            android:padding="5dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/red"
+            android:visibility="gone"/>
     </RelativeLayout>
 
     <RelativeLayout
