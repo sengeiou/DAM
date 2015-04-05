@@ -143,10 +143,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/v_delivery"
             android:layout_margin="6dp"
-            android:background="@drawable/black_container"
+            android:background="@color/app_color"
             android:padding="5dp"
             android:layout_centerVertical="true"
-            android:textColor="@color/red"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:visibility="gone"/>
     </RelativeLayout>
 

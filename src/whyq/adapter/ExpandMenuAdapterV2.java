@@ -1126,106 +1126,90 @@ public class ExpandMenuAdapterV2 extends BaseExpandableListAdapter implements On
 		Log.d("onItemClick", "setSelection "+firstPosition);
 		
 		ViewHolderMitemInfo parentHolder = (ViewHolderMitemInfo)((OptionListViewTag)parent.getTag()).parentViewHolder;
-		final TextView tvOptionNote = parentHolder.tvOptionNote;
-		tvOptionNote.setVisibility(View.VISIBLE);
-		tvOptionNote.setText(""+item.getNote());
-		
-//		ObjectAnimator anim = (ObjectAnimator) AnimatorInflater.loadAnimator(mContext, R.anim.flipping); 
-//		anim.setTarget(tvOptionNote);
-//		anim.setDuration(3000);
-//		anim.addListener(new Animator.AnimatorListener() {
-//			
-//			@Override
-//			public void onAnimationStart(Animator animation) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//			
-//			@Override
-//			public void onAnimationRepeat(Animator animation) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//			
-//			@Override
-//			public void onAnimationEnd(Animator animation) {
-//				// TODO Auto-generated method stub
-//				tvOptionNote.setVisibility(View.GONE);
-//				
-//				final OptionListViewTag optionTag = (ExpandMenuAdapterV2.OptionListViewTag)parent.getTag();
-//				ExpandMenuAdapterV2.listview tag = optionTag.type;
-//			
-//				if (tag == listview.SIZES) {
-//					onSelected(0, SizeItemAdapter.convertOptionItemToSizeItem(item));
-//					
-//				}else if(tag == listview.OPTIONS){
-//					onSelected(1, item);
-//					
-//				}else if(tag == listview.EXTRAS){
-//					onSelected(2, ExtraItemAdapter.convertOptionItemToExtraItem(item));
-//					
-//				}
-//				
-//				// Reset first position
-//				parent.setSelection(firstPosition);
-//			}
-//			
-//			@Override
-//			public void onAnimationCancel(Animator animation) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//		});
-//		anim.start();
-		
-		ScaleAnimation rotate=new ScaleAnimation(0, 1f, 0, 1f, Animation.RELATIVE_TO_SELF, (float)0.5,Animation.RELATIVE_TO_SELF, (float)0.5);
-		rotate.setDuration(300);
 
-		rotate.setAnimationListener(new Animation.AnimationListener() {
+		boolean isShowOptionNote = false;
+		if (item != null && item.getNote() != null && !item.getNote().equals("")) {
+			isShowOptionNote = true;
+		}
 			
-			@Override
-			public void onAnimationStart(Animation animation) {
-				// TODO Auto-generated method stub			
-			}
+		final OptionListViewTag optionTag = (ExpandMenuAdapterV2.OptionListViewTag)parent.getTag();
+		ExpandMenuAdapterV2.listview tag = optionTag.type;
+	
+		final Object clickedItem;
+		final int clickedType;
+		if (tag == listview.SIZES) {
+			clickedType = 0;
+			clickedItem =  SizeItemAdapter.convertOptionItemToSizeItem(item);
+		}else if(tag == listview.OPTIONS){
+			clickedType = 1;
+			clickedItem = item;
 			
-			@Override
-			public void onAnimationRepeat(Animation animation) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onAnimationEnd(Animation animation) {
-				// TODO Auto-generated method stub
-				Handler handle = new Handler();
-				handle.postDelayed(new Runnable() {
-					
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						tvOptionNote.setVisibility(View.GONE);
-						
-						final OptionListViewTag optionTag = (ExpandMenuAdapterV2.OptionListViewTag)parent.getTag();
-						ExpandMenuAdapterV2.listview tag = optionTag.type;
-					
-						if (tag == listview.SIZES) {
-							onSelected(0, SizeItemAdapter.convertOptionItemToSizeItem(item));
-							
-						}else if(tag == listview.OPTIONS){
-							onSelected(1, item);
-							
-						}else if(tag == listview.EXTRAS){
-							onSelected(2, ExtraItemAdapter.convertOptionItemToExtraItem(item));
-							
-						}
-						
-						// Reset first position
-						parent.setSelection(firstPosition);
-					}
-				}, 300);
-			}
-		});
+		}else if(tag == listview.EXTRAS){
+			clickedType = 2;
+			clickedItem = ExtraItemAdapter.convertOptionItemToExtraItem(item);
+		}else{
+			clickedType = -1;
+			clickedItem = null;
+		}
 		
-		tvOptionNote.setAnimation(rotate);
+		if (isShowOptionNote) {
+			
+			String titleOption = "";
+			if (clickedType == 0) {
+				titleOption = "Size Item: ";
+			}else if (clickedType == 1) {
+				titleOption = "Option Item: ";
+			}else if (clickedType == 2) {
+				titleOption = "Extra Item: ";
+			}
+			
+			final TextView tvOptionNote = parentHolder.tvOptionNote;
+			tvOptionNote.setVisibility(View.VISIBLE);
+			tvOptionNote.setText(titleOption+ item.getNote());
+			
+			ScaleAnimation rotate=new ScaleAnimation(0, 1f, 0, 1f, Animation.RELATIVE_TO_SELF, (float)0.5,Animation.RELATIVE_TO_SELF, (float)0.5);
+			rotate.setDuration(500);
+
+			rotate.setAnimationListener(new Animation.AnimationListener() {
+				
+				@Override
+				public void onAnimationStart(Animation animation) {
+					// TODO Auto-generated method stub			
+				}
+				
+				@Override
+				public void onAnimationRepeat(Animation animation) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void onAnimationEnd(Animation animation) {
+					// TODO Auto-generated method stub
+					Handler handle = new Handler();
+					handle.postDelayed(new Runnable() {
+						
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							tvOptionNote.setVisibility(View.GONE);
+							
+							onSelected(clickedType, clickedItem);
+							
+							// Reset first position
+							parent.setSelection(firstPosition);
+						}
+					}, 500);
+				}
+			});
+			
+			tvOptionNote.setAnimation(rotate);
+
+		}else{
+			onSelected(clickedType, clickedItem);
+			
+			// Reset first position
+			parent.setSelection(firstPosition);
+		}
 	}	
 }

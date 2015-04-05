@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+    <color name="app_color">#A5291B</color>
     <color name="translucent_dark">#99000000</color>
     <color name="translucenter_dark">#bf000000</color>
     <color name="blue">#0303ff</color>
