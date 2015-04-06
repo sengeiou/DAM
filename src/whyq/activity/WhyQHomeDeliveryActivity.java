@@ -14,6 +14,7 @@ import whyq.service.Service;
 import whyq.service.ServiceAction;
 import whyq.service.ServiceResponse;
 import whyq.utils.Constants;
+import whyq.utils.SharedPreferencesManager;
 import whyq.utils.Util;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -71,6 +72,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 	private int calHour;
 	private long scheduleDeliery;
 	private List<DeliveryFee> deliveryFeeLis;
+	private SharedPreferencesManager mShare;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.whyq_home_delivery);
 		context = this;
+		mShare = new SharedPreferencesManager(context);
 		TextView headerTitle = (TextView) findViewById(R.id.tvHeaderTitle);
 		headerTitle.setText("Home Delivery");
 		storeId = getIntent().getStringExtra("store_id");
@@ -121,6 +124,12 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 		
 		cbASAP.setChecked(true);
 		resetTimeField();
+		
+		String phoneValue = mShare.get("delivery_phone_number");
+		if (phoneValue != null) {
+			etPhoneNumber.setText(phoneValue);
+		}
+//		getDe
 //		getDeliveryFeeList();
 	}
 
@@ -313,6 +322,9 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 			public void onClick(DialogInterface dialog, int which) {
 
 				mPhoneNumber = etPhoneNumber.getText().toString();
+				
+				mShare.put("delivery_phone_number", mPhoneNumber);
+				
 				alertError.dismiss();
 				new asyncExeOrderSend().execute();
 			}
@@ -321,6 +333,7 @@ public class WhyQHomeDeliveryActivity extends FragmentActivity implements
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				mPhoneNumber = null;
+				mShare.put("delivery_phone_number", null);
 				alertError.dismiss();
 				new asyncExeOrderSend().execute();
 			}

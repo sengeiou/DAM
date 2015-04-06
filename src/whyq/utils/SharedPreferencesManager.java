@@ -104,4 +104,18 @@ public class SharedPreferencesManager {
 	public SharedPreferences getPrefs() {
 		return _sharedPreferences;
 	}
+	
+	public boolean put(String key, String value) {
+		// TODO Auto-generated method stub
+		Editor editor = _context.getSharedPreferences("datas",
+				Context.MODE_PRIVATE).edit();
+		editor.putString(key, value);
+		return editor.commit();
+	}
+	
+	public String get(String key){
+		SharedPreferences savedSession = _context.getSharedPreferences(
+				"datas", Context.MODE_PRIVATE);
+		return savedSession.getString(key, null);
+	}
 }
