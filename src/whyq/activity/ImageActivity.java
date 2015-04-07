@@ -129,15 +129,15 @@ public class ImageActivity extends Activity {
 	        	String selectedImagePath = "";
 	        	if( data == null  ) {	        		
 	        		selectedImagePath = ImageActivity.imagePath;
-	        		try {
-	        			InputStream is = openFileInput("MyFile.jpg");
-	        			BitmapFactory.Options options = new BitmapFactory.Options();
-	        			//options.inSampleSize = 4;
-	        			Bitmap retrievedBitmap = BitmapFactory.decodeStream(is, null, options);
-	        			}
-	        			catch(IOException e) {
-
-	        			}
+//	        		try {
+//	        			InputStream is = openFileInput("MyFile.jpg");
+//	        			BitmapFactory.Options options = new BitmapFactory.Options();
+//	        			//options.inSampleSize = 4;
+//	        			Bitmap retrievedBitmap = BitmapFactory.decodeStream(is, null, options);
+//	        			}
+//	        			catch(IOException e) {
+//
+//	        			}
 	        	} else {
 		            Uri selectedImageUri = data.getData();
 		            
