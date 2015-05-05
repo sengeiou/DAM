@@ -79,9 +79,15 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        
+        <!-- GoogleMap Key
+        ****Release Key: AIzaSyCjsnaUxV-h4QFodI89aHUKWowcNJT6XSI
+        ****Debug Key  : AIzaSyAUm08Hlmn1b5v6MM1kPty-4Tkvrim0lY0
+         -->
+         
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCjsnaUxV-h4QFodI89aHUKWowcNJT6XSI" />
+            android:value="AIzaSyAUm08Hlmn1b5v6MM1kPty-4Tkvrim0lY0" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
