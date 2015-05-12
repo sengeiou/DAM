@@ -208,7 +208,7 @@ public class WhyqShareActivity extends FragmentActivity implements
 
 			if (session.isOpened()) {
 				
-				List<String> permissions = Arrays.asList("publish_actions", "publish_stream","user_checkins");
+				List<String> permissions = Arrays.asList("publish_actions");
 				NewPermissionsRequest newPermission = new Session.NewPermissionsRequest(this, permissions);
 				session.requestNewPublishPermissions(newPermission);
 				if (isSend) {
@@ -238,12 +238,16 @@ public class WhyqShareActivity extends FragmentActivity implements
 									.setPositiveButton(R.string.ok, null)
 									.show();
 							session = Util.createSession();
-//							List<String> permissions = Arrays.asList("publish_actions", "publish_stream","user_checkins");
+//							List<String> permissions = Arrays.asList("publish_actions");
 //							NewPermissionsRequest newPermission = new Session.NewPermissionsRequest(WhyqShareActivity.this, permissions);
 //							session.requestNewPublishPermissions(newPermission);
-							exePostFacebook(session.getAccessToken());	
+//							if (isComment) 
+//							{
+//								exePostFacebook(session.getAccessToken());	
+//							}
+								
 						}
-//						exePostFacebook(session.getAccessToken());
+						exePostFacebook(session.getAccessToken());
 					}
 				};
 				pendingRequest = true;
@@ -474,7 +478,8 @@ public class WhyqShareActivity extends FragmentActivity implements
 		setProgressBar(false);
 		if (result.isSuccess()
 				&& result.getAction() == ServiceAction.ActionOrderCheck) {
-			if (session.getAccessToken() != null) {
+//			if (session.getAccessToken() != null) 
+			{
 				ResponseData data = (ResponseData) result.getData();
 				if (data.getStatus().equals("200")) {
 					orderCheck = (OrderCheckData) data.getData();

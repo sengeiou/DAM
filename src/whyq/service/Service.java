@@ -1213,7 +1213,10 @@ public class Service implements Runnable {
 		params.put("access_token", accessToken);
 		params.put("fb:explicitly_shared", true);
 		params.put("format", "json");
-		params.put("image[0][url]", data.getPicture());
+		if(data.getPicture()!=null && !"".equals(""+data.getPicture())){
+			params.put("image[0][url]", data.getPicture());
+			params.put("image[0][user_generated]", true);
+		}
 		params.put("message", data.getMessage()+ " " + convertArrayToFBArray(data.getTags()));
 		params.put("place", data.getLink());
 		params.put("scrape", true);
@@ -1222,7 +1225,7 @@ public class Service implements Runnable {
 		params.put("tags", convertArrayToString(data.getTags()));
 		params.put("venue", data.getLink());
 
-		request("/whyqapp:check_bill", params, true, false);
+		request("/dial_a_delivery:check_bill", params, true, false);
 	}
 
 	private String convertArrayToString(ArrayList<String> data) {
