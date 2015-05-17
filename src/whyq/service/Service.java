@@ -743,7 +743,7 @@ public class Service implements Runnable {
 			try {
 
 				Object value = params.get(key);
-				if (key.toUpperCase().equals("PHOTO")) {
+				if (key.toUpperCase().equals("PHOTO") || key.toUpperCase().equals("IMAGE")) {
 					reqEntity.addPart(key, (ContentBody) value);
 				} else {
 					Charset chars = Charset.forName("UTF-8");
@@ -1183,6 +1183,9 @@ public class Service implements Runnable {
 //		params.put("image", image);
 		params.put("app", Constants.APP);
 		params.put("app_name", Constants.APP_NAME);
+		params.put("version", Constants.APP_VERSION);
+		params.put("time_zone", TimeZone.getDefault());
+
 		request("/m/member/order/check", params, true, false);
 	}
 
